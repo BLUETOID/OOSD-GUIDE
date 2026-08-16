@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit IV: C++ Basics & Functions | BCS054</title>
+  <meta name="description" content="Unit 4 Study Guide: C++ Program Structure, Compilation Model, Namespaces, Typecasting (static_cast, dynamic_cast), Reference Semantics, Inline vs Macros, Function Overloading, Friend Functions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="reading-progress"></div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">OO</div>
+        <div>
+          <span class="brand-title">BCS054</span>
+          <span class="brand-subtitle">Unit IV</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="unit1.html" class="nav-link">Unit 1</a>
+      <a href="unit2.html" class="nav-link">Unit 2</a>
+      <a href="unit3.html" class="nav-link">Unit 3</a>
+      <a href="unit4.html" class="nav-link active">Unit 4</a>
+      <a href="unit5.html" class="nav-link">Unit 5</a>
+      <a href="2marks.html" class="nav-link">2-Mark Qs (38)</a>
+      <a href="7marks.html" class="nav-link">7-Mark Qs (69)</a>
+      <a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a>
+      <a href="quiz.html" class="nav-link">Mock Quiz</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" id="search-btn" title="Search Syllabus (Ctrl+K)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="icon-button" id="theme-toggle" title="Toggle Theme">
+        <span id="theme-icon"></span>
+      </button>
+      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" title="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Course Modules</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html" class="sidebar-link">Course Overview</a></li>
+          <li class="sidebar-item"><a href="unit1.html" class="sidebar-link">Unit I: Introduction & UML</a></li>
+          <li class="sidebar-item"><a href="unit2.html" class="sidebar-link">Unit II: Structural & Behavioral</a></li>
+          <li class="sidebar-item"><a href="unit3.html" class="sidebar-link">Unit III: OOAD & C Mapping</a></li>
+          <li class="sidebar-item"><a href="unit4.html" class="sidebar-link active">Unit IV: C++ Basics & Functions <span class="sidebar-badge">Active</span></a></li>
+          <li class="sidebar-item"><a href="unit5.html" class="sidebar-link">Unit V: Classes & Polymorphism</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <div class="sidebar-title">Unit IV Sections</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="#section-1" class="sidebar-link">1. C++ Overview & Compilation</a></li>
+          <li class="sidebar-item"><a href="#section-1-3" class="sidebar-link">2. Namespaces</a></li>
+          <li class="sidebar-item"><a href="#section-1-4" class="sidebar-link">3. Constants & Enums</a></li>
+          <li class="sidebar-item"><a href="#section-1-6" class="sidebar-link">4. Typecasting Operators</a></li>
+          <li class="sidebar-item"><a href="#section-2" class="sidebar-link">5. C++ Functions & References</a></li>
+          <li class="sidebar-item"><a href="#section-2-3" class="sidebar-link">6. Inline Functions vs Macros</a></li>
+          <li class="sidebar-item"><a href="#section-2-5" class="sidebar-link">7. Overloading & Friends</a></li>
+          <li class="sidebar-item"><a href="#section-summary" class="sidebar-link">Unit Summary</a></li>
+          <li class="sidebar-item"><a href="#section-exams" class="sidebar-link">Exam Question Bank</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Body -->
+    <main class="main-content">
+      
+      <div class="course-badge">Unit IV • C++ Language Fundamentals</div>
+      <h1>Unit IV: C++ Basics and Functions</h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem;">
+        Complete, exam-oriented reference manual covering the C++ compilation model, namespaces, modern explicit typecasts, reference semantics, inline functions vs preprocessor macros, function overloading with name mangling, and friend functions.
+      </p>
+
+      <!-- Section 1 -->
+      <section id="section-1">
+        <h2>1. C++ Basics, Overview, and Compilation Model</h2>
+        <p>
+          Developed by <strong>Bjarne Stroustrup</strong> at Bell Labs in 1979 as <em>"C with Classes"</em>, C++ is a statically-typed, multi-paradigm programming language providing direct hardware access with high-level object-oriented abstractions.
+        </p>
+
+        <!-- Visual Compilation Pipeline Board -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL 4-STAGE C++ COMPILATION PIPELINE</span></div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            
+            <div style="background: var(--bg-primary); border: 1px solid var(--accent-primary); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; flex: 1; min-width: 130px;">
+              <div style="font-weight: 700; color: var(--accent-primary); font-size: 0.85rem;">1. Preprocessing</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;"><code>cpp</code> (Expands macros, #includes)</div>
+            </div>
+
+            <div style="color: var(--accent-primary); font-weight: bold;">-></div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--accent-secondary); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; flex: 1; min-width: 130px;">
+              <div style="font-weight: 700; color: var(--accent-secondary); font-size: 0.85rem;">2. Compilation</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;"><code>g++</code> (Generates assembly <code>.s</code>)</div>
+            </div>
+
+            <div style="color: var(--accent-secondary); font-weight: bold;">-></div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--warning-border); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; flex: 1; min-width: 130px;">
+              <div style="font-weight: 700; color: var(--warning-text); font-size: 0.85rem;">3. Assembly</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;"><code>as</code> (Generates object <code>.o</code>)</div>
+            </div>
+
+            <div style="color: var(--warning-text); font-weight: bold;">-></div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--success-border); border-radius: var(--radius-sm); padding: 0.75rem; text-align: center; flex: 1; min-width: 130px;">
+              <div style="font-weight: 700; color: var(--success-text); font-size: 0.85rem;">4. Linking</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;"><code>ld</code> (Executable binary <code>.out</code>)</div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3 id="section-1-3">1.2 Namespaces</h3>
+        <p>
+          A <strong>namespace</strong> provides a declarative scope for identifiers (types, functions, variables) to prevent global naming collisions across multiple software libraries.
+        </p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">C++ • Namespace Declarations and Scope Resolution</span>
+            <button class="copy-button">Copy Code</button>
+          </div>
+          <pre><code>#include &lt;iostream&gt;
+
+namespace DatabaseEngine {
+    int timeout = 30;
+    void connect() { std::cout << "Connected to DB\n"; }
+}
+
+namespace NetworkEngine {
+    int timeout = 10; // No naming conflict with DatabaseEngine
+    void connect() { std::cout << "Connected to Network\n"; }
+}
+
+int main() {
+    // 1. Explicit Scope Resolution (::)
+    DatabaseEngine::connect();
+
+    // 2. Using Declaration (Selective Import)
+    using NetworkEngine::connect;
+    connect();
+
+    // 3. Using Directive (Imports whole scope)
+    using namespace NetworkEngine;
+    std::cout << "Network Timeout: " << timeout << "\n";
+    return 0;
+}</code></pre>
+        </div>
+
+        <h3 id="section-1-4">1.3 Constants & Enums</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th><code>#define</code></th>
+                <th><code>const</code></th>
+                <th><code>constexpr</code> (C++11)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Processing Stage</strong></td><td>Preprocessor (Textual substitution)</td><td>Compiler (Read-only variable)</td><td>Compiler (Compile-time evaluation)</td></tr>
+              <tr><td><strong>Type Safety</strong></td><td>None</td><td>Strongly typed</td><td>Strongly typed</td></tr>
+              <tr><td><strong>Scope Adherence</strong></td><td>Global (ignores blocks/namespaces)</td><td>Block / Namespace scoped</td><td>Block / Namespace scoped</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        
+        <h3>1.5 Dynamic Memory Management: new vs delete</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>Feature</th><th>C Dynamic Memory (<code>malloc / free</code>)</th><th>C++ Dynamic Memory (<code>new / delete</code>)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Type Safety</strong></td><td>Returns <code>void*</code> (Requires explicit casting)</td><td>Returns typed pointer (Fully type-safe)</td></tr>
+              <tr><td><strong>Constructor / Destructor</strong></td><td>Does NOT call constructors or destructors</td><td>Automatically invokes constructors on <code>new</code> and destructors on <code>delete</code></td></tr>
+              <tr><td><strong>Size Calculation</strong></td><td>Manual (<code>malloc(sizeof(int) * n)</code>)</td><td>Automatic by compiler (<code>new int[n]</code>)</td></tr>
+              <tr><td><strong>Failure Handling</strong></td><td>Returns <code>NULL</code> pointer</td><td>Throws <code>std::bad_alloc</code> exception</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-container">
+          <div class="code-header"><span class="code-lang">C++ • Dynamic Memory & Array Allocation</span></div>
+          <pre><code>#include &lt;iostream&gt;
+
+int main() {
+    // Single object allocation
+    int* ptr = new int(100);
+    std::cout << "Dynamically allocated value: " << *ptr << "\n";
+    delete ptr; // Free single object
+
+    // Dynamic array allocation
+    int size = 5;
+    int* arr = new int[size]{10, 20, 30, 40, 50};
+    for (int i = 0; i < size; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << "\n";
+    delete[] arr; // Free array (MUST use delete[])
+    return 0;
+}</code></pre>
+        </div>
+
+        <h3>1.6 Scope Resolution Operator (::) In-Depth</h3>
+        <p>The Scope Resolution Operator <code>::</code> performs three crucial tasks in C++:</p>
+        <ol>
+          <li><strong>Accessing Global Variables:</strong> Accessing a global variable that is shadowed/hidden by a local variable with the same name (<code>::varName</code>).</li>
+          <li><strong>Defining Member Functions:</strong> Defining member functions outside the class declaration body (<code>ReturnType ClassName::funcName()</code>).</li>
+          <li><strong>Namespace Resolution:</strong> Qualifying identifiers within explicit namespaces (<code>std::cout</code>, <code>MyNamespace::var</code>).</li>
+        </ol>
+
+        <h3 id="section-1-6">1.4 Explicit Typecasting in Modern C++</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Cast Operator</th>
+                <th>Evaluation Stage</th>
+                <th>Purpose & Safety Mechanism</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong><code>static_cast&lt;T&gt;(e)</code></strong></td>
+                <td>Compile-time</td>
+                <td>Standard numeric conversions and safe upcasting along an inheritance tree.</td>
+              </tr>
+              <tr>
+                <td><strong><code>dynamic_cast&lt;T&gt;(e)</code></strong></td>
+                <td>Run-time (RTTI)</td>
+                <td>Safe downcasting across polymorphic classes. Returns <code>nullptr</code> for invalid pointer casts.</td>
+              </tr>
+              <tr>
+                <td><strong><code>const_cast&lt;T&gt;(e)</code></strong></td>
+                <td>Compile-time</td>
+                <td>Adds or removes <code>const</code> and <code>volatile</code> qualifiers from pointers/references.</td>
+              </tr>
+              <tr>
+                <td><strong><code>reinterpret_cast&lt;T&gt;(e)</code></strong></td>
+                <td>Compile-time</td>
+                <td>Low-level reinterpretation of raw binary bit patterns (e.g., integer to pointer).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="section-2">
+        <h2>2. C++ Functions</h2>
+
+        <h3>2.1 Call and Return by Reference</h3>
+        <p>
+          <strong>Call by Reference:</strong> Passes an alias (<code>&amp;</code>) directly to the caller's variable, avoiding memory copy overhead and enabling in-place state mutation.
+        </p>
+        <p>
+          <strong>Return by Reference:</strong> Returns an lvalue reference to an existing object/array, allowing the function call expression to appear on the <em>left-hand side</em> of an assignment.
+        </p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">C++ • Return by Reference (Lvalue Assignment)</span>
+            <button class="copy-button">Copy Code</button>
+          </div>
+          <pre><code>#include &lt;iostream&gt;
+
+int storage[5] = {10, 20, 30, 40, 50};
+
+// Returning a reference to a static/global array element
+int& getStorageElement(int index) {
+    return storage[index];
+}
+
+int main() {
+    // Function call on the LEFT-HAND SIDE of an assignment
+    getStorageElement(2) = 999;
+
+    std::cout << "storage[2] is now: " << storage[2] << "\n"; // Output: 999
+    return 0;
+}</code></pre>
+        </div>
+
+        <h3 id="section-2-3">2.2 Inline Functions vs. Preprocessor Macros</h3>
+        <p>
+          An <strong>inline function</strong> instructs the compiler to expand the function body directly at the call site, eliminating call stack frame overhead while preserving complete type checking and debugging symbols.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Comparison Parameter</th>
+                <th>Preprocessor Macro (<code>#define</code>)</th>
+                <th>Inline Function (<code>inline</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Handling Mechanism</strong></td><td>Blind textual substitution before compilation</td><td>Generated code expansion during compilation</td></tr>
+              <tr><td><strong>Type Validation</strong></td><td>Completely absent (risk of runtime crashes)</td><td>Strictly enforced by the C++ compiler</td></tr>
+              <tr><td><strong>Side Effect Hazards</strong></td><td>Vulnerable (e.g., <code>SQR(a++)</code> increments twice)</td><td>Safe (arguments evaluated once by value/reference)</td></tr>
+              <tr><td><strong>Debugging Support</strong></td><td>Invisible in GDB / debuggers</td><td>Full symbol table and step-through debugging</td></tr>
+              <tr><td><strong>Access Specifiers</strong></td><td>Ignores <code>private</code>/<code>protected</code> encapsulation</td><td>Respects class encapsulation boundaries</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">C++ • Dangerous Side Effects in Macros vs Inline Functions</span>
+            <button class="copy-button">Copy Code</button>
+          </div>
+          <pre><code>#include &lt;iostream&gt;
+
+#define MACRO_SQUARE(x) ((x) * (x))
+
+inline int inlineSquare(int x) {
+    return x * x;
+}
+
+int main() {
+    int a = 3;
+    // Expands to ((a++) * (a++)) -> increments 'a' twice!
+    int resMacro = MACRO_SQUARE(a++); 
+    
+    int b = 3;
+    // Evaluates 'b++' once, passes 3 by value, increments 'b' once
+    int resInline = inlineSquare(b++);
+
+    std::cout << "Macro result: " << resMacro << " (a=" << a << ")\n";   // 12 (a=5)
+    std::cout << "Inline result: " << resInline << " (b=" << b << ")\n"; // 9 (b=4)
+    return 0;
+}</code></pre>
+        </div>
+
+        <h3 id="section-2-5">2.3 Function Overloading, Default Arguments & Friend Functions</h3>
+        <ul>
+          <li><strong>Function Overloading:</strong> Functions with the same name differentiated by parameter count or types. Supported internally via <strong>Name Mangling</strong> (encoding type signatures into symbols). Cannot overload on return type alone.</li>
+          <li><strong>Default Arguments:</strong> Must be assigned from <strong>right to left</strong> in the parameter list.</li>
+          <li><strong>Friend Functions & Classes:</strong> Non-member functions granted access to <code>private</code>/<code>protected</code> members using the <code>friend</code> keyword. Friendship is neither inherited nor transitive.</li>
+        </ul>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">C++ • Friend Function Implementation</span>
+            <button class="copy-button">Copy Code</button>
+          </div>
+          <pre><code>#include &lt;iostream&gt;
+
+class Sensor {
+private:
+    double reading;
+
+public:
+    Sensor(double r) : reading(r) {}
+
+    // Granting external standalone function access to private data
+    friend void calibrateSensor(Sensor& s, double offset);
+};
+
+void calibrateSensor(Sensor& s, double offset) {
+    s.reading += offset; // Direct private access
+    std::cout << "Calibrated Reading: " << s.reading << "\n";
+}
+
+int main() {
+    Sensor s(25.0);
+    calibrateSensor(s, 2.5);
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Unit Summary -->
+      <section id="section-summary" style="margin-top: 3rem;">
+        <h2>Unit IV Summary</h2>
+        <div class="callout callout-success">
+          <ul style="margin-bottom: 0;">
+            <li><strong>Compilation Model</strong> traverses Preprocessing, Compilation, Assembly, and Linking stages.</li>
+            <li><strong>Namespaces</strong> eliminate global naming collisions using scope resolution (<code>::</code>) and using directives.</li>
+            <li><strong>Explicit Casts:</strong> <code>static_cast</code> (standard conversions), <code>dynamic_cast</code> (safe polymorphic downcasting), <code>const_cast</code> (cv-qualifiers), <code>reinterpret_cast</code> (low-level reinterpretation).</li>
+            <li><strong>Call and Return by Reference</strong> enable in-place modification and lvalue expressions.</li>
+            <li><strong>Inline Functions</strong> eliminate call overhead with strong compiler type safety, avoiding macro side-effect hazards.</li>
+            <li><strong>Friend Functions</strong> allow designated external functions access to internal private class members.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Exam Question Bank -->
+      <section id="section-exams" class="exam-section">
+        <h2>Possible Exam Questions</h2>
+        <p>Click on any question to expand the model answer and key scoring points:</p>
+
+        <h3 class="exam-category-title">Short Answer Questions (2–3 Marks)</h3>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">2 Marks</span>
+                <span>Differentiate between static_cast and dynamic_cast in C++.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong></p>
+              <ul>
+                <li><code>static_cast</code>: Evaluated at compile-time for standard data conversions and non-polymorphic pointer upcasting.</li>
+                <li><code>dynamic_cast</code>: Evaluated at runtime using RTTI for safe downcasting along polymorphic inheritance trees. Returns <code>nullptr</code> if the cast is invalid.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">2 Marks</span>
+                <span>What is Name Mangling in C++? Why is it required?</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong> Name mangling (decoration) is the compiler technique of appending parameter type signatures to function identifiers (e.g., <code>_Z3addii</code>). It is required by linkers to differentiate overloaded functions sharing the same name.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">3 Marks</span>
+                <span>State the rules governing Default Arguments in C++ functions.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong></p>
+              <ol>
+                <li>Default values must be supplied from <strong>right to left</strong> (trailing parameters first).</li>
+                <li>Default arguments must be specified in the function <strong>prototype/declaration</strong>, not in both prototype and definition.</li>
+              </ol>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="exam-category-title">Long Answer Questions (7–10 Marks)</h3>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">10 Marks</span>
+                <span>Compare Preprocessor Macros with Inline Functions in depth. Illustrate dangerous side effects with code.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer Structure:</strong></p>
+              <ol>
+                <li>Define macros and inline functions.</li>
+                <li>Construct the comparison table across 5 dimensions: mechanism, type safety, debugging, scope, side effects.</li>
+                <li>Provide the <code>MACRO_SQUARE(a++)</code> code example showing why <code>a</code> increments twice with macros but only once with inline functions.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">10 Marks</span>
+                <span>Explain all four C++ explicit typecasting operators with syntax and code examples.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer Structure:</strong></p>
+              <ul>
+                <li>Explain <code>static_cast</code> (compile-time conversions).</li>
+                <li>Explain <code>dynamic_cast</code> (runtime polymorphic downcasting with RTTI).</li>
+                <li>Explain <code>const_cast</code> (stripping cv-qualifiers).</li>
+                <li>Explain <code>reinterpret_cast</code> (low-level bit reinterpretation).</li>
+                <li>Provide C++ code snippets demonstrating each cast.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <div class="page-pagination">
+        <a href="unit3.html" class="pagination-btn">
+          <span class="pagination-label">Previous</span>
+          <span class="pagination-title">← Unit III: Object Oriented Analysis & Design</span>
+        </a>
+        <a href="unit5.html" class="pagination-btn next">
+          <span class="pagination-label">Next</span>
+          <span class="pagination-title">Unit V: Objects, Inheritance & Polymorphism →</span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right TOC Sidebar -->
+    <aside class="toc-sidebar">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#section-1" class="toc-link">1. Compilation Model</a></li>
+        <li class="toc-item"><a href="#section-1-3" class="toc-link">2. Namespaces</a></li>
+        <li class="toc-item"><a href="#section-1-4" class="toc-link">3. Constants & Enums</a></li>
+        <li class="toc-item"><a href="#section-1-6" class="toc-link">4. Typecasting</a></li>
+        <li class="toc-item"><a href="#section-2" class="toc-link">5. Functions & References</a></li>
+        <li class="toc-item"><a href="#section-2-3" class="toc-link">6. Inline vs Macros</a></li>
+        <li class="toc-item"><a href="#section-2-5" class="toc-link">7. Overloading & Friends</a></li>
+        <li class="toc-item"><a href="#section-summary" class="toc-link">Unit Summary</a></li>
+        <li class="toc-item"><a href="#section-exams" class="toc-link">Exam Question Bank</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal-backdrop" id="search-modal-backdrop">
+    <div class="search-modal">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search topics across all units..." autocomplete="off">
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" title="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

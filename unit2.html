@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit II: Structural, Behavioral & Architectural Modeling | BCS054</title>
+  <meta name="description" content="Unit 2 Study Guide: Class & Object Diagrams, Sequence & Collaboration Interaction, Use Cases, Activity, State Machines, Timing, Component & Deployment Diagrams.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="reading-progress"></div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">OO</div>
+        <div>
+          <span class="brand-title">BCS054</span>
+          <span class="brand-subtitle">Unit II</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="unit1.html" class="nav-link">Unit 1</a>
+      <a href="unit2.html" class="nav-link active">Unit 2</a>
+      <a href="unit3.html" class="nav-link">Unit 3</a>
+      <a href="unit4.html" class="nav-link">Unit 4</a>
+      <a href="unit5.html" class="nav-link">Unit 5</a>
+      <a href="2marks.html" class="nav-link">2-Mark Qs (38)</a>
+      <a href="7marks.html" class="nav-link">7-Mark Qs (69)</a>
+      <a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a>
+      <a href="quiz.html" class="nav-link">Mock Quiz</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" id="search-btn" title="Search Syllabus (Ctrl+K)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="icon-button" id="theme-toggle" title="Toggle Theme">
+        <span id="theme-icon"></span>
+      </button>
+      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" title="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Course Modules</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html" class="sidebar-link">Course Overview</a></li>
+          <li class="sidebar-item"><a href="unit1.html" class="sidebar-link">Unit I: Introduction & UML</a></li>
+          <li class="sidebar-item"><a href="unit2.html" class="sidebar-link active">Unit II: Structural & Behavioral <span class="sidebar-badge">Active</span></a></li>
+          <li class="sidebar-item"><a href="unit3.html" class="sidebar-link">Unit III: OOAD & C Mapping</a></li>
+          <li class="sidebar-item"><a href="unit4.html" class="sidebar-link">Unit IV: C++ Basics & Functions</a></li>
+          <li class="sidebar-item"><a href="unit5.html" class="sidebar-link">Unit V: Classes & Polymorphism</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <div class="sidebar-title">Unit II Sections</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="#section-1" class="sidebar-link">1. Basic Structural Modeling</a></li>
+          <li class="sidebar-item"><a href="#section-2" class="sidebar-link">2. Class & Object Diagrams</a></li>
+          <li class="sidebar-item"><a href="#section-3" class="sidebar-link">3. Interaction Diagrams</a></li>
+          <li class="sidebar-item"><a href="#section-3-1" class="sidebar-link" style="padding-left: 1.5rem;">3.1 Collaboration</a></li>
+          <li class="sidebar-item"><a href="#section-3-2" class="sidebar-link" style="padding-left: 1.5rem;">3.2 Sequence</a></li>
+          <li class="sidebar-item"><a href="#section-4" class="sidebar-link">4. Behavioral Modeling</a></li>
+          <li class="sidebar-item"><a href="#section-4-1" class="sidebar-link" style="padding-left: 1.5rem;">4.1 Use Cases</a></li>
+          <li class="sidebar-item"><a href="#section-4-2" class="sidebar-link" style="padding-left: 1.5rem;">4.2 Activity</a></li>
+          <li class="sidebar-item"><a href="#section-4-3" class="sidebar-link" style="padding-left: 1.5rem;">4.3 State Machines</a></li>
+          <li class="sidebar-item"><a href="#section-5" class="sidebar-link">5. Architectural Modeling</a></li>
+          <li class="sidebar-item"><a href="#section-summary" class="sidebar-link">Unit Summary</a></li>
+          <li class="sidebar-item"><a href="#section-exams" class="sidebar-link">Exam Question Bank</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Body -->
+    <main class="main-content">
+      
+      <div class="course-badge">Unit II • Modeling & Architecture</div>
+      <h1>Unit II: Structural, Behavioral, and Architectural Modeling</h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem;">
+        An exhaustive guide to UML structural models (Class & Object diagrams), dynamic interaction models (Sequence & Collaboration diagrams), behavioral workflows (Use Case, Activity, State Machine, Timing, Package diagrams), and physical architecture (Component & Deployment diagrams).
+      </p>
+
+      <!-- Section 1 -->
+      <section id="section-1">
+        <h2>1. Basic Structural Modeling</h2>
+        <p>
+          Structural modeling captures the static skeleton of an object-oriented system. It defines the vocabulary of the application domain, the internal attribute/operation structures of classes, and the relationships connecting them.
+        </p>
+
+        <h3>1.1 Classes and Visibility Specifiers</h3>
+        <p>
+          A UML Class is rendered as a 3-compartment rectangle displaying Class Name, Attributes, and Operations.
+        </p>
+
+        <!-- Visual Class Component -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL UML CLASS COMPARTMENT STRUCTURE</span></div>
+          <div class="uml-class-card">
+            <div class="uml-class-header">
+              <span class="uml-stereotype">&lt;&lt;domain-entity&gt;&gt;</span>
+              <span class="uml-class-name">BankAccount</span>
+            </div>
+            <div class="uml-class-compartment">
+              <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> accountNumber : int</div>
+              <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> balance : double = 0.0</div>
+              <div class="uml-member-line"><span class="vis-badge vis-prot">#</span> accountHolder : string</div>
+            </div>
+            <div class="uml-class-compartment">
+              <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> deposit(amount : double) : bool</div>
+              <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> withdraw(amount : double) : bool</div>
+              <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> getBalance() const : double</div>
+              <div class="uml-member-line"><span class="vis-badge vis-pkg">~</span> calculateInterest() : void</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Visibility Mode</th>
+                <th>Access Scope & Semantics</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>+</code></td><td><strong>Public</strong></td><td>Globally accessible by any system element.</td></tr>
+              <tr><td><code>-</code></td><td><strong>Private</strong></td><td>Accessible only within member methods of the declaring class.</td></tr>
+              <tr><td><code>#</code></td><td><strong>Protected</strong></td><td>Accessible by the declaring class and its derived subclasses.</td></tr>
+              <tr><td><code>~</code></td><td><strong>Package</strong></td><td>Accessible by any element residing within the same package or namespace.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>1.2 Structural Relationships</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Relationship</th>
+                <th>Visual Notation</th>
+                <th>Description & Multiplicity Cardinality</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Association</strong></td>
+                <td><code>──[1]──────[0..*]──</code></td>
+                <td>Structural connection describing links between object instances. Multiplicity bounds indicate cardinality (<code>1</code>, <code>0..1</code>, <code>1..*</code>, <code>*</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>Aggregation</strong></td>
+                <td><code>◇──────────────────</code></td>
+                <td>Weak "has-a" whole-part relationship where contained parts survive independently if the whole is destroyed (e.g., Department and Professor).</td>
+              </tr>
+              <tr>
+                <td><strong>Composition</strong></td>
+                <td><code>◆──────────────────</code></td>
+                <td>Strong "part-of" whole-part relationship where the lifetime of parts is bound strictly to the whole (e.g., House and Rooms).</td>
+              </tr>
+              <tr>
+                <td><strong>Generalization</strong></td>
+                <td><code>──────────────────▷</code></td>
+                <td>"Is-a" taxonomic inheritance hierarchy where derived classes inherit state and behavior from a base class.</td>
+              </tr>
+              <tr>
+                <td><strong>Dependency</strong></td>
+                <td><code>- - - - - - - - - &gt;</code></td>
+                <td>"Uses" transient relationship where changes in the supplier element can affect the client element.</td>
+              </tr>
+              <tr>
+                <td><strong>Realization</strong></td>
+                <td><code>- - - - - - - - - ▷</code></td>
+                <td>Contractual implementation of an interface specification by a concrete class.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="section-2">
+        <h2>2. Class and Object Diagrams</h2>
+
+        <!-- Visual Class Diagram Board -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL CLASS DIAGRAM: E-COMMERCE ORDER MANAGEMENT</span></div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: start;">
+            
+            <!-- Customer Card -->
+            <div class="uml-class-card">
+              <div class="uml-class-header"><span class="uml-class-name">Customer</span></div>
+              <div class="uml-class-compartment">
+                <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> customerId : int</div>
+                <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> name : string</div>
+              </div>
+              <div class="uml-class-compartment">
+                <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> placeOrder() : Order</div>
+              </div>
+            </div>
+
+            <!-- Order Card -->
+            <div class="uml-class-card">
+              <div class="uml-class-header"><span class="uml-class-name">Order</span></div>
+              <div class="uml-class-compartment">
+                <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> orderId : int</div>
+                <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> orderDate : Date</div>
+                <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> status : string</div>
+              </div>
+              <div class="uml-class-compartment">
+                <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> calculateTotal() : double</div>
+              </div>
+            </div>
+
+            <!-- OrderItem Card -->
+            <div class="uml-class-card">
+              <div class="uml-class-header"><span class="uml-class-name">OrderItem</span></div>
+              <div class="uml-class-compartment">
+                <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> quantity : int</div>
+                <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> unitPrice : double</div>
+              </div>
+              <div class="uml-class-compartment">
+                <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> getSubtotal() : double</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3>Class vs. Object Diagram Comparison</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Comparison Dimension</th>
+                <th>Class Diagram</th>
+                <th>Object Diagram</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nature</strong></td>
+                <td>Static abstract system blueprint</td>
+                <td>Concrete execution snapshot at time $t$</td>
+              </tr>
+              <tr>
+                <td><strong>Elements</strong></td>
+                <td>Classes, Interfaces, Types</td>
+                <td>Instantiated Objects (<code><u>name : Class</u></code>), Links</td>
+              </tr>
+              <tr>
+                <td><strong>Attribute State</strong></td>
+                <td>Declares attribute names and types</td>
+                <td>Displays concrete runtime attribute values</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="section-3">
+        <h2>3. Interaction Diagrams (Collaboration & Sequence)</h2>
+
+        <h3 id="section-3-1">3.1 Collaboration Diagrams (Communication Diagrams)</h3>
+        <p>
+          A <strong>Collaboration Diagram</strong> emphasizes the structural organization and relationships among participating objects. Sequence ordering is denoted explicitly using numbered message strings.
+        </p>
+
+        <!-- Visual Collaboration Diagram -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL COLLABORATION DIAGRAM: ORDER SUBMISSION FLOW</span></div>
+          <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem; align-items: center;">
+            
+            <div style="background: var(--bg-primary); border: 2px solid var(--accent-primary); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+              <div style="font-weight: 700; color: var(--accent-primary);"><u>user : Client</u></div>
+            </div>
+
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-primary); background: var(--bg-tertiary); padding: 0.4rem 0.8rem; border-radius: 20px; border: 1px solid var(--border-color);">
+              1: submitOrder(items) ->
+            </div>
+
+            <div style="background: var(--bg-primary); border: 2px solid var(--accent-secondary); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+              <div style="font-weight: 700; color: var(--accent-secondary);"><u>controller : OrderCtrl</u></div>
+            </div>
+
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--success-text); background: var(--bg-tertiary); padding: 0.4rem 0.8rem; border-radius: 20px; border: 1px solid var(--border-color);">
+              1.1: processPayment() ->
+            </div>
+
+            <div style="background: var(--bg-primary); border: 2px solid var(--success-border); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+              <div style="font-weight: 700; color: var(--success-text);"><u>gw : PaymentGateway</u></div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3 id="section-3-2">3.2 Sequence Diagrams</h3>
+        <p>
+          A <strong>Sequence Diagram</strong> emphasizes the explicit <strong>chronological time ordering</strong> of messages exchanged between objects along vertical lifelines.
+        </p>
+
+        <!-- Visual Sequence Diagram Component -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL SEQUENCE DIAGRAM: ASYNCHRONOUS AUTHENTICATION WITH CALLBACK</span></div>
+          
+          <div class="seq-board">
+            
+            <!-- User Lifeline -->
+            <div class="seq-lifeline-col">
+              <div class="seq-actor-head">User</div>
+              <div class="seq-dashed-line">
+                <div class="seq-activation-bar" style="top: 20px; height: 180px;"></div>
+              </div>
+            </div>
+
+            <!-- AuthClient Lifeline -->
+            <div class="seq-lifeline-col">
+              <div class="seq-actor-head">AuthClient</div>
+              <div class="seq-dashed-line">
+                <div class="seq-activation-bar" style="top: 40px; height: 140px;"></div>
+              </div>
+            </div>
+
+            <!-- AuthServer Lifeline -->
+            <div class="seq-lifeline-col">
+              <div class="seq-actor-head">AuthServer</div>
+              <div class="seq-dashed-line">
+                <div class="seq-activation-bar" style="top: 60px; height: 100px;"></div>
+              </div>
+            </div>
+
+            <!-- Database Lifeline -->
+            <div class="seq-lifeline-col">
+              <div class="seq-actor-head">Database</div>
+              <div class="seq-dashed-line">
+                <div class="seq-activation-bar" style="top: 80px; height: 40px;"></div>
+              </div>
+            </div>
+
+          </div>
+          
+          <div style="background: var(--bg-tertiary); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-secondary); margin-top: 1rem;">
+            <div>1. [User -> AuthClient]: <code>login(user, password)</code> (Synchronous Call)</div>
+            <div>2. [AuthClient -> AuthServer]: <code>asyncVerify(creds)</code> (Asynchronous Message)</div>
+            <div>3. [AuthServer -> Database]: <code>queryUser(user)</code> (Synchronous Query)</div>
+            <div>4. [Database - - -> AuthServer]: <code>returnUserData</code> (Return Message)</div>
+            <div>5. [AuthServer -> AuthClient]: <code>onAuthCallback(token)</code> (Asynchronous Callback)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="section-4">
+        <h2>4. Basic Behavioral Modeling</h2>
+
+        <h3 id="section-4-1">4.1 Use Case Diagrams</h3>
+        <p>Specifies system functional requirements and actor interaction boundaries.</p>
+
+        <!-- Visual Use Case Board -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL USE CASE DIAGRAM: BANKING ATM SYSTEM</span></div>
+          
+          <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap;">
+            
+            <!-- Actor Stick Figure Card -->
+            <div style="text-align: center; background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-md);">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="2" style="margin: 0 auto 0.5rem;">
+                <circle cx="12" cy="7" r="4"></circle>
+                <path d="M5.5 21v-2a6.5 6.5 0 0 1 13 0v2"></path>
+              </svg>
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">Customer (Actor)</div>
+            </div>
+
+            <!-- System Boundary Box -->
+            <div style="border: 2px dashed var(--accent-primary); border-radius: var(--radius-lg); padding: 1.5rem; background: var(--bg-primary); min-width: 320px;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 1rem; text-align: center;">SYSTEM BOUNDARY: ATM SYSTEM</div>
+              
+              <div style="background: var(--bg-tertiary); border: 1px solid var(--accent-secondary); border-radius: 25px; padding: 0.6rem 1.2rem; text-align: center; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem;">
+                ( Withdraw Cash )
+              </div>
+
+              <div style="text-align: center; font-size: 0.75rem; color: var(--accent-primary); font-family: var(--font-mono); margin-bottom: 0.75rem;">
+                &lt;&lt;include&gt;&gt; ↓
+              </div>
+
+              <div style="background: var(--bg-tertiary); border: 1px solid var(--accent-primary); border-radius: 25px; padding: 0.6rem 1.2rem; text-align: center; font-weight: 600; color: var(--accent-primary); margin-bottom: 0.75rem;">
+                ( Authenticate PIN )
+              </div>
+
+              <div style="text-align: center; font-size: 0.75rem; color: var(--warning-text); font-family: var(--font-mono); margin-bottom: 0.75rem;">
+                &lt;&lt;extend&gt;&gt; ↑
+              </div>
+
+              <div style="background: var(--bg-tertiary); border: 1px dashed var(--warning-border); border-radius: 25px; padding: 0.6rem 1.2rem; text-align: center; font-size: 0.85rem; color: var(--warning-text);">
+                ( Print Receipt Warning )
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3 id="section-4-2">4.2 Activity Diagrams</h3>
+        <p>
+          Models procedural logic, business workflows, decision branching, and concurrent parallel threads with synchronization bars.
+        </p>
+
+        <!-- Visual Activity Diagram Board -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL ACTIVITY DIAGRAM: ORDER FULFILLMENT WORKFLOW</span></div>
+          
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; max-width: 420px; margin: 0 auto;">
+            
+            <!-- Initial Node -->
+            <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent-primary);" title="Initial Node"></div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">↓</div>
+
+            <!-- Action 1 -->
+            <div style="background: var(--bg-primary); border: 1px solid var(--accent-primary); border-radius: var(--radius-sm); padding: 0.5rem 1.5rem; font-weight: 600; color: var(--text-primary);">
+              [ Receive Order ]
+            </div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">↓</div>
+
+            <!-- Fork Bar -->
+            <div style="width: 100%; height: 6px; background: var(--text-primary); border-radius: 3px;" title="Fork Bar (Parallel Splitting)"></div>
+
+            <!-- Parallel Branches -->
+            <div style="display: flex; justify-content: space-between; width: 100%; gap: 1rem;">
+              <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.5rem 1rem; font-size: 0.85rem; text-align: center; flex: 1;">
+                [ Charge Card ]
+              </div>
+              <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.5rem 1rem; font-size: 0.85rem; text-align: center; flex: 1;">
+                [ Pack Goods ]
+              </div>
+            </div>
+
+            <!-- Join Bar -->
+            <div style="width: 100%; height: 6px; background: var(--text-primary); border-radius: 3px;" title="Join Bar (Synchronization)"></div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">↓</div>
+
+            <!-- Final Action -->
+            <div style="background: var(--bg-primary); border: 1px solid var(--success-border); border-radius: var(--radius-sm); padding: 0.5rem 1.5rem; font-weight: 600; color: var(--success-text);">
+              [ Ship Package ]
+            </div>
+            <div style="color: var(--text-muted); font-size: 0.8rem;">↓</div>
+
+            <!-- Activity Final Node -->
+            <div style="width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--accent-primary); display: flex; align-items: center; justify-content: center;" title="Activity Final Node">
+              <div style="width: 14px; height: 14px; border-radius: 50%; background: var(--accent-primary);"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3 id="section-4-3">4.3 State Machine Diagrams</h3>
+        <p>Models the lifecycle state changes of an object in response to events.</p>
+        <p><strong>Transition Syntax:</strong> <code>Event [Guard Condition] / Action</code></p>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="section-5">
+        <h2>5. Architectural Modeling: Component & Deployment Diagrams</h2>
+
+        <h3>5.1 Component Diagrams</h3>
+        <p>
+          Models physical software modularity with provided interfaces (Ball notation <code>───O</code>) and required interfaces (Socket notation <code>───(</code>).
+        </p>
+
+        <h3>5.2 Deployment Diagrams</h3>
+        <p>
+          Illustrates physical hardware nodes (devices, execution environments), communication protocols, and deployed runtime artifacts (<code>.jar</code>, <code>.dll</code>, <code>.exe</code>).
+        </p>
+
+        <!-- Visual Deployment Board -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL DEPLOYMENT ARCHITECTURE: 3-TIER ENTERPRISE TOPOLOGY</span></div>
+          
+          <div style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 500px; margin: 0 auto;">
+            
+            <!-- Tier 1 -->
+            <div style="background: var(--bg-primary); border: 2px solid var(--accent-primary); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="font-weight: 700; color: var(--accent-primary); font-size: 0.95rem;">&lt;&lt;device&gt;&gt; Client Machine</div>
+              <div style="background: var(--bg-tertiary); padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem;">
+                &lt;&lt;artifact&gt;&gt; WebBrowser.exe
+              </div>
+            </div>
+
+            <div style="text-align: center; color: var(--accent-primary); font-family: var(--font-mono); font-size: 0.8rem;">
+              ↕ &lt;&lt;HTTPS / Port 443&gt;&gt;
+            </div>
+
+            <!-- Tier 2 -->
+            <div style="background: var(--bg-primary); border: 2px solid var(--accent-secondary); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="font-weight: 700; color: var(--accent-secondary); font-size: 0.95rem;">&lt;&lt;execution env&gt;&gt; Application Server Node</div>
+              <div style="background: var(--bg-tertiary); padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem;">
+                &lt;&lt;component&gt;&gt; OrderService.jar
+              </div>
+            </div>
+
+            <div style="text-align: center; color: var(--accent-secondary); font-family: var(--font-mono); font-size: 0.8rem;">
+              ↕ &lt;&lt;JDBC / Port 5432&gt;&gt;
+            </div>
+
+            <!-- Tier 3 -->
+            <div style="background: var(--bg-primary); border: 2px solid var(--success-border); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="font-weight: 700; color: var(--success-text); font-size: 0.95rem;">&lt;&lt;device&gt;&gt; PostgreSQL Database Server</div>
+              <div style="background: var(--bg-tertiary); padding: 0.4rem 0.8rem; border-radius: var(--radius-sm); margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem;">
+                &lt;&lt;artifact&gt;&gt; enterprise_db.sql
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Unit Summary -->
+      <section id="section-summary" style="margin-top: 3rem;">
+        <h2>Unit II Summary</h2>
+        <div class="callout callout-success">
+          <ul style="margin-bottom: 0;">
+            <li><strong>Class Diagrams</strong> define static elements, visibility specifiers, and relationships (Association, Aggregation, Composition, Generalization, Dependency).</li>
+            <li><strong>Interaction Diagrams</strong> model message passing: <strong>Sequence Diagrams</strong> prioritize chronological timing; <strong>Collaboration Diagrams</strong> prioritize structural object layouts.</li>
+            <li><strong>Behavioral Diagrams</strong> specify workflows (<strong>Activity Diagrams</strong> with forks/joins/swimlanes), requirements (<strong>Use Cases</strong> with include/extend), and state changes (<strong>State Machines</strong>).</li>
+            <li><strong>Architectural Modeling</strong> employs <strong>Component Diagrams</strong> (provided/required interfaces) and <strong>Deployment Diagrams</strong> (nodes and physical artifacts).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Exam Question Bank -->
+      <section id="section-exams" class="exam-section">
+        <h2>Possible Exam Questions</h2>
+        <p>Click on any question to expand the model answer and key scoring points:</p>
+
+        <h3 class="exam-category-title">Short Answer Questions (2–3 Marks)</h3>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">2 Marks</span>
+                <span>Differentiate between Aggregation and Composition with UML notations.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong></p>
+              <ul>
+                <li><strong>Aggregation (<code>◇───────</code>):</strong> Weak "has-a" whole-part relationship where parts survive the destruction of the whole (e.g., Department and Professor).</li>
+                <li><strong>Composition (<code>◆───────</code>):</strong> Strong "part-of" whole-part relationship where parts are destroyed along with the whole (e.g., House and Rooms).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">2 Marks</span>
+                <span>Explain the difference between &lt;&lt;include&gt;&gt; and &lt;&lt;extend&gt;&gt; in Use Case diagrams.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong></p>
+              <ul>
+                <li><code>&lt;&lt;include&gt;&gt;</code>: Unconditionally executes the included use case as a mandatory sub-routine (e.g., Withdraw Cash includes Authenticate PIN).</li>
+                <li><code>&lt;&lt;extend&gt;&gt;</code>: Conditionally executes optional behavior only when a specific extension point condition is met (e.g., Print Low Balance Warning extends Check Balance).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">3 Marks</span>
+                <span>What are Fork and Join nodes in an Activity Diagram?</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong> Both are rendered as solid synchronization bars:</p>
+              <ul>
+                <li><strong>Fork:</strong> Splits one incoming control flow into multiple concurrent parallel flows.</li>
+                <li><strong>Join:</strong> Synchronizes multiple incoming concurrent flows, waiting for all to finish before emitting a single outgoing flow.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="exam-category-title">Long Answer Questions (7–10 Marks)</h3>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">10 Marks</span>
+                <span>Draw and explain the Class Diagram and Object Diagram for an E-Commerce Order Management System.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer Structure:</strong></p>
+              <ol>
+                <li>Draw Class Diagram with Customer, Order, OrderItem, Product, Address.</li>
+                <li>Specify attributes, visibility (<code>+</code>, <code>-</code>, <code>#</code>), operations, and multiplicities (<code>1</code>, <code>1..*</code>, <code>0..*</code>).</li>
+                <li>Draw corresponding Object Diagram snapshot with underlined instance names (<code><u>cust101 : Customer</u></code>) and concrete values.</li>
+                <li>Contrast the abstract static nature of Class Diagrams with the runtime state snapshot of Object Diagrams.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">10 Marks</span>
+                <span>Explain Architectural Modeling in UML. Compare Component and Deployment Diagrams with clear architectural illustrations.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer Structure:</strong></p>
+              <ul>
+                <li><strong>Component Diagram:</strong> Explain components, provided interfaces (ball <code>───O</code>), required interfaces (socket <code>───(</code>), and software packaging.</li>
+                <li><strong>Deployment Diagram:</strong> Explain computational nodes, devices, execution environments, network protocols, and deployed physical artifacts.</li>
+                <li>Draw an integrated 3-Tier Web Architecture showing both diagrams.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <div class="page-pagination">
+        <a href="unit1.html" class="pagination-btn">
+          <span class="pagination-label">Previous</span>
+          <span class="pagination-title">← Unit I: Introduction & UML</span>
+        </a>
+        <a href="unit3.html" class="pagination-btn next">
+          <span class="pagination-label">Next</span>
+          <span class="pagination-title">Unit III: Object Oriented Analysis & Design →</span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right TOC Sidebar -->
+    <aside class="toc-sidebar">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#section-1" class="toc-link">1. Basic Structural Modeling</a></li>
+        <li class="toc-item"><a href="#section-2" class="toc-link">2. Class & Object Diagrams</a></li>
+        <li class="toc-item"><a href="#section-3" class="toc-link">3. Interaction Diagrams</a></li>
+        <li class="toc-item"><a href="#section-3-1" class="toc-link" style="padding-left: 1.5rem;">3.1 Collaboration</a></li>
+        <li class="toc-item"><a href="#section-3-2" class="toc-link" style="padding-left: 1.5rem;">3.2 Sequence</a></li>
+        <li class="toc-item"><a href="#section-4" class="toc-link">4. Behavioral Modeling</a></li>
+        <li class="toc-item"><a href="#section-4-1" class="toc-link" style="padding-left: 1.5rem;">4.1 Use Cases</a></li>
+        <li class="toc-item"><a href="#section-4-2" class="toc-link" style="padding-left: 1.5rem;">4.2 Activity</a></li>
+        <li class="toc-item"><a href="#section-4-3" class="toc-link" style="padding-left: 1.5rem;">4.3 State Machines</a></li>
+        <li class="toc-item"><a href="#section-5" class="toc-link">5. Architectural Modeling</a></li>
+        <li class="toc-item"><a href="#section-summary" class="toc-link">Unit Summary</a></li>
+        <li class="toc-item"><a href="#section-exams" class="toc-link">Exam Question Bank</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal-backdrop" id="search-modal-backdrop">
+    <div class="search-modal">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search topics across all units..." autocomplete="off">
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" title="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

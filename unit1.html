@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit I: Introduction & UML Fundamentals | BCS054</title>
+  <meta name="description" content="Unit 1 Study Guide: Object Orientation, Object Identity, Encapsulation, Polymorphism, Generosity, Modeling Principles, UML Conceptual Model, and 4+1 Architecture.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="reading-progress"></div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">OO</div>
+        <div>
+          <span class="brand-title">BCS054</span>
+          <span class="brand-subtitle">Unit I</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="unit1.html" class="nav-link active">Unit 1</a>
+      <a href="unit2.html" class="nav-link">Unit 2</a>
+      <a href="unit3.html" class="nav-link">Unit 3</a>
+      <a href="unit4.html" class="nav-link">Unit 4</a>
+      <a href="unit5.html" class="nav-link">Unit 5</a>
+      <a href="2marks.html" class="nav-link">2-Mark Qs (38)</a>
+      <a href="7marks.html" class="nav-link">7-Mark Qs (69)</a>
+      <a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a>
+      <a href="quiz.html" class="nav-link">Mock Quiz</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" id="search-btn" title="Search Syllabus (Ctrl+K)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="icon-button" id="theme-toggle" title="Toggle Theme">
+        <span id="theme-icon"></span>
+      </button>
+      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" title="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Course Modules</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="index.html" class="sidebar-link">Course Overview</a></li>
+          <li class="sidebar-item"><a href="unit1.html" class="sidebar-link active">Unit I: Introduction & UML <span class="sidebar-badge">Active</span></a></li>
+          <li class="sidebar-item"><a href="unit2.html" class="sidebar-link">Unit II: Structural & Behavioral</a></li>
+          <li class="sidebar-item"><a href="unit3.html" class="sidebar-link">Unit III: OOAD & C Mapping</a></li>
+          <li class="sidebar-item"><a href="unit4.html" class="sidebar-link">Unit IV: C++ Basics & Functions</a></li>
+          <li class="sidebar-item"><a href="unit5.html" class="sidebar-link">Unit V: Classes & Polymorphism</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-section">
+        <div class="sidebar-title">Unit I Sections</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="#section-1" class="sidebar-link">1. Meaning of OO</a></li>
+          <li class="sidebar-item"><a href="#section-2" class="sidebar-link">2. Core OOP Concepts</a></li>
+          <li class="sidebar-item"><a href="#section-2-1" class="sidebar-link" style="padding-left: 1.5rem;">2.1 Identity</a></li>
+          <li class="sidebar-item"><a href="#section-2-2" class="sidebar-link" style="padding-left: 1.5rem;">2.2 Encapsulation</a></li>
+          <li class="sidebar-item"><a href="#section-2-4" class="sidebar-link" style="padding-left: 1.5rem;">2.3 Polymorphism</a></li>
+          <li class="sidebar-item"><a href="#section-2-5" class="sidebar-link" style="padding-left: 1.5rem;">2.4 Genericity</a></li>
+          <li class="sidebar-item"><a href="#section-3" class="sidebar-link">3. Modeling Principles</a></li>
+          <li class="sidebar-item"><a href="#section-4" class="sidebar-link">4. Introduction to UML</a></li>
+          <li class="sidebar-item"><a href="#section-5" class="sidebar-link">5. Conceptual Model of UML</a></li>
+          <li class="sidebar-item"><a href="#section-6" class="sidebar-link">6. 4+1 View Architecture</a></li>
+          <li class="sidebar-item"><a href="#section-summary" class="sidebar-link">Unit Summary</a></li>
+          <li class="sidebar-item"><a href="#section-exams" class="sidebar-link">Exam Question Bank</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Body -->
+    <main class="main-content">
+      
+      <div class="course-badge">Unit I • Theory & Fundamentals</div>
+      <h1>Unit I: Introduction and UML Fundamentals</h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem;">
+        An exhaustive, textbook-grade technical reference covering the object-oriented paradigm, object identity, encapsulation, information hiding, polymorphism, genericity, the four fundamental principles of modeling, and the complete conceptual model of the Unified Modeling Language (UML) featuring Kruchten's 4+1 View Model of Architecture.
+      </p>
+
+      <!-- Section 1 -->
+      <section id="section-1">
+        <h2>1. Meaning of Object Orientation</h2>
+        <p>
+          <strong>Object Orientation (OO)</strong> is a software engineering and modeling paradigm that conceptualizes systems as collections of autonomous, interacting computational entities called <strong>objects</strong>. Unlike traditional procedural programming—which decomposes systems into hierarchical algorithms and subroutines operating on passive, globally accessible data—object orientation integrates state (attributes) and behavior (methods) within a single abstraction boundary.
+        </p>
+
+        <!-- Visual Paradigm Comparison Board -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption">
+            <span>PARADIGM COMPARISON: PROCEDURAL DECOMPOSITION VS. OBJECT ORIENTATION</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            
+            <!-- Procedural Card -->
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+              <div style="font-weight: 700; color: var(--warning-text); margin-bottom: 0.75rem;">Procedural Paradigm (Action-Oriented)</div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Control flow is centralized. Subroutines read and modify shared, passive data structures directly, creating tight coupling and fragile dependencies.
+              </p>
+              <div style="background: var(--bg-tertiary); padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+                [ Main Program Loop ]<br>
+                &nbsp;&nbsp;↓ Calls Function A &nbsp;&nbsp;↓ Calls Function B<br>
+                [ Shared / Global Data Buffer ]
+              </div>
+            </div>
+
+            <!-- Object-Oriented Card -->
+            <div style="background: var(--bg-primary); border: 2px solid var(--accent-primary); border-radius: var(--radius-md); padding: 1.25rem;">
+              <div style="font-weight: 700; color: var(--accent-primary); margin-bottom: 0.75rem;">Object-Oriented Paradigm (Entity-Centric)</div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                Autonomous objects maintain private internal state. State mutations occur exclusively via verified public message interfaces.
+              </p>
+              <div style="background: var(--bg-tertiary); padding: 0.75rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-primary); text-align: center;">
+                [ Object A: State + Methods ]<br>
+                &nbsp;&nbsp;⇄ Standardized Message Protocol ⇄<br>
+                [ Object B: State + Methods ]
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <h3>Foundational Pillars of Object Orientation</h3>
+        <ul>
+          <li><strong>Direct Domain Mapping:</strong> Entities in the problem domain (e.g., <code>BankAccount</code>, <code>NetworkSocket</code>, <code>Sensor</code>) map 1-to-1 to software abstractions.</li>
+          <li><strong>Autonomous Responsibility:</strong> Objects manage their own state validation and business invariants, preventing external corruption.</li>
+          <li><strong>Decoupled Message Passing:</strong> Communication occurs exclusively through defined method signatures, allowing internal implementations to evolve independently.</li>
+        </ul>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="section-2">
+        <h2>2. Core Concepts of Object Orientation</h2>
+
+        <h3 id="section-2-1">2.1 Object Identity</h3>
+        <p>
+          <strong>Object Identity</strong> is the inherent, immutable property of an object that distinguishes it from all other objects in the universe of discourse, regardless of its current state or attribute values.
+        </p>
+        <ul>
+          <li><strong>State Equality vs. Identity Equality:</strong> Two objects may have identical attribute values across all member fields, yet they remain two completely distinct objects with unique identities.</li>
+          <li><strong>Physical Implementation:</strong> In C++, object identity is represented by the unique physical memory address (<code>&amp;object</code>) allocated on the stack, heap, or data segment.</li>
+        </ul>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">C++ • Object Identity vs State Equality</span>
+            <button class="copy-button">Copy Code</button>
+          </div>
+          <pre><code>#include &lt;iostream&gt;
+
+class Account {
+public:
+    int accountNumber;
+    double balance;
+
+    Account(int accNo, double bal) : accountNumber(accNo), balance(bal) {}
+};
+
+int main() {
+    Account acc1(101, 5000.0);
+    Account acc2(101, 5000.0); // Exactly identical attribute state to acc1
+
+    // 1. Comparing State Values
+    bool sameState = (acc1.accountNumber == acc2.accountNumber) && (acc1.balance == acc2.balance);
+
+    // 2. Comparing Physical Memory Identity
+    bool sameIdentity = (&acc1 == &acc2);
+
+    std::cout << "State Equality: " << (sameState ? "TRUE" : "FALSE") << "\n";       // Output: TRUE
+    std::cout << "Identity Equality: " << (sameIdentity ? "TRUE" : "FALSE") << "\n"; // Output: FALSE
+    return 0;
+}</code></pre>
+        </div>
+
+        <h3 id="section-2-2">2.2 Encapsulation and Information Hiding</h3>
+        <p>
+          While frequently conflated, <strong>Encapsulation</strong> and <strong>Information Hiding</strong> represent distinct concepts in software engineering:
+        </p>
+        <ul>
+          <li><strong>Encapsulation:</strong> The <em>packaging mechanism</em> that bundles data members and the member functions that manipulate them into a cohesive structure (a class).</li>
+          <li><strong>Information Hiding:</strong> The <em>security principle</em> of deliberately concealing internal state representations and implementation mechanics behind access boundaries (<code>private</code>/<code>protected</code>).</li>
+        </ul>
+
+        <!-- Visual Class Component -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL UML CLASS COMPARTMENT STRUCTURE & ACCESS SPECIFIERS</span></div>
+          <div class="uml-class-card">
+            <div class="uml-class-header">
+              <span class="uml-stereotype">&lt;&lt;entity&gt;&gt;</span>
+              <span class="uml-class-name">BankAccount</span>
+            </div>
+            <div class="uml-class-compartment">
+              <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> accountNumber : int</div>
+              <div class="uml-member-line"><span class="vis-badge vis-priv">-</span> balance : double = 0.0</div>
+              <div class="uml-member-line"><span class="vis-badge vis-prot">#</span> accountHolder : string</div>
+            </div>
+            <div class="uml-class-compartment">
+              <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> deposit(amount : double) : bool</div>
+              <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> withdraw(amount : double) : bool</div>
+              <div class="uml-member-line"><span class="vis-badge vis-pub">+</span> getBalance() const : double</div>
+              <div class="uml-member-line"><span class="vis-badge vis-pkg">~</span> calculateInterest() : void</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">C++ • Information Hiding and Invariant Maintenance</span>
+            <button class="copy-button">Copy Code</button>
+          </div>
+          <pre><code>#include &lt;iostream&gt;
+#include &lt;stdexcept&gt;
+
+class BankAccount {
+private:
+    // Hidden Internal State (Information Hiding)
+    double balance;
+
+public:
+    BankAccount(double initialBalance) {
+        if (initialBalance < 0.0) {
+            throw std::invalid_argument("Initial balance cannot be negative.");
+        }
+        balance = initialBalance;
+    }
+
+    // Public Interface enforcing business rules and invariants
+    void deposit(double amount) {
+        if (amount > 0.0) {
+            balance += amount;
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount > 0.0 && amount <= balance) {
+            balance -= amount;
+        }
+    }
+
+    double getBalance() const {
+        return balance;
+    }
+};</code></pre>
+        </div>
+
+        <h3 id="section-2-4">2.3 Polymorphism</h3>
+        <p>
+          <strong>Polymorphism</strong> (Greek for <em>many forms</em>) allows a single interface or message invocation to exhibit different behaviors depending on the concrete dynamic type of the receiver object.
+        </p>
+        <ul>
+          <li><strong>Compile-time (Static) Polymorphism:</strong> Resolved during compilation via Function Overloading, Operator Overloading, and C++ Templates.</li>
+          <li><strong>Run-time (Dynamic) Polymorphism:</strong> Resolved during program execution via inheritance hierarchies and Virtual Functions using dynamic dispatch.</li>
+        </ul>
+
+        <h3 id="section-2-5">2.4 Generosity (Genericity / Generic Programming)</h3>
+        <p>
+          In object-oriented design theory, <strong>generosity</strong> (or <em>genericity</em>) is the technique of parameterizing classes, data structures, and algorithms over types without fixing concrete data types in advance.
+        </p>
+        <ul>
+          <li><strong>Key Advantages:</strong> Eliminates code duplication, guarantees complete compile-time type safety, and avoids the runtime overhead of generic pointer casting (e.g., <code>void*</code> in C).</li>
+          <li><strong>C++ Mechanism:</strong> Realized through Class Templates and Function Templates.</li>
+        </ul>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang">C++ • Generic Stack Template Implementation</span>
+            <button class="copy-button">Copy Code</button>
+          </div>
+          <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;stdexcept&gt;
+
+// Generic Class Template parameterized by Element Type T
+template &lt;typename T, int Capacity = 100&gt;
+class SafeStack {
+private:
+    T elements[Capacity];
+    int topIndex;
+
+public:
+    SafeStack() : topIndex(-1) {}
+
+    void push(const T& element) {
+        if (topIndex < Capacity - 1) {
+            elements[++topIndex] = element;
+        } else {
+            throw std::overflow_error("Stack Overflow.");
+        }
+    }
+
+    T pop() {
+        if (topIndex >= 0) {
+            return elements[topIndex--];
+        }
+        throw std::underflow_error("Stack Underflow.");
+    }
+};
+
+int main() {
+    // Instantiation with integer type
+    SafeStack&lt;int&gt; intStack;
+    intStack.push(42);
+
+    // Instantiation with string type (Zero code duplication)
+    SafeStack&lt;std::string&gt; stringStack;
+    stringStack.push("Object Oriented System Design");
+
+    std::cout << "Popped integer: " << intStack.pop() << "\n";
+    std::cout << "Popped string: " << stringStack.pop() << "\n";
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="section-3">
+        <h2>3. Modeling Fundamentals and Principles</h2>
+        <p>
+          A <strong>model</strong> is a semantically closed abstraction of a system that specifies, visualizes, constructs, and documents software artifacts prior to and during construction.
+        </p>
+
+        <h3>The Four Principles of Modeling (Booch / Rumbaugh / Jacobson)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Principle</th>
+                <th>Core Premise</th>
+                <th>Engineering Implication</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Choice of Model</strong></td>
+                <td>The choice of models directly shapes how a problem is attacked and how a solution is structured.</td>
+                <td>Choosing an object-oriented model versus a relational or functional model fundamentally dictates system modularity and extensibility.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Levels of Precision</strong></td>
+                <td>Every model may be expressed at different levels of precision depending on the lifecycle phase.</td>
+                <td>High-level conceptual models guide early requirements analysis; formal detailed design models specify complete types, constraints, and visibility.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Connection to Reality</strong></td>
+                <td>The best models are firmly rooted in real-world domain realities.</td>
+                <td>Models must mirror actual domain invariants, physical hardware constraints, and business logic rather than artificial code abstractions.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Multiple Independent Views</strong></td>
+                <td>No single model is sufficient. Complex systems require multiple independent perspectives.</td>
+                <td>A non-trivial system requires structural, behavioral, process, and physical deployment models to completely describe its architecture.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Phases of the Object-Oriented Modeling (OOM) Lifecycle</h3>
+        <ol>
+          <li><strong>Object-Oriented Analysis (OOA):</strong> Analyzes problem domain requirements, identifying domain classes and their real-world collaborations without implementation dependencies.</li>
+          <li><strong>Object-Oriented Design (OOD):</strong> Refines analysis models by adding solution domain classes (data structures, UI handlers, database wrappers, thread synchronizers).</li>
+          <li><strong>Object-Oriented Implementation (OOI):</strong> Translates design models directly into clean, compilable source code in target programming languages (e.g., C++).</li>
+        </ol>
+      </section>
+
+      <!-- Section 4 & 5 -->
+      <section id="section-4">
+        <h2>4. Introduction to UML & Conceptual Model</h2>
+        <p>
+          The <strong>Unified Modeling Language (UML)</strong> is the international standard visual modeling language adopted by the Object Management Group (OMG) in 1997, unifying the Booch Method, James Rumbaugh's OMT, and Ivar Jacobson's OOSE.
+        </p>
+
+        <h2 id="section-5">5. Conceptual Model of the UML</h2>
+        <p>The conceptual model of UML consists of three core components:</p>
+
+        <!-- Visual Conceptual Model Grid -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>THREE PILLARS OF THE UML CONCEPTUAL MODEL</span></div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+            
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="font-weight: 700; color: var(--accent-primary); margin-bottom: 0.5rem;">1. Building Blocks</div>
+              <ul style="font-size: 0.85rem; padding-left: 1.25rem; margin-bottom: 0;">
+                <li><strong>Things:</strong> Structural, Behavioral, Grouping, Annotational.</li>
+                <li><strong>Relationships:</strong> Association, Dependency, Generalization, Realization.</li>
+                <li><strong>Diagrams:</strong> Structural & Behavioral.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="font-weight: 700; color: var(--accent-secondary); margin-bottom: 0.5rem;">2. Rules</div>
+              <ul style="font-size: 0.85rem; padding-left: 1.25rem; margin-bottom: 0;">
+                <li><strong>Names:</strong> Unique identifiers.</li>
+                <li><strong>Scope:</strong> Contextual boundary.</li>
+                <li><strong>Visibility:</strong> Public, Private, Protected.</li>
+                <li><strong>Integrity & Execution:</strong> Semantic consistency.</li>
+              </ul>
+            </div>
+
+            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+              <div style="font-weight: 700; color: var(--success-text); margin-bottom: 0.5rem;">3. Common Mechanisms</div>
+              <ul style="font-size: 0.85rem; padding-left: 1.25rem; margin-bottom: 0;">
+                <li><strong>Specifications:</strong> Underlying contracts.</li>
+                <li><strong>Adornments:</strong> Visual cues & multiplicity.</li>
+                <li><strong>Common Divisions:</strong> Class/Object, Interface/Impl.</li>
+                <li><strong>Extensibility:</strong> Stereotypes, Tags, Constraints.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <h3>A. UML Building Blocks Detail</h3>
+        <ul>
+          <li><strong>Structural Things:</strong> Nouns of a model representing static physical or conceptual elements (Class, Interface, Collaboration, Use Case, Active Class, Component, Node).</li>
+          <li><strong>Behavioral Things:</strong> Verbs of a model representing behavior over time and space (Interaction messages, State Machine states/transitions).</li>
+          <li><strong>Grouping Things:</strong> Organizational elements (Packages) used to structure large models.</li>
+          <li><strong>Annotational Things:</strong> Explanatory notes with folded corners applied to document remarks.</li>
+        </ul>
+
+        <h3>B. UML Relationships Visual Summary</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Relationship</th>
+                <th>Visual Notation</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Dependency</strong></td><td><code>- - - - &gt;</code> (Dashed Arrow)</td><td>Semantic link where modification to supplier affects client.</td></tr>
+              <tr><td><strong>Association</strong></td><td><code>───────</code> (Solid Line)</td><td>Structural link between object instances with multiplicity.</td></tr>
+              <tr><td><strong>Aggregation</strong></td><td><code>◇───────</code> (Open Diamond)</td><td>Weak "has-a" whole-part relationship where parts survive independently.</td></tr>
+              <tr><td><strong>Composition</strong></td><td><code>◆───────</code> (Filled Diamond)</td><td>Strong "part-of" whole-part relationship where parts cannot exist without the whole.</td></tr>
+              <tr><td><strong>Generalization</strong></td><td><code>──────▷</code> (Hollow Triangle)</td><td>Inheritance taxonomy where derived subclass specializes base superclass.</td></tr>
+              <tr><td><strong>Realization</strong></td><td><code>- - - - ▷</code> (Dashed Triangle)</td><td>Contractual execution of an interface by a concrete class.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>C. Extensibility Mechanisms</h3>
+        <ul>
+          <li><strong>Stereotypes (<code>&lt;&lt;stereotype&gt;&gt;</code>):</strong> Extends UML vocabulary by defining new domain-specific model elements (e.g., <code>&lt;&lt;interface&gt;&gt;</code>, <code>&lt;&lt;entity&gt;&gt;</code>).</li>
+          <li><strong>Tagged Values (<code>{version = "2.1", author = "Architect"}</code>):</strong> Adds custom metadata key-value pairs to model elements.</li>
+          <li><strong>Constraints (<code>{balance &gt;= 0}</code>):</strong> Adds new semantic rules and invariants to restrict element behavior.</li>
+        </ul>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="section-6">
+        <h2>6. Architecture: The 4+1 View Model</h2>
+        <p>
+          Formulated by Philippe Kruchten, the <strong>4+1 View Model</strong> organizes software system architecture into five concurrent, complementary perspectives tailored to distinct stakeholders:
+        </p>
+
+        <!-- Visual 4+1 View Dashboard -->
+        <div class="visual-diagram-board">
+          <div class="diagram-caption"><span>VISUAL 4+1 ARCHITECTURAL VIEW DASHBOARD</span></div>
+          
+          <div class="four-plus-one-grid">
+            
+            <!-- Top: Design View -->
+            <div class="four-view-box" style="grid-column: 2; grid-row: 1;">
+              <div style="font-weight: 700; color: var(--accent-primary);">Design View (Logical)</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin: 0.25rem 0;">Architects & Developers</div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary);">Class, Object, Composite Structure Diagrams</div>
+            </div>
+
+            <!-- Left: Implementation View -->
+            <div class="four-view-box" style="grid-column: 1; grid-row: 2;">
+              <div style="font-weight: 700; color: var(--accent-secondary);">Implementation View</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin: 0.25rem 0;">Programmers & Build Engineers</div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary);">Component & Package Diagrams</div>
+            </div>
+
+            <!-- Center: Use Case View -->
+            <div class="four-view-box center-view">
+              <div style="font-weight: 800; color: var(--accent-primary); font-size: 1.05rem;">Use Case View ("+1")</div>
+              <div style="font-size: 0.78rem; color: var(--accent-primary); margin: 0.25rem 0;">End-Users, Analysts & Testers</div>
+              <div style="font-size: 0.82rem; color: var(--text-primary); font-weight: 600;">Central Unifying Requirements</div>
+            </div>
+
+            <!-- Right: Process View -->
+            <div class="four-view-box" style="grid-column: 3; grid-row: 2;">
+              <div style="font-weight: 700; color: var(--warning-text);">Process View</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin: 0.25rem 0;">System Integrators</div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary);">Activity, State Machine, Sequence Diagrams</div>
+            </div>
+
+            <!-- Bottom: Deployment View -->
+            <div class="four-view-box" style="grid-column: 2; grid-row: 3;">
+              <div style="font-weight: 700; color: var(--success-text);">Deployment View (Physical)</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin: 0.25rem 0;">DevOps & Network Engineers</div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary);">Deployment Diagrams & Hardware Nodes</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Unit Summary -->
+      <section id="section-summary" style="margin-top: 3rem;">
+        <h2>Unit I Summary</h2>
+        <div class="callout callout-success">
+          <ul style="margin-bottom: 0;">
+            <li><strong>Object Orientation</strong> combines state and behavior into autonomous entities, providing encapsulation, information hiding, polymorphism, and generosity (genericity).</li>
+            <li><strong>Object Identity</strong> distinguishes each object instance via its unique memory address in C++, independent of its current state values.</li>
+            <li><strong>Principles of Modeling</strong> dictate that model choices shape problem-solving, precision varies by phase, models must mirror reality, and multiple views are necessary.</li>
+            <li><strong>UML Conceptual Model</strong> comprises <strong>Building Blocks</strong> (Things, Relationships, Diagrams), <strong>Rules</strong>, and <strong>Common Mechanisms</strong> (Specifications, Adornments, Divisions, Extensibility).</li>
+            <li><strong>4+1 View Model</strong> structures architecture across Use Case, Design, Process, Implementation, and Deployment views.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Exam Question Bank -->
+      <section id="section-exams" class="exam-section">
+        <h2>Possible Exam Questions</h2>
+        <p>Click on any question to expand the model answer and key scoring points:</p>
+
+        <h3 class="exam-category-title">Short Answer Questions (2–3 Marks)</h3>
+        <div class="accordion-group">
+          
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">2 Marks</span>
+                <span>Differentiate between Encapsulation and Information Hiding.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong></p>
+              <ul>
+                <li><strong>Encapsulation:</strong> The packaging mechanism that bundles data attributes and operations together into a single unit (class).</li>
+                <li><strong>Information Hiding:</strong> The design principle of concealing internal representation and implementation details from outside access using access specifiers (<code>private</code>/<code>protected</code>).</li>
+                <li><em>Key Point:</em> Encapsulation is the container; Information Hiding is the access barrier.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">2 Marks</span>
+                <span>Define Object Identity with a practical C++ memory allocation example.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong> Object identity is the unique property distinguishing an object from all other objects regardless of attribute equality. In C++, identity is represented by the object's unique memory address (<code>&amp;obj1 != &amp;obj2</code> even if <code>obj1.value == obj2.value</code>).</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">3 Marks</span>
+                <span>What are the three categories of Extensibility Mechanisms in UML?</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer:</strong></p>
+              <ol>
+                <li><strong>Stereotypes (<code>&lt;&lt;stereotype&gt;&gt;</code>):</strong> Extends UML vocabulary by introducing new building blocks.</li>
+                <li><strong>Tagged Values (<code>{tag = value}</code>):</strong> Adds new properties/metadata to model elements.</li>
+                <li><strong>Constraints (<code>{condition}</code>):</strong> Extends UML semantics by adding new rules or assertions.</li>
+              </ol>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="exam-category-title">Long Answer Questions (7–10 Marks)</h3>
+        <div class="accordion-group">
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">10 Marks</span>
+                <span>Explain the Conceptual Model of UML in detail with its building blocks, rules, and common mechanisms.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer Structure:</strong></p>
+              <ol>
+                <li><strong>Introduction:</strong> Define UML and state the 3 pillars of the conceptual model.</li>
+                <li><strong>Building Blocks:</strong> Detail Structural, Behavioral, Grouping, and Annotational Things. Explain Relationships (Dependency, Association, Generalization, Realization) and Diagram taxonomy.</li>
+                <li><strong>Rules of UML:</strong> Explain Names, Scope, Visibility, Integrity, and Execution rules.</li>
+                <li><strong>Common Mechanisms:</strong> Elaborate on Specifications, Adornments, Common Divisions (Class/Object, Interface/Implementation), and Extensibility (Stereotypes, Tagged Values, Constraints).</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-question">
+                <span class="question-badge">10 Marks</span>
+                <span>Explain Philippe Kruchten’s 4+1 View Model of Software Architecture.</span>
+              </div>
+              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="accordion-content">
+              <p><strong>Model Answer Structure:</strong></p>
+              <ul>
+                <li>Draw the 4+1 Architecture diagram with the Use Case view at the center.</li>
+                <li>Detail the 5 views: Use Case View, Design View, Process View, Implementation View, and Deployment View.</li>
+                <li>For each view, specify the primary focus, target stakeholders, and corresponding UML diagrams.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <div class="page-pagination">
+        <a href="index.html" class="pagination-btn">
+          <span class="pagination-label">Previous</span>
+          <span class="pagination-title">← Course Overview</span>
+        </a>
+        <a href="unit2.html" class="pagination-btn next">
+          <span class="pagination-label">Next</span>
+          <span class="pagination-title">Unit II: Structural & Behavioral Modeling →</span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Table of Contents Sidebar -->
+    <aside class="toc-sidebar">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#section-1" class="toc-link">1. Meaning of OO</a></li>
+        <li class="toc-item"><a href="#section-2" class="toc-link">2. Core Concepts</a></li>
+        <li class="toc-item"><a href="#section-2-1" class="toc-link" style="padding-left: 1.5rem;">2.1 Identity</a></li>
+        <li class="toc-item"><a href="#section-2-2" class="toc-link" style="padding-left: 1.5rem;">2.2 Encapsulation</a></li>
+        <li class="toc-item"><a href="#section-2-4" class="toc-link" style="padding-left: 1.5rem;">2.3 Polymorphism</a></li>
+        <li class="toc-item"><a href="#section-2-5" class="toc-link" style="padding-left: 1.5rem;">2.4 Genericity</a></li>
+        <li class="toc-item"><a href="#section-3" class="toc-link">3. Modeling Principles</a></li>
+        <li class="toc-item"><a href="#section-4" class="toc-link">4. UML Intro</a></li>
+        <li class="toc-item"><a href="#section-5" class="toc-link">5. Conceptual Model</a></li>
+        <li class="toc-item"><a href="#section-6" class="toc-link">6. 4+1 View Architecture</a></li>
+        <li class="toc-item"><a href="#section-summary" class="toc-link">Unit Summary</a></li>
+        <li class="toc-item"><a href="#section-exams" class="toc-link">Exam Question Bank</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal-backdrop" id="search-modal-backdrop">
+    <div class="search-modal">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search topics across all units..." autocomplete="off">
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" title="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

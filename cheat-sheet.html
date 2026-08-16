@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Revision Cheat Sheet & Viva Reference | BCS054</title>
+  <meta name="description" content="High-Density Master Revision Reference for BCS054. Unit-wise summaries, comparison tables, visual memory maps, UML notations, syntax templates, and top 10 exam traps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="reading-progress"></div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-left">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">OO</div>
+        <div>
+          <span class="brand-title">BCS054</span>
+          <span class="brand-subtitle">Cheat Sheet</span>
+        </div>
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="unit1.html" class="nav-link">Unit 1</a>
+      <a href="unit2.html" class="nav-link">Unit 2</a>
+      <a href="unit3.html" class="nav-link">Unit 3</a>
+      <a href="unit4.html" class="nav-link">Unit 4</a>
+      <a href="unit5.html" class="nav-link">Unit 5</a>
+      <a href="2marks.html" class="nav-link">2-Mark Qs (38)</a>
+      <a href="7marks.html" class="nav-link">7-Mark Qs (69)</a>
+      <a href="cheat-sheet.html" class="nav-link active">Cheat Sheet</a>
+      <a href="quiz.html" class="nav-link">Mock Quiz</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" id="search-btn" title="Search Syllabus (Ctrl+K)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="icon-button" id="theme-toggle" title="Toggle Theme">
+        <span id="theme-icon"></span>
+      </button>
+      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" title="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Cheat Sheet Sections</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="#section-units" class="sidebar-link active">Unit-Wise Fast Review</a></li>
+          <li class="sidebar-item"><a href="#section-1liners" class="sidebar-link">1-Liner Master Definitions</a></li>
+          <li class="sidebar-item"><a href="#section-matrices" class="sidebar-link">All Comparison Tables</a></li>
+          <li class="sidebar-item"><a href="#section-uml-notations" class="sidebar-link">UML Visual Notations</a></li>
+          <li class="sidebar-item"><a href="#section-memory" class="sidebar-link">VTable Memory Layout</a></li>
+          <li class="sidebar-item"><a href="#section-checklist" class="sidebar-link">C++ Language Constraints</a></li>
+          <li class="sidebar-item"><a href="#section-traps" class="sidebar-link">Top 10 Exam Traps</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Exam Question Banks</div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item"><a href="2marks.html" class="sidebar-link">2-Mark Qs (38 Solved)</a></li>
+          <li class="sidebar-item"><a href="7marks.html" class="sidebar-link">7-Mark Qs (69 Solved)</a></li>
+          <li class="sidebar-item"><a href="cheat-sheet.html" class="sidebar-link active">Quick Revision Cheat Sheet</a></li>
+          <li class="sidebar-item"><a href="quiz.html" class="sidebar-link">Interactive Mock Exam</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <div class="course-badge">Fast Revision • High-Density Master Reference</div>
+      <h1>BCS054 Quick Revision & Viva Cheat Sheet</h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem;">
+        The essential pre-exam revision handbook containing unit summaries, master comparison matrices, visual UML notation guides, VTable memory models, language constraints, and critical exam pitfalls.
+      </p>
+
+      <!-- Section 1: Unit-Wise Fast Review -->
+      <section id="section-units">
+        <h2>1. Unit-Wise High-Yield Revision Matrix</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 15%;">Unit</th>
+                <th style="width: 30%;">Core Concepts</th>
+                <th style="width: 30%;">Key Diagrams & Formats</th>
+                <th style="width: 25%;">High-Frequency Exam Focus</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Unit I</strong></td>
+                <td>OO Principles, Procedural vs OOP, UML 4+1 Views, Conceptual Model (Things, Relationships, Diagrams).</td>
+                <td>4+1 Architecture Dashboard, 3-Compartment Class Card with Visibility (+, -, #, ~).</td>
+                <td>Procedural vs OOP (7m), 4+1 View (7m), Building Blocks of UML (7m).</td>
+              </tr>
+              <tr>
+                <td><strong>Unit II</strong></td>
+                <td>Class, Object, Use Case (&lt;&lt;include&gt;&gt; vs &lt;&lt;extend&gt;&gt;), Sequence, Collaboration, Statechart, Activity with Swimlanes, Component & Deployment.</td>
+                <td>Sequence Lifelines, Statechart with Guard Transitions, Swimlane Activity Flow.</td>
+                <td>River Crossing Scenario & Event Trace (7m), Chatbot Sequence (7m), Coin Vending Statechart (7m).</td>
+              </tr>
+              <tr>
+                <td><strong>Unit III</strong></td>
+                <td>OOAD vs SA/SD, JSD, OMT 3 Models (Object, Dynamic, Functional), C Language Mapping via Structs & Function Pointers.</td>
+                <td>Level-1 Cone DFD, C VTable Struct Alignment Memory Diagram.</td>
+                <td>OOAD vs SA/SD (7m), OMT Models (7m), C-Mapping of Polymorphism (7m).</td>
+              </tr>
+              <tr>
+                <td><strong>Unit IV</strong></td>
+                <td>C++ Basics, Inline Functions vs Macros, Callbacks, Static Members, Pointers vs References, Namespaces.</td>
+                <td>Static Class Counter Memory Model, Callback Invocation Chain.</td>
+                <td>Inline vs Macro (7m), Static Members (7m), Function Overloading (7m).</td>
+              </tr>
+              <tr>
+                <td><strong>Unit V</strong></td>
+                <td>Constructors/Destructors, Operator Overloading, Inheritance (Hybrid & Diamond Problem), Virtual Base Classes, Virtual Functions & VTables, Exception Handling.</td>
+                <td>Virtual Base Class Memory Layout, VTable / VPtr Resolution Chart.</td>
+                <td>Matrix Operator Overloading (7m), Diamond Problem & Virtual Base (7m), VTable Resolution (7m).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 2: 1-Liners -->
+      <section id="section-1liners">
+        <h2>2. 1-Liner Master Definitions (High-Scoring Viva & 2-Markers)</h2>
+        
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">Term</th>
+                <th>Exact Exam Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Encapsulation</strong></td>
+                <td>The packaging mechanism that encloses data members and member functions within a class container.</td>
+              </tr>
+              <tr>
+                <td><strong>Information Hiding</strong></td>
+                <td>The design principle of restricting direct outside access to internal object representation using access specifiers.</td>
+              </tr>
+              <tr>
+                <td><strong>Dynamic Binding</strong></td>
+                <td>The runtime mechanism where a virtual function call is resolved dynamically via a VTable lookup at execution time.</td>
+              </tr>
+              <tr>
+                <td><strong>Name Mangling</strong></td>
+                <td>The compiler technique of encoding function parameter types into symbol names to support function overloading.</td>
+              </tr>
+              <tr>
+                <td><strong>RAII Principle</strong></td>
+                <td><em>Resource Acquisition Is Initialization</em>: binding resource lifetime (memory, files) strictly to object lifetime via constructors and destructors.</td>
+              </tr>
+              <tr>
+                <td><strong>Abstract Class</strong></td>
+                <td>A class containing at least one pure virtual function (<code>= 0</code>) that serves as an uninstantiable interface contract.</td>
+              </tr>
+              <tr>
+                <td><strong>Virtual Base Class</strong></td>
+                <td>A base class inherited with the <code>virtual</code> keyword to guarantee a single shared instance in diamond inheritance hierarchies.</td>
+              </tr>
+              <tr>
+                <td><strong>Object Identity</strong></td>
+                <td>The unique property that distinguishes an object from all others based on its distinct physical memory address, irrespective of state equality.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Master Comparison Tables -->
+      <section id="section-2matrices">
+        <h2>3. Master Comparison Matrices</h2>
+
+        <h3>3.1 Preprocessor Macro vs. Inline Function</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Preprocessor Macro (<code>#define</code>)</th>
+                <th>Inline Function (<code>inline</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Evaluation Stage</strong></td><td>Preprocessor (Blind text substitution)</td><td>Compiler (Generated machine code expansion)</td></tr>
+              <tr><td><strong>Type Checking</strong></td><td>None (Prone to runtime errors)</td><td>Strictly enforced by compiler</td></tr>
+              <tr><td><strong>Side Effects</strong></td><td>Hazardous (e.g. <code>SQR(x++)</code> increments twice)</td><td>Safe (Arguments evaluated once)</td></tr>
+              <tr><td><strong>Debugging</strong></td><td>Invisible in GDB / debuggers</td><td>Full symbol table and breakpoints available</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>3.2 Shallow Copy vs. Deep Copy</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Shallow Copy (Default Memberwise)</th>
+                <th>Deep Copy (Custom Copy Constructor)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Pointer Members</strong></td><td>Copies raw memory address; both point to same buffer</td><td>Allocates distinct heap memory and copies data</td></tr>
+              <tr><td><strong>Destruction Safety</strong></td><td>Causes <strong>Double-Free Crash</strong> on destruction</td><td>Completely safe; each object frees its own buffer</td></tr>
+              <tr><td><strong>Requirement</strong></td><td>Sufficient for POD (Plain Old Data) classes</td><td>Mandatory for classes managing dynamic heap memory</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>3.3 Function Overloading vs. Function Overriding</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Comparison</th>
+                <th>Function Overloading (Compile-Time)</th>
+                <th>Function Overriding (Run-Time)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Scope</strong></td><td>Occurs within the same class/scope</td><td>Occurs across Base and Derived classes</td></tr>
+              <tr><td><strong>Signature</strong></td><td>Must differ in parameter count or parameter types</td><td>Must match name, parameters, and return type exactly</td></tr>
+              <tr><td><strong>Keyword</strong></td><td>No special keyword required</td><td>Requires <code>virtual</code> in base class</td></tr>
+              <tr><td><strong>Binding</strong></td><td>Early static binding at compile-time</td><td>Late dynamic binding via VTable/VPtr</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 4: Visual UML Notations -->
+      <section id="section-uml-notations">
+        <h2>4. Master UML Visual Notations Reference</h2>
+
+        <div class="canva-diagram-card">
+          <div class="canva-diagram-header">
+            <span class="canva-diagram-title">UML Relationships Quick Key</span>
+            <span class="canva-pill-badge">Design Standard</span>
+          </div>
+          <div class="table-wrapper" style="margin-bottom: 0;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Relationship</th>
+                  <th>Visual Symbol</th>
+                  <th>Meaning & Lifecycle</th>
+                  <th>Code Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Generalization (Inheritance)</strong></td>
+                  <td><code>────────▷</code> (Solid line + Hollow Triangle)</td>
+                  <td>Is-A Relationship</td>
+                  <td><code>class Dog : public Animal {};</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Composition</strong></td>
+                  <td><code>◆────────</code> (Solid line + Filled Diamond)</td>
+                  <td>Strong Part-Of (Parts die with Whole)</td>
+                  <td><code>class Car { Engine eng; };</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Aggregation</strong></td>
+                  <td><code>◇────────</code> (Solid line + Hollow Diamond)</td>
+                  <td>Weak Has-A (Parts survive Whole)</td>
+                  <td><code>class Department { Teacher* t; };</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Association</strong></td>
+                  <td><code>────────</code> (Solid line)</td>
+                  <td>Peer link between two classes</td>
+                  <td><code>class Doctor { Patient* p; };</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Dependency</strong></td>
+                  <td><code>- - - - - &gt;</code> (Dashed arrow)</td>
+                  <td>Uses temporarily in method parameter</td>
+                  <td><code>void print(const Document& doc);</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Memory Layout & VTable -->
+      <section id="section-memory">
+        <h2>5. VTable & Object Memory Layout Reference</h2>
+
+        <div class="canva-diagram-card">
+          <div class="canva-diagram-header">
+            <span class="canva-diagram-title">Dynamic Polymorphism Memory Map</span>
+            <span class="canva-pill-badge">Runtime Architecture</span>
+          </div>
+          <div class="canva-tier-grid">
+            <div class="canva-tier-card">
+              <span class="canva-tier-title">Object Instance (Heap/Stack)</span>
+              <div class="canva-tier-subitem">[0x00..0x07] _vptr (8 bytes) -> Points to VTable</div>
+              <div class="canva-tier-subitem">[0x08..0x0B] int baseData (4 bytes)</div>
+              <div class="canva-tier-subitem">[0x0C..0x0F] int derivedData (4 bytes)</div>
+            </div>
+            <div class="canva-tier-card">
+              <span class="canva-tier-title">Class Virtual Table (Read-Only Data Segment)</span>
+              <div class="canva-tier-subitem">Slot 0: &Derived::draw() [Overridden]</div>
+              <div class="canva-tier-subitem">Slot 1: &Base::calculateArea() [Inherited]</div>
+              <div class="canva-tier-subitem">Slot 2: &Derived::~Derived() [Virtual Destructor]</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Language Constraints -->
+      <section id="section-checklist">
+        <h2>6. C++ Language Constraints Checklist</h2>
+
+        <div class="callout callout-warning">
+          <strong>Operators that CANNOT be Overloaded in C++:</strong>
+          <ol>
+            <li><code>::</code> (Scope Resolution Operator)</li>
+            <li><code>.</code> (Member Access Dot Operator)</li>
+            <li><code>.*</code> (Pointer-to-Member Operator)</li>
+            <li><code>?:</code> (Ternary Conditional Operator)</li>
+            <li><code>sizeof</code> (Size Operator)</li>
+            <li><code>typeid</code> (RTTI Type Identification Operator)</li>
+          </ol>
+        </div>
+
+        <div class="callout callout-info">
+          <strong>Default Arguments Rules:</strong>
+          <ul>
+            <li>Must be supplied strictly from <strong>right to left</strong> in the parameter list.</li>
+            <li>Must be declared in the function <strong>prototype/declaration</strong>, not repeated in the definition.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 7: Top 10 Exam Traps -->
+      <section id="section-traps">
+        <h2>7. Top 10 Exam Traps to Avoid</h2>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Common Student Mistake</th>
+                <th>Correct Exam Approach & Rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1</strong></td>
+                <td>Forgetting <code>virtual</code> on Base Destructors</td>
+                <td>Always write <code>virtual ~Base() {}</code> on polymorphic base classes to prevent memory leaks during <code>delete basePtr;</code>.</td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Forgetting global definition for <code>static</code> data</td>
+                <td>Declaring <code>static int count;</code> inside a class requires <code>int ClassName::count = 0;</code> in global file scope.</td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Using <code>this</code> in static member functions</td>
+                <td>Static member functions do <strong>not</strong> receive an implicit <code>this</code> pointer.</td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>Overloading on return type alone</td>
+                <td>Functions cannot be overloaded based solely on different return types.</td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Drawing regular arrows instead of hollow triangles for Inheritance</td>
+                <td>UML Generalization requires a <strong>solid line with a hollow triangular arrowhead</strong> (<code>──▷</code>), not a stick arrow.</td>
+              </tr>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>Omitting underline on Object Diagram names</td>
+                <td>Object names in UML Object Diagrams must always be <strong>underlined</strong> (e.g. <u>cust1 : Customer</u>).</td>
+              </tr>
+              <tr>
+                <td><strong>7</strong></td>
+                <td>Confusing <code>&lt;&lt;include&gt;&gt;</code> and <code>&lt;&lt;extend&gt;&gt;</code></td>
+                <td><code>&lt;&lt;include&gt;&gt;</code> is unconditional and mandatory; <code>&lt;&lt;extend&gt;&gt;</code> is optional and conditional.</td>
+              </tr>
+              <tr>
+                <td><strong>8</strong></td>
+                <td>Assuming Friendship is inherited or transitive</td>
+                <td>Friendship in C++ is <strong>neither inherited nor transitive</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>9</strong></td>
+                <td>Confusing Aggregation with Composition</td>
+                <td>Aggregation (<code>◇──</code>) parts survive container destruction; Composition (<code>◆──</code>) parts are destroyed with the container.</td>
+              </tr>
+              <tr>
+                <td><strong>10</strong></td>
+                <td>Not freeing dynamic memory in custom Destructors</td>
+                <td>Every <code>new</code> or <code>new[]</code> in a constructor must have a matching <code>delete</code> or <code>delete[]</code> in the destructor.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <div class="page-pagination">
+        <a href="7marks.html" class="pagination-btn">
+          <span class="pagination-label">Previous Bank</span>
+          <span class="pagination-title">← 7-Mark Question Bank (69 Qs)</span>
+        </a>
+        <a href="quiz.html" class="pagination-btn next">
+          <span class="pagination-label">Next Resource</span>
+          <span class="pagination-title">Interactive Mock Exam Quiz →</span>
+        </a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal-backdrop" id="search-modal-backdrop">
+    <div class="search-modal">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="Search cheat sheet..." autocomplete="off">
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" title="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
