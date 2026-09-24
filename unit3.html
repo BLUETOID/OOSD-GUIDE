@@ -1,549 +1,376 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit III: Object Oriented Analysis & Design | BCS054</title>
-  <meta name="description" content="Unit 3 Study Guide: OOD, 3-Model Integration, SA/SD vs JSD vs OOSD, Mapping OOP Concepts into Procedural C (Structs, This Pointer, VTables).">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <title>Unit 3: OOD, Optimization & Programming Style | BCS054 Academic Guide</title>
+  <meta name="description" content="Exhaustive study guide for Unit 3 of Object-Oriented System Design (BCS054/KCS054) - Stages of OOD, Rumbaugh OMT 3 Models, Design Optimization, SA/SD vs JSD, and C OOP Emulation.">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
 </head>
 <body>
-  <div id="reading-progress"></div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-left">
-      <a href="index.html" class="brand-link">
-        <div class="brand-logo">OO</div>
-        <div>
-          <span class="brand-title">BCS054</span>
-          <span class="brand-subtitle">Unit III</span>
-        </div>
-      </a>
-    </div>
-
-    <nav class="header-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="unit1.html" class="nav-link">Unit 1</a>
-      <a href="unit2.html" class="nav-link">Unit 2</a>
-      <a href="unit3.html" class="nav-link active">Unit 3</a>
-      <a href="unit4.html" class="nav-link">Unit 4</a>
-      <a href="unit5.html" class="nav-link">Unit 5</a>
-      <a href="2marks.html" class="nav-link">2-Mark Qs (38)</a>
-      <a href="7marks.html" class="nav-link">7-Mark Qs (69)</a>
-      <a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a>
-      <a href="quiz.html" class="nav-link">Mock Quiz</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="icon-button" id="search-btn" title="Search Syllabus (Ctrl+K)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      </button>
-      <button class="icon-button" id="theme-toggle" title="Toggle Theme">
-        <span id="theme-icon"></span>
-      </button>
-      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" title="Menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span>OOSD.GUIDE</span>
+        <span class="brand-badge">Unit 3 Extended Theory</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Index</a>
+        <a href="short_theory.html">Short Theory</a>
+        <a href="unit1.html">Unit 1 Theory</a>
+        <a href="unit2.html">Unit 2 Theory</a>
+        <a href="unit3.html" class="active">Unit 3 Theory</a>
+        <a href="2marks.html">2-Marks Bank</a>
+        <a href="7marks.html">7/10-Marks Bank</a>
+      </nav>
     </div>
   </header>
 
-  <div class="app-container">
-    
-    <!-- Left Navigation Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-title">Course Modules</div>
-        <ul class="sidebar-menu">
-          <li class="sidebar-item"><a href="index.html" class="sidebar-link">Course Overview</a></li>
-          <li class="sidebar-item"><a href="unit1.html" class="sidebar-link">Unit I: Introduction & UML</a></li>
-          <li class="sidebar-item"><a href="unit2.html" class="sidebar-link">Unit II: Structural & Behavioral</a></li>
-          <li class="sidebar-item"><a href="unit3.html" class="sidebar-link active">Unit III: OOAD & C Mapping <span class="sidebar-badge">Active</span></a></li>
-          <li class="sidebar-item"><a href="unit4.html" class="sidebar-link">Unit IV: C++ Basics & Functions</a></li>
-          <li class="sidebar-item"><a href="unit5.html" class="sidebar-link">Unit V: Classes & Polymorphism</a></li>
+  <main class="app-main">
+    <div class="layout-with-sidebar">
+      <aside class="sidebar">
+        <h3>Unit 3 Sections</h3>
+        <ul>
+          <li><a href="#sec-stages-ood">1. Stages of OOD</a></li>
+          <li><a href="#sec-omt-three-models">2. Combining OMT 3 Models</a></li>
+          <li><a href="#sec-design-opt">3. Design Optimization</a></li>
+          <li><a href="#sec-inheritance-adj">4. Inheritance Adjustment</a></li>
+          <li><a href="#sec-packaging-doc">5. Physical Packaging & Contracts</a></li>
+          <li><a href="#sec-methodologies">6. SA/SD vs. JSD vs. OOAD</a></li>
+          <li><a href="#sec-mapping-c">7. Complete C OOP Emulation</a></li>
+          <li><a href="#sec-software-qualities">8. Quality Attributes</a></li>
         </ul>
-      </div>
-      
-      <div class="sidebar-section">
-        <div class="sidebar-title">Unit III Sections</div>
-        <ul class="sidebar-menu">
-          <li class="sidebar-item"><a href="#section-1" class="sidebar-link">1. OOD & Object Design</a></li>
-          <li class="sidebar-item"><a href="#section-2" class="sidebar-link">2. Combining Three Models</a></li>
-          <li class="sidebar-item"><a href="#section-3" class="sidebar-link">3. Object Design Activities</a></li>
-          <li class="sidebar-item"><a href="#section-4" class="sidebar-link">4. SA/SD vs JSD vs OOSD</a></li>
-          <li class="sidebar-item"><a href="#section-5" class="sidebar-link">5. Mapping OOP to C</a></li>
-          <li class="sidebar-item"><a href="#section-6" class="sidebar-link">6. OOP Style & Principles</a></li>
-          <li class="sidebar-item"><a href="#section-summary" class="sidebar-link">Unit Summary</a></li>
-          <li class="sidebar-item"><a href="#section-exams" class="sidebar-link">Exam Question Bank</a></li>
-        </ul>
-      </div>
-    </aside>
+      </aside>
 
-    <!-- Main Content Body -->
-    <main class="main-content">
-      
-      <div class="course-badge">Unit III • Analysis, Design & Implementation</div>
-      <h1>Unit III: Object Oriented Analysis, Design, and Implementation</h1>
-      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem;">
-        Complete study guide covering the Object-Oriented Design (OOD) lifecycle, Rumbaugh's 3-Model Integration (OMT), algorithm optimization, control strategies, comparative methodology (SA/SD vs JSD vs OOSD), and the complete translation of OOP concepts into procedural C.
-      </p>
+      <article>
+        <h1>Unit 3: Object Oriented Analysis, Design & Programming Style</h1>
+        <p>This module provides an exhaustive architectural synthesis of software design methodologies, exploring Rumbaugh's three-model integration, design optimization algorithms, procedural C object emulation, and system quality attributes.</p>
 
-      <!-- Section 1 -->
-      <section id="section-1">
-        <h2>1. Object Oriented Design (OOD) and Object Design</h2>
-        <p>
-          <strong>Object-Oriented Design (OOD)</strong> is the software engineering phase where analysis models (capturing real-world requirements) are transformed into a technical design specification optimized for implementation.
-        </p>
+        <!-- 1. Stages of OOD -->
+        <section id="sec-stages-ood">
+          <h2>1. Stages of Object-Oriented Design (OOD)</h2>
+          <p>Object-Oriented Design (OOD) transforms the conceptual models formulated during Object-Oriented Analysis (OOA) into an executable computational blueprint. OOD proceeds in two rigorous, distinct stages:</p>
 
-        <h3>Two Stages of OOD</h3>
-        <ol>
-          <li><strong>System Design (High-Level Design):</strong> Defines overall system architecture, subsystem decomposition, database strategy (relational vs object-oriented), hardware/software mapping, concurrency, and global resource management.</li>
-          <li><strong>Object Design (Low-Level / Detailed Design):</strong> Specifies concrete data structures, algorithm implementations, visibility constraints, inheritance adjustments, and precise method signatures for every class.</li>
-        </ol>
-      </section>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Design Stage</th>
+                  <th>Architectural Focus</th>
+                  <th>Critical Technical Decisions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>System Design (Macro Level)</strong></td>
+                  <td>High-level strategic architecture, system partitioning, and infrastructure mapping.</td>
+                  <td>
+                    <ul>
+                      <li><strong>Subsystem Decomposition:</strong> Partitioning software into autonomous, loosely coupled subsystems (e.g., UI, Core Domain, Payment, Notification).</li>
+                      <li><strong>Hardware-Software Allocation:</strong> Mapping software subsystems to physical server nodes and devices.</li>
+                      <li><strong>Concurrency Strategy:</strong> Identifying concurrent threads, processes, thread pools, and asynchronous event queues.</li>
+                      <li><strong>Data Store Management:</strong> Choosing relational SQL, distributed NoSQL document stores, or in-memory caches.</li>
+                      <li><strong>Global Resource Control:</strong> Enforcing access protocols (mutexes, distributed locks) for shared physical resources.</li>
+                      <li><strong>Boundary Conditions:</strong> Establishing initialization, system boot, failover recovery, and clean shutdown policies.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Object Design (Micro Level)</strong></td>
+                  <td>Detailed internal specification of individual classes, algorithms, and data structures.</td>
+                  <td>
+                    <ul>
+                      <li><strong>Algorithm Selection:</strong> Choosing concrete computational algorithms (sorting, searching, route optimization) for each operation.</li>
+                      <li><strong>Data Structure Selection:</strong> Mapping abstract associations into concrete arrays, balanced binary trees, or hash maps.</li>
+                      <li><strong>Design Optimization:</strong> Introducing redundant lookup links, caching derived attributes, and adjusting class hierarchies.</li>
+                      <li><strong>Visibility Enforcement:</strong> Assigning strict <code>private</code>, <code>protected</code>, and <code>public</code> access controls.</li>
+                      <li><strong>Implementation of Control:</strong> Selecting between procedure-driven control (call-return) or event-driven state engines.</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-      <!-- Section 2 -->
-      <section id="section-2">
-        <h2>2. Combining the Three Models (Rumbaugh OMT)</h2>
-        <p>
-          In the <strong>Object Modeling Technique (OMT)</strong> formulated by James Rumbaugh, a system is modeled across three orthogonal, complementary perspectives:
-        </p>
+        <!-- 2. Combining the 3 Models -->
+        <section id="sec-omt-three-models">
+          <h2>2. Combining the Three Models (Rumbaugh's OMT)</h2>
+          <p>James Rumbaugh formulated the <strong>Object Modeling Technique (OMT)</strong> on the foundational axiom that a software system cannot be understood through a single paradigm. OMT synthesizes three orthogonal modeling views:</p>
 
-        <!-- Visual 3-Model Board -->
-        <div class="visual-diagram-board">
-          <div class="diagram-caption"><span>VISUAL RUMBAUGH OMT THREE-MODEL INTEGRATION</span></div>
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 220" width="680" height="220" xmlns="http://www.w3.org/2000/svg">
+              <!-- Object Model -->
+              <rect x="20" y="20" width="190" height="175" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="35" y="45" fill="#0969da" font-weight="bold" font-size="13">1. Object Model</text>
+              <text x="35" y="70" fill="#0f172a" font-weight="bold" font-size="11">Structure ("WHAT")</text>
+              <text x="40" y="95" fill="#484f58" font-size="10">• Static class entities</text>
+              <text x="40" y="115" fill="#484f58" font-size="10">• Attributes and types</text>
+              <text x="40" y="135" fill="#484f58" font-size="10">• Associations &amp; Multiplicity</text>
+              <text x="40" y="155" fill="#484f58" font-size="10">• UML Class Diagrams</text>
+
+              <!-- Dynamic Model -->
+              <rect x="245" y="20" width="190" height="175" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="260" y="45" fill="#9a6700" font-weight="bold" font-size="13">2. Dynamic Model</text>
+              <text x="260" y="70" fill="#0f172a" font-weight="bold" font-size="11">Control ("WHEN")</text>
+              <text x="265" y="95" fill="#484f58" font-size="10">• Temporal sequence of events</text>
+              <text x="265" y="115" fill="#484f58" font-size="10">• Discrete states &amp; transitions</text>
+              <text x="265" y="135" fill="#484f58" font-size="10">• Event triggers and guards</text>
+              <text x="265" y="155" fill="#484f58" font-size="10">• Statecharts &amp; Sequence</text>
+
+              <!-- Functional Model -->
+              <rect x="470" y="20" width="190" height="175" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="485" y="45" fill="#1a7f37" font-weight="bold" font-size="13">3. Functional Model</text>
+              <text x="485" y="70" fill="#0f172a" font-weight="bold" font-size="11">Transformation ("HOW")</text>
+              <text x="490" y="95" fill="#484f58" font-size="10">• Data transformations</text>
+              <text x="490" y="115" fill="#484f58" font-size="10">• Mathematical algorithms</text>
+              <text x="490" y="135" fill="#484f58" font-size="10">• Input &rarr; Output data flows</text>
+              <text x="490" y="155" fill="#484f58" font-size="10">• Data Flow Diagrams (DFDs)</text>
+
+              <!-- Connecting Arrows -->
+              <line x1="210" y1="105" x2="245" y2="105" stroke="#0f172a" stroke-width="2"/>
+              <line x1="435" y1="105" x2="470" y2="105" stroke="#0f172a" stroke-width="2"/>
+            </svg>
+            <div class="diagram-caption">Figure 3.1: The Tripartite Model Integration of Rumbaugh's OMT</div>
+          </div>
+
+          <h4>The Integration Mechanism</h4>
+          <ol>
+            <li><strong>Object Model provides the Foundation:</strong> Identifies the state variables and memory structures upon which operations act.</li>
+            <li><strong>Dynamic Model drives Execution Flow:</strong> Defines <em>when</em> operations execute in response to incoming events and state transitions. Events in the dynamic model become operation invocations in the object model.</li>
+            <li><strong>Functional Model defines Computational Logic:</strong> Specifies <em>how</em> data values are transformed mathematically. Processes in the DFD become method bodies in the object model.</li>
+          </ol>
+        </section>
+
+        <!-- 3. Design Optimization -->
+        <section id="sec-design-opt">
+          <h2>3. Design Optimization Strategies</h2>
+          <p>Analysis models emphasize real-world domain fidelity without regard for physical execution constraints. During Object Design, the engineer refactors the design to optimize throughput, latency, and memory footprint:</p>
+
+          <h4>1. Adding Redundant Associative Paths</h4>
+          <p>Navigating deep association chains (e.g., <code>Company &rarr; Division &rarr; Department &rarr; Team &rarr; Employee</code>) has high time complexity ($O(N)$). When queries frequently traverse from <code>Company</code> directly to <code>Employee</code>, the designer adds a cached direct associative pointer from <code>Company</code> directly to <code>Employee</code>, converting deep lookups to $O(1)$.</p>
+
+          <h4>2. Rearranging Execution Paths & Predicate Ordering</h4>
+          <p>When filtering collections with compound boolean conditions (<code>conditionA &amp;&amp; conditionB</code>), reorder predicates so the most selective, computationally inexpensive filter evaluates first. This triggers early short-circuit evaluation, skipping heavy downstream checks.</p>
+
+          <h4>3. Caching Derived Attributes</h4>
+          <p>In high-throughput systems, recalculating complex derived values on-the-fly (e.g., an e-commerce cart total or customer credit rating) causes massive CPU overhead. If read queries significantly exceed write updates, the computed value is cached in a private attribute and recomputed only on state mutations.</p>
+        </section>
+
+        <!-- 4. Inheritance Adjustment -->
+        <section id="sec-inheritance-adj">
+          <h2>4. Inheritance Adjustment</h2>
+          <p>During detailed design, class hierarchies are adjusted to balance maintainability and performance:</p>
+          <ul>
+            <li><strong>Factoring Common Behavior:</strong> When disparate subclasses share identical attributes or methods, factor them upward into a newly introduced abstract superclass.</li>
+            <li><strong>Flattening Redundant Superclasses:</strong> When intermediate abstract classes introduce trivial layers of indirection without behavioral variation, collapse them into the derived classes to eliminate VTable dispatch overhead.</li>
+            <li><strong>Delegation over Inheritance:</strong> When inheritance is misused purely for partial code reuse (violating Liskov Substitution Principle), replace inheritance with object composition (delegation).</li>
+          </ul>
+        </section>
+
+        <!-- 5. Physical Packaging & Contracts -->
+        <section id="sec-packaging-doc">
+          <h2>5. Physical Packaging & Documentation Design</h2>
           
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem;">
-            
-            <div style="background: var(--bg-primary); border: 2px solid var(--accent-primary); border-radius: var(--radius-md); padding: 1.25rem; text-align: center;">
-              <div style="font-weight: 700; color: var(--accent-primary); font-size: 1.05rem;">1. Object Model</div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); margin: 0.35rem 0;">Static & Structural</div>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0;">
-                Defines <em>WHO</em> exists: classes, attributes, operations, and static relationships.
-              </p>
-            </div>
+          <h4>Physical Packaging & Compilation Firewalls</h4>
+          <ul>
+            <li><strong>Header Separation:</strong> Strict separation of public declarations in <code>.hpp</code> files from private implementations in <code>.cpp</code> compilation units.</li>
+            <li><strong>Forward Declarations:</strong> Replace heavy <code>#include</code> directives with forward declarations (e.g., <code>class Order;</code>) in header files to eliminate circular dependencies and minimize recompilation cascades.</li>
+            <li><strong>The PIMPL Idiom (Pointer to Implementation):</strong> Hiding a class's private members inside an opaque pointer to an internal struct, completely decoupling client binaries from private layout changes.</li>
+          </ul>
 
-            <div style="background: var(--bg-primary); border: 2px solid var(--accent-secondary); border-radius: var(--radius-md); padding: 1.25rem; text-align: center;">
-              <div style="font-weight: 700; color: var(--accent-secondary); font-size: 1.05rem;">2. Dynamic Model</div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); margin: 0.35rem 0;">Temporal & Behavioral</div>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0;">
-                Defines <em>WHEN</em> actions happen: state transitions, message sequences, and events over time.
-              </p>
-            </div>
+          <h4>Documentation: Design by Contract (Bertrand Meyer)</h4>
+          <p>Robust object-oriented systems enforce formal contracts specifying:</p>
+          <ul>
+            <li><strong>Preconditions:</strong> Invariants the caller must satisfy before invoking a method (e.g., <code>amount &gt; 0.0</code>).</li>
+            <li><strong>Postconditions:</strong> Invariants the method guarantees upon successful completion (e.g., <code>balance_new == balance_old - amount</code>).</li>
+            <li><strong>Class Invariants:</strong> Invariants that must hold true throughout the entire lifetime of the object.</li>
+          </ul>
+        </section>
 
-            <div style="background: var(--bg-primary); border: 2px solid var(--success-border); border-radius: var(--radius-md); padding: 1.25rem; text-align: center;">
-              <div style="font-weight: 700; color: var(--success-text); font-size: 1.05rem;">3. Functional Model</div>
-              <div style="font-size: 0.8rem; color: var(--text-muted); margin: 0.35rem 0;">Computational & Transformational</div>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0;">
-                Defines <em>HOW</em> data transforms: data flows, calculations, algorithms, and inputs/outputs.
-              </p>
-            </div>
+        <!-- 6. Methodology Comparisons -->
+        <section id="sec-methodologies">
+          <h2>6. Methodological Comparisons: SA/SD vs. JSD vs. OOAD</h2>
 
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Criteria</th>
+                  <th>SA/SD (Structured)</th>
+                  <th>JSD (Jackson Structured Development)</th>
+                  <th>OOAD (Object-Oriented)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Originators</strong></td>
+                  <td>Yourdon, DeMarco, Constantine</td>
+                  <td>Michael A. Jackson</td>
+                  <td>Booch, Rumbaugh, Jacobson</td>
+                </tr>
+                <tr>
+                  <td><strong>Core Philosophy</strong></td>
+                  <td>Top-down functional decomposition; systems are pipelines transforming data flows.</td>
+                  <td>Real-world modeling based on time-ordered event histories experienced by domain entities.</td>
+                  <td>Domain decomposition; autonomous objects communicating via message-passing contracts.</td>
+                </tr>
+                <tr>
+                  <td><strong>Primary Artifacts</strong></td>
+                  <td>Data Flow Diagrams (DFDs), Structure Charts, Data Dictionaries.</td>
+                  <td>Entity Structure Diagrams (ESDs), System Specification Diagrams (SSDs).</td>
+                  <td>Class Diagrams, Statecharts, Sequence Diagrams, Component Diagrams.</td>
+                </tr>
+                <tr>
+                  <td><strong>Strengths</strong></td>
+                  <td>Intuitive for algorithmic batch transformations and compilers.</td>
+                  <td>Superior modeling of concurrent, time-ordered entity lifecycles.</td>
+                  <td>Unmatched modularity, code reuse, resilience, and real-world domain fidelity.</td>
+                </tr>
+                <tr>
+                  <td><strong>Weaknesses</strong></td>
+                  <td>Fragile against data modifications; large analysis-to-design semantic gap.</td>
+                  <td>Difficult to map onto standard procedural programming languages.</td>
+                  <td>Steeper learning curve; requires significant upfront architectural modeling.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </div>
+        </section>
 
-        <div class="callout callout-info">
-          <strong>Integration & Cross-Validation:</strong> The Object Model defines the entities that execute actions; the Dynamic Model dictates when methods execute in response to incoming events; the Functional Model details the algorithmic steps and data mutations performed by those methods.
-        </div>
-      </section>
+        <!-- 7. Complete C OOP Emulation -->
+        <section id="sec-mapping-c">
+          <h2>7. Complete C Procedural OOP Emulation</h2>
+          <p>Object orientation is an architectural discipline, not a syntax feature. Even in procedural C, OOP concepts (Classes, Encapsulation, Single Inheritance, and Dynamic Polymorphism) can be implemented directly using structs, function pointers, and VTables:</p>
 
-      <!-- Section 3 -->
-      <section id="section-3">
-        <h2>3. Object Design Activities</h2>
-        
-        
-        <h3>3.3 Design Optimization Strategies</h3>
-        <p>Design optimization refines analysis models into high-performance production designs without violating architectural encapsulation:</p>
-        <ul>
-          <li><strong>Adding Redundant Associations:</strong> Introducing direct pointer links between frequently communicating distant classes to bypass multi-hop navigation paths.</li>
-          <li><strong>Execution Path Tuning:</strong> Rearranging computation order so that cheap filter predicates execute before expensive database queries or mathematical operations.</li>
-          <li><strong>Collapsing Derived Classes:</strong> Eliminating trivial intermediate subclasses that introduce unnecessary VTable indirection without adding distinct behavioral variation.</li>
-          <li><strong>In-Memory Caching:</strong> Storing immutable or infrequently changed derived attributes to avoid redundant disk I/O or recalculation.</li>
-        </ul>
-
-        <h3>4.1 Jackson Structured Development (JSD) In-Depth</h3>
-        <p>Formulated by Michael A. Jackson, JSD is a linear, event-driven software development methodology that models real-world entities through their sequential lifecycle actions over time rather than functional decomposition:</p>
-        <ol>
-          <li><strong>Entity Action Step:</strong> Identify real-world entities and the discrete, instantaneous actions they perform or undergo.</li>
-          <li><strong>Entity Structure Step:</strong> Organize identified actions into time-ordered tree structures using Jackson diagram constructs (Sequence, Selection, Iteration).</li>
-          <li><strong>Initial Model Step:</strong> Define the system model as a network of concurrent, communicating sequential processes.</li>
-          <li><strong>Function Step:</strong> Attach output functions and reporting tasks to the core model processes.</li>
-          <li><strong>System Timing Step:</strong> Specify execution scheduling and performance constraints.</li>
-          <li><strong>Implementation Step:</strong> Map concurrent process networks onto available OS threads and procedural code.</li>
-        </ol>
-
-        <h3>3.1 Algorithm Design & Optimization</h3>
-        <ul>
-          <li><strong>Algorithm Selection:</strong> Balance computational time complexity ($O(1)$ vs $O(N)$ vs $O(\log N)$) against memory footprint.</li>
-          <li><strong>Caching Derived Attributes:</strong> Store computed values rather than recalculating on every access.</li>
-          <li><strong>Adding Redundant Associations:</strong> Add direct navigational links between frequently collaborating classes to eliminate expensive graph traversals.</li>
-          <li><strong>Rearranging Execution Paths:</strong> Evaluate high-probability and low-cost boolean terms first in complex conditionals.</li>
-        </ul>
-
-        <h3>3.2 Implementation of Control</h3>
-        <ul>
-          <li><strong>Procedure-Driven Control:</strong> Synchronous, sequential execution stack where control resides in the main program loop.</li>
-          <li><strong>State-Driven / Event-Driven Control:</strong> Asynchronous execution where an event pump/dispatcher dynamically selects handlers based on the current state.</li>
-        </ul>
-
-        <h3>3.3 Adjustment of Inheritance & Physical Packaging</h3>
-        <ul>
-          <li><strong>Factoring Common Behavior:</strong> Push shared attributes/methods upward into abstract superclasses.</li>
-          <li><strong>Favoring Composition over Brittle Inheritance:</strong> Replace deep inheritance trees with delegation where "is-a" taxonomy is weak.</li>
-          <li><strong>Physical Packaging:</strong> Organize cohesive classes into distinct source files, translation units, and shared libraries.</li>
-        </ul>
-      </section>
-
-      <!-- Section 4 -->
-      <section id="section-4">
-        <h2>4. Methodological Comparisons: SA/SD vs JSD vs OOSD</h2>
-
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Comparison Dimension</th>
-                <th>Structured Analysis / Design (SA/SD)</th>
-                <th>Jackson Structured Development (JSD)</th>
-                <th>Object-Oriented System Design (OOSD)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Primary Focus</strong></td>
-                <td>Functions and Data Flows (DFDs)</td>
-                <td>Entity life-history event sequences over time</td>
-                <td>Autonomous Objects combining state & behavior</td>
-              </tr>
-              <tr>
-                <td><strong>Basic Unit</strong></td>
-                <td>Process / Subroutine</td>
-                <td>Sequential Entity Process</td>
-                <td>Class / Object</td>
-              </tr>
-              <tr>
-                <td><strong>Decomposition</strong></td>
-                <td>Top-down functional decomposition</td>
-                <td>Event-ordered entity lifecycle modeling</td>
-                <td>Domain entity abstraction and encapsulation</td>
-              </tr>
-              <tr>
-                <td><strong>Data & Logic</strong></td>
-                <td>Separated (Processes operate on passive data)</td>
-                <td>Integrated within sequential entity processes</td>
-                <td>Strictly encapsulated together</td>
-              </tr>
-              <tr>
-                <td><strong>Reusability</strong></td>
-                <td>Low (code tied to specific flow)</td>
-                <td>Moderate</td>
-                <td>High (Inheritance, Polymorphism, Genericity)</td>
-              </tr>
-              <tr>
-                <td><strong>Maintenance</strong></td>
-                <td>Poor (data changes ripple across functions)</td>
-                <td>Moderate</td>
-                <td>Excellent (modular encapsulation barriers)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Section 5 -->
-      <section id="section-5">
-        <h2>5. Mapping Object-Oriented Concepts to Non-OOP Languages (C)</h2>
-        <p>
-          When deploying object-oriented designs into non-OOP languages like standard C, developers must explicitly construct OOP mechanisms using data structures and function pointers.
-        </p>
-
-        <!-- Visual Memory Layout for C Struct Single Inheritance -->
-        <div class="visual-diagram-board">
-          <div class="diagram-caption"><span>VISUAL C STRUCT MEMORY ALIGNMENT FOR SINGLE INHERITANCE</span></div>
-          
-          <div class="memory-grid">
-            
-            <div class="memory-block-col">
-              <div class="memory-header-title">
-                <span>Base Class: Shape</span>
-                <span class="memory-addr">Offset: 0x00</span>
-              </div>
-              <div class="memory-slot highlight-slot">
-                <span>const ShapeVTable* vptr</span>
-                <span class="memory-addr">+0 bytes (8B)</span>
-              </div>
-            </div>
-
-            <div class="memory-block-col">
-              <div class="memory-header-title">
-                <span>Derived Class: Circle (Struct Embedding)</span>
-                <span class="memory-addr">Offset: 0x00</span>
-              </div>
-              <div class="memory-slot highlight-slot">
-                <span>Shape base (contains vptr)</span>
-                <span class="memory-addr">+0 bytes (8B)</span>
-              </div>
-              <div class="memory-slot">
-                <span>double radius</span>
-                <span class="memory-addr">+8 bytes (8B)</span>
-              </div>
-            </div>
-
-          </div>
-          <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.75rem;">
-            * Because <code>Shape base</code> is the first member of <code>Circle</code>, casting <code>(Shape*)&amp;circle</code> points to the exact same memory address.
-          </div>
-        </div>
-
-        <h3>Complete C Implementation: Classes, Inheritance & VTable Polymorphism</h3>
-        <div class="code-container">
-          <div class="code-header">
-            <span class="code-lang">C • Full OOP Mapping Demonstration</span>
-            <button class="copy-button">Copy Code</button>
-          </div>
-          <pre><code>#include &lt;stdio.h&gt;
+          <pre><code>/* =========================================================================
+   COMPLETE OBJECT-ORIENTED ENGINE IMPLEMENTED IN STANDARD PROCEDURAL C
+   Demonstrating Classes, Encapsulation, Single Inheritance & VTable Dispatch
+   ========================================================================= */
+#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
-// 1. Forward Declaration of Base Class
-struct Shape;
+// Forward declaration of VTable
+struct ShapeVTable;
 
-// 2. Virtual Function Table (VTable) Definition in C
-typedef struct {
-    void (*draw)(const struct Shape* self);
-    double (*getArea)(const struct Shape* self);
-} ShapeVTable;
-
-// 3. Base Class Representation with VPtr
+// Base Class: Shape
 typedef struct Shape {
-    const ShapeVTable* vptr; // Virtual Pointer
+    const struct ShapeVTable* vptr; // Virtual Method Table Pointer
+    double x, y;                    // Base Attributes
 } Shape;
 
-// 4. Derived Class: Circle
-typedef struct {
-    Shape base;        // MUST BE FIRST MEMBER for memory layout alignment
-    double radius;
+// Shape VTable Contract
+typedef struct ShapeVTable {
+    double (*area)(const Shape* self);
+    void (*draw)(const Shape* self);
+} ShapeVTable;
+
+// Derived Class: Circle
+typedef struct Circle {
+    Shape base;      // Inheritance: Base class embedded at byte offset 0!
+    double radius;   // Derived attribute
 } Circle;
 
-// Member functions for Circle
-void Circle_Draw(const Shape* self) {
-    const Circle* c = (const Circle*)self;
-    printf("Drawing Circle with radius: %.2f\n", c->radius);
+// Circle Member Method Implementations
+double Circle_area(const Shape* self) {
+    const Circle* c = (const Circle*)self; // Safe downcast due to offset 0
+    return 3.14159265 * c-&gt;radius * c-&gt;radius;
 }
 
-double Circle_GetArea(const Shape* self) {
+void Circle_draw(const Shape* self) {
     const Circle* c = (const Circle*)self;
-    return 3.14159 * c->radius * c->radius;
+    printf("[Circle]: Drawing at (%.1f, %.1f) with radius %.2f | Area = %.2f\n", 
+           self-&gt;x, self-&gt;y, c-&gt;radius, Circle_area(self));
 }
 
-// Static VTable instance for Circle
+// Static VTable for Circle
 static const ShapeVTable circle_vtable = {
-    .draw = Circle_Draw,
-    .getArea = Circle_GetArea
+    Circle_area,
+    Circle_draw
 };
 
-// Constructor Function
-void Circle_Init(Circle* c, double r) {
-    c->base.vptr = &circle_vtable; // Assign VPtr
-    c->radius = r;
+// Circle Constructor
+Circle* Circle_create(double x, double y, double r) {
+    Circle* c = (Circle*)malloc(sizeof(Circle));
+    c-&gt;base.vptr = &amp;circle_vtable; // Initialize VPTR to Circle VTable
+    c-&gt;base.x = x;
+    c-&gt;base.y = y;
+    c-&gt;radius = r;
+    return c;
 }
 
-// Polymorphic Client Function
-void RenderShape(const Shape* shape) {
-    // Dynamic dispatch via VTable lookup
-    shape->vptr->draw(shape);
-    printf("Calculated Area: %.2f\n\n", shape->vptr->getArea(shape));
+// Generic Polymorphic Dispatch Function
+void renderShape(const Shape* s) {
+    s-&gt;vptr-&gt;draw(s); // Dynamic dispatch via VTable!
 }
 
 int main() {
-    Circle myCircle;
-    Circle_Init(&myCircle, 5.0);
-
-    // Upcasting to Base Pointer is 100% safe due to struct layout
-    Shape* shapePtr = (Shape*)&myCircle;
-    RenderShape(shapePtr);
-
+    Circle* c = Circle_create(10.0, 20.0, 5.0);
+    renderShape((Shape*)c); // Polymorphic call in C!
+    free(c);
     return 0;
 }</code></pre>
-        </div>
-      </section>
+        </section>
 
-      <!-- Section 6 -->
-      <section id="section-6">
-        <h2>6. Object Oriented Programming Style & Principles</h2>
-        <p>
-          Object-oriented design focuses on four foundational software quality goals:
-        </p>
-        <ul>
-          <li><strong>Reusability:</strong> Tested code is reused across multiple subsystems via class libraries, templates, and inheritance.</li>
-          <li><strong>Extensibility:</strong> New subclasses and behaviors can be added without modifying existing tested base code (Open/Closed Principle).</li>
-          <li><strong>Robustness:</strong> Strong encapsulation and type validation prevent invalid state transitions and undefined behaviors.</li>
-          <li><strong>Programming-in-the-Large:</strong> Facilitates large team development through clear modular boundaries and standardized subsystem interfaces.</li>
-        </ul>
-      </section>
+        <!-- 8. Quality Attributes -->
+        <section id="sec-software-qualities">
+          <h2>8. Core Software Engineering Quality Attributes</h2>
 
-      <!-- Unit Summary -->
-      <section id="section-summary" style="margin-top: 3rem;">
-        <h2>Unit III Summary</h2>
-        <div class="callout callout-success">
-          <ul style="margin-bottom: 0;">
-            <li><strong>Object-Oriented Design (OOD)</strong> refines analysis models into high-level System Design and low-level Object Design.</li>
-            <li><strong>Rumbaugh's OMT</strong> integrates the <strong>Object Model</strong> (static), <strong>Dynamic Model</strong> (state transitions), and <strong>Functional Model</strong> (computations).</li>
-            <li><strong>Methodological Comparisons:</strong> SA/SD separates logic from data; JSD models entity event sequences; OOSD encapsulates data and operations into cohesive classes.</li>
-            <li><strong>Mapping OOP to C:</strong> Accomplished by mapping classes to structs, passing an explicit <code>this</code> pointer, embedding base structs first for inheritance, and creating function pointer tables (VTables) for dynamic polymorphism.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Exam Question Bank -->
-      <section id="section-exams" class="exam-section">
-        <h2>Possible Exam Questions</h2>
-        <p>Click on any question to expand the model answer and key scoring points:</p>
-
-        <h3 class="exam-category-title">Short Answer Questions (2–3 Marks)</h3>
-        <div class="accordion-group">
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <div class="accordion-question">
-                <span class="question-badge">2 Marks</span>
-                <span>Differentiate between System Design and Object Design in OOD.</span>
-              </div>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="accordion-content">
-              <p><strong>Model Answer:</strong></p>
-              <ul>
-                <li><strong>System Design (High-Level):</strong> Deals with overall architecture, subsystem decomposition, database choice, concurrency, and hardware allocation.</li>
-                <li><strong>Object Design (Low-Level):</strong> Focuses on individual class details: data structures, algorithm selection, method signatures, visibility adjustments, and inheritance refinement.</li>
-              </ul>
-            </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Quality Dimension</th>
+                  <th>Formal Definition</th>
+                  <th>Object-Oriented Architectural Enforcement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Robustness</strong></td>
+                  <td>The capability of a software system to withstand exceptional errors, invalid user inputs, and unexpected hardware failures without crashing.</td>
+                  <td>
+                    <ul>
+                      <li>Class invariant validation in constructors and setters.</li>
+                      <li>Type-safe C++ exception hierarchies (<code>std::exception</code>).</li>
+                      <li>RAII (Resource Acquisition Is Initialization) ensuring deterministic memory cleanup.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Extensibility</strong></td>
+                  <td>The ease with which a system accommodates new functional capabilities without altering or destabilizing existing source code.</td>
+                  <td>
+                    <ul>
+                      <li>Adherence to the Open-Closed Principle (OCP).</li>
+                      <li>Polymorphic dynamic dispatch through abstract base interfaces.</li>
+                      <li>Pluggable architecture patterns (Strategy, Factory, Observer).</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Reusability</strong></td>
+                  <td>The extent to which existing software modules can be utilized across new applications with zero or minimal modification.</td>
+                  <td>
+                    <ul>
+                      <li>Composition over inheritance ("has-a" over "is-a").</li>
+                      <li>Generic template libraries (C++ STL containers and algorithms).</li>
+                      <li>Autonomous package encapsulation with minimal dependencies.</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <div class="accordion-question">
-                <span class="question-badge">2 Marks</span>
-                <span>How is single inheritance implemented in procedural C?</span>
-              </div>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="accordion-content">
-              <p><strong>Model Answer:</strong> Single inheritance is implemented in C by nesting the base class <code>struct</code> as the <strong>first member</strong> of the derived <code>struct</code>. This guarantees that the memory address of the derived struct matches the memory address of the base struct, allowing safe pointer upcasting.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <div class="accordion-question">
-                <span class="question-badge">3 Marks</span>
-                <span>What are the three models in Rumbaugh’s OMT?</span>
-              </div>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="accordion-content">
-              <p><strong>Model Answer:</strong></p>
-              <ol>
-                <li><strong>Object Model:</strong> Static structure (classes, attributes, relationships).</li>
-                <li><strong>Dynamic Model:</strong> Temporal behavior (state machines, transitions, events).</li>
-                <li><strong>Functional Model:</strong> Computations and transformations (DFDs).</li>
-              </ol>
-            </div>
-          </div>
-
-        </div>
-
-        <h3 class="exam-category-title">Long Answer Questions (7–10 Marks)</h3>
-        <div class="accordion-group">
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <div class="accordion-question">
-                <span class="question-badge">10 Marks</span>
-                <span>Demonstrate how Encapsulation, Inheritance, and Runtime Polymorphism are mapped into C. Provide complete compilable code.</span>
-              </div>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="accordion-content">
-              <p><strong>Model Answer Structure:</strong></p>
-              <ol>
-                <li>Explain the mapping principles: structs for classes, function pointer tables for VTables, embedding base structs first for inheritance.</li>
-                <li>Write complete C code declaring <code>Shape</code>, <code>ShapeVTable</code>, <code>Circle</code>, constructor functions, and <code>RenderShape</code>.</li>
-                <li>Explain how passing explicit <code>this</code> pointers resolves member access.</li>
-              </ol>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <div class="accordion-question">
-                <span class="question-badge">10 Marks</span>
-                <span>Compare Structured Analysis/Structured Design (SA/SD), Jackson Structured Development (JSD), and Object-Oriented System Design (OOSD).</span>
-              </div>
-              <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="accordion-content">
-              <p><strong>Model Answer Structure:</strong></p>
-              <ul>
-                <li>Provide a detailed comparative matrix covering: basic abstraction unit, data-logic coupling, decomposition strategy, reusability, and maintenance.</li>
-                <li>Explain why SA/SD suffers from the ripple-effect when requirements evolve.</li>
-                <li>Highlight how OOSD provides superior modularity and extensibility for programming-in-the-large.</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Pagination -->
-      <div class="page-pagination">
-        <a href="unit2.html" class="pagination-btn">
-          <span class="pagination-label">Previous</span>
-          <span class="pagination-title">← Unit II: Structural & Behavioral Modeling</span>
-        </a>
-        <a href="unit4.html" class="pagination-btn next">
-          <span class="pagination-label">Next</span>
-          <span class="pagination-title">Unit IV: C++ Basics & Functions →</span>
-        </a>
-      </div>
-
-    </main>
-
-    <!-- Right TOC Sidebar -->
-    <aside class="toc-sidebar">
-      <div class="toc-title">On This Page</div>
-      <ul class="toc-list">
-        <li class="toc-item"><a href="#section-1" class="toc-link">1. OOD & Object Design</a></li>
-        <li class="toc-item"><a href="#section-2" class="toc-link">2. Combining 3 Models</a></li>
-        <li class="toc-item"><a href="#section-3" class="toc-link">3. Design Activities</a></li>
-        <li class="toc-item"><a href="#section-4" class="toc-link">4. SA/SD vs JSD vs OOSD</a></li>
-        <li class="toc-item"><a href="#section-5" class="toc-link">5. Mapping OOP to C</a></li>
-        <li class="toc-item"><a href="#section-6" class="toc-link">6. OOP Style & Principles</a></li>
-        <li class="toc-item"><a href="#section-summary" class="toc-link">Unit Summary</a></li>
-        <li class="toc-item"><a href="#section-exams" class="toc-link">Exam Question Bank</a></li>
-      </ul>
-    </aside>
-
-  </div>
-
-  <!-- Search Modal -->
-  <div class="search-modal-backdrop" id="search-modal-backdrop">
-    <div class="search-modal">
-      <div class="search-input-wrapper">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" class="search-input" id="search-input" placeholder="Search topics across all units..." autocomplete="off">
-      </div>
-      <div class="search-results" id="search-results"></div>
+        </section>
+      </article>
     </div>
-  </div>
+  </main>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="back-to-top" title="Scroll to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
-  </button>
-
-  <script src="js/main.js"></script>
+  <footer class="app-footer">
+    <span>Object-Oriented System Design (BCS054 / KCS054) Academic Guide</span>
+    <span class="footer-meta">Unit 3 Extended Theory</span>
+  </footer>
 </body>
 </html>

@@ -1,879 +1,588 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2-Mark Questions Solved Bank (All 38 PYQs) | BCS054</title>
-  <meta name="description" content="Complete Solved Bank for all 38 Two-Mark Short Answer Questions from University Previous Year Question Papers for BCS054 - Object Oriented System Design with C++.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <title>2-Mark Solved Question Bank (2020–2026) | BCS054 Academic Guide</title>
+  <meta name="description" content="All 30 previous year 2-mark university questions for Units 1, 2, and 3 of Object-Oriented System Design (BCS054/KCS054) completely solved with exact exam rubric length.">
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
 </head>
 <body>
-  <div id="reading-progress"></div>
-
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-left">
-      <a href="index.html" class="brand-link">
-        <div class="brand-logo">OO</div>
-        <div>
-          <span class="brand-title">BCS054</span>
-          <span class="brand-subtitle">2-Mark Bank</span>
-        </div>
-      </a>
-    </div>
-
-    <nav class="header-nav">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="unit1.html" class="nav-link">Unit 1</a>
-      <a href="unit2.html" class="nav-link">Unit 2</a>
-      <a href="unit3.html" class="nav-link">Unit 3</a>
-      <a href="unit4.html" class="nav-link">Unit 4</a>
-      <a href="unit5.html" class="nav-link">Unit 5</a>
-      <a href="2marks.html" class="nav-link active">2-Mark Qs (38)</a>
-      <a href="7marks.html" class="nav-link">7-Mark Qs (69)</a>
-      <a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a>
-      <a href="quiz.html" class="nav-link">Mock Quiz</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="icon-button" id="search-btn" title="Search Questions (Ctrl+K)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      </button>
-      <button class="icon-button" id="theme-toggle" title="Toggle Theme">
-        <span id="theme-icon"></span>
-      </button>
-      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" title="Menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span>OOSD.GUIDE</span>
+        <span class="brand-badge">2-Marks Solved</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Index</a>
+        <a href="short_theory.html">Short Theory</a>
+        <a href="unit1.html">Unit 1 Theory</a>
+        <a href="unit2.html">Unit 2 Theory</a>
+        <a href="unit3.html">Unit 3 Theory</a>
+        <a href="2marks.html" class="active">2-Marks Bank</a>
+        <a href="7marks.html">7/10-Marks Bank</a>
+      </nav>
     </div>
   </header>
 
-  <div class="app-container">
-    
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-title">Question Navigation</div>
-        <ul class="sidebar-menu">
-          <li class="sidebar-item"><a href="#q1-q10" class="sidebar-link">Questions 1 to 10</a></li>
-          <li class="sidebar-item"><a href="#q11-q20" class="sidebar-link">Questions 11 to 20</a></li>
-          <li class="sidebar-item"><a href="#q21-q30" class="sidebar-link">Questions 21 to 30</a></li>
-          <li class="sidebar-item"><a href="#q31-q38" class="sidebar-link">Questions 31 to 38</a></li>
-        </ul>
+  <main class="app-main">
+    <section>
+      <h1>Short Theory & 2-Mark Solved Question Bank (2020–2026)</h1>
+      <p>High-scoring, concise solutions for all 30 university short answer questions spanning Units 1, 2, and 3. Each solution is formatted strictly to university exam scoring expectations (~50–90 words with precise definitions, syntax, and vector diagrams where required).</p>
+
+      <!-- Filter Controls Toolbar -->
+      <div class="toolbar">
+        <div class="filter-group">
+          <span class="filter-label">Unit:</span>
+          <button class="filter-btn active" data-filter-type="unit" data-filter="all">All</button>
+          <button class="filter-btn" data-filter-type="unit" data-filter="1">Unit 1</button>
+          <button class="filter-btn" data-filter-type="unit" data-filter="2">Unit 2</button>
+          <button class="filter-btn" data-filter-type="unit" data-filter="3">Unit 3</button>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Year:</span>
+          <button class="filter-btn active" data-filter-type="year" data-filter="all">All</button>
+          <button class="filter-btn" data-filter-type="year" data-filter="2020-21">20-21</button>
+          <button class="filter-btn" data-filter-type="year" data-filter="2021-22">21-22</button>
+          <button class="filter-btn" data-filter-type="year" data-filter="2022-23">22-23</button>
+          <button class="filter-btn" data-filter-type="year" data-filter="2023-24">23-24</button>
+          <button class="filter-btn" data-filter-type="year" data-filter="2024-25">24-25</button>
+          <button class="filter-btn" data-filter-type="year" data-filter="2025-26">25-26</button>
+        </div>
+        <input type="text" id="search-input" class="search-input" placeholder="Search keywords (e.g. encapsulation, link, bulb)...">
+        <span class="counter-badge" id="item-count">30 Questions</span>
       </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-title">Related Portals</div>
-        <ul class="sidebar-menu">
-          <li class="sidebar-item"><a href="7marks.html" class="sidebar-link">7-Mark Questions (69 Qs)</a></li>
-          <li class="sidebar-item"><a href="cheat-sheet.html" class="sidebar-link">Quick Revision Cheat Sheet</a></li>
-          <li class="sidebar-item"><a href="quiz.html" class="sidebar-link">Interactive Mock Exam</a></li>
-        </ul>
+      <!-- ================= UNIT 1 QUESTIONS ================= -->
+      <h2>Unit 1: Introduction to Object Orientation & UML (2 Marks)</h2>
+
+      <!-- Q1 -->
+      <div class="question-item" data-unit="1" data-year="2020-21">
+        <div class="question-header">
+          <span class="q-badge">U1-Q01</span>
+          <span class="question-title">Define Object identity with example.</span>
+          <span class="q-year">[2020-21]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> Object identity is the inherent property of an object that distinguishes it from all other objects in the universe, regardless of its state, values, or class type. Identity is immutable and persists throughout the object's entire lifespan.</p>
+          <p><strong>Example:</strong> In C++, two instances <code>Account a1(101, 500);</code> and <code>Account a2(101, 500);</code> possess identical attribute values, but have distinct identities because they reside at unique memory addresses (<code>&amp;a1 != &amp;a2</code>). In databases, identity is enforced via primary keys (e.g., UUID).</p>
+        </div>
       </div>
-    </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      
-      <div class="course-badge">Section A • 2 Marks Each • 38 Questions Solved</div>
-      <h1>2-Mark University Exam Questions (Master Bank)</h1>
-      <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem;">
-        Every two-mark question from university previous year papers solved with exact, to-the-point definitions, key bullet points, mini diagrams, and compilable C++ code snippets.
-      </p>
-
-      <div class="accordion-group">
-
-        <!-- Q1 -->
-        <div class="accordion-item open" id="q1-q10">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q1 • 2 Marks</span>
-              <span>Describe the significance of modeling in software engineering.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Modeling creates abstract visual representations of a system to understand, design, and validate software before coding.</p>
-            <ul>
-              <li><strong>Complexity Management:</strong> Decomposes complex real-world problems into manageable structural and behavioral views.</li>
-              <li><strong>Clear Communication:</strong> Provides an unambiguous visual language between technical architects, developers, and clients.</li>
-              <li><strong>Early Risk Mitigation:</strong> Exposes architectural flaws, missing requirements, and integration bottlenecks early in the lifecycle.</li>
-              <li><strong>Construction Blueprint:</strong> Guides implementation and facilitates automated code generation or reverse engineering.</li>
-            </ul>
-          </div>
+      <!-- Q2 -->
+      <div class="question-item" data-unit="1" data-year="2020-21">
+        <div class="question-header">
+          <span class="q-badge">U1-Q02</span>
+          <span class="question-title">List the features of Object-oriented paradigms.</span>
+          <span class="q-year">[2020-21]</span>
         </div>
-
-        <!-- Q2 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q2 • 2 Marks</span>
-              <span>Define the conceptual model of UML.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> The conceptual model of UML comprises three foundational pillars:</p>
-            <ol>
-              <li><strong>Building Blocks:</strong> Things (Structural, Behavioral, Grouping, Annotational), Relationships (Dependency, Association, Generalization, Realization), and Diagrams.</li>
-              <li><strong>Rules:</strong> Syntactic and semantic rules governing Names, Scope, Visibility, Integrity, and Execution.</li>
-              <li><strong>Common Mechanisms:</strong> Specifications, Adornments, Common Divisions (Class vs Object, Interface vs Implementation), and Extensibility (Stereotypes, Tagged Values, Constraints).</li>
-            </ol>
-          </div>
+        <div class="question-body">
+          <p>The foundational features characterizing the Object-Oriented Paradigm are:</p>
+          <ul>
+            <li><strong>Encapsulation:</strong> Packaging data and operations into a single cohesive class unit.</li>
+            <li><strong>Data Abstraction & Information Hiding:</strong> Exposing essential interface contracts while concealing implementation mechanics.</li>
+            <li><strong>Inheritance:</strong> Reusing and extending state and behavior across hierarchical class relationships.</li>
+            <li><strong>Polymorphism:</strong> Dynamic message dispatch allowing uniform invocation across distinct concrete types.</li>
+            <li><strong>Generosity (Genericity):</strong> Parameterizing algorithms and structures with generic data types.</li>
+          </ul>
         </div>
+      </div>
 
-        <!-- Q3 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q3 • 2 Marks</span>
-              <span>Create a package diagram for a modular library management system.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Package Architecture Model:</strong></p>
-            <div class="canva-diagram-card">
-              <div class="canva-diagram-header">
-                <span class="canva-diagram-title">Modular Library Package Architecture</span>
-                <span class="canva-pill-badge">UML Package</span>
-              </div>
-              <div class="canva-tier-grid">
-                <div class="canva-tier-card">
-                  <span class="canva-tier-title">User Interface Layer</span>
-                  <div class="canva-tier-subitem">WebPortalPackage</div>
-                  <div class="canva-tier-subitem">MobileAppPackage</div>
-                </div>
-                <div class="canva-tier-card">
-                  <span class="canva-tier-title">Business Logic Layer (&lt;&lt;import&gt;&gt;)</span>
-                  <div class="canva-tier-subitem">CatalogService</div>
-                  <div class="canva-tier-subitem">BorrowingService</div>
-                </div>
-                <div class="canva-tier-card">
-                  <span class="canva-tier-title">Data Access Layer (&lt;&lt;access&gt;&gt;)</span>
-                  <div class="canva-tier-subitem">BookRepository</div>
-                  <div class="canva-tier-subitem">MemberRepository</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- Q3 -->
+      <div class="question-item" data-unit="1" data-year="2021-22">
+        <div class="question-header">
+          <span class="q-badge">U1-Q03</span>
+          <span class="question-title">What is information hiding?</span>
+          <span class="q-year">[2021-22]</span>
         </div>
-
-        <!-- Q4 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q4 • 2 Marks</span>
-              <span>Explain how use case diagrams help in capturing system requirements.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong></p>
-            <ul>
-              <li><strong>System Boundaries:</strong> Delineates internal system scope from the external environment.</li>
-              <li><strong>Actor Identification:</strong> Identifies all direct human roles and external systems interacting with the application.</li>
-              <li><strong>Functional Behavior:</strong> Captures discrete user goals as ellipses, using <code>&lt;&lt;include&gt;&gt;</code> (mandatory sub-routines) and <code>&lt;&lt;extend&gt;&gt;</code> (conditional options).</li>
-              <li><strong>Testing Baseline:</strong> Serves as the direct input for creating user acceptance test suites.</li>
-            </ul>
-          </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> Information hiding (David Parnas Principle) is the software design principle of shielding internal implementation decisions, internal data representations, and volatile algorithms from external client modules.</p>
+          <p><strong>Significance:</strong> Clients interact exclusively through stable public method signatures (contracts). This ensures system security, prevents illegal state corruption, and allows internal implementations to be refactored without breaking client code.</p>
         </div>
+      </div>
 
-        <!-- Q5 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q5 • 2 Marks</span>
-              <span>Describe the role of inheritance adjustment in design optimization.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> In the Object Design phase, inheritance hierarchies are restructured to improve efficiency and maintainability:</p>
-            <ul>
-              <li><strong>Factoring Common Attributes & Methods:</strong> Pushing identical members upward into abstract base superclasses.</li>
-              <li><strong>Eliminating Redundant Leaf Classes:</strong> Collapsing classes with trivial differences into single parameterized classes.</li>
-              <li><strong>Replacing Inheritance with Delegation:</strong> Replacing deep, brittle inheritance coupling with object composition where an "is-a" taxonomy is weak.</li>
-            </ul>
-          </div>
+      <!-- Q4 -->
+      <div class="question-item" data-unit="1" data-year="2022-23">
+        <div class="question-header">
+          <span class="q-badge">U1-Q04</span>
+          <span class="question-title">Define data encapsulation. Give example.</span>
+          <span class="q-year">[2022-23]</span>
         </div>
-
-        <!-- Q6 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q6 • 2 Marks</span>
-              <span>Demonstrate the use of enumerations and constants in C++.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <div class="code-container">
-              <pre><code>#include &lt;iostream&gt;
-
-// Scoped Enumeration (enum class)
-enum class OrderStatus { PENDING, PROCESSING, COMPLETED };
-
-// Constants
-const double TAX_RATE = 0.18;
-constexpr int MAX_ITEMS = 50;
-
-int main() {
-    OrderStatus current = OrderStatus::PROCESSING;
-    if (current == OrderStatus::PROCESSING) {
-        std::cout << "Order active. Tax: " << TAX_RATE << " Max: " << MAX_ITEMS << "\n";
-    }
-    return 0;
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q7 • 2 Marks</span>
-              <span>Explain the use of the this pointer in C++.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> The <code>this</code> pointer is an implicit, constant pointer (<code>ClassName* const this</code>) passed to all non-static member functions, holding the memory address of the invoking instance.</p>
-            <ul>
-              <li><strong>Disambiguating Shadowed Members:</strong> <code>this-&gt;val = val;</code> when parameter names match member variables.</li>
-              <li><strong>Method Chaining:</strong> Returning <code>*this</code> by reference (e.g. <code>return *this;</code>) allowing cascading calls like <code>obj.setA(5).setB(10);</code>.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q8 • 2 Marks</span>
-              <span>Describe/List the features of object-oriented languages/paradigms.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong></p>
-            <ol>
-              <li><strong>Abstraction:</strong> Representing essential features while hiding background details.</li>
-              <li><strong>Encapsulation:</strong> Bundling data and methods into a single class container.</li>
-              <li><strong>Information Hiding:</strong> Restricting direct state access via <code>private</code>/<code>protected</code> specifiers.</li>
-              <li><strong>Inheritance:</strong> Reusing and extending existing class definitions in a taxonomic hierarchy.</li>
-              <li><strong>Polymorphism:</strong> Enabling a single interface to exhibit multiple runtime behaviors.</li>
-              <li><strong>Dynamic Binding:</strong> Resolving method addresses dynamically at runtime via VTables.</li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- Q9 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q9 • 2 Marks</span>
-              <span>Differentiate between structured approach/procedural and object-oriented approach.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr><th>Dimension</th><th>Structured / Procedural Approach</th><th>Object-Oriented Approach</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>Primary Unit</strong></td><td>Functions / Subroutines</td><td>Classes and Objects</td></tr>
-                  <tr><td><strong>Data Handling</strong></td><td>Data moves passively between global functions</td><td>Data is private and encapsulated within classes</td></tr>
-                  <tr><td><strong>Decomposition</strong></td><td>Top-down functional decomposition</td><td>Entity-centric object abstraction</td></tr>
-                  <tr><td><strong>Reusability</strong></td><td>Low (code tied to specific flow)</td><td>High (Inheritance, Polymorphism, Templates)</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q10 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q10 • 2 Marks</span>
-              <span>What is UML?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> The <strong>Unified Modeling Language (UML)</strong> is an industry-standard visual modeling language standardized by the Object Management Group (OMG) in 1997. It is used to <strong>specify, visualize, construct, and document</strong> the software artifacts of object-oriented systems by unifying the Booch, OMT (Rumbaugh), and OOSE (Jacobson) methodologies.</p>
-          </div>
-        </div>
-
-        <!-- Q11 -->
-        <div class="accordion-item" id="q11-q20">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q11 • 2 Marks</span>
-              <span>Describe generalization.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Generalization is a taxonomic "is-a" relationship between a general class (superclass/base class) and a specialized class (subclass/derived class). The specialized class inherits all attributes, operations, and relationships of the general class, and can add new members or override inherited operations. Represented in UML by a solid line with a hollow triangular arrowhead pointing to the superclass (<code>──────▷</code>).</p>
-          </div>
-        </div>
-
-        <!-- Q12 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q12 • 2 Marks</span>
-              <span>What are the three models in OMT?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> In James Rumbaugh’s Object Modeling Technique (OMT), a system is characterized across three orthogonal perspectives:</p>
-            <ol>
-              <li><strong>Object Model:</strong> Static structural blueprint (Classes, Attributes, Operations, Relationships).</li>
-              <li><strong>Dynamic Model:</strong> Temporal behavior and state changes over time (State Machines, Events).</li>
-              <li><strong>Functional Model:</strong> Computational data transformations (Data Flow Diagrams, Functions).</li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- Q13 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q13 • 2 Marks</span>
-              <span>What do you mean by the optimization of design?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Design optimization is the process of refining object design models to improve execution speed, minimize memory usage, and reduce communication latency without destroying modularity. Key techniques include: adding redundant direct associations to eliminate graph traversals, caching expensive derived attributes, and rearranging conditional execution paths.</p>
-          </div>
-        </div>
-
-        <!-- Q14 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q14 • 2 Marks</span>
-              <span>Write a C++ program to calculate the value of sin(x).</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <div class="code-container">
-              <pre><code>#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-
-// Calculates sin(x) using Taylor Series: x - x^3/3! + x^5/5! - x^7/7! ...
-double calculateSin(double degrees, int terms = 10) {
-    double rad = degrees * (M_PI / 180.0); // Convert degrees to radians
-    double sum = 0.0, term = rad;
-    for (int i = 1; i <= terms; i++) {
-        sum += term;
-        term = -term * rad * rad / ((2 * i) * (2 * i + 1));
-    }
-    return sum;
-}
-
-int main() {
-    double deg = 30.0;
-    std::cout << "sin(" << deg << ") = " << calculateSin(deg) << "\n"; // ~0.5
-    return 0;
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q15 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q15 • 2 Marks</span>
-              <span>Explain typecasting in C++.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Typecasting is the explicit or implicit conversion of a variable from one data type to another. Modern C++ provides four explicit cast operators:</p>
-            <ul>
-              <li><code>static_cast&lt;T&gt;(e)</code>: Standard compile-time numeric and pointer conversions.</li>
-              <li><code>dynamic_cast&lt;T&gt;(e)</code>: Runtime polymorphic downcasting verified via RTTI.</li>
-              <li><code>const_cast&lt;T&gt;(e)</code>: Adds or strips <code>const</code>/<code>volatile</code> qualifiers.</li>
-              <li><code>reinterpret_cast&lt;T&gt;(e)</code>: Low-level bit-pattern reinterpretation (e.g. pointer to integer).</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q16 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q16 • 2 Marks</span>
-              <span>Differentiate between public and private member function.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <ul>
-              <li><strong>Public Member Function (<code>public:</code>):</strong> Accessible from any external function or scope. Represents the public interface and contract of the class.</li>
-              <li><strong>Private Member Function (<code>private:</code>):</strong> Accessible <strong>only</strong> by other member functions of the same class (and declared friend functions). Used for internal helper routines and algorithms.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q17 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q17 • 2 Marks</span>
-              <span>Explain static data and static function member.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <ul>
-              <li><strong>Static Data Member:</strong> A single shared class variable allocated in the static data segment across all object instances. Must be defined in global file scope outside the class.</li>
-              <li><strong>Static Member Function:</strong> A class-level function callable without an object instance (<code>Class::func()</code>). It has <strong>no <code>this</code> pointer</strong> and can only access other static members.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q18 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q18 • 2 Marks</span>
-              <span>Define data encapsulation. Give example.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Data Encapsulation is the mechanism of bundling data members (attributes) and member functions (behavior) into a single physical unit (a class).</p>
-            <div class="code-container">
-              <pre><code>class Rectangle {
+        <div class="question-body">
+          <p><strong>Definition:</strong> Data encapsulation is the mechanism that binds together data variables (state) and the member functions (behavior) that manipulate them into a single self-contained syntactic unit, restricting direct access from outside.</p>
+          <pre><code>class BankAccount {
 private:
-    double length, width; // Encapsulated private state
+    double balance; // Encapsulated private state
 public:
-    Rectangle(double l, double w) : length(l), width(w) {}
-    double getArea() const { return length * width; } // Encapsulated operation
+    void deposit(double amt) { if (amt &gt; 0) balance += amt; }
+    double getBalance() const { return balance; }
 };</code></pre>
-            </div>
-          </div>
         </div>
-
-        <!-- Q19 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q19 • 2 Marks</span>
-              <span>Define generosity.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> <strong>Generosity</strong> (also known as <em>Genericity</em>) is the object-oriented capability to define classes, algorithms, and data structures with parameterized types. This enables code reuse across arbitrary data types with compile-time type safety and zero runtime overhead. Implemented in C++ via Templates (e.g. <code>template &lt;typename T&gt;</code>).</p>
-          </div>
-        </div>
-
-        <!-- Q20 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q20 • 2 Marks</span>
-              <span>List the features of Component Diagram.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <ol>
-              <li><strong>Models Physical Modularity:</strong> Represents software binaries, shared libraries (<code>.so</code>/<code>.dll</code>), and executables.</li>
-              <li><strong>Provided Interfaces (Lollipop <code>───O</code>):</strong> Displays operations and services exported by the component.</li>
-              <li><strong>Required Interfaces (Socket <code>───(</code>):</strong> Displays dependencies required by the component from external providers.</li>
-              <li><strong>Ports and Internal Wiring:</strong> Illustrates encapsulation boundaries and internal subsystem wiring.</li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- Q21 -->
-        <div class="accordion-item" id="q21-q30">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q21 • 2 Marks</span>
-              <span>Explain the existence of swimlanes in activity diagram.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> <strong>Swimlanes</strong> are vertical or horizontal partitions in an Activity Diagram that assign responsibility for actions to specific organizational departments, roles, or software subsystems. They make it explicit not just <em>what</em> actions occur, but <em>who</em> or <em>which subsystem class</em> executes each step in a workflow.</p>
-          </div>
-        </div>
-
-        <!-- Q22 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q22 • 2 Marks</span>
-              <span>Describe the term enum.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> An <code>enum</code> (enumeration) is a user-defined type consisting of a set of named integral constants.</p>
-            <ul>
-              <li><strong>Unscoped <code>enum</code>:</strong> Exports names to the enclosing scope and implicitly converts to integers.</li>
-              <li><strong>Scoped <code>enum class</code> (C++11):</strong> Strongly typed, prevents name pollution (accessed via <code>Color::RED</code>), and disallows unsafe implicit integer conversions.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q23 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q23 • 2 Marks</span>
-              <span>Define friend function with example / What is its use in C++?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> A <strong>friend function</strong> is a non-member external function granted access to the <code>private</code> and <code>protected</code> members of a class using the <code>friend</code> keyword.</p>
-            <div class="code-container">
-              <pre><code>class Point {
-private:
-    int x, y;
-public:
-    Point(int a, int b) : x(a), y(b) {}
-    friend void printCoords(const Point& p); // Friend declaration
-};
-
-void printCoords(const Point& p) {
-    std::cout << "(" << p.x << ", " << p.y << ")\n"; // Direct private access
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q24 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q24 • 2 Marks</span>
-              <span>Give a brief description about function overriding.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Function Overriding occurs when a derived class redefines a member function of its base class with the <strong>exact same name, parameter types, and return type</strong>. In C++, dynamic runtime overriding requires declaring the base function as <code>virtual</code>, enabling dynamic dispatch via the VTable.</p>
-          </div>
-        </div>
-
-        <!-- Q25 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q25 • 2 Marks</span>
-              <span>Differentiate between link and association / Define with example.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <ul>
-              <li><strong>Association:</strong> An abstract structural relationship between two <strong>classes</strong> describing possible connections (e.g. <code>Class Student</code> $\longleftrightarrow$ <code>Class Course</code>).</li>
-              <li><strong>Link:</strong> A concrete physical connection between two specific <strong>object instances</strong> in memory at runtime (e.g. <code><u>alice : Student</u></code> has a link to <code><u>cs101 : Course</u></code>).</li>
-              <li><em>Analogy:</em> Association is to Link what a Class is to an Object.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q26 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q26 • 2 Marks</span>
-              <span>What is an abstract class? Is it possible that an abstract class is inherited by another class?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> An <strong>Abstract Class</strong> is a class that contains at least one **Pure Virtual Function** (<code>virtual void func() = 0;</code>). It cannot be instantiated directly and serves as an interface contract.</p>
-            <p><strong>Inheritance:</strong> Yes, abstract classes are explicitly designed to be inherited. If a derived subclass implements all pure virtual functions, it becomes a concrete instantiable class; otherwise, it remains abstract.</p>
-          </div>
-        </div>
-
-        <!-- Q27 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q27 • 2 Marks</span>
-              <span>Draw a state diagram for an electric bulb.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <div class="canva-diagram-card">
-              <div class="canva-diagram-header">
-                <span class="canva-diagram-title">Electric Bulb Lifecycle State Machine</span>
-                <span class="canva-pill-badge">UML Statechart</span>
-              </div>
-              <div class="canva-statechart-flow">
-                <div class="canva-state-pill active-state">OFF State</div>
-                <div class="canva-arrow">
-                  <span class="canva-arrow-line">───────&gt;</span>
-                  <span>switchOn()</span>
-                </div>
-                <div class="canva-state-pill">ON State</div>
-                <div class="canva-arrow">
-                  <span class="canva-arrow-line">───────&gt;</span>
-                  <span>filamentBurned()</span>
-                </div>
-                <div class="canva-state-pill" style="border-color: #ef4444; color: #f87171;">BROKEN (Final)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q28 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q28 • 2 Marks</span>
-              <span>When do we use the protected visibility specifier to a class member?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> The <code>protected</code> specifier is used when a class member must be hidden from external public access (preventing unauthorized modification) while still being directly accessible to **derived subclasses** in an inheritance hierarchy.</p>
-          </div>
-        </div>
-
-        <!-- Q29 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q29 • 2 Marks</span>
-              <span>When will you make a function inline? Why?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> A function is made <code>inline</code> when it is **small (1 to 4 lines), simple, and executed frequently** inside performance-critical loops.</p>
-            <p><strong>Why:</strong> It eliminates function call overhead (call stack frame creation, register push/pop, jump instructions) by expanding code directly at the call site with full compiler type checking.</p>
-          </div>
-        </div>
-
-        <!-- Q30 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q30 • 2 Marks</span>
-              <span>Define constructor and destructor. Why do we use a destructor in a program?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <ul>
-              <li><strong>Constructor:</strong> A special member function sharing the class name that initializes object state upon creation.</li>
-              <li><strong>Destructor:</strong> A member function prefixed with a tilde (<code>~ClassName()</code>) executed automatically when an object lifetime ends.</li>
-              <li><strong>Why use Destructors:</strong> To release allocated system resources (freeing heap memory with <code>delete</code>, closing file descriptors, releasing locks) adhering to the RAII principle.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q31 -->
-        <div class="accordion-item" id="q31-q38">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q31 • 2 Marks</span>
-              <span>What is the use of Scope resolution operator?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> The Scope Resolution Operator (<code>::</code>) is used to:</p>
-            <ol>
-              <li>Access global variables when shadowed by local variables (<code>::globalVar</code>).</li>
-              <li>Define member functions outside the class declaration (<code>void MyClass::method()</code>).</li>
-              <li>Access static members of a class (<code>MyClass::staticMember</code>).</li>
-              <li>Disambiguate namespace symbols (<code>std::cout</code>).</li>
-            </ol>
-          </div>
-        </div>
-
-        <!-- Q32 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q32 • 2 Marks</span>
-              <span>What is a Candidate Key?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> In object-oriented data modeling and relational databases, a **Candidate Key** is a minimal superkey—a minimal set of one or more attributes that uniquely identifies every entity or object instance within an entity set without containing redundant attributes.</p>
-          </div>
-        </div>
-
-        <!-- Q33 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q33 • 2 Marks</span>
-              <span>What is information hiding?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Information Hiding is the software design principle of segregating design decisions that are likely to change behind stable interfaces. It prevents client modules from depending on volatile internal representations, allowing internal algorithms and data structures to change without breaking external dependents.</p>
-          </div>
-        </div>
-
-        <!-- Q34 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q34 • 2 Marks</span>
-              <span>Define Object identity with example.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <p><strong>Model Answer:</strong> Object Identity is the property of an object that distinguishes it from all other objects regardless of attribute value equality, established by its unique physical memory address.</p>
-            <p><strong>Example:</strong> Two `Account` objects `acc1` and `acc2` residing at addresses `0x7ffee1` and `0x7ffee8` have distinct identities even if both contain identical balance `$500.00`.</p>
-          </div>
-        </div>
-
-        <!-- Q35 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q35 • 2 Marks</span>
-              <span>Define and Differentiate Generalization and Inheritance with example.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <ul>
-              <li><strong>Generalization (Design Concept):</strong> The conceptual taxonomic relationship in UML models discovering common abstractions across subclasses (e.g. `Vehicle` generalizes `Car`).</li>
-              <li><strong>Inheritance (Implementation Mechanism):</strong> The physical coding construct in OOP languages enabling a derived class to inherit code and data from a base class (`class Car : public Vehicle`).</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q36 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q36 • 2 Marks</span>
-              <span>How is multiple inheritance different and modelled by using nested generalization?</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <ul>
-              <li><strong>Multiple Inheritance:</strong> A class inherits directly from two or more base classes (`class C : public A, public B`), risking diamond ambiguity.</li>
-              <li><strong>Nested Generalization (Multilevel):</strong> Specialization proceeds in a linear chain (`A` $\rightarrow$ `B : public A` $\rightarrow$ `C : public B`), organizing specialization into distinct, unambiguous hierarchical layers.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Q37 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q37 • 2 Marks</span>
-              <span>Write a program to demonstrate all the keywords used in Exception Handling.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <div class="code-container">
-              <pre><code>#include &lt;iostream&gt;
-#include &lt;stdexcept&gt;
-
-double divide(double a, double b) {
-    if (b == 0.0) throw std::runtime_error("Division by Zero!"); // 1. throw
-    return a / b;
-}
-
-int main() {
-    try { // 2. try
-        std::cout << divide(10.0, 0.0) << "\n";
-    } catch (const std::exception& e) { // 3. catch
-        std::cerr << "Caught Exception: " << e.what() << "\n";
-    }
-    return 0;
-}</code></pre>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q38 -->
-        <div class="accordion-item">
-          <div class="accordion-header">
-            <div class="accordion-question">
-              <span class="question-badge">Q38 • 2 Marks</span>
-              <span>Define and differentiate virtual and pure virtual functions with example.</span>
-            </div>
-            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </div>
-          <div class="accordion-content">
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr><th>Dimension</th><th>Virtual Function</th><th>Pure Virtual Function</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>Syntax</strong></td><td><code>virtual void draw() { /* default */ }</code></td><td><code>virtual void draw() = 0;</code></td></tr>
-                  <tr><td><strong>Implementation</strong></td><td>Has default base implementation</td><td>No base implementation</td></tr>
-                  <tr><td><strong>Class Status</strong></td><td>Class can be instantiated</td><td>Makes declaring class an Abstract Base Class</td></tr>
-                  <tr><td><strong>Derived Class</strong></td><td>Overriding is optional</td><td>Overriding is mandatory for instantiation</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Pagination -->
-      <div class="page-pagination">
-        <a href="unit5.html" class="pagination-btn">
-          <span class="pagination-label">Previous Unit</span>
-          <span class="pagination-title">← Unit V: Classes & Polymorphism</span>
-        </a>
-        <a href="7marks.html" class="pagination-btn next">
-          <span class="pagination-label">Next Bank</span>
-          <span class="pagination-title">7-Mark Questions Bank (69 Qs) →</span>
-        </a>
+      <!-- Q5 -->
+      <div class="question-item" data-unit="1" data-year="2022-23">
+        <div class="question-header">
+          <span class="q-badge">U1-Q05</span>
+          <span class="question-title">Define generosity.</span>
+          <span class="q-year">[2022-23]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> Generosity (commonly termed <em>genericity</em> or <em>generic programming</em>) is the ability to define software modules (classes, functions, algorithms) parameterized by data types, without binding them to concrete types at declaration time.</p>
+          <p><strong>Example:</strong> C++ templates allow a single <code>Stack&lt;T&gt;</code> class definition to instantiate type-safe stacks for integers (<code>Stack&lt;int&gt;</code>), strings (<code>Stack&lt;string&gt;</code>), and custom objects with zero runtime overhead.</p>
+        </div>
       </div>
 
-    </main>
-  </div>
-
-  <!-- Search Modal -->
-  <div class="search-modal-backdrop" id="search-modal-backdrop">
-    <div class="search-modal">
-      <div class="search-input-wrapper">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" class="search-input" id="search-input" placeholder="Search 2-mark questions..." autocomplete="off">
+      <!-- Q6 -->
+      <div class="question-item" data-unit="1" data-year="2022-23">
+        <div class="question-header">
+          <span class="q-badge">U1-Q06</span>
+          <span class="question-title">List the features of object oriented language.</span>
+          <span class="q-year">[2022-23]</span>
+        </div>
+        <div class="question-body">
+          <p>An object-oriented language provides direct syntax and runtime support for:</p>
+          <ol>
+            <li>Class and Object constructs (state + behavioral encapsulation).</li>
+            <li>Access specifiers (<code>public</code>, <code>private</code>, <code>protected</code>) enforcing information hiding.</li>
+            <li>Inheritance hierarchies (single, multiple, multilevel).</li>
+            <li>Polymorphism (overloading and dynamic virtual method tables).</li>
+            <li>Automatic object initialization and destruction (constructors/destructors, RAII).</li>
+            <li>Dynamic memory allocation and type-safe exception handling.</li>
+          </ol>
+        </div>
       </div>
-      <div class="search-results" id="search-results"></div>
-    </div>
-  </div>
 
-  <button class="back-to-top" id="back-to-top" title="Scroll to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
-  </button>
+      <!-- Q7 -->
+      <div class="question-item" data-unit="1" data-year="2023-24">
+        <div class="question-header">
+          <span class="q-badge">U1-Q07</span>
+          <span class="question-title">Describe the features of object-oriented languages?</span>
+          <span class="q-year">[2023-24]</span>
+        </div>
+        <div class="question-body">
+          <p>Object-oriented languages are characterized by: (1) <strong>Modularity</strong> via autonomous classes; (2) <strong>Message Passing</strong> as the sole medium for object communication; (3) <strong>Late Binding</strong> where function addresses are dynamically looked up at runtime via VTables; (4) <strong>Extensibility</strong> allowing new subclasses to be introduced without modifying legacy client code (Open-Closed Principle); and (5) <strong>Reusability</strong> through class libraries, generic templates, and inheritance.</p>
+        </div>
+      </div>
 
-  <script src="js/main.js"></script>
+      <!-- Q8 -->
+      <div class="question-item" data-unit="1" data-year="2023-24">
+        <div class="question-header">
+          <span class="q-badge">U1-Q08</span>
+          <span class="question-title">What is UML?</span>
+          <span class="q-year">[2023-24]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> The Unified Modeling Language (UML) is a standardized, general-purpose graphical modeling language maintained by the Object Management Group (OMG). It is designed for <em>visualizing</em>, <em>specifying</em>, <em>constructing</em>, and <em>documenting</em> the structural, behavioral, and architectural artifacts of software-intensive systems.</p>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="question-item" data-unit="1" data-year="2024-25">
+        <div class="question-header">
+          <span class="q-badge">U1-Q09</span>
+          <span class="question-title">Describe the significance of modeling in software engineering.</span>
+          <span class="q-year">[2024-25]</span>
+        </div>
+        <div class="question-body">
+          <p>Modeling provides a disciplined blueprint of software systems prior to expensive implementation. Its significance includes:</p>
+          <ul>
+            <li><strong>Complexity Management:</strong> Abstraction filters irrelevant implementation noise, highlighting architectural relationships.</li>
+            <li><strong>Stakeholder Communication:</strong> Unifies technical architects, programmers, and domain business clients under standard graphical semantics.</li>
+            <li><strong>Risk Mitigation:</strong> Uncovers design flaws, bottlenecks, and missing requirements early in the lifecycle.</li>
+            <li><strong>Code Synthesis & Verification:</strong> Serves as a direct blueprint for automatic code generation and test harness derivation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="question-item" data-unit="1" data-year="2024-25">
+        <div class="question-header">
+          <span class="q-badge">U1-Q10</span>
+          <span class="question-title">Define the conceptual model of UML.</span>
+          <span class="q-year">[2024-25]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> The conceptual model of UML comprises three core foundational components:</p>
+          <ol>
+            <li><strong>UML Building Blocks:</strong> Things (Structural, Behavioral, Grouping, Annotational), Relationships (Dependency, Association, Generalization, Realization), and Diagrams (Structural and Behavioral).</li>
+            <li><strong>Rules:</strong> Syntactic and semantic rules governing well-formed models (names, scope, visibility, integrity, execution).</li>
+            <li><strong>Common Mechanisms:</strong> Specifications, Adornments, Common Divisions, and Extensibility Mechanisms (Stereotypes, Tagged Values, Constraints).</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Q11 -->
+      <div class="question-item" data-unit="1" data-year="2025-26">
+        <div class="question-header">
+          <span class="q-badge">U1-Q11</span>
+          <span class="question-title">State the principles of modeling.</span>
+          <span class="q-year">[2025-26]</span>
+        </div>
+        <div class="question-body">
+          <p>The four fundamental principles of modeling (Booch, Rumbaugh, Jacobson) are:</p>
+          <ol>
+            <li>The choice of what models to create has a profound influence on how a problem is attacked and how a solution is shaped.</li>
+            <li>Every model may be expressed at different levels of precision.</li>
+            <li>The best models are connected to reality.</li>
+            <li>No single model is sufficient. Every non-trivial system is best approached through a small set of nearly independent views.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Q12 -->
+      <div class="question-item" data-unit="1" data-year="2025-26">
+        <div class="question-header">
+          <span class="q-badge">U1-Q12</span>
+          <span class="question-title">Mention any two advantages of object-oriented approach.</span>
+          <span class="q-year">[2025-26]</span>
+        </div>
+        <div class="question-body">
+          <ol>
+            <li><strong>Modular Reusability and Maintainability:</strong> Objects act as autonomous components. Code can be extended via inheritance and composition without modifying or destabilizing validated existing modules.</li>
+            <li><strong>Direct Domain Mapping & Fault Isolation:</strong> Software entities directly mirror real-world domain concepts. Encapsulation confines data corruption and operational faults strictly within the class boundary.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Q13 -->
+      <div class="question-item" data-unit="1" data-year="2025-26">
+        <div class="question-header">
+          <span class="q-badge">U1-Q13</span>
+          <span class="question-title">What is encapsulation in object-oriented design?</span>
+          <span class="q-year">[2025-26]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> In object-oriented design, encapsulation is the architectural technique of co-locating data attributes and their associated behavioral operations inside a unified boundary (the class), while enforcing access restrictions via private/protected boundaries to prevent arbitrary external state mutation.</p>
+        </div>
+      </div>
+
+      <!-- ================= UNIT 2 QUESTIONS ================= -->
+      <h2>Unit 2: Basic Structural, Behavioural & Architectural Modeling (2 Marks)</h2>
+
+      <!-- Q14 -->
+      <div class="question-item" data-unit="2" data-year="2020-21">
+        <div class="question-header">
+          <span class="q-badge">U2-Q01</span>
+          <span class="question-title">Define and Differentiate Link and Association with example.</span>
+          <span class="q-year">[2020-21]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Link:</strong> A physical or conceptual connection between specific object instances at runtime (e.g., <code><u>john:Employee</u> ——— <u>itDept:Department</u></code>).</p>
+          <p><strong>Association:</strong> A class-level structural abstraction describing a group of links with common semantics, roles, and multiplicity constraints (e.g., <code>Employee (1..*) ————— (1) Department</code>).</p>
+          <p><strong>Core Distinction:</strong> A link is an instance of an association, mirroring the exact relationship an object has to a class.</p>
+        </div>
+      </div>
+
+      <!-- Q15 -->
+      <div class="question-item" data-unit="2" data-year="2020-21">
+        <div class="question-header">
+          <span class="q-badge">U2-Q02</span>
+          <span class="question-title">Define and Differentiate Generalization and Inheritance with example.</span>
+          <span class="q-year">[2020-21]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Generalization:</strong> The conceptual/modeling relationship where a specialized classifier (subclass) shares the structure and behavior of a more general classifier (superclass) — an "is-a" relationship (e.g., <code>Dog is a Mammal</code>).</p>
+          <p><strong>Inheritance:</strong> The programming language implementation mechanism that executes generalization by passing down data fields and member functions to derived types (e.g., <code>class Dog : public Mammal</code>).</p>
+          <p><strong>Distinction:</strong> Generalization is an architectural analysis concept; inheritance is its syntactic code implementation.</p>
+        </div>
+      </div>
+
+      <!-- Q16 -->
+      <div class="question-item" data-unit="2" data-year="2020-21">
+        <div class="question-header">
+          <span class="q-badge">U2-Q03</span>
+          <span class="question-title">How it is different from multiple inheritance and modelled by using nested generalization?</span>
+          <span class="q-year">[2020-21]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Multiple Inheritance:</strong> A subclass directly inherits from two or more distinct superclasses simultaneously, potentially triggering ambiguity (the Diamond Problem).</p>
+          <p><strong>Nested Generalization:</strong> Decomposes complex classification taxonomies into hierarchical, orthogonal single-inheritance tiers using <em>discriminators</em> (e.g., classifying <code>Vehicle</code> first by <code>PropulsionType [Land, Water]</code> and then sub-classifying by <code>UsageType [Commercial, Private]</code>). This eliminates the syntactic ambiguity and VTable overhead of multiple inheritance.</p>
+        </div>
+      </div>
+
+      <!-- Q17 -->
+      <div class="question-item" data-unit="2" data-year="2021-22">
+        <div class="question-header">
+          <span class="q-badge">U2-Q04</span>
+          <span class="question-title">Differentiate between link and association.</span>
+          <span class="q-year">[2021-22]</span>
+        </div>
+        <div class="question-body">
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>Dimension</th><th>Link</th><th>Association</th></tr></thead>
+              <tbody>
+                <tr><td>Abstraction Level</td><td>Concrete instance relationship (Object level).</td><td>Conceptual blueprint (Class level).</td></tr>
+                <tr><td>Notation</td><td>Solid line between underlined instances, no multiplicity.</td><td>Solid line between classes with multiplicity & roles.</td></tr>
+                <tr><td>Lifespan</td><td>Created/destroyed dynamically during program execution.</td><td>Static throughout application lifetime.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q18 -->
+      <div class="question-item" data-unit="2" data-year="2021-22">
+        <div class="question-header">
+          <span class="q-badge">U2-Q05</span>
+          <span class="question-title">Draw a state diagram for electric bulb.</span>
+          <span class="q-year">[2021-22]</span>
+        </div>
+        <div class="question-body">
+          <p>The statechart for an electric bulb models two discrete states (<code>OFF</code>, <code>ON</code>) governed by toggle switch events:</p>
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 540 120" width="540" height="120" xmlns="http://www.w3.org/2000/svg">
+              <!-- Initial State -->
+              <circle cx="30" cy="60" r="10" fill="#0969da"/>
+              <line x1="40" y1="60" x2="80" y2="60" stroke="#0969da" stroke-width="1.5"/>
+              
+              <!-- State OFF -->
+              <rect x="80" y="35" width="100" height="50" rx="4" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="115" y="65" fill="#0f172a" font-weight="bold" font-size="12">OFF</text>
+
+              <!-- Forward Transition: switch_on -->
+              <path d="M 180 45 Q 260 15 340 45" fill="none" stroke="#1a7f37" stroke-width="1.5"/>
+              <polygon points="340,45 330,40 332,50" fill="#1a7f37"/>
+              <text x="220" y="25" fill="#1a7f37" font-size="10">switch_on()</text>
+
+              <!-- State ON -->
+              <rect x="340" y="35" width="100" height="50" rx="4" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="375" y="65" fill="#0f172a" font-weight="bold" font-size="12">ON</text>
+
+              <!-- Backward Transition: switch_off -->
+              <path d="M 340 75 Q 260 105 180 75" fill="none" stroke="#cf222e" stroke-width="1.5"/>
+              <polygon points="180,75 190,70 188,80" fill="#cf222e"/>
+              <text x="220" y="105" fill="#cf222e" font-size="10">switch_off()</text>
+            </svg>
+            <div class="diagram-caption">Figure 2.5: Electric Bulb Finite State Machine Diagram</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q19 -->
+      <div class="question-item" data-unit="2" data-year="2022-23">
+        <div class="question-header">
+          <span class="q-badge">U2-Q06</span>
+          <span class="question-title">List the features of Component Diagram.</span>
+          <span class="q-year">[2022-23]</span>
+        </div>
+        <div class="question-body">
+          <p>Key features of a UML Component Diagram include:</p>
+          <ul>
+            <li>Models executable binaries, software libraries (DLLs, JARs), database schemas, and source code files.</li>
+            <li>Visualizes <strong>Provided Interfaces</strong> using lollipop notation (<code>—○</code>) specifying services the component publishes.</li>
+            <li>Visualizes <strong>Required Interfaces</strong> using socket notation (<code>—(</code>) specifying external services needed.</li>
+            <li>Captures high-level software modularity, packaging dependencies, and component contracts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Q20 -->
+      <div class="question-item" data-unit="2" data-year="2022-23">
+        <div class="question-header">
+          <span class="q-badge">U2-Q07</span>
+          <span class="question-title">Explain the existence of swimlanes in activity diagram.</span>
+          <span class="q-year">[2022-23]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition & Role:</strong> Swimlanes partition an activity diagram into vertical or horizontal column zones. While standard activity diagrams depict <em>what</em> actions occur sequentially or concurrently, swimlanes explicitly identify <em>who</em> (which department, actor, subsystem, or business role) is responsible for executing each action. This establishes accountability across cross-functional business processes.</p>
+        </div>
+      </div>
+
+      <!-- Q21 -->
+      <div class="question-item" data-unit="2" data-year="2023-24">
+        <div class="question-header">
+          <span class="q-badge">U2-Q08</span>
+          <span class="question-title">Describe generalization.</span>
+          <span class="q-year">[2023-24]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> Generalization is a taxonomic relationship between a general classifier (parent/superclass) and one or more specific classifiers (child/subclasses). The child inherits all attributes, operations, and relationships of the parent, and may add new features or override inherited operations (polymorphism). Rendered as a solid line with a hollow triangular arrowhead pointing to the superclass.</p>
+        </div>
+      </div>
+
+      <!-- Q22 -->
+      <div class="question-item" data-unit="2" data-year="2024-25">
+        <div class="question-header">
+          <span class="q-badge">U2-Q09</span>
+          <span class="question-title">Create a package diagram for a modular library management system.</span>
+          <span class="q-year">[2024-25]</span>
+        </div>
+        <div class="question-body">
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 580 180" width="580" height="180" xmlns="http://www.w3.org/2000/svg">
+              <!-- UI Package -->
+              <rect x="20" y="20" width="50" height="15" fill="#f0f3f6" stroke="#0f172a"/>
+              <rect x="20" y="35" width="140" height="70" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="35" y="75" fill="#0969da" font-weight="bold" font-size="12">UserInterface</text>
+              
+              <!-- Business Logic Package -->
+              <rect x="220" y="20" width="50" height="15" fill="#f0f3f6" stroke="#0f172a"/>
+              <rect x="220" y="35" width="150" height="70" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="235" y="65" fill="#0969da" font-weight="bold" font-size="12">Catalog &amp; Loan</text>
+              <text x="245" y="85" fill="#484f58" font-size="10">&lt;&lt;subsystem&gt;&gt;</text>
+
+              <!-- Data Access Package -->
+              <rect x="420" y="20" width="50" height="15" fill="#f0f3f6" stroke="#0f172a"/>
+              <rect x="420" y="35" width="140" height="70" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="440" y="75" fill="#0969da" font-weight="bold" font-size="12">DataRepository</text>
+
+              <!-- Dependency Arrows -->
+              <line x1="160" y1="70" x2="220" y2="70" stroke="#0f172a" stroke-dasharray="4"/>
+              <polyline points="212,65 220,70 212,75" fill="none" stroke="#0f172a"/>
+              <text x="175" y="60" fill="#484f58" font-size="9">&lt;&lt;import&gt;&gt;</text>
+
+              <line x1="370" y1="70" x2="420" y2="70" stroke="#0f172a" stroke-dasharray="4"/>
+              <polyline points="412,65 420,70 412,75" fill="none" stroke="#0f172a"/>
+              <text x="380" y="60" fill="#484f58" font-size="9">&lt;&lt;access&gt;&gt;</text>
+            </svg>
+            <div class="diagram-caption">Figure 2.6: Package Diagram for Modular Library Management System</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q23 -->
+      <div class="question-item" data-unit="2" data-year="2024-25">
+        <div class="question-header">
+          <span class="q-badge">U2-Q10</span>
+          <span class="question-title">Explain how use case diagrams help in capturing system requirements.</span>
+          <span class="q-year">[2024-25]</span>
+        </div>
+        <div class="question-body">
+          <p>Use case diagrams capture functional requirements by:</p>
+          <ul>
+            <li><strong>Establishing System Boundaries:</strong> Separates internal system services from external actors (users, devices, external software).</li>
+            <li><strong>Goal-Oriented Specification:</strong> Models the discrete business value delivered to actors without committing to premature user interface or database designs.</li>
+            <li><strong>Scoping & Verification:</strong> Acts as an agreement baseline between clients and developers, providing direct traceability for integration acceptance test suites.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Q24 -->
+      <div class="question-item" data-unit="2" data-year="2025-26">
+        <div class="question-header">
+          <span class="q-badge">U2-Q11</span>
+          <span class="question-title">Define association and aggregation.</span>
+          <span class="q-year">[2025-26]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Association:</strong> A general bi-directional structural relationship specifying that instances of one class are connected to and interact with instances of another (e.g., <code>Patient</code> books <code>Appointment</code>).</p>
+          <p><strong>Aggregation:</strong> A specialized form of association denoting a "whole-part" relationship where the "part" can exist independently of the "whole" (weak lifecycle binding). Rendered with a hollow diamond at the whole class end (e.g., <code>Department &lt;&gt;———— Professor</code>; if the department disbands, the professors continue to exist).</p>
+        </div>
+      </div>
+
+      <!-- ================= UNIT 3 QUESTIONS ================= -->
+      <h2>Unit 3: Object Oriented Analysis, Design & Programming Style (2 Marks)</h2>
+
+      <!-- Q25 -->
+      <div class="question-item" data-unit="3" data-year="2020-21">
+        <div class="question-header">
+          <span class="q-badge">U3-Q01</span>
+          <span class="question-title">Define and differentiate Procedural and OOP with example.</span>
+          <span class="q-year">[2020-21]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Procedural Programming:</strong> Focuses on sequential algorithms and step-by-step procedures manipulating passive data structures. Example: C program calling <code>calculateArea(&amp;rect)</code> with global variables.</p>
+          <p><strong>Object-Oriented Programming (OOP):</strong> Focuses on autonomous entities encapsulating both internal state and behavior. Example: C++ program invoking <code>rect.calculateArea()</code> via message passing.</p>
+          <p><strong>Distinction:</strong> Procedural separates functions from data; OOP tightly integrates them, preventing unauthorized data corruption.</p>
+        </div>
+      </div>
+
+      <!-- Q26 -->
+      <div class="question-item" data-unit="3" data-year="2023-24">
+        <div class="question-header">
+          <span class="q-badge">U3-Q02</span>
+          <span class="question-title">Differentiate between structured approach and object oriented approach.</span>
+          <span class="q-year">[2023-24]</span>
+        </div>
+        <div class="question-body">
+          <div class="table-wrapper">
+            <table>
+              <thead><tr><th>Criteria</th><th>Structured Approach (SA/SD)</th><th>Object-Oriented Approach (OOAD)</th></tr></thead>
+              <tbody>
+                <tr><td>Core Focus</td><td>Processes and data transformation flow.</td><td>Domain entities (objects) and interactions.</td></tr>
+                <tr><td>Lifecycle Continuity</td><td>Discontinuous (semantic gap between DFD and Structure Chart).</td><td>Continuous (same object abstractions span Analysis, Design, Code).</td></tr>
+                <tr><td>Maintainability</td><td>Low; data modification breaks dependent procedures.</td><td>High; changes isolated within class boundaries.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q27 -->
+      <div class="question-item" data-unit="3" data-year="2023-24">
+        <div class="question-header">
+          <span class="q-badge">U3-Q03</span>
+          <span class="question-title">What are the three models in OMT?</span>
+          <span class="q-year">[2023-24]</span>
+        </div>
+        <div class="question-body">
+          <p>Rumbaugh's Object Modeling Technique (OMT) defines:</p>
+          <ol>
+            <li><strong>Object Model:</strong> Captures static structure, classes, attributes, operations, and associations (UML Class Diagram).</li>
+            <li><strong>Dynamic Model:</strong> Captures time-ordered control, states, transitions, and reactive events (UML Statechart/Interaction Diagram).</li>
+            <li><strong>Functional Model:</strong> Captures data transformations and algorithmic computations (Data Flow Diagram - DFD).</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Q28 -->
+      <div class="question-item" data-unit="3" data-year="2023-24">
+        <div class="question-header">
+          <span class="q-badge">U3-Q04</span>
+          <span class="question-title">What do you mean by the optimization of design?</span>
+          <span class="q-year">[2023-24]</span>
+        </div>
+        <div class="question-body">
+          <p><strong>Definition:</strong> Design optimization is the phase within Object Design where the analysis models (which focus purely on logical correctness and domain fidelity) are re-engineered to satisfy real-world performance constraints, including throughput, memory footprint, response time, and computational efficiency.</p>
+          <p><strong>Primary Tactics:</strong> Caching derived attributes, introducing redundant associative links for fast traversal, optimizing algorithmic complexity, and rearranging execution paths.</p>
+        </div>
+      </div>
+
+      <!-- Q29 -->
+      <div class="question-item" data-unit="3" data-year="2024-25">
+        <div class="question-header">
+          <span class="q-badge">U3-Q05</span>
+          <span class="question-title">Describe the role of inheritance adjustment in design optimization.</span>
+          <span class="q-year">[2024-25]</span>
+        </div>
+        <div class="question-body">
+          <p>Inheritance adjustment optimizes class hierarchies during detailed design through:</p>
+          <ul>
+            <li><strong>Factoring Common Behavior:</strong> Consolidating identical attributes and methods discovered across disparate subclasses into a shared abstract base class to eliminate duplicate code.</li>
+            <li><strong>Flattening Redundant Superclasses:</strong> Collapsing intermediate trivial abstract layers that add VTable dispatch indirection without distinct behavioral variance.</li>
+            <li><strong>Converting Misused Inheritance to Composition:</strong> Replacing "is-a" with "has-a" when only partial functionality is needed, preventing fragile base class coupling.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Q30 -->
+      <div class="question-item" data-unit="3" data-year="2025-26">
+        <div class="question-header">
+          <span class="q-badge">U3-Q06</span>
+          <span class="question-title">How are classes translated into data structures?</span>
+          <span class="q-year">[2025-26]</span>
+        </div>
+        <div class="question-body">
+          <p>During object design and implementation, abstract classes are mapped to physical programming constructs:</p>
+          <ul>
+            <li><strong>Class Entities:</strong> Translated into C/C++ <code>struct</code>s or class records holding field offsets in memory.</li>
+            <li><strong>One-to-One Associations:</strong> Mapped to direct object pointers or reference handles.</li>
+            <li><strong>One-to-Many / Many-to-Many Associations:</strong> Mapped to dynamic collection data structures (arrays, linked lists, balanced binary trees, or hash tables based on query frequency).</li>
+            <li><strong>Polymorphic Methods:</strong> Mapped to function pointer dispatch tables (VTables).</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>Object-Oriented System Design (BCS054 / KCS054) Academic Guide</span>
+    <span class="footer-meta">2-Mark Solved Bank (30 Questions)</span>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Short Theory Compendium (Units 1, 2, 3) | BCS054 Academic Guide</title>
+  <meta name="description" content="Comprehensive theoretical compendium of all 2-mark topics, core definitions, architectural principles, and foundational concepts across Units 1, 2, and 3.">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span>OOSD.GUIDE</span>
+        <span class="brand-badge">Short Theory Compendium</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Index</a>
+        <a href="short_theory.html" class="active">Short Theory</a>
+        <a href="unit1.html">Unit 1 Theory</a>
+        <a href="unit2.html">Unit 2 Theory</a>
+        <a href="unit3.html">Unit 3 Theory</a>
+        <a href="2marks.html">2-Marks Bank</a>
+        <a href="7marks.html">7/10-Marks Bank</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="layout-with-sidebar">
+      <aside class="sidebar">
+        <h3>Short Theory Navigator</h3>
+        <ul>
+          <li><a href="#u1-theory">Unit 1: Foundations & UML</a></li>
+          <li><a href="#u1-identity">1.1 Object Identity</a></li>
+          <li><a href="#u1-encapsulation">1.2 Encapsulation & Hiding</a></li>
+          <li><a href="#u1-polymorphism">1.3 Polymorphism Modes</a></li>
+          <li><a href="#u1-generosity">1.4 Generosity (Genericity)</a></li>
+          <li><a href="#u1-modeling">1.5 Principles of Modeling</a></li>
+          <li><a href="#u1-uml-blocks">1.6 Conceptual Model Blocks</a></li>
+          <li><a href="#u1-views">1.7 4+1 View Architecture</a></li>
+          <li><a href="#u2-theory">Unit 2: Modeling Notations</a></li>
+          <li><a href="#u2-classes">2.1 Class vs Object</a></li>
+          <li><a href="#u2-visibility">2.2 Visibility Specifiers</a></li>
+          <li><a href="#u2-links">2.3 Link vs Association</a></li>
+          <li><a href="#u2-multiplicity">2.4 Multiplicity Cardinality</a></li>
+          <li><a href="#u2-agg-comp">2.5 Aggregation vs Composition</a></li>
+          <li><a href="#u2-gen-inh">2.6 Generalization vs Inheritance</a></li>
+          <li><a href="#u2-nested">2.7 Nested Generalization</a></li>
+          <li><a href="#u2-usecase">2.8 Include vs Extend</a></li>
+          <li><a href="#u2-activity">2.9 Swimlanes & Concurrency</a></li>
+          <li><a href="#u2-state">2.10 State Machine Transitions</a></li>
+          <li><a href="#u2-arch">2.11 Components & Deployment</a></li>
+          <li><a href="#u3-theory">Unit 3: Design & Optimization</a></li>
+          <li><a href="#u3-stages">3.1 System vs Object Design</a></li>
+          <li><a href="#u3-omt">3.2 Rumbaugh OMT 3 Models</a></li>
+          <li><a href="#u3-opt">3.3 Design Optimization Rules</a></li>
+          <li><a href="#u3-adj">3.4 Inheritance Adjustment</a></li>
+          <li><a href="#u3-ds">3.5 Class-to-Data-Structure</a></li>
+          <li><a href="#u3-paradigms">3.6 SA/SD vs JSD vs OOAD</a></li>
+          <li><a href="#u3-c-map">3.7 Mapping OOP to C</a></li>
+          <li><a href="#u3-qualities">3.8 Robustness, Extensibility, Reuse</a></li>
+        </ul>
+      </aside>
+
+      <article>
+        <h1>Short Theory Compendium: Units 1, 2, and 3</h1>
+        <p>This dedicated reference consolidates every short topic, theoretical concept, formal definition, architectural rule, and mathematical distinction across the BCS054 syllabus. Formatted for high revision efficiency and exam accuracy.</p>
+
+        <!-- ================= UNIT 1 SHORT THEORY ================= -->
+        <section id="u1-theory">
+          <h2>Unit 1: Introduction to Object Orientation & UML (Short Concepts)</h2>
+
+          <div class="topic-card" id="u1-identity">
+            <h3>1.1 Object Identity (OID)</h3>
+            <p><strong>Formal Definition:</strong> Object identity is the inherent, immutable characteristic of an object distinguishing it from all other computational entities, completely independent of its state values, class type, or variable name binding.</p>
+            <ul>
+              <li><strong>State vs. Identity:</strong> Two distinct objects can possess identical attribute values (e.g., two bank accounts each having holder "Alice" and balance $1,000), yet remain non-identical.</li>
+              <li><strong>Equality (Value Match):</strong> <code>objA.equals(objB)</code> evaluates to <code>true</code> if attributes match.</li>
+              <li><strong>Identity (Equivalence):</strong> <code>&amp;objA == &amp;objB</code> evaluates to <code>true</code> strictly if both point to the identical physical memory address.</li>
+              <li><strong>Persistence:</strong> In relational databases, identity is enforced using surrogate primary keys (UUID, auto-increment integer IDs).</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u1-encapsulation">
+            <h3>1.2 Encapsulation vs. Information Hiding</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Dimension</th><th>Encapsulation</th><th>Information Hiding (Parnas Principle)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Core Purpose</strong></td><td>Syntactic bundling of data state and operations inside a class.</td><td>Concealing internal representations behind public abstract interfaces.</td></tr>
+                  <tr><td><strong>Mechanism</strong></td><td>Class constructs, structs, modules.</td><td>Access specifiers (<code>private</code>, <code>protected</code>), opaque pointers.</td></tr>
+                  <tr><td><strong>Benefit</strong></td><td>High cohesion and conceptual modularity.</td><td>System security, fault isolation, and low coupling.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="topic-card" id="u1-polymorphism">
+            <h3>1.3 Polymorphism Classifications</h3>
+            <p>Polymorphism allows a uniform interface invocation to trigger distinct type-specific operations:</p>
+            <ul>
+              <li><strong>Compile-Time (Static) Polymorphism:</strong> Resolved at compilation via early binding. Includes function overloading, operator overloading, and template parameterization. Carries zero runtime latency.</li>
+              <li><strong>Runtime (Dynamic) Polymorphism:</strong> Resolved at execution via late binding using base pointers/references to derived classes with <code>virtual</code> functions. Implemented via Virtual Method Tables (VTable) and <code>vptr</code> indirection.</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u1-generosity">
+            <h3>1.4 Generosity (Genericity / Parametric Polymorphism)</h3>
+            <p><strong>Formal Definition:</strong> The software engineering discipline of declaring classes, interfaces, and algorithms parameterized by data types, allowing maximum algorithmic reuse with strict compile-time type safety.</p>
+            <ul>
+              <li><strong>C++ Implementation:</strong> Monomorphized templates (e.g., <code>template&lt;typename T&gt; class Vector { ... };</code>). The compiler instantiates distinct machine code for each unique type argument, resulting in zero runtime indirection overhead.</li>
+              <li><strong>Primary Advantages:</strong> Eliminates duplicate boilerplate algorithms, prevents unsafe void-pointer casting, and catches type mismatches at compile time.</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u1-modeling">
+            <h3>1.5 The Four Principles of Modeling (Booch, Rumbaugh, Jacobson)</h3>
+            <ol>
+              <li><strong>The choice of model dictates how problems are attacked:</strong> Choosing an object model highlights domain entities and message contracts; choosing a functional data flow model highlights procedural pipelines.</li>
+              <li><strong>Models exist at multiple precision levels:</strong> Early conceptual models omit types to explore architecture; detailed design models specify full visibility, return types, and exceptions for code generation.</li>
+              <li><strong>The best models are connected to reality:</strong> Abstractions must directly mirror the semantics and topology of real-world domain requirements.</li>
+              <li><strong>No single model is sufficient:</strong> Non-trivial systems demand a small set of orthogonal views (static class structure, temporal sequence, reactive statechart, deployment topology).</li>
+            </ol>
+          </div>
+
+          <div class="topic-card" id="u1-uml-blocks">
+            <h3>1.6 Conceptual Model of UML: Building Blocks & Extensibility</h3>
+            <p>The conceptual model of UML consists of three pillars:</p>
+            <ul>
+              <li><strong>Things:</strong> Structural (Class, Interface, Component, Node), Behavioral (Interaction, State Machine), Grouping (Package), Annotational (Note).</li>
+              <li><strong>Relationships:</strong> Association (solid line), Dependency (dashed line with arrow), Generalization (solid line with hollow triangle), Realization (dashed line with hollow triangle).</li>
+              <li><strong>Extensibility Mechanisms:</strong>
+                <ul>
+                  <li><em>Stereotypes (<code>&lt;&lt;...&gt;&gt;</code>):</em> Extends UML vocabulary with new model element semantics (e.g., <code>&lt;&lt;interface&gt;&gt;</code>, <code>&lt;&lt;entity&gt;&gt;</code>).</li>
+                  <li><em>Tagged Values (<code>{tag = value}</code>):</em> Adds metadata attributes to elements (e.g., <code>{author = "Rishi", version = 2.1}</code>).</li>
+                  <li><em>Constraints (<code>{expression}</code>):</em> Declares semantic rules and domain invariants (e.g., <code>{ordered}</code>, <code>{balance &gt;= 0}</code>).</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u1-views">
+            <h3>1.7 Kruchten's 4+1 View Architectural Model</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>View</th><th>Target Stakeholder</th><th>Concerns Addressed</th><th>Primary UML Diagrams</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Use Case View (+1)</strong></td><td>End-users, Analysts</td><td>Functional requirements & system boundaries</td><td>Use Case, Activity Diagrams</td></tr>
+                  <tr><td><strong>Logical View</strong></td><td>Domain Architects, Developers</td><td>System vocabulary, classes, abstractions</td><td>Class, Object Diagrams</td></tr>
+                  <tr><td><strong>Process View</strong></td><td>System Integrators</td><td>Concurrency, threads, performance, IPC</td><td>Sequence, State Machine Diagrams</td></tr>
+                  <tr><td><strong>Implementation View</strong></td><td>Programmers, Build Engineers</td><td>Source code files, binary packages, DLLs</td><td>Component, Package Diagrams</td></tr>
+                  <tr><td><strong>Deployment View</strong></td><td>DevOps, Network Engineers</td><td>Physical hardware nodes, network topologies</td><td>Deployment Diagrams</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= UNIT 2 SHORT THEORY ================= -->
+        <section id="u2-theory">
+          <h2>Unit 2: Basic Structural, Behavioural & Architectural Modeling (Short Concepts)</h2>
+
+          <div class="topic-card" id="u2-classes">
+            <h3>2.1 Class vs. Object Diagram</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Dimension</th><th>Class Diagram</th><th>Object Diagram</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Nature</strong></td><td>Static schema blueprint; represents all valid system states.</td><td>Runtime snapshot at discrete time instant $t$.</td></tr>
+                  <tr><td><strong>Labeling</strong></td><td>Plain class name in top compartment (e.g., <code>Account</code>).</td><td>Underlined instance label: <code><u>acc1:Account</u></code>.</td></tr>
+                  <tr><td><strong>Attributes</strong></td><td>Attribute names and data types (e.g., <code>balance: double</code>).</td><td>Explicit literal state values (e.g., <code>balance = 5400.00</code>).</td></tr>
+                  <tr><td><strong>Connections</strong></td><td>Associations with multiplicity constraints (<code>1..*</code>).</td><td>Concrete links without multiplicity notation.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="topic-card" id="u2-visibility">
+            <h3>2.2 Visibility Specifiers</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Glyph</th><th>Access Level</th><th>Scope of Accessibility</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>+</code></td><td><strong>Public</strong></td><td>Visible and accessible to all classifiers system-wide.</td></tr>
+                  <tr><td><code>-</code></td><td><strong>Private</strong></td><td>Accessible strictly within declaring class scope.</td></tr>
+                  <tr><td><code>#</code></td><td><strong>Protected</strong></td><td>Accessible within class and all derived subclasses.</td></tr>
+                  <tr><td><code>~</code></td><td><strong>Package</strong></td><td>Accessible by classifiers within the same namespace package.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="topic-card" id="u2-links">
+            <h3>2.3 Link vs. Association</h3>
+            <p><strong>Link:</strong> A physical or conceptual tuple connection between concrete object instances at runtime (e.g., <code><u>alice:Customer</u> ——— <u>acc101:Account</u></code>). Contains no multiplicity.</p>
+            <p><strong>Association:</strong> A class-level structural descriptor encompassing a collection of links sharing identical semantics, role names, and multiplicity cardinalities (e.g., <code>Customer (1) ————— (1..*) Account</code>).</p>
+          </div>
+
+          <div class="topic-card" id="u2-multiplicity">
+            <h3>2.4 Multiplicity & Quantification</h3>
+            <ul>
+              <li><code>1</code> or <code>1..1</code>: Exactly one instance.</li>
+              <li><code>0..1</code>: Optional (zero or one instance).</li>
+              <li><code>*</code> or <code>0..*</code>: Zero or more instances (arbitrary collection).</li>
+              <li><code>1..*</code>: At least one instance (non-empty collection).</li>
+              <li><code>m..n</code>: Specified discrete bounded range (e.g., <code>2..4</code> players).</li>
+              <li><strong>Qualified Association (Quantification):</strong> Attaches an indexing key attribute (e.g., <code>[accountNumber]</code>) to reduce target cardinality from <code>0..*</code> down to <code>0..1</code>.</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u2-agg-comp">
+            <h3>2.5 Aggregation vs. Composition</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Facet</th><th>Aggregation (Shared)</th><th>Composition (Composite)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Semantics</strong></td><td>"Has-a" weak whole-part relationship.</td><td>"Contains" strong whole-part ownership.</td></tr>
+                  <tr><td><strong>Lifetime Coupling</strong></td><td>Parts have independent lifecycles; survive whole deletion.</td><td>Parts live and die with the whole (cascading delete).</td></tr>
+                  <tr><td><strong>UML Symbol</strong></td><td>Hollow diamond at whole end (<code>&lt;&gt;—</code>).</td><td>Filled solid diamond at whole end (<code>&lt;*>-</code>).</td></tr>
+                  <tr><td><strong>Real Example</strong></td><td>Department and Professors (professors survive).</td><td>Building and Rooms (destroying building destroys rooms).</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="topic-card" id="u2-gen-inh">
+            <h3>2.6 Generalization vs. Inheritance</h3>
+            <p><strong>Generalization:</strong> An architectural relationship where a child classifier (subclass) inherits attributes, operations, and relationships from a parent classifier (superclass) — an conceptual "is-a" taxonomy.</p>
+            <p><strong>Inheritance:</strong> The language-level implementation mechanism that executes generalization by allocating base class memory offsets and linking VTables in derived types.</p>
+          </div>
+
+          <div class="topic-card" id="u2-nested">
+            <h3>2.7 Nested Generalization & Discriminators</h3>
+            <p>Multiple inheritance combines two or more base classes simultaneously, risking ambiguity (the Diamond Problem). <strong>Nested Generalization</strong> decomposes complex taxonomies into single-inheritance tiers using <em>discriminators</em> (e.g., classifying <code>Vehicle</code> by discriminator <code>environment [Land, Water]</code>, then sub-classifying by <code>usage [Commercial, Private]</code>).</p>
+          </div>
+
+          <div class="topic-card" id="u2-usecase">
+            <h3>2.8 Use Case Relationships: Include vs. Extend</h3>
+            <ul>
+              <li><strong><code>&lt;&lt;include&gt;&gt;</code>:</strong> Mandatory dependency. The base use case unconditionally invokes the included use case to complete its functional goal (e.g., <em>Checkout</em> includes <em>Validate Payment</em>).</li>
+              <li><strong><code>&lt;&lt;extend&gt;&gt;</code>:</strong> Optional dependency. The extending use case executes conditionally at a designated extension point under specific guard conditions (e.g., <em>Apply Coupon</em> extends <em>Checkout</em> only if coupons exist).</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u2-activity">
+            <h3>2.9 Activity Diagrams: Swimlanes & Concurrency</h3>
+            <ul>
+              <li><strong>Swimlanes:</strong> Column or row partitions organizing actions according to the specific domain actor, system module, or department responsible for executing them.</li>
+              <li><strong>Fork Bar:</strong> Solid synchronization line splitting a single procedural thread into two or more concurrent parallel threads.</li>
+              <li><strong>Join Bar:</strong> Solid synchronization line that waits for all incoming concurrent threads to complete before resuming sequential flow.</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u2-state">
+            <h3>2.10 State Machine Transitions</h3>
+            <p>Models the reactive lifecycle of an entity. Formal transition syntax:</p>
+            <p><code>Event (parameters) [Guard Condition] / Side-Effect Action</code></p>
+            <ul>
+              <li><code>Event</code>: External stimulus triggering the transition (e.g., <code>coinInserted(val)</code>).</li>
+              <li><code>Guard</code>: Boolean expression evaluated when event occurs (e.g., <code>[val &gt;= price]</code>).</li>
+              <li><code>Action</code>: Executable computational statement executed during transition (e.g., <code>/ dispenseItem()</code>).</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u2-arch">
+            <h3>2.11 Architectural Modeling: Component & Deployment</h3>
+            <p><strong>Component Diagram:</strong> Models modular software packages and interfaces. Visualizes <em>Provided Interfaces</em> (lollipop notation <code>—○</code>) specifying services published, and <em>Required Interfaces</em> (socket notation <code>—(</code>) specifying dependencies needed.</p>
+            <p><strong>Deployment Diagram:</strong> Models physical hardware execution topology. Depicts <em>Nodes</em> (3D cubic boxes representing servers, devices) and communication links (with protocols: HTTPS, TCP/IP).</p>
+          </div>
+        </section>
+
+        <!-- ================= UNIT 3 SHORT THEORY ================= -->
+        <section id="u3-theory">
+          <h2>Unit 3: OOD, Optimization & Programming Style (Short Concepts)</h2>
+
+          <div class="topic-card" id="u3-stages">
+            <h3>3.1 Stages of Object-Oriented Design (OOD)</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Stage</th><th>Architectural Scope</th><th>Primary Deliverables</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>System Design (Macro)</strong></td><td>High-level strategic architecture</td><td>Subsystems, concurrency strategy, data persistence, network topology, resource allocation.</td></tr>
+                  <tr><td><strong>Object Design (Micro)</strong></td><td>Detailed implementation blueprints</td><td>Algorithm selection, concrete data structures, access optimizations, API visibility enforcement.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="topic-card" id="u3-omt">
+            <h3>3.2 Rumbaugh's OMT 3 Models</h3>
+            <ul>
+              <li><strong>Object Model (Structure - "WHAT"):</strong> Captures static domain entities, attributes, and relationships using Class Diagrams.</li>
+              <li><strong>Dynamic Model (Control - "WHEN"):</strong> Captures temporal state changes and reactive events using Statecharts and Sequence Diagrams.</li>
+              <li><strong>Functional Model (Transformation - "HOW"):</strong> Captures mathematical computations and data mutations using Data Flow Diagrams (DFDs).</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u3-opt">
+            <h3>3.3 Design Optimization Strategies</h3>
+            <ol>
+              <li><strong>Redundant Associative Paths:</strong> Adding cached shortcut pointers to bypass deep traversal chains ($O(1)$ direct lookup vs $O(N)$ traversal).</li>
+              <li><strong>Caching Derived Attributes:</strong> Storing computed values (e.g., <code>totalPrice</code>, <code>gpa</code>) in memory when read queries heavily exceed write updates.</li>
+              <li><strong>Execution Path Rearrangement:</strong> Reordering boolean evaluation clauses so the most selective filters execute first.</li>
+            </ol>
+          </div>
+
+          <div class="topic-card" id="u3-adj">
+            <h3>3.4 Inheritance Adjustment</h3>
+            <ul>
+              <li><strong>Factoring Common Behavior:</strong> Consolidating identical attributes and methods discovered across disparate subclasses into a shared abstract base class.</li>
+              <li><strong>Flattening Hierarchies:</strong> Removing intermediate trivial abstract classes that add VTable dispatch indirection without behavioral variation.</li>
+              <li><strong>Delegation over Subclassing:</strong> Replacing misused inheritance with object composition when only partial functionality is required.</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u3-ds">
+            <h3>3.5 Translating Classes to Data Structures</h3>
+            <ul>
+              <li><strong>Class Entities:</strong> Translated into C/C++ <code>struct</code>s with contiguous field memory offsets.</li>
+              <li><strong>1-to-1 Associations:</strong> Mapped to direct object pointers or reference handles.</li>
+              <li><strong>1-to-Many / Many-to-Many Associations:</strong> Mapped to dynamic collection structures (dynamic arrays, linked lists, balanced binary trees, or hash tables).</li>
+              <li><strong>Virtual Methods:</strong> Mapped to function pointer dispatch tables (VTables).</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u3-paradigms">
+            <h3>3.6 SA/SD vs. JSD vs. OOAD</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Dimension</th><th>SA/SD (Structured)</th><th>JSD (Jackson)</th><th>OOAD (Object-Oriented)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Philosophical Basis</strong></td><td>Functional process decomposition</td><td>Real-world entity event histories</td><td>Encapsulated domain entities</td></tr>
+                  <tr><td><strong>Primary Model</strong></td><td>Data Flow Diagram (DFD)</td><td>Entity Structure Diagram (ESD)</td><td>Class, State, Sequence Diagrams</td></tr>
+                  <tr><td><strong>Lifecycle Continuity</strong></td><td>Discontinuous semantic gap</td><td>Entity modeling to concurrent network</td><td>Seamless across analysis to code</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="topic-card" id="u3-c-map">
+            <h3>3.7 Mapping OOP Constructs to Procedural C</h3>
+            <ul>
+              <li><strong>Classes:</strong> Mapped to C <code>typedef struct { ... } ClassName;</code>.</li>
+              <li><strong>Methods:</strong> Mapped to C functions receiving an explicit <code>self</code> pointer as their first argument: <code>void Class_method(ClassName* self, int arg);</code>.</li>
+              <li><strong>Inheritance:</strong> Base class struct embedded as the first member (at offset 0) of the derived struct.</li>
+              <li><strong>Polymorphism:</strong> Structs embed a pointer `vptr` referencing a static table of function pointers.</li>
+            </ul>
+          </div>
+
+          <div class="topic-card" id="u3-qualities">
+            <h3>3.8 Core Software Engineering Quality Attributes</h3>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Quality</th><th>Definition</th><th>Enforcement Mechanism</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Robustness</strong></td><td>Graceful error handling without unexpected process termination.</td><td>Constructor invariant validation, exception hierarchies, RAII.</td></tr>
+                  <tr><td><strong>Extensibility</strong></td><td>Ease of adding new features without modifying legacy code.</td><td>Open-Closed Principle, abstract interfaces, polymorphic dispatch.</td></tr>
+                  <tr><td><strong>Reusability</strong></td><td>Deploying existing modules across multiple systems.</td><td>Composition over inheritance, generic templates, modular packaging.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <span>Object-Oriented System Design (BCS054 / KCS054) Academic Guide</span>
+    <span class="footer-meta">Short Theory Compendium</span>
+  </footer>
+</body>
+</html>

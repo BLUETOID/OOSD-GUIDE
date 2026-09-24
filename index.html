@@ -1,298 +1,193 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BCS054: Object Oriented System Design with C++ | Complete Study Guide</title>
-  <meta name="description" content="Master study portal for BCS054 - Object Oriented System Design with C++. Complete 5-Unit curriculum, 107 Solved PYQs, Quick Revision Cheat Sheet, and Interactive Mock Exam.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <title>OOSD Academic Guide (BCS054 / KCS054) | Units 1, 2, 3</title>
+  <meta name="description" content="Minimalist, exam-focused study guide and solved previous year question repository for Object-Oriented System Design (BCS054/KCS054) Units 1, 2, and 3.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="reading-progress"></div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-left">
-      <a href="index.html" class="brand-link">
-        <div class="brand-logo">OO</div>
-        <div>
-          <span class="brand-title">BCS054</span>
-          <span class="brand-subtitle">Study Portal</span>
-        </div>
-      </a>
-    </div>
-
-    <nav class="header-nav">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="unit1.html" class="nav-link">Unit 1</a>
-      <a href="unit2.html" class="nav-link">Unit 2</a>
-      <a href="unit3.html" class="nav-link">Unit 3</a>
-      <a href="unit4.html" class="nav-link">Unit 4</a>
-      <a href="unit5.html" class="nav-link">Unit 5</a>
-      <a href="2marks.html" class="nav-link">2-Mark Qs (38)</a>
-      <a href="7marks.html" class="nav-link">7-Mark Qs (69)</a>
-      <a href="cheat-sheet.html" class="nav-link">Cheat Sheet</a>
-      <a href="quiz.html" class="nav-link">Mock Quiz</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="icon-button" id="search-btn" title="Search Syllabus (Ctrl+K)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      </button>
-      <button class="icon-button" id="theme-toggle" title="Toggle Theme">
-        <span id="theme-icon"></span>
-      </button>
-      <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" title="Menu">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </button>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span>OOSD.GUIDE</span>
+        <span class="brand-badge">BCS054 / KCS054</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Index</a>
+        <a href="short_theory.html">Short Theory</a>
+        <a href="unit1.html">Unit 1 Theory</a>
+        <a href="unit2.html">Unit 2 Theory</a>
+        <a href="unit3.html">Unit 3 Theory</a>
+        <a href="2marks.html">2-Marks Bank</a>
+        <a href="7marks.html">7/10-Marks Bank</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="course-badge">Course Code: BCS054 • Computer Science & Engineering</div>
-    <h1 class="hero-title">Object Oriented System Design with C++</h1>
-    <p class="hero-subtitle">
-      A comprehensive, university-grade study portal covering the full 5-Unit syllabus, visual UML diagrams, C++ memory models, 107 solved exam questions, quick revision notes, and interactive mock tests.
-    </p>
-    <div class="hero-actions">
-      <a href="unit1.html" class="btn btn-primary">Start Learning (Unit 1)</a>
-      <a href="2marks.html" class="btn btn-secondary">2-Mark Qs (38 Solved)</a>
-      <a href="7marks.html" class="btn btn-secondary">7-Mark Qs (69 Solved)</a>
-      <a href="cheat-sheet.html" class="btn btn-secondary">Revision Cheat Sheet</a>
-      <a href="quiz.html" class="btn btn-secondary">Interactive Quiz</a>
-    </div>
-  </section>
+  <main class="app-main">
+    <section>
+      <h1>Object-Oriented System Design: Academic Specification & Index</h1>
+      <p>Definitive, syllabus-aligned guide for Units 1, 2, and 3 covering theoretical foundations, design methodologies, and 100% solved previous year university exam questions spanning 2020 through 2026.</p>
 
-  <!-- Main Container -->
-  <div class="full-width-content">
-    
-    <!-- Quick Exam Prep Modules (2-Mark, 7-Mark, Cheat Sheet, Mock Quiz) -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem;">
-      
-      <!-- 2-Mark Bank Card -->
-      <div class="unit-card" style="border-color: var(--accent-primary);">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number" style="background: var(--accent-subtle);">Section A</span>
-            <span class="unit-weight">38 Solved Questions</span>
-          </div>
-          <h2 class="unit-card-title"><a href="2marks.html">2-Mark Question Bank</a></h2>
-          <p class="unit-card-desc">
-            Concise, high-scoring model answers with core definitions, bullet points, mini UML diagrams, and C++ snippets for all 38 university short questions.
-          </p>
-        </div>
-        <div class="unit-card-footer">
-          <a href="2marks.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Open 2-Mark Solved Bank (38 Qs) →</a>
-        </div>
+      <h2>Guide Architecture & Module Map</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Document</th>
+              <th>Scope & Syllabus Coverage</th>
+              <th>Question Weightage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Page 1</strong></td>
+              <td><a href="index.html">Index Page</a></td>
+              <td>Curriculum structural breakdown, syllabus mapping, and 6-year exam paper distribution.</td>
+              <td class="tabular-num">Meta / Index</td>
+            </tr>
+            <tr>
+              <td><strong>Page 2</strong></td>
+              <td><a href="unit1.html">Unit 1 Theory</a></td>
+              <td>Object orientation principles, object identity, encapsulation, polymorphism, genericity, modeling principles, UML conceptual model, 4+1 View architecture.</td>
+              <td class="tabular-num">~23 Marks / Paper</td>
+            </tr>
+            <tr>
+              <td><strong>Page 3</strong></td>
+              <td><a href="unit2.html">Unit 2 Theory</a></td>
+              <td>Basic structural modeling (classes, relationships, multiplicity, aggregation, generalization), interaction modeling (sequence & collaboration), behavioral modeling (use case, activity with swimlanes, state machine), and architectural modeling (component & deployment).</td>
+              <td class="tabular-num">~28 Marks / Paper</td>
+            </tr>
+            <tr>
+              <td><strong>Page 4</strong></td>
+              <td><a href="unit3.html">Unit 3 Theory</a></td>
+              <td>Object-Oriented Design (OOD) stages, Rumbaugh OMT 3-model integration, design optimization (algorithm, control, inheritance adjustment), physical packaging, documentation design, SA/SD vs JSD vs OOAD, mapping OOP to procedural C.</td>
+              <td class="tabular-num">~25 Marks / Paper</td>
+            </tr>
+            <tr>
+              <td><strong>Page 5</strong></td>
+              <td><a href="short_theory.html">Short Theory Compendium</a></td>
+              <td>Comprehensive theoretical compendium covering every 2-mark syllabus topic, formal definitions, and architectural principles across Units 1, 2, and 3.</td>
+              <td class="tabular-num">10–14 Marks</td>
+            </tr>
+            <tr>
+              <td><strong>Page 6</strong></td>
+              <td><a href="2marks.html">2-Mark Solved Bank</a></td>
+              <td>30 university 2-mark questions (2020–2026) solved with technical definitions, structural characteristics, mini-diagrams, and scoring rubrics.</td>
+              <td class="tabular-num">14–20 Marks (Sec A)</td>
+            </tr>
+            <tr>
+              <td><strong>Page 7</strong></td>
+              <td><a href="7marks.html">Long Answer Bank (7 & 10 Marks)</a></td>
+              <td>52 comprehensive long-answer solutions with full technical depth, architectural breakdowns, SVG vector diagrams, and complete C++ / C code implementations.</td>
+              <td class="tabular-num">50–70 Marks (Sec B/C)</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <!-- 7-Mark Bank Card -->
-      <div class="unit-card" style="border-color: #8b5cf6;">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number" style="background: rgba(139, 92, 246, 0.15); color: #a78bfa;">Section B & C</span>
-            <span class="unit-weight">69 Solved Questions</span>
-          </div>
-          <h2 class="unit-card-title"><a href="7marks.html">7-Mark Question Bank</a></h2>
-          <p class="unit-card-desc">
-            Exhaustive, large-form answers for all 69 long questions with full UML diagrams, step-by-step algorithms, DFDs, scenario traces, and C++ code with outputs.
-          </p>
-        </div>
-        <div class="unit-card-footer">
-          <a href="7marks.html" class="btn btn-primary" style="width: 100%; justify-content: center; background: #8b5cf6; border-color: #8b5cf6;">Open 7-Mark Solved Bank (69 Qs) →</a>
-        </div>
+      <h2>Previous Year Questions (PYQ) Frequency Matrix (2020–2026)</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Paper Year & Session</th>
+              <th>Paper Code</th>
+              <th>Unit 1 Questions</th>
+              <th>Unit 2 Questions</th>
+              <th>Unit 3 Questions</th>
+              <th>Total Analyzed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>2020–21</strong></td>
+              <td>KCS054</td>
+              <td class="tabular-num">4 (2 Short, 2 Long)</td>
+              <td class="tabular-num">7 (3 Short, 4 Long)</td>
+              <td class="tabular-num">4 (1 Short, 3 Long)</td>
+              <td class="tabular-num">15</td>
+            </tr>
+            <tr>
+              <td><strong>2021–22</strong></td>
+              <td>KCS054</td>
+              <td class="tabular-num">3 (1 Short, 2 Long)</td>
+              <td class="tabular-num">5 (2 Short, 3 Long)</td>
+              <td class="tabular-num">2 (0 Short, 2 Long)</td>
+              <td class="tabular-num">10</td>
+            </tr>
+            <tr>
+              <td><strong>2022–23</strong></td>
+              <td>KCS054</td>
+              <td class="tabular-num">6 (3 Short, 3 Long)</td>
+              <td class="tabular-num">5 (2 Short, 3 Long)</td>
+              <td class="tabular-num">3 (0 Short, 3 Long)</td>
+              <td class="tabular-num">14</td>
+            </tr>
+            <tr>
+              <td><strong>2023–24</strong></td>
+              <td>KCS054 / O23-24</td>
+              <td class="tabular-num">4 (2 Short, 2 Long)</td>
+              <td class="tabular-num">3 (1 Short, 2 Long)</td>
+              <td class="tabular-num">5 (2 Short, 3 Long)</td>
+              <td class="tabular-num">12</td>
+            </tr>
+            <tr>
+              <td><strong>2024–25</strong></td>
+              <td>O24-25</td>
+              <td class="tabular-num">5 (2 Short, 3 Long)</td>
+              <td class="tabular-num">6 (2 Short, 4 Long)</td>
+              <td class="tabular-num">4 (1 Short, 3 Long)</td>
+              <td class="tabular-num">15</td>
+            </tr>
+            <tr>
+              <td><strong>2025–26</strong></td>
+              <td>BCS054</td>
+              <td class="tabular-num">6 (3 Short, 3 Long)</td>
+              <td class="tabular-num">5 (1 Short, 4 Long)</td>
+              <td class="tabular-num">5 (1 Short, 4 Long)</td>
+              <td class="tabular-num">16</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <!-- Cheat Sheet Card -->
-      <div class="unit-card" style="border-color: var(--accent-secondary);">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number" style="background: rgba(129, 140, 248, 0.15); color: var(--accent-secondary);">Cheat Sheet</span>
-            <span class="unit-weight">24-Hour Revision</span>
-          </div>
-          <h2 class="unit-card-title"><a href="cheat-sheet.html">Quick Revision Notes</a></h2>
-          <p class="unit-card-desc">
-            High-density 1-liner definitions, master comparison tables (Macros vs Inline, Deep vs Shallow Copy), language constraints, and Top 10 Exam Traps.
-          </p>
+      <h2>Quick Access Navigation</h2>
+      <div class="nav-grid">
+        <div class="nav-card">
+          <h3><a href="short_theory.html">Short Theory Compendium</a></h3>
+          <p>Consolidated theoretical reference for all 2-mark syllabus topics, core definitions, and foundational principles across Units 1, 2, and 3.</p>
         </div>
-        <div class="unit-card-footer">
-          <a href="cheat-sheet.html" class="btn btn-secondary" style="width: 100%; justify-content: center;">Open Cheat Sheet →</a>
+        <div class="nav-card">
+          <h3><a href="unit1.html">Unit 1: Object Orientation & UML</a></h3>
+          <p>Foundations of OO, Object Identity, Encapsulation, Polymorphism, Generosity, 4 Modeling Principles, Conceptual Model, and 4+1 View Architecture.</p>
         </div>
-      </div>
-
-      <!-- Quiz Card -->
-      <div class="unit-card" style="border-color: var(--success-border);">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number" style="background: var(--success-bg); color: var(--success-text);">Test Engine</span>
-            <span class="unit-weight">15 Timed Questions</span>
-          </div>
-          <h2 class="unit-card-title"><a href="quiz.html">Interactive Mock Exam</a></h2>
-          <p class="unit-card-desc">
-            Self-assessment test engine with 15-minute countdown timer, automated grading, percentage results, and question-by-question explanations.
-          </p>
+        <div class="nav-card">
+          <h3><a href="unit2.html">Unit 2: Structural & Behavioral Modeling</a></h3>
+          <p>Classes, Associations, Multiplicity, Generalization, Sequence & Collaboration, Use Cases, Activity Diagrams with Swimlanes, Statecharts, Component & Deployment.</p>
         </div>
-        <div class="unit-card-footer">
-          <a href="quiz.html" class="btn btn-secondary" style="width: 100%; justify-content: center;">Start Mock Exam →</a>
+        <div class="nav-card">
+          <h3><a href="unit3.html">Unit 3: OOD, Optimization & Paradigms</a></h3>
+          <p>OMT 3-Model integration, Design Optimization, Inheritance Adjustment, Physical Packaging, SA/SD vs JSD vs OOAD, and C VTable emulation.</p>
+        </div>
+        <div class="nav-card">
+          <h3><a href="2marks.html">Solved 2-Mark Bank (30 Questions)</a></h3>
+          <p>Complete set of 30 university short answer questions spanning 2020–2026, formatted for maximum scoring density.</p>
+        </div>
+        <div class="nav-card">
+          <h3><a href="7marks.html">Solved 7/10-Mark Bank (52 Questions)</a></h3>
+          <p>52 long design questions answered with comprehensive theory, hand-reproducible SVG diagrams, and production C++ implementations.</p>
         </div>
       </div>
+    </section>
+  </main>
 
-    </div>
-
-    <!-- Course Modules Section -->
-    <h2 style="margin-bottom: 1.5rem;">Curriculum Modules (Units I to V)</h2>
-    <div class="unit-grid">
-
-      <!-- Unit 1 Card -->
-      <div class="unit-card">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number">Unit I</span>
-            <span class="unit-weight">~20% Marks</span>
-          </div>
-          <h3 class="unit-card-title"><a href="unit1.html">Introduction & UML Fundamentals</a></h3>
-          <p class="unit-card-desc">
-            Object-oriented paradigm foundations, procedural vs OOP comparison, UML 4+1 View Architecture, and basic structural modeling.
-          </p>
-          <ul class="unit-topics-list">
-            <li class="unit-topics-item">OO Principles (Abstraction, Encapsulation, Polymorphism)</li>
-            <li class="unit-topics-item">Kruchten's 4+1 Architectural View Model</li>
-            <li class="unit-topics-item">UML Building Blocks & Extensibility Mechanisms</li>
-          </ul>
-        </div>
-        <div class="unit-card-footer">
-          <span style="font-size: 0.85rem; color: var(--text-muted);">Visual 4+1 Dashboard</span>
-          <a href="unit1.html" style="font-weight: 600;">Study Unit 1 →</a>
-        </div>
-      </div>
-
-      <!-- Unit 2 Card -->
-      <div class="unit-card">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number">Unit II</span>
-            <span class="unit-weight">~25% Marks</span>
-          </div>
-          <h3 class="unit-card-title"><a href="unit2.html">Structural, Behavioral & Architectural Modeling</a></h3>
-          <p class="unit-card-desc">
-            Static class/object diagrams, sequence/collaboration interactions, use cases, activity swimlanes, and 3D deployment nodes.
-          </p>
-          <ul class="unit-topics-list">
-            <li class="unit-topics-item">Class Diagrams with 3-Compartment Visual Boxes</li>
-            <li class="unit-topics-item">Sequence Diagrams with Lifelines & Activation Bars</li>
-            <li class="unit-topics-item">Use Case Diagrams with &lt;&lt;include&gt;&gt; & &lt;&lt;extend&gt;&gt;</li>
-          </ul>
-        </div>
-        <div class="unit-card-footer">
-          <span style="font-size: 0.85rem; color: var(--text-muted);">Visual Diagrams</span>
-          <a href="unit2.html" style="font-weight: 600;">Study Unit 2 →</a>
-        </div>
-      </div>
-
-      <!-- Unit 3 Card -->
-      <div class="unit-card">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number">Unit III</span>
-            <span class="unit-weight">~20% Marks</span>
-          </div>
-          <h3 class="unit-card-title"><a href="unit3.html">Object Oriented Analysis, Design & C Mapping</a></h3>
-          <p class="unit-card-desc">
-            System and Object Design, Rumbaugh's 3-Model OMT, SA/SD vs JSD vs OOSD, and mapping OOP to procedural C using structs & VTables.
-          </p>
-          <ul class="unit-topics-list">
-            <li class="unit-topics-item">Rumbaugh 3-Model OMT Integration</li>
-            <li class="unit-topics-item">SA/SD vs JSD vs OOSD Comparative Matrix</li>
-            <li class="unit-topics-item">C Struct Memory Layout & Function Pointer VTables</li>
-          </ul>
-        </div>
-        <div class="unit-card-footer">
-          <span style="font-size: 0.85rem; color: var(--text-muted);">C Memory Alignment</span>
-          <a href="unit3.html" style="font-weight: 600;">Study Unit 3 →</a>
-        </div>
-      </div>
-
-      <!-- Unit 4 Card -->
-      <div class="unit-card">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number">Unit IV</span>
-            <span class="unit-weight">~15% Marks</span>
-          </div>
-          <h3 class="unit-card-title"><a href="unit4.html">C++ Basics & Functions</a></h3>
-          <p class="unit-card-desc">
-            4-Stage compilation pipeline, namespaces, explicit cast operators, reference semantics, inline functions vs macros, and friends.
-          </p>
-          <ul class="unit-topics-list">
-            <li class="unit-topics-item">4-Stage Compilation Pipeline (cpp, g++, as, ld)</li>
-            <li class="unit-topics-item">Modern Casts (static_cast, dynamic_cast RTTI)</li>
-            <li class="unit-topics-item">Inline Functions vs Macro Side-Effect Hazards</li>
-          </ul>
-        </div>
-        <div class="unit-card-footer">
-          <span style="font-size: 0.85rem; color: var(--text-muted);">Pipeline Visuals</span>
-          <a href="unit4.html" style="font-weight: 600;">Study Unit 4 →</a>
-        </div>
-      </div>
-
-      <!-- Unit 5 Card -->
-      <div class="unit-card">
-        <div>
-          <div class="unit-card-header">
-            <span class="unit-number">Unit V</span>
-            <span class="unit-weight">~20% Marks</span>
-          </div>
-          <h3 class="unit-card-title"><a href="unit5.html">Objects, Classes, Inheritance & Polymorphism</a></h3>
-          <p class="unit-card-desc">
-            Dynamic memory deep copy constructors, operator overloading, virtual base class diamond resolution, and runtime VTable/VPtr mechanics.
-          </p>
-          <ul class="unit-topics-list">
-            <li class="unit-topics-item">Shallow vs Deep Copy Memory Dynamics</li>
-            <li class="unit-topics-item">Virtual Base Classes & Diamond Problem Tree</li>
-            <li class="unit-topics-item">VTable / VPtr Runtime Dynamic Dispatch & Destructors</li>
-          </ul>
-        </div>
-        <div class="unit-card-footer">
-          <span style="font-size: 0.85rem; color: var(--text-muted);">VTable Memory Map</span>
-          <a href="unit5.html" style="font-weight: 600;">Study Unit 5 →</a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- Search Modal -->
-  <div class="search-modal-backdrop" id="search-modal-backdrop">
-    <div class="search-modal">
-      <div class="search-input-wrapper">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" class="search-input" id="search-input" placeholder="Search topics across all units..." autocomplete="off">
-      </div>
-      <div class="search-results" id="search-results"></div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="unit1.html">Unit 1</a>
-      <a href="unit2.html">Unit 2</a>
-      <a href="unit3.html">Unit 3</a>
-      <a href="unit4.html">Unit 4</a>
-      <a href="unit5.html">Unit 5</a>
-      <a href="pyqs.html">107 Solved PYQs</a>
-      <a href="cheat-sheet.html">Cheat Sheet</a>
-      <a href="quiz.html">Mock Quiz</a>
-    </div>
-    <div>BCS054: Object Oriented System Design with C++ • University Examination Study Portal</div>
+  <footer class="app-footer">
+    <span>Object-Oriented System Design (BCS054 / KCS054) Academic Guide</span>
+    <span class="footer-meta">Units 1–3 Complete Repository</span>
   </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

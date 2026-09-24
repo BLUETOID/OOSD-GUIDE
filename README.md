@@ -1,34 +1,37 @@
-# BCS054: Object Oriented System Design with C++
-## University Interactive Academic Web Portal
+# Object-Oriented System Design (BCS054 / KCS054) - Complete Academic Guide
 
-### Course Details
-- **Course Code:** BCS054
-- **Course Title:** Object Oriented System Design with C++
-- **Target Audience:** Bachelor of Technology (B.Tech) - Computer Science and Engineering / Information Technology
-- **Architecture:** Pure HTML5, Modern Vanilla CSS3 (Custom Design System with Dark/Light Mode), and Vanilla JavaScript Interactivity Engine. Zero external build dependencies.
+A structured, exam-oriented study guide and solved question bank for **Object-Oriented System Design (BCS054 / KCS054)** focusing on **Units 1, 2, and 3**, covering 6 years of university previous year question papers (2020–2026).
+
+## Architecture & Design Compliance
+
+This repository is constructed under the **clean-ui** architectural specification:
+- **Zero Decorative Fluff:** No gradients, no glassmorphism, no background blurs, no drop shadow cards, no decorative emojis.
+- **Strict Geometric Precision:** Border radius bounded strictly to `0px`–`2px`.
+- **CSS Grid-First Layout:** Intrinsic responsiveness using `minmax()` and clean semantic structure.
+- **Monospace Typography:** Code, metrics, coordinates, and identifiers utilize `ui-monospace, "JetBrains Mono", monospace`.
+- **Vector Graphics:** All diagrams rendered strictly using scalable vector graphics (SVG) and Mermaid (zero ASCII art).
 
 ---
 
-### Web Portal Sitemap & Modules
+## Guide Structure & Sitemap
 
-| Module | File | Coverage & Topics |
+| Page | Document File | Description |
 | :--- | :--- | :--- |
-| **Course Dashboard** | [`index.html`](index.html) | Course overview, syllabus breakdown, unit cards, exam blueprint, and search modal. |
-| **Unit I** | [`unit1.html`](unit1.html) | Object orientation foundations, identity, encapsulation, polymorphism, genericity, modeling principles, UML conceptual model, and 4+1 View Architecture. |
-| **Unit II** | [`unit2.html`](unit2.html) | Class & Object diagrams, Sequence & Collaboration interaction models, Use Cases, Activity diagrams with Swimlanes, State Machines, Component & Deployment diagrams. |
-| **Unit III** | [`unit3.html`](unit3.html) | Object-Oriented Design (OOD), Rumbaugh's 3-Model Integration (OMT), Jackson Structured Development (JSD), Design Optimization, SA/SD vs OOAD, mapping OOP to Procedural C. |
-| **Unit IV** | [`unit4.html`](unit4.html) | C++ compilation pipeline, namespaces, dynamic memory (`new`/`delete`), scope resolution (`::`), references, inline functions vs macros, function overloading, friend functions, static members. |
-| **Unit V** | [`unit5.html`](unit5.html) | Classes, array of objects, constructors/destructors (deep copy RAII), operator overloading, type conversions, inheritance, diamond problem, virtual base classes, runtime polymorphism (VTable/VPtr), exception handling. |
-| **2-Mark Solved Bank** | [`2marks.html`](2marks.html) | All 38 Short Answer Questions solved with definitions, bullet points, mini UML cards, and C++ code. |
-| **7-Mark Solved Bank** | [`7marks.html`](7marks.html) | All 69 Long Answer & Design Questions solved with full theory, visual diagrams, scenario traces, and compilable C++ programs with outputs. |
-| **Quick Revision Cheat Sheet** | [`cheat-sheet.html`](cheat-sheet.html) | High-density 1-liner definitions, master comparison matrices, visual UML key, VTable memory models, language constraints, and Top 10 Exam Traps. |
-| **Interactive Mock Quiz** | [`quiz.html`](quiz.html) | Self-assessment test engine with 15-minute countdown timer, automated grading, percentage results, and question-by-question explanations. |
+| **Page 1** | [`index.html`](index.html) | Curriculum mapping, PYQ frequency matrix (2020–2026), and quick-access navigation. |
+| **Page 2** | [`unit1.html`](unit1.html) | Unit 1 Theory: Object Orientation fundamentals, Object Identity, Encapsulation, Polymorphism, Generosity, Modeling Principles, Conceptual Model of UML, 4+1 View Architecture. |
+| **Page 3** | [`unit2.html`](unit2.html) | Unit 2 Theory: Structural modeling (Classes, Relationships, Multiplicity, Aggregation, Generalization), Dynamic Interactions (Sequence & Collaboration), Behavioral (Use Cases, Activity with Swimlanes, Statecharts), Architectural (Component & Deployment). |
+| **Page 4** | [`unit3.html`](unit3.html) | Unit 3 Theory: Stages of OOD, Rumbaugh OMT 3-Model Integration, Design Optimization, Physical Packaging & Documentation, SA/SD vs JSD vs OOAD, Mapping OOP to C. |
+| **Page 5** | [`short_theory.html`](short_theory.html) | Short Theory Compendium: All 2-mark syllabus topics, core definitions, and foundational principles systematically covered theory-wise. |
+| **Page 6** | [`2marks.html`](2marks.html) | All 30 Previous Year 2-Mark Short Answer Questions solved with exact exam rubric length, formulas, and diagrams. |
+| **Page 7** | [`7marks.html`](7marks.html) | All 52 Previous Year 7 & 10-Mark Long Design Questions solved with full academic depth, SVG diagrams, and compilable C++ / C code. |
+| **Master Doc** | [`guide.md`](guide.md) | Single master 7-page Markdown guide separated by horizontal rules (`---`) strictly adhering to `plan.md`. |
 
 ---
 
-### Key Portal Features
-- **Visual HTML/CSS Diagram Cards:** UML Class boxes with 3 compartments and color-coded visibility badges, Sequence lifelines, Statechart transitions, Multi-tier cloud deployment architectures, and River Crossing timelines.
-- **C++/C Syntax Highlighting:** Client-side syntax styling with distinct colors for comments, keywords, strings, types, and preprocessor directives.
-- **One-Click Code Copy:** Instant clipboard copy on all code containers.
-- **Dark/Light Theme Switcher:** Fully responsive theme switcher with localStorage state persistence.
-- **Global Search:** Fast client-side keyword search modal (`Ctrl+K`).
+## Local Verification & Usage
+
+You can open [`index.html`](index.html) directly in any modern browser, or serve it using Python's built-in static server:
+
+```bash
+python3 -m http.server 8080
+```
