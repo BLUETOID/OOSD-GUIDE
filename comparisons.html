@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Comparison Compendium | BCS054 Academic Guide</title>
+  <meta name="description" content="Definitive master comparison compendium for Object-Oriented System Design (BCS054/KCS054) - 21 exhaustive comparison tables covering all university exam 'Differentiate between' and 'Compare and contrast' topics across Units 1, 2, and 3.">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span>OOSD.GUIDE</span>
+        <span class="brand-badge">Comparison Compendium</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Index</a>
+        <a href="comparisons.html" class="active">Comparisons</a>
+        <a href="short_theory.html">Short Theory</a>
+        <a href="unit1.html">Unit 1 Theory</a>
+        <a href="unit2.html">Unit 2 Theory</a>
+        <a href="unit3.html">Unit 3 Theory</a>
+        <a href="2marks.html">2-Marks Bank</a>
+        <a href="7marks.html">7/10-Marks Bank</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="layout-with-sidebar">
+      <aside class="sidebar">
+        <h3>Comparison Index</h3>
+        <ul>
+          <li><a href="#cat-paradigms"><strong>I. Paradigms & Core OOP</strong></a></li>
+          <li><a href="#comp-pop-oop">1. POP vs OOP</a></li>
+          <li><a href="#comp-identity-equality">2. Identity vs Equality</a></li>
+          <li><a href="#comp-abstraction-encap">3. Abstraction vs Encapsulation</a></li>
+          <li><a href="#comp-encap-hiding">4. Encapsulation vs Info Hiding</a></li>
+          <li><a href="#comp-static-dynamic-poly">5. Static vs Dynamic Poly</a></li>
+          <li><a href="#comp-structured-oo-modeling">6. Structured vs OO Modeling</a></li>
+          
+          <li><a href="#cat-structural"><strong>II. Structural & Relationships</strong></a></li>
+          <li><a href="#comp-link-assoc">7. Link vs Association</a></li>
+          <li><a href="#comp-gen-inh">8. Generalization vs Inheritance</a></li>
+          <li><a href="#comp-agg-comp">9. Aggregation vs Composition</a></li>
+          <li><a href="#comp-class-object-diag">10. Class vs Object Diagram</a></li>
+          <li><a href="#comp-4way-relationships">11. 4-Way Relationship Matrix</a></li>
+
+          <li><a href="#cat-behavioral"><strong>III. Behavioral & Architecture</strong></a></li>
+          <li><a href="#comp-seq-collab">12. Sequence vs Collaboration</a></li>
+          <li><a href="#comp-activity-state">13. Activity vs Statechart</a></li>
+          <li><a href="#comp-include-extend">14. Include vs Extend</a></li>
+          <li><a href="#comp-component-deploy">15. Component vs Deployment</a></li>
+
+          <li><a href="#cat-methodologies"><strong>IV. Design & Methodologies</strong></a></li>
+          <li><a href="#comp-sasd-jsd-omt">16. SA/SD vs JSD vs OMT</a></li>
+          <li><a href="#comp-system-object-design">17. System vs Object Design</a></li>
+          <li><a href="#comp-omt-three-models">18. OMT 3 Models</a></li>
+          <li><a href="#comp-transform-transaction">19. Transform vs Transaction</a></li>
+          <li><a href="#comp-inh-delegation">20. Inheritance vs Delegation</a></li>
+          <li><a href="#comp-cohesion-coupling">21. Cohesion vs Coupling</a></li>
+        </ul>
+      </aside>
+
+      <article>
+        <h1>Master Comparison Compendium: Units 1, 2, and 3</h1>
+        <p>In university examinations (BCS054 / KCS054), comparison questions (<em>"Differentiate between X and Y"</em>, <em>"Compare and contrast..."</em>) account for over <strong>40% of all scoring opportunities</strong>. This dedicated compendium synthesizes all 21 core architectural, structural, and methodological distinctions into exhaustive, high-density reference tables with illustrative vector diagrams.</p>
+
+        <!-- Filter Controls Toolbar -->
+        <div class="toolbar">
+          <div class="filter-group">
+            <span class="filter-label">Filter Unit:</span>
+            <button class="filter-btn active" data-filter-type="unit" data-filter="all">All Units</button>
+            <button class="filter-btn" data-filter-type="unit" data-filter="1">Unit 1</button>
+            <button class="filter-btn" data-filter-type="unit" data-filter="2">Unit 2</button>
+            <button class="filter-btn" data-filter-type="unit" data-filter="3">Unit 3</button>
+          </div>
+          <input type="text" id="search-input" class="search-input" placeholder="Search comparisons (e.g. link, aggregation, sequence, SA/SD)...">
+          <span class="counter-badge" id="item-count">21 Comparisons</span>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- CATEGORY I: PARADIGMS & CORE OOP                         -->
+        <!-- ======================================================== -->
+        <h2 id="cat-paradigms">Category I: Paradigms & Core Object Concepts (Unit 1 & 3)</h2>
+
+        <!-- 1. POP vs OOP -->
+        <div class="comparison-card" id="comp-pop-oop" data-unit="1" data-year="2020-21 2022-23">
+          <div class="comparison-header">
+            <h3>1. Procedural Programming (POP) vs. Object-Oriented Programming (OOP)</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2022-23]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Procedural Programming (POP)</th>
+                  <th style="width: 40%;">Object-Oriented Programming (OOP)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Core Focus</strong></td>
+                  <td><strong>Action/Verb-centric:</strong> Emphasizes step-by-step procedures, algorithms, and function calls.</td>
+                  <td><strong>Noun/Entity-centric:</strong> Emphasizes autonomous domain objects integrating state and behavior.</td>
+                </tr>
+                <tr>
+                  <td><strong>Problem Decomposition</strong></td>
+                  <td><strong>Top-Down:</strong> Large problems are decomposed hierarchically into smaller subroutines and functions.</td>
+                  <td><strong>Bottom-Up:</strong> Autonomous classes are formulated, encapsulated, and assembled into subsystems.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data & Logic Binding</strong></td>
+                  <td>Data is passive and separated from functions. Passed via parameters or held globally.</td>
+                  <td>Data and methods are tightly coupled within a cohesive boundary (Class).</td>
+                </tr>
+                <tr>
+                  <td><strong>Data Access Security</strong></td>
+                  <td>Low; global data is accessible and mutable by any procedure across the codebase.</td>
+                  <td>High; information hiding via access specifiers (<code>private</code>, <code>protected</code>, <code>public</code>).</td>
+                </tr>
+                <tr>
+                  <td><strong>Control Flow</strong></td>
+                  <td>Sequential execution with branching and explicit subroutine jump-and-return calls.</td>
+                  <td>Message passing between objects; dynamic polymorphic runtime dispatch.</td>
+                </tr>
+                <tr>
+                  <td><strong>Code Reuse</strong></td>
+                  <td>Limited to static procedural library functions; high risk of side effects.</td>
+                  <td>Inheritance hierarchies, parametric polymorphism (templates), and delegation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Maintenance Impact</strong></td>
+                  <td>Altering a shared data structure causes cascading modifications across all dependent functions.</td>
+                  <td>Internal changes to a class do not impact clients if public method contracts remain invariant.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> POP divides programs by <em>functions</em> operating on passive shared data; OOP divides programs by <em>autonomous entities</em> bundling private data with authorized operations.</p>
+        </div>
+
+        <!-- 2. Identity vs Equality -->
+        <div class="comparison-card" id="comp-identity-equality" data-unit="1" data-year="2020-21 2025-26">
+          <div class="comparison-header">
+            <h3>2. Object Identity vs. Object Equality</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2025-26]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Object Identity (OID)</th>
+                  <th style="width: 40%;">Object Equality (Equivalence)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Fundamental Concept</strong></td>
+                  <td>The unique, immutable property of an object distinguishing it from all other objects in the universe.</td>
+                  <td>The property where two distinct objects possess identical internal state attribute values.</td>
+                </tr>
+                <tr>
+                  <td><strong>Dependence on State</strong></td>
+                  <td>Completely independent of state. Two objects remain non-identical even if all attributes match.</td>
+                  <td>Strictly dependent on current state values at a given moment in time.</td>
+                </tr>
+                <tr>
+                  <td><strong>Physical Implementation</strong></td>
+                  <td>Physical memory address (pointer address) or surrogate database primary key (UUID).</td>
+                  <td>Value-by-value comparison via overloaded operators (<code>operator==</code>) or <code>equals()</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Mutability</strong></td>
+                  <td>Permanent and immutable throughout the entire lifecycle of the object.</td>
+                  <td>Dynamic; two equal objects become unequal as soon as an attribute mutates.</td>
+                </tr>
+                <tr>
+                  <td><strong>Real-World Analogy</strong></td>
+                  <td>Identical twin humans with unique Aadhaar/SSN numbers and distinct physical bodies.</td>
+                  <td>Two identical $100 currency bills having the exact same face value, but distinct serial numbers.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Identity answers <em>"Is this the exact same instance in memory?"</em> (<code>&amp;a == &amp;b</code>); Equality answers <em>"Do these two instances have the same data values?"</em> (<code>a.equals(b)</code>).</p>
+        </div>
+
+        <!-- 3. Abstraction vs Encapsulation -->
+        <div class="comparison-card" id="comp-abstraction-encap" data-unit="1" data-year="2020-21 2024-25 2025-26">
+          <div class="comparison-header">
+            <h3>3. Data Abstraction vs. Data Encapsulation</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2024-25], [2025-26]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Data Abstraction ("WHAT")</th>
+                  <th style="width: 40%;">Data Encapsulation ("HOW")</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Primary Question</strong></td>
+                  <td><strong>"WHAT"</strong> does the entity do? (Observable external behavior).</td>
+                  <td><strong>"HOW"</strong> is the entity implemented internally? (Containment & packaging).</td>
+                </tr>
+                <tr>
+                  <td><strong>Architectural Purpose</strong></td>
+                  <td>Reduces cognitive complexity by exposing only essential features while ignoring irrelevant background details.</td>
+                  <td>Protects internal state integrity, prevents unauthorized mutation, and enforces class invariants.</td>
+                </tr>
+                <tr>
+                  <td><strong>Implementation Mechanism</strong></td>
+                  <td>Abstract base classes, pure virtual interfaces, function prototypes, and API contracts.</td>
+                  <td>Classes combining data + methods, access specifiers (<code>private</code>), accessor/mutator methods.</td>
+                </tr>
+                <tr>
+                  <td><strong>Focus of Attention</strong></td>
+                  <td>Focuses on the <strong>external interface boundary</strong> seen by client developers.</td>
+                  <td>Focuses on the <strong>internal structural implementation</strong> hidden from client developers.</td>
+                </tr>
+                <tr>
+                  <td><strong>Automobile Analogy</strong></td>
+                  <td>Steering wheel, accelerator, and brake pedals providing a clean driving interface.</td>
+                  <td>Pistons, transmission gears, and spark plugs sealed safely beneath the vehicle hood.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Abstraction <em>hides complexity</em> by exposing a minimal interface; Encapsulation <em>hides internal data and implementation</em> to safeguard integrity.</p>
+        </div>
+
+        <!-- 4. Encapsulation vs Information Hiding -->
+        <div class="comparison-card" id="comp-encap-hiding" data-unit="1" data-year="2021-22 2024-25">
+          <div class="comparison-header">
+            <h3>4. Encapsulation vs. Information Hiding</h3>
+            <span class="exam-tag">PYQ: [2021-22], [2024-25]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Encapsulation</th>
+                  <th style="width: 40%;">Information Hiding</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Definition</strong></td>
+                  <td>The programmatic packaging mechanism of bundling data and its associated operations into a unified construct (Class).</td>
+                  <td>The software design principle of deliberately concealing design decisions and internal structures likely to change.</td>
+                </tr>
+                <tr>
+                  <td><strong>Nature</strong></td>
+                  <td>A <strong>structural packaging mechanism</strong> provided by programming language syntax.</td>
+                  <td>A <strong>high-level architectural design principle</strong> (Parnas's Principle) guiding modular decomposition.</td>
+                </tr>
+                <tr>
+                  <td><strong>Visibility Implication</strong></td>
+                  <td>Encapsulation can be public or private (e.g., public methods are encapsulated inside the class).</td>
+                  <td>Information hiding strictly restricts visibility, making internal structures inaccessible outside the module.</td>
+                </tr>
+                <tr>
+                  <td><strong>Role in Architecture</strong></td>
+                  <td>Acts as the vehicle/container through which information hiding is enforced.</td>
+                  <td>Acts as the strategic rationale determining <em>what</em> to place into private scope.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Encapsulation is the <em>mechanism</em> of putting data and functions into a capsule; Information Hiding is the <em>design rule</em> that makes the inside of the capsule invisible.</p>
+        </div>
+
+        <!-- 5. Static vs Dynamic Polymorphism -->
+        <div class="comparison-card" id="comp-static-dynamic-poly" data-unit="1" data-year="2023-24">
+          <div class="comparison-header">
+            <h3>5. Static (Compile-Time) vs. Dynamic (Runtime) Polymorphism</h3>
+            <span class="exam-tag">PYQ: [2023-24]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Static (Compile-Time) Polymorphism</th>
+                  <th style="width: 40%;">Dynamic (Runtime) Polymorphism</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Binding Time</strong></td>
+                  <td><strong>Early Binding:</strong> Function call is resolved and bound to concrete code during compilation.</td>
+                  <td><strong>Late / Dynamic Binding:</strong> Method address is resolved dynamically during program execution.</td>
+                </tr>
+                <tr>
+                  <td><strong>Enforcement Mechanisms</strong></td>
+                  <td>Function Overloading, Operator Overloading, and Parametric Templates (Generics).</td>
+                  <td>Inheritance hierarchies with <code>virtual</code> member functions and overriding.</td>
+                </tr>
+                <tr>
+                  <td><strong>Execution Overhead</strong></td>
+                  <td>Zero runtime penalty; calls are direct assembly jumps or inlined machine code.</td>
+                  <td>Small runtime cost: extra memory for <code>vptr</code> per object and VTable pointer indirection.</td>
+                </tr>
+                <tr>
+                  <td><strong>Flexibility</strong></td>
+                  <td>Lower runtime adaptability; types must be completely known at compile time.</td>
+                  <td>Maximum runtime extensibility; new derived classes can be plugged in without recompilation.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Static polymorphism binds method addresses at <em>compile-time</em> (fast, rigid); dynamic polymorphism binds method addresses at <em>runtime</em> via VTable dispatch (flexible, extensible).</p>
+        </div>
+
+        <!-- 6. Structured vs OO Modeling -->
+        <div class="comparison-card" id="comp-structured-oo-modeling" data-unit="1" data-year="2024-25 2025-26">
+          <div class="comparison-header">
+            <h3>6. Structured Modeling vs. Object-Oriented Modeling</h3>
+            <span class="exam-tag">PYQ: [2024-25], [2025-26]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Structured Modeling (SA/SD)</th>
+                  <th style="width: 40%;">Object-Oriented Modeling (OOM)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Core Unit of Analysis</strong></td>
+                  <td>Functions and processes that transform inputs into outputs (Pipelines).</td>
+                  <td>Autonomous objects encapsulating private attributes and behavior (Domain Models).</td>
+                </tr>
+                <tr>
+                  <td><strong>Primary Artifacts</strong></td>
+                  <td>Data Flow Diagrams (DFDs), Structure Charts, Data Dictionaries.</td>
+                  <td>UML Class, State Machine, Sequence, and Component Diagrams.</td>
+                </tr>
+                <tr>
+                  <td><strong>Semantic Gap</strong></td>
+                  <td><strong>Large:</strong> Analysis models (DFDs) must be completely restructured to create design models (Structure Charts).</td>
+                  <td><strong>Minimal:</strong> Seamless semantic continuity; analysis classes map directly to design and code classes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Resilience to Change</strong></td>
+                  <td>Fragile; modifying a shared data schema requires updating all dependent functional modules.</td>
+                  <td>Robust; encapsulated classes isolate internal data modifications behind public contracts.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Structured modeling organizes software around <em>functions</em>; OO modeling organizes software around <em>domain entities</em>.</p>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- CATEGORY II: STRUCTURAL & RELATIONSHIPS                  -->
+        <!-- ======================================================== -->
+        <h2 id="cat-structural">Category II: Structural Modeling & Class Relationships (Unit 2)</h2>
+
+        <!-- 7. Link vs Association -->
+        <div class="comparison-card" id="comp-link-assoc" data-unit="2" data-year="2020-21 2021-22 2025-26">
+          <div class="comparison-header">
+            <h3>7. Link vs. Association</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2021-22], [2025-26]</span>
+          </div>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 700 140" width="700" height="140" xmlns="http://www.w3.org/2000/svg">
+              <!-- Association Side -->
+              <rect x="30" y="20" width="300" height="100" fill="#f8fafc" stroke="#0969da" stroke-width="1.5" rx="3"/>
+              <text x="45" y="42" fill="#0969da" font-weight="bold" font-size="12">Association (Model Level: Class Diagram)</text>
+              <rect x="50" y="60" width="80" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="70" y="82" fill="#0f172a" font-size="11">Student</text>
+              <rect x="220" y="60" width="80" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="240" y="82" fill="#0f172a" font-size="11">Course</text>
+              <line x1="130" y1="77" x2="220" y2="77" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="145" y="70" fill="#475569" font-size="9">enrolledIn</text>
+              <text x="135" y="90" fill="#0f172a" font-size="9">*</text>
+              <text x="210" y="90" fill="#0f172a" font-size="9">1..*</text>
+
+              <!-- Link Side -->
+              <rect x="370" y="20" width="300" height="100" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" rx="3"/>
+              <text x="385" y="42" fill="#166534" font-weight="bold" font-size="12">Link (Instance Level: Object Diagram)</text>
+              <rect x="390" y="60" width="95" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="400" y="82" fill="#0f172a" font-size="10" text-decoration="underline">alice:Student</text>
+              <rect x="560" y="60" width="95" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="575" y="82" fill="#0f172a" font-size="10" text-decoration="underline">cs101:Course</text>
+              <line x1="485" y1="77" x2="560" y2="77" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="500" y="70" fill="#475569" font-size="9" text-decoration="underline">enrolledIn</text>
+            </svg>
+            <div class="diagram-caption">Figure C.1: Structural Mapping from Abstract Class Association to Concrete Runtime Object Link</div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Link</th>
+                  <th style="width: 40%;">Association</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Abstraction Level</strong></td>
+                  <td><strong>Instance Level:</strong> A concrete physical or conceptual connection connecting specific object instances.</td>
+                  <td><strong>Class/Classifier Level:</strong> A conceptual description of a group of links sharing identical semantics and attributes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Diagrammatic Context</strong></td>
+                  <td>Rendered on <strong>Object Diagrams</strong> and Collaboration Diagrams.</td>
+                  <td>Rendered on <strong>Class Diagrams</strong>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Multiplicity Notation</strong></td>
+                  <td><strong>Zero Multiplicity:</strong> A link is an individual instance connection; multiplicity is meaningless on a link.</td>
+                  <td><strong>Explicit Multiplicity:</strong> Defines legal cardinality ranges (<code>1</code>, <code>0..1</code>, <code>*</code>, <code>1..*</code>) at association ends.</td>
+                </tr>
+                <tr>
+                  <td><strong>Naming Convention</strong></td>
+                  <td>Underlined name (e.g., <u><code>worksFor</code></u>) connecting underlined object instances.</td>
+                  <td>Plain text name with direction triangle (e.g., <code>worksFor &gt;</code>) connecting class boxes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Mathematical Theory</strong></td>
+                  <td>A single tuple in a relation: $(obj_A, obj_B) \in R$.</td>
+                  <td>The mathematical relation $R$ defined over Cartesian product $Class_A \times Class_B$.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> A <em>Link</em> is to an <em>Association</em> as an <em>Object</em> is to a <em>Class</em>. A link connects individual objects at runtime; an association describes legal connections between classes.</p>
+        </div>
+
+        <!-- 8. Generalization vs Inheritance -->
+        <div class="comparison-card" id="comp-gen-inh" data-unit="2" data-year="2020-21 2023-24">
+          <div class="comparison-header">
+            <h3>8. Generalization vs. Inheritance</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2023-24]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Generalization (UML Analysis Concept)</th>
+                  <th style="width: 40%;">Inheritance (Programming Language Mechanism)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Conceptual Domain</strong></td>
+                  <td><strong>Analysis & Modeling Space:</strong> The semantic relationship between a general classifier (superclass) and specialized classifiers (subclasses).</td>
+                  <td><strong>Implementation Space:</strong> The technical language mechanism enabling a class to absorb attributes and methods from an ancestor.</td>
+                </tr>
+                <tr>
+                  <td><strong>Relationship Direction</strong></td>
+                  <td><strong>Bottom-Up or Top-Down:</strong> Generalization moves bottom-up (extracting common traits); Specialization moves top-down.</td>
+                  <td><strong>Unidirectional:</strong> Subclasses mechanically derive properties from parent classes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Semantic Meaning</strong></td>
+                  <td>Strict <strong>"is-a-kind-of"</strong> taxonomic classification adhering to the Liskov Substitution Principle (LSP).</td>
+                  <td>Code reuse mechanism; can be misused purely for convenience even when subtyping is violated.</td>
+                </tr>
+                <tr>
+                  <td><strong>Visual Notation</strong></td>
+                  <td>Solid directed vector with a <strong>large hollow triangle</strong> pointing toward the general superclass.</td>
+                  <td>Language keywords: <code>extends</code> (Java), <code>: public</code> (C++), <code>class Child(Parent):</code> (Python).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Generalization is the <em>conceptual taxonomic relationship</em> (Design); Inheritance is the <em>programming mechanism</em> that implements it (Code).</p>
+        </div>
+
+        <!-- 9. Aggregation vs Composition -->
+        <div class="comparison-card" id="comp-agg-comp" data-unit="2" data-year="2021-22 2025-26">
+          <div class="comparison-header">
+            <h3>9. Aggregation (Shared) vs. Composition (Composite / Non-Shared)</h3>
+            <span class="exam-tag">PYQ: [2021-22], [2025-26]</span>
+          </div>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 700 140" width="700" height="140" xmlns="http://www.w3.org/2000/svg">
+              <!-- Aggregation -->
+              <rect x="30" y="20" width="300" height="100" fill="#ffffff" stroke="#9a6700" stroke-width="1.5" rx="3"/>
+              <text x="45" y="42" fill="#9a6700" font-weight="bold" font-size="12">Aggregation (Weak "has-a", Shared)</text>
+              <rect x="50" y="60" width="90" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="65" y="82" fill="#0f172a" font-size="11">Department</text>
+              <rect x="220" y="60" width="80" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="240" y="82" fill="#0f172a" font-size="11">Teacher</text>
+              <!-- Hollow diamond on whole side -->
+              <polygon points="140,77 150,71 160,77 150,83" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="160" y1="77" x2="220" y2="77" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="165" y="70" fill="#475569" font-size="9">1</text>
+              <text x="205" y="70" fill="#475569" font-size="9">1..*</text>
+
+              <!-- Composition -->
+              <rect x="370" y="20" width="300" height="100" fill="#ffffff" stroke="#cf222e" stroke-width="1.5" rx="3"/>
+              <text x="385" y="42" fill="#cf222e" font-weight="bold" font-size="12">Composition (Strong "part-of", Co-incident)</text>
+              <rect x="390" y="60" width="80" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="410" y="82" fill="#0f172a" font-size="11">Building</text>
+              <rect x="560" y="60" width="80" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1"/>
+              <text x="580" y="82" fill="#0f172a" font-size="11">Room</text>
+              <!-- Filled diamond on whole side -->
+              <polygon points="470,77 480,71 490,77 480,83" fill="#0f172a" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="490" y1="77" x2="560" y2="77" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="495" y="70" fill="#475569" font-size="9">1</text>
+              <text x="545" y="70" fill="#475569" font-size="9">1..*</text>
+            </svg>
+            <div class="diagram-caption">Figure C.2: UML Notational Difference between Hollow Diamond (Aggregation) and Filled Diamond (Composition)</div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Aggregation (Shared Association)</th>
+                  <th style="width: 40%;">Composition (Composite Aggregation)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Coupling Strength</strong></td>
+                  <td><strong>Weak "has-a" relationship:</strong> The part can exist independently of the whole.</td>
+                  <td><strong>Strong "part-of" relationship:</strong> The part has no independent existence outside the whole.</td>
+                </tr>
+                <tr>
+                  <td><strong>Lifecycle Co-incidence</strong></td>
+                  <td><strong>Independent lifecycles:</strong> Destroying the whole (Department) does NOT destroy the parts (Teachers).</td>
+                  <td><strong>Strictly co-incident lifecycles:</strong> Destroying the whole (Building) cascades and automatically destroys all parts (Rooms).</td>
+                </tr>
+                <tr>
+                  <td><strong>Ownership Exclusivity</strong></td>
+                  <td><strong>Shared:</strong> A part instance may belong to multiple whole aggregations concurrently.</td>
+                  <td><strong>Exclusive (Unshared):</strong> A part instance can belong to exactly ONE composite whole at any given time.</td>
+                </tr>
+                <tr>
+                  <td><strong>UML Graphical Notation</strong></td>
+                  <td>A <strong>hollow (unfilled) diamond</strong> at the whole aggregate end of the association line.</td>
+                  <td>A <strong>solid (filled) black diamond</strong> at the composite whole end of the association line.</td>
+                </tr>
+                <tr>
+                  <td><strong>Multiplicity on Whole End</strong></td>
+                  <td>Can be any valid multiplicity (<code>0..1</code>, <code>1</code>, <code>*</code>).</td>
+                  <td>Must strictly be <strong>exactly <code>1</code> or <code>0..1</code></strong> (never <code>*</code>).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> In Aggregation (hollow diamond), parts <em>survive</em> when the whole is deleted. In Composition (filled diamond), parts <em>die</em> when the whole is deleted.</p>
+        </div>
+
+        <!-- 10. Class vs Object Diagram -->
+        <div class="comparison-card" id="comp-class-object-diag" data-unit="2" data-year="2023-24">
+          <div class="comparison-header">
+            <h3>10. Class Diagram vs. Object Diagram</h3>
+            <span class="exam-tag">PYQ: [2023-24]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Class Diagram</th>
+                  <th style="width: 40%;">Object Diagram</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Temporal Dimension</strong></td>
+                  <td><strong>Static Schema:</strong> Represents structural rules, types, and invariants valid for all time.</td>
+                  <td><strong>Runtime Snapshot:</strong> Captures an instantaneous snapshot of system memory at a discrete point in time.</td>
+                </tr>
+                <tr>
+                  <td><strong>Core Entities Rendered</strong></td>
+                  <td>Classes with attribute types, method signatures, and access modifiers.</td>
+                  <td>Specific object instances with concrete bound values (e.g., <code>balance = 5000.0</code>).</td>
+                </tr>
+                <tr>
+                  <td><strong>Entity Label Notation</strong></td>
+                  <td>Standard text: <code>ClassName</code> (not underlined).</td>
+                  <td><strong>Underlined syntax:</strong> <u><code>instanceName : ClassName</code></u> or anonymous <u><code>: ClassName</code></u>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Relationships Shown</strong></td>
+                  <td>Associations, Aggregations, Compositions, Generalizations with multiplicity bounds.</td>
+                  <td>Concrete <strong>Links</strong> connecting specific objects (zero multiplicity).</td>
+                </tr>
+                <tr>
+                  <td><strong>Engineering Role</strong></td>
+                  <td>Architectural specification and design blueprint for implementation.</td>
+                  <td>Testing, test case design, and debugging complex structural configurations.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> A Class Diagram is the <em>static architectural blueprint</em>; an Object Diagram is an <em>instantaneous snapshot of instantiated memory</em> at runtime.</p>
+        </div>
+
+        <!-- 11. 4-Way Relationship Matrix -->
+        <div class="comparison-card" id="comp-4way-relationships" data-unit="2" data-year="2021-22 2022-23">
+          <div class="comparison-header">
+            <h3>11. Comprehensive 4-Way Relationship Comparison Matrix</h3>
+            <span class="exam-tag">PYQ: [2021-22], [2022-23]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Relationship Type</th>
+                  <th>UML Visual Notation</th>
+                  <th>Semantic Meaning</th>
+                  <th>Coupling Level</th>
+                  <th>Lifecycle Binding</th>
+                  <th>Code Implementation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Association</strong></td>
+                  <td>Solid line, optional open arrow for navigability</td>
+                  <td>Peer "uses-a" or structural link between independent classes.</td>
+                  <td>Loose</td>
+                  <td>Completely independent</td>
+                  <td>Pointer or reference attribute: <code>Teacher* teacher;</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Aggregation</strong></td>
+                  <td>Hollow diamond on whole side</td>
+                  <td>Weak "has-a" whole-part containment; parts can exist without the whole.</td>
+                  <td>Medium-Loose</td>
+                  <td>Independent lifetimes</td>
+                  <td>Collection of pointers: <code>vector&lt;Student*&gt; students;</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Composition</strong></td>
+                  <td>Solid filled diamond on whole side</td>
+                  <td>Strong "part-of" whole-part ownership; parts cannot survive without the whole.</td>
+                  <td>Strong</td>
+                  <td>Strictly co-incident</td>
+                  <td>Value members / nested objects: <code>Engine engine;</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Generalization</strong></td>
+                  <td>Solid line with large hollow triangle</td>
+                  <td>Taxonomic "is-a-kind-of" classification; inheritance of attributes and behavior.</td>
+                  <td>Tightest</td>
+                  <td>Subclass subsumes superclass</td>
+                  <td>Inheritance: <code>class Dog : public Animal {};</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Association = <em>peer link</em>; Aggregation = <em>shared part</em>; Composition = <em>owned part</em>; Generalization = <em>type classification</em>.</p>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- CATEGORY III: BEHAVIORAL & ARCHITECTURE                  -->
+        <!-- ======================================================== -->
+        <h2 id="cat-behavioral">Category III: Behavioral & Architectural Diagrams (Unit 2)</h2>
+
+        <!-- 12. Sequence vs Collaboration -->
+        <div class="comparison-card" id="comp-seq-collab" data-unit="2" data-year="2020-21 2022-23 2025-26">
+          <div class="comparison-header">
+            <h3>12. Sequence Diagram vs. Collaboration (Communication) Diagram</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2022-23], [2025-26]</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Sequence Diagram</th>
+                  <th style="width: 40%;">Collaboration (Communication) Diagram</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Primary Emphasis</strong></td>
+                  <td><strong>Chronological Time Sequence:</strong> Emphasizes explicit time ordering of messages flowing top-to-bottom.</td>
+                  <td><strong>Structural Spatial Context:</strong> Emphasizes architectural object organization, links, and topology.</td>
+                </tr>
+                <tr>
+                  <td><strong>Time Representation</strong></td>
+                  <td><strong>Geometric Y-axis:</strong> Time flows continuously downward along vertical dashed lifelines.</td>
+                  <td><strong>Sequence Numbers:</strong> Time is expressed via decimal numbering prefixes (<code>1.0</code>, <code>1.1</code>, <code>2.0</code>) on message vectors.</td>
+                </tr>
+                <tr>
+                  <td><strong>Object Lifeline &amp; Activation</strong></td>
+                  <td>Features explicit vertical <strong>lifelines</strong> and rectangular <strong>activation focus bars</strong>.</td>
+                  <td><strong>Zero lifelines:</strong> Objects are drawn as free-floating rectangles connected by solid structural links.</td>
+                </tr>
+                <tr>
+                  <td><strong>Concurrent &amp; Complex Flows</strong></td>
+                  <td>Superior for visualizing nested loops, alt blocks, and concurrent asynchronous message flows.</td>
+                  <td>Difficult to read when message cascades become deep or complex; becomes cluttered quickly.</td>
+                </tr>
+                <tr>
+                  <td><strong>Semantic Equivalence</strong></td>
+                  <td colspan="2" style="text-align: center;"><strong>Isomorphic:</strong> Both are interaction diagrams that convey mathematically identical interaction information. A Sequence Diagram can be converted automatically into a Collaboration Diagram without data loss.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Sequence diagrams emphasize <em>time ordering</em> down vertical lifelines; Collaboration diagrams emphasize <em>structural links and object topology</em> using numbered message labels.</p>
+        </div>
+
+        <!-- 13. Activity vs Statechart -->
+        <div class="comparison-card" id="comp-activity-state" data-unit="2" data-year="2025-26">
+          <div class="comparison-header">
+            <h3>13. Activity Diagram vs. State Machine (Statechart) Diagram</h3>
+            <span class="exam-tag">PYQ: [2025-26]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Activity Diagram</th>
+                  <th style="width: 40%;">State Machine Diagram (Statechart)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Fundamental Viewpoint</strong></td>
+                  <td><strong>Data/Control Workflow:</strong> Models procedural workflows, algorithms, and multi-actor business processes.</td>
+                  <td><strong>Discrete State Transitions:</strong> Models the discrete internal states and lifecycle transitions of a single object.</td>
+                </tr>
+                <tr>
+                  <td><strong>Transition Triggers</strong></td>
+                  <td><strong>Automatic (Internal Completion):</strong> Transition fires automatically as soon as the activity finishes executing.</td>
+                  <td><strong>Event-Driven (External):</strong> Transition fires strictly in response to an external asynchronous event trigger.</td>
+                </tr>
+                <tr>
+                  <td><strong>Concurrency Modeling</strong></td>
+                  <td>Uses explicit <strong>Fork and Join synchronization bars</strong> and Swimlanes for role partitioning.</td>
+                  <td>Uses <strong>Orthogonal Composite States</strong> separated by dashed concurrency boundaries.</td>
+                </tr>
+                <tr>
+                  <td><strong>Swimlane Support</strong></td>
+                  <td><strong>Native Swimlanes:</strong> Partitions activities vertically/horizontally across business roles and departments.</td>
+                  <td>No swimlanes; focused entirely on the boundary of one reactive object.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Activity diagrams model <em>workflow execution driven by internal completion</em>; State machine diagrams model <em>reactive lifecycles driven by external events</em>.</p>
+        </div>
+
+        <!-- 14. Include vs Extend -->
+        <div class="comparison-card" id="comp-include-extend" data-unit="2" data-year="2022-23 2024-25">
+          <div class="comparison-header">
+            <h3>14. Use Case Include (&laquo;include&raquo;) vs. Extend (&laquo;extend&raquo;)</h3>
+            <span class="exam-tag">PYQ: [2022-23], [2024-25]</span>
+          </div>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 700 130" width="700" height="130" xmlns="http://www.w3.org/2000/svg">
+              <!-- Include Side -->
+              <ellipse cx="90" cy="65" rx="60" ry="25" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="50" y="69" fill="#0969da" font-size="10" font-weight="bold">Base UseCase</text>
+
+              <ellipse cx="250" cy="65" rx="60" ry="25" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="210" y="69" fill="#0f172a" font-size="10">Included UC</text>
+
+              <line x1="150" y1="65" x2="190" y2="65" stroke="#0969da" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <polygon points="190,65 182,61 182,69" fill="#0969da"/>
+              <text x="145" y="55" fill="#0969da" font-size="9" font-weight="bold">&laquo;include&raquo;</text>
+
+              <!-- Extend Side -->
+              <ellipse cx="450" cy="65" rx="60" ry="25" fill="#eff6ff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="410" y="69" fill="#cf222e" font-size="10" font-weight="bold">Base UseCase</text>
+
+              <ellipse cx="610" cy="65" rx="60" ry="25" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="570" y="69" fill="#0f172a" font-size="10">Extending UC</text>
+
+              <line x1="550" y1="65" x2="510" y2="65" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <polygon points="510,65 518,61 518,69" fill="#cf222e"/>
+              <text x="510" y="55" fill="#cf222e" font-size="9" font-weight="bold">&laquo;extend&raquo;</text>
+            </svg>
+            <div class="diagram-caption">Figure C.3: Vector Arrow Direction Contrast: &laquo;include&raquo; points to Included UC; &laquo;extend&raquo; points back to Base UC</div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">&laquo;include&raquo; Dependency</th>
+                  <th style="width: 40%;">&laquo;extend&raquo; Dependency</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Execution Obligation</strong></td>
+                  <td><strong>Mandatory / Unconditional:</strong> The base use case cannot complete without executing the included use case.</td>
+                  <td><strong>Optional / Conditional:</strong> The extending use case executes only if a specific extension point predicate evaluates to true.</td>
+                </tr>
+                <tr>
+                  <td><strong>Arrow Direction</strong></td>
+                  <td>Points <strong>FROM Base Use Case TO Included Use Case</strong> (Base &rarr; Included).</td>
+                  <td>Points <strong>FROM Extending Use Case BACK TO Base Use Case</strong> (Extending &rarr; Base).</td>
+                </tr>
+                <tr>
+                  <td><strong>Base Case Awareness</strong></td>
+                  <td>The base use case is <strong>explicitly aware</strong> of the included use case and invokes it directly.</td>
+                  <td>The base use case is <strong>completely oblivious</strong> to the extending use case; declares only an extension point.</td>
+                </tr>
+                <tr>
+                  <td><strong>Primary Purpose</strong></td>
+                  <td>Factoring out common, reusable behavior shared across multiple use cases (e.g., <code>AuthenticateUser</code>).</td>
+                  <td>Modeling optional branches, edge cases, add-on features, or exceptional flows (e.g., <code>CalculateDiscount</code>).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> <code>&laquo;include&raquo;</code> is <em>mandatory</em> and points outward to common logic; <code>&laquo;extend&raquo;</code> is <em>optional</em> and points inward from the extension back to the base case.</p>
+        </div>
+
+        <!-- 15. Component vs Deployment -->
+        <div class="comparison-card" id="comp-component-deploy" data-unit="2" data-year="2022-23 2025-26">
+          <div class="comparison-header">
+            <h3>15. Component Diagram vs. Deployment Diagram</h3>
+            <span class="exam-tag">PYQ: [2022-23], [2025-26]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Component Diagram</th>
+                  <th style="width: 40%;">Deployment Diagram</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Architectural View</strong></td>
+                  <td><strong>Implementation View:</strong> Structural organization, packaging, and dependencies of software modules.</td>
+                  <td><strong>Deployment / Physical View:</strong> Physical topology of hardware nodes and allocation of software artifacts.</td>
+                </tr>
+                <tr>
+                  <td><strong>Core UML Artifacts</strong></td>
+                  <td>Components (rectangles with tabs/icons), Provided Interfaces (lollipop), Required Interfaces (socket).</td>
+                  <td>Nodes (3D cubes representing physical servers/devices), Artifacts (manifestations), Communication Paths.</td>
+                </tr>
+                <tr>
+                  <td><strong>Focus Question</strong></td>
+                  <td><em>"How is the software constructed and packaged into modular binary units?"</em></td>
+                  <td><em>"Where are software executables and databases physically hosted and run across the network?"</em></td>
+                </tr>
+                <tr>
+                  <td><strong>Key Connectors</strong></td>
+                  <td>Interface delegation, assembly connectors, dependency vectors.</td>
+                  <td>Communication paths with protocols (<code>&laquo;TCP/IP&raquo;</code>, <code>&laquo;HTTPS&raquo;</code>, <code>&laquo;gRPC&raquo;</code>).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Component diagrams model <em>software binaries and modular interfaces</em>; Deployment diagrams model <em>hardware nodes, devices, and physical network topologies</em>.</p>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- CATEGORY IV: DESIGN & METHODOLOGIES                      -->
+        <!-- ======================================================== -->
+        <h2 id="cat-methodologies">Category IV: Design Methodologies, Analysis & Quality (Unit 3)</h2>
+
+        <!-- 16. SA/SD vs JSD vs OMT -->
+        <div class="comparison-card" id="comp-sasd-jsd-omt" data-unit="3" data-year="2020-21 2022-23 2024-25 2025-26">
+          <div class="comparison-header">
+            <h3>16. SA/SD vs. JSD vs. OMT (Comprehensive Methodological Benchmark)</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2022-23], [2024-25], [2025-26]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th>SA/SD (Structured)</th>
+                  <th>JSD (Jackson Structured Dev.)</th>
+                  <th>OMT (Object Modeling Technique)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Originators</strong></td>
+                  <td>Yourdon, DeMarco, Constantine</td>
+                  <td>Michael A. Jackson</td>
+                  <td>James Rumbaugh et al.</td>
+                </tr>
+                <tr>
+                  <td><strong>Decomposition Style</strong></td>
+                  <td>Top-down functional decomposition into subroutines.</td>
+                  <td>Entity-centric modeling followed by concurrent process networks.</td>
+                  <td>Orthogonal tripartite modeling (Object, Dynamic, Functional).</td>
+                </tr>
+                <tr>
+                  <td><strong>Core Modeling Tools</strong></td>
+                  <td>DFD, Data Dictionary, Structure Chart.</td>
+                  <td>Entity Structure Diagrams (ESD), System Specification (SSD).</td>
+                  <td>Class Diagrams, Statecharts, Functional DFDs.</td>
+                </tr>
+                <tr>
+                  <td><strong>Temporal Sequencing</strong></td>
+                  <td><strong>Weak:</strong> DFDs have zero time semantics or synchronization.</td>
+                  <td><strong>Very Strong:</strong> Time ordering of entity event histories is paramount.</td>
+                  <td><strong>Strong:</strong> Statecharts and interaction diagrams explicitly track time.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data-Function Coupling</strong></td>
+                  <td>Completely decoupled; passive data flows through active bubbles.</td>
+                  <td>Partially coupled; actions belong to entities, state vectors separated.</td>
+                  <td><strong>Fully Unified:</strong> Encapsulated within class boundaries.</td>
+                </tr>
+                <tr>
+                  <td><strong>Concurrency Modeling</strong></td>
+                  <td>Poor; assumes single-threaded sequential call-return trees.</td>
+                  <td><strong>Exceptional:</strong> Built from day one as networks of concurrent processes.</td>
+                  <td>Strong; modeled natively via active objects and concurrent statecharts.</td>
+                </tr>
+                <tr>
+                  <td><strong>Semantic Gap</strong></td>
+                  <td>Large; DFDs look completely different from Structure Charts.</td>
+                  <td>Moderate; requires state vector inversion to map onto code.</td>
+                  <td><strong>Minimal:</strong> Seamless mapping from analysis classes to code classes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Primary Application</strong></td>
+                  <td>Batch pipelines, data processing, compilers.</td>
+                  <td>Real-time control systems, telecom switching.</td>
+                  <td>Enterprise software, GUI applications, distributed architectures.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> SA/SD focuses on <em>functions and data flows</em>; JSD focuses on <em>time-ordered entity event histories</em>; OMT unifies <em>objects, states, and functions</em> into a 3-model framework.</p>
+        </div>
+
+        <!-- 17. System vs Object Design -->
+        <div class="comparison-card" id="comp-system-object-design" data-unit="3" data-year="2020-21 2024-25">
+          <div class="comparison-header">
+            <h3>17. System Design (Macro-Level) vs. Object Design (Micro-Level)</h3>
+            <span class="exam-tag">PYQ: [2020-21], [2024-25]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">System Design (Macro-Architecture)</th>
+                  <th style="width: 40%;">Object Design (Micro-Architecture)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Architectural Scope</strong></td>
+                  <td>Global, strategic system-wide infrastructure and high-level structure.</td>
+                  <td>Detailed, internal class-level algorithmic and data structure specification.</td>
+                </tr>
+                <tr>
+                  <td><strong>Core Focus Areas</strong></td>
+                  <td>Subsystem decomposition, hardware-software allocation, concurrency, data stores, security.</td>
+                  <td>Algorithm selection, concrete data structures, access visibility, method signatures.</td>
+                </tr>
+                <tr>
+                  <td><strong>Decomposition Technique</strong></td>
+                  <td>Partitioning into horizontal architectural layers or vertical domain slices.</td>
+                  <td>Refining class definitions, optimizing associations, adjusting inheritance hierarchies.</td>
+                </tr>
+                <tr>
+                  <td><strong>Hardware Awareness</strong></td>
+                  <td>High; explicitly maps software tiers to physical server nodes and cloud topologies.</td>
+                  <td>Low; operates within memory address spaces, abstract algorithms, and compilers.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> System Design is <em>macro-architecture</em> (tiers, concurrency, databases); Object Design is <em>micro-architecture</em> (classes, algorithms, visibility, optimizations).</p>
+        </div>
+
+        <!-- 18. OMT 3 Models -->
+        <div class="comparison-card" id="comp-omt-three-models" data-unit="3" data-year="2023-24 2024-25">
+          <div class="comparison-header">
+            <h3>18. The Three Models in Rumbaugh's OMT (Object vs. Dynamic vs. Functional)</h3>
+            <span class="exam-tag">PYQ: [2023-24], [2024-25]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Dimension</th>
+                  <th style="width: 26%;">1. Object Model</th>
+                  <th style="width: 27%;">2. Dynamic Model</th>
+                  <th style="width: 27%;">3. Functional Model</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Core Question</strong></td>
+                  <td><strong>"WHAT"</strong> is being modeled?</td>
+                  <td><strong>"WHEN"</strong> does it happen?</td>
+                  <td><strong>"HOW"</strong> is data computed?</td>
+                </tr>
+                <tr>
+                  <td><strong>Nature</strong></td>
+                  <td>Static structural framework.</td>
+                  <td>Temporal reactive behavior.</td>
+                  <td>Computational transformation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Primary Diagrams</strong></td>
+                  <td>UML Class &amp; Object Diagrams.</td>
+                  <td>Statechart &amp; Sequence Diagrams.</td>
+                  <td>Data Flow Diagrams (DFDs) &amp; Equations.</td>
+                </tr>
+                <tr>
+                  <td><strong>Core Concepts</strong></td>
+                  <td>Classes, attributes, operations, associations.</td>
+                  <td>States, events, transitions, guards, actions.</td>
+                  <td>Processes, data stores, data flows, actors.</td>
+                </tr>
+                <tr>
+                  <td><strong>Role in System</strong></td>
+                  <td>Provides the foundational memory structures.</td>
+                  <td>Controls sequencing and triggers operations.</td>
+                  <td>Specifies the algorithmic method bodies.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Object Model provides the <em>data skeleton</em>; Dynamic Model controls the <em>timing and triggers</em>; Functional Model specifies the <em>computational logic</em>.</p>
+        </div>
+
+        <!-- 19. Transform vs Transaction -->
+        <div class="comparison-card" id="comp-transform-transaction" data-unit="3">
+          <div class="comparison-header">
+            <h3>19. Transform Analysis vs. Transaction Analysis (Structure Charts)</h3>
+            <span class="exam-tag">Syllabus Core Topic</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Transform Analysis</th>
+                  <th style="width: 40%;">Transaction Analysis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Data Flow Pattern</strong></td>
+                  <td>Linear pipeline: input flow &rarr; central transformation &rarr; output flow.</td>
+                  <td>Radial star: a single input transaction tag triggers one of many branching paths.</td>
+                </tr>
+                <tr>
+                  <td><strong>Structure Chart Shape</strong></td>
+                  <td>Balanced 3-branch structure: Afferent (input), Central Transform, Efferent (output).</td>
+                  <td>Shallow, wide fan-out structure: Transaction Center router controlling action modules.</td>
+                </tr>
+                <tr>
+                  <td><strong>Control Logic</strong></td>
+                  <td>Sequential execution where outputs of one stage feed as inputs into the next.</td>
+                  <td>Conditional branching (<code>switch/case</code>) selecting exactly one execution path.</td>
+                </tr>
+                <tr>
+                  <td><strong>Typical Domain</strong></td>
+                  <td>Mathematical calculations, signal processing, compilers, batch payroll engines.</td>
+                  <td>ATM transaction dispatchers, menu navigation routers, online shopping carts.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Transform Analysis maps <em>linear pipelines</em> (Input &rarr; Process &rarr; Output); Transaction Analysis maps <em>branching routers</em> driven by a transaction tag.</p>
+        </div>
+
+        <!-- 20. Inheritance vs Delegation -->
+        <div class="comparison-card" id="comp-inh-delegation" data-unit="3" data-year="2022-23">
+          <div class="comparison-header">
+            <h3>20. Inheritance vs. Delegation (Composition over Inheritance)</h3>
+            <span class="exam-tag">PYQ: [2022-23]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Inheritance (White-Box Reuse)</th>
+                  <th style="width: 40%;">Delegation / Composition (Black-Box Reuse)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Relationship Type</strong></td>
+                  <td><strong>"is-a"</strong> taxonomic subtyping relationship.</td>
+                  <td><strong>"has-a"</strong> object containment and message forwarding relationship.</td>
+                </tr>
+                <tr>
+                  <td><strong>Coupling Level</strong></td>
+                  <td><strong>Tight:</strong> Subclass is tightly bound to the internal implementation details of superclass.</td>
+                  <td><strong>Loose:</strong> Host class interacts with delegate purely through its public abstract interface.</td>
+                </tr>
+                <tr>
+                  <td><strong>Binding Time</strong></td>
+                  <td>Static compile-time binding; behavior cannot be swapped dynamically at runtime.</td>
+                  <td>Dynamic runtime binding; delegate instances can be swapped on the fly (Strategy pattern).</td>
+                </tr>
+                <tr>
+                  <td><strong>Encapsulation Impact</strong></td>
+                  <td>Weakens encapsulation (subclasses often expose superclass protected state).</td>
+                  <td>Preserves strict encapsulation (delegate internals remain private).</td>
+                </tr>
+                <tr>
+                  <td><strong>Design Principle</strong></td>
+                  <td>Use strictly when Liskov Substitution Principle (LSP) holds true unconditionally.</td>
+                  <td><em>"Favor object composition over class inheritance"</em> (Gang of Four guideline).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Inheritance provides <em>static white-box reuse</em> (tight coupling); Delegation provides <em>dynamic black-box reuse</em> (loose coupling, preferred by modern design).</p>
+        </div>
+
+        <!-- 21. Cohesion vs Coupling -->
+        <div class="comparison-card" id="comp-cohesion-coupling" data-unit="3" data-year="2022-23">
+          <div class="comparison-header">
+            <h3>21. High Cohesion vs. Low Coupling</h3>
+            <span class="exam-tag">PYQ: [2022-23]</span>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Criterion</th>
+                  <th style="width: 40%;">Cohesion (Internal Module Focus)</th>
+                  <th style="width: 40%;">Coupling (Inter-Module Interdependence)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Architectural Scope</strong></td>
+                  <td><strong>Intra-module metric:</strong> Measures how strongly related and focused the internal responsibilities of a single module are.</td>
+                  <td><strong>Inter-module metric:</strong> Measures the degree of direct interdependence between separate software modules.</td>
+                </tr>
+                <tr>
+                  <td><strong>Ideal Architectural Goal</strong></td>
+                  <td><strong>MAXIMIZE (High Cohesion):</strong> Every class should have a single, well-defined domain responsibility (Single Responsibility Principle).</td>
+                  <td><strong>MINIMIZE (Low Coupling):</strong> Modules should communicate through abstract interfaces with zero awareness of external internals.</td>
+                </tr>
+                <tr>
+                  <td><strong>Spectrum from Worst to Best</strong></td>
+                  <td>Coincidental &rarr; Logical &rarr; Temporal &rarr; Procedural &rarr; Communicational &rarr; Sequential &rarr; <strong>Functional (Best)</strong>.</td>
+                  <td>Content &rarr; Common &rarr; Control &rarr; Stamp &rarr; <strong>Data (Best)</strong> &rarr; <strong>Message (No Direct Coupling, Best)</strong>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Impact on Maintenance</strong></td>
+                  <td>High cohesion ensures classes are easy to understand, test, debug, and reuse.</td>
+                  <td>Low coupling ensures changes in one module do not cause unexpected cascading errors in other modules.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway"><strong>Exam Takeaway:</strong> Golden rule of software engineering: <em>Strive for High Cohesion (focused internals) and Low Coupling (independent modules)</em>.</p>
+        </div>
+
+      </article>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <span>Object-Oriented System Design (BCS054 / KCS054) Academic Guide</span>
+    <span class="footer-meta">Master Comparison Compendium</span>
+  </footer>
+</body>
+</html>

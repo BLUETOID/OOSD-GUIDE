@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Filter questions by unit and year
   const filterButtons = document.querySelectorAll('button[data-filter]');
   const searchInput = document.getElementById('search-input');
-  const questionItems = document.querySelectorAll('.question-item');
+  const questionItems = document.querySelectorAll('.question-item, .comparison-card');
   const countBadge = document.getElementById('item-count');
 
   let activeUnit = 'all';
@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (countBadge) {
-      countBadge.textContent = `${visibleCount} Questions`;
+      const isComparison = document.querySelectorAll('.comparison-card').length > 0;
+      countBadge.textContent = `${visibleCount} ${isComparison ? 'Comparisons' : 'Questions'}`;
     }
   }
 
