@@ -290,41 +290,11 @@
             <div class="diagram-caption">Figure 2.4: Aggregation vs Composition with Combined Car Example</div>
           </div>
 
-          <pre><code>// C++ Implementation of Aggregation vs Composition
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
+          <pre><code>// Aggregation: Weak relationship (Department references Teacher; Teacher exists independently)
+class Department { Teacher* teacher; };
 
-// --- AGGREGATION: Professor exists independently ---
-class Professor {
-public:
-    std::string name;
-    Professor(std::string n) : name(n) {}
-};
-
-class Department {
-public:
-    std::vector&lt;Professor*&gt; faculty; // Holds non-owning pointers (Aggregation)
-    void addProfessor(Professor* p) { faculty.push_back(p); }
-    // Destructor does NOT delete faculty members!
-};
-
-// --- COMPOSITION: Room lifetime is bound to Building ---
-class Room {
-public:
-    int roomNumber;
-    Room(int num) : roomNumber(num) {}
-    ~Room() { std::cout &lt;&lt; "Room " &lt;&lt; roomNumber &lt;&lt; " destroyed.\n"; }
-};
-
-class Building {
-public:
-    std::vector&lt;std::unique_ptr&lt;Room&gt;&gt; rooms; // Owning smart pointers (Composition)
-    void addRoom(int num) {
-        rooms.push_back(std::make_unique&lt;Room&gt;(num));
-    }
-    // When Building is deleted, all Rooms are automatically destroyed!
-};</code></pre>
+// Composition: Strong relationship (House owns Room; lifecycle tightly coupled)
+class House { Room rooms[4]; };</code></pre>
         </section>
 
         <!-- ======================================================== -->
@@ -388,38 +358,11 @@ public:
           </div>
 
           <h4>C++ Virtual Base Class Solution</h4>
-          <pre><code>#include &lt;iostream&gt;
-
-class PoweredDevice {
-public:
-    int voltage;
-    PoweredDevice(int v) : voltage(v) {
-        std::cout &lt;&lt; "PoweredDevice initialized with " &lt;&lt; v &lt;&lt; "V.\n";
-    }
-};
-
-// Virtual base class inheritance eliminates duplicate base instances
-class Scanner : virtual public PoweredDevice {
-public:
-    Scanner(int v) : PoweredDevice(v) {}
-};
-
-class Printer : virtual public PoweredDevice {
-public:
-    Printer(int v) : PoweredDevice(v) {}
-};
-
-// Copier directly initializes the single shared PoweredDevice instance
-class Copier : public Scanner, public Printer {
-public:
-    Copier(int v) : PoweredDevice(v), Scanner(v), Printer(v) {}
-};
-
-int main() {
-    Copier c(220);
-    std::cout &lt;&lt; "Operating Voltage: " &lt;&lt; c.voltage &lt;&lt; "V\n"; // Unambiguous!
-    return 0;
-}</code></pre>
+          <pre><code>// Virtual Base Class: Resolves diamond multiple inheritance
+class Device { public: int voltage; };
+class Scanner : virtual public Device {};
+class Printer : virtual public Device {};
+class Copier  : public Scanner, public Printer {}; // Single shared Device subobject</code></pre>
         </section>
 
         <!-- ======================================================== -->

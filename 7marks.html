@@ -93,75 +93,13 @@
   <h4 class="answer-heading">4. Architectural Case Example: Automated Banking Transaction System</h4>
   <p>Consider an automated financial transaction processing engine. In a procedural system, a global array of account records is passed across distinct procedures (<code>deposit()</code>, <code>calculate_interest()</code>, <code>audit()</code>). Any change to the record structure breaks all procedures. Under OOT, an abstract base class <code>BankAccount</code> encapsulates balance invariants and declares a pure virtual operation <code>applyMonthlyFees()</code>:</p>
 
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;memory&gt;
-#include &lt;vector&gt;
-
-// Abstract Domain Entity
-class BankAccount {
+  <pre class="code-block"><code>class BankAccount {
 protected:
-    std::string accountNumber;
-    double balance;
-
+    double balance; // Encapsulated internal state
 public:
-    BankAccount(const std::string&amp; accNo, double initialBalance)
-        : accountNumber(accNo), balance(initialBalance) {}
-    virtual ~BankAccount() = default;
-
-    void deposit(double amount) {
-        if (amount &gt; 0) balance += amount;
-    }
-
-    virtual bool withdraw(double amount) {
-        if (amount &gt; 0 &amp;&amp; balance &gt;= amount) {
-            balance -= amount;
-            return true;
-        }
-        return false;
-    }
-
-    virtual void applyMonthlyFees() = 0; // Polymorphic interface
-
-    double getBalance() const { return balance; }
-};
-
-// Concrete Specialized Subclass 1
-class SavingsAccount : public BankAccount {
-    double interestRate;
-public:
-    SavingsAccount(const std::string&amp; id, double bal, double rate)
-        : BankAccount(id, bal), interestRate(rate) {}
-
-    void applyMonthlyFees() override {
-        balance += (balance * interestRate / 12.0); // Interest credit
-    }
-};
-
-// Concrete Specialized Subclass 2
-class CheckingAccount : public BankAccount {
-    double maintenanceFee;
-public:
-    CheckingAccount(const std::string&amp; id, double bal, double fee)
-        : BankAccount(id, bal), maintenanceFee(fee) {}
-
-    void applyMonthlyFees() override {
-        balance -= maintenanceFee; // Account maintenance debit
-    }
-};
-
-int main() {
-    std::vector&lt;std::unique_ptr&lt;BankAccount&gt;&gt; ledger;
-    ledger.push_back(std::make_unique&lt;SavingsAccount&gt;("SA-101", 5000.0, 0.04));
-    ledger.push_back(std::make_unique&lt;CheckingAccount&gt;("CA-202", 1200.0, 25.0));
-
-    // Dynamic Polymorphic Processing (Open-Closed Principle)
-    for (const auto&amp; acc : ledger) {
-        acc-&gt;applyMonthlyFees();
-        std::cout &lt;&lt; "Updated Balance: $" &lt;&lt; acc-&gt;getBalance() &lt;&lt; std::endl;
-    }
-    return 0;
-}</code></pre>
+    virtual void applyMonthlyFees() = 0; // Pure abstraction
+    double getBalance() const { return balance; } // Controlled access
+};</code></pre>
   <p><strong>Analysis of Case Example:</strong> When the bank introduces a new <code>MoneyMarketAccount</code>, no existing batch processing code is altered or recompiled. The new subclass simply implements <code>applyMonthlyFees()</code>, demonstrating the extensibility and safety of OOT.</p>
 </div>
         </div>
@@ -228,59 +166,13 @@ int main() {
   </table>
 
   <h4 class="answer-heading">4. Architectural Implementation Pattern</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;memory&gt;
-
-// Abstract Strategy Interface
-class FareCalculationStrategy {
-public:
-    virtual ~FareCalculationStrategy() = default;
-    virtual double computeFare(double basePrice) const = 0;
-};
-
-class EconomyFare : public FareCalculationStrategy {
-public:
-    double computeFare(double basePrice) const override {
-        return basePrice * 1.05; // 5% regulatory taxes
-    }
-};
-
-class BusinessFare : public FareCalculationStrategy {
-public:
-    double computeFare(double basePrice) const override {
-        return (basePrice * 2.8) + 150.0; // Premium service charges
-    }
-};
-
-// Flight Ticket Context Class
-class FlightTicket {
+  <pre class="code-block"><code>class Order {
 private:
-    std::string ticketNumber;
-    double baseDistanceRate;
-    std::unique_ptr&lt;FareCalculationStrategy&gt; fareStrategy;
-
+    double totalAmount; // Invariant protected from direct external tampering
 public:
-    FlightTicket(std::string tNo, double rate, std::unique_ptr&lt;FareCalculationStrategy&gt; strategy)
-        : ticketNumber(std::move(tNo)), baseDistanceRate(rate), fareStrategy(std::move(strategy)) {}
-
-    void setFareStrategy(std::unique_ptr&lt;FareCalculationStrategy&gt; newStrategy) {
-        fareStrategy = std::move(newStrategy);
-    }
-
-    double calculateTotal() const {
-        return fareStrategy-&gt;computeFare(baseDistanceRate);
-    }
-};
-
-int main() {
-    FlightTicket ticket("TK-98712", 450.0, std::make_unique&lt;EconomyFare&gt;());
-    std::cout &lt;&lt; "Economy Total: $" &lt;&lt; ticket.calculateTotal() &lt;&lt; std::endl;
-
-    ticket.setFareStrategy(std::make_unique&lt;BusinessFare&gt;());
-    std::cout &lt;&lt; "Upgraded Business Total: $" &lt;&lt; ticket.calculateTotal() &lt;&lt; std::endl;
-    return 0;
-}</code></pre>
+    void addItem(double price) { if (price > 0) totalAmount += price; }
+    double getTotal() const { return totalAmount; }
+};</code></pre>
 </div>
         </div>
       </div>
@@ -321,77 +213,16 @@ int main() {
   </ol>
 
   <h4 class="answer-heading">3. Comprehensive Unified C++ Code Demonstration</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-// Concept 3: Data Abstraction (Abstract Interface)
-class Device {
+  <pre class="code-block"><code>class Shape {
+public:
+    virtual void draw() = 0; // Data Abstraction (interface contract)
+};
+class Circle : public Shape {
 private:
-    // Concept 4: Encapsulation & Information Hiding
-    std::string deviceId;
-    bool powerState;
-
-protected:
-    Device(const std::string&amp; id) : deviceId(id), powerState(false) {}
-
+    double radius; // Encapsulation (hidden state)
 public:
-    virtual ~Device() = default;
-
-    // Public Contract
-    void powerOn() { powerState = true; onStateChanged(); }
-    void powerOff() { powerState = false; onStateChanged(); }
-    bool isPowered() const { return powerState; }
-    std::string getId() const { return deviceId; }
-
-    // Concept 6 & 7: Polymorphism and Dynamic Binding
-    virtual void executeTask() = 0; // Pure virtual function
-
-protected:
-    virtual void onStateChanged() {}
-};
-
-// Concept 5: Inheritance
-class SensorNode : public Device {
-    double readingCelsius;
-
-public:
-    SensorNode(const std::string&amp; id) : Device(id), readingCelsius(22.5) {}
-
-    void executeTask() override {
-        std::cout &lt;&lt; "[Sensor " &lt;&lt; getId() &lt;&lt; "] Transmitting Temperature: " 
-                  &lt;&lt; readingCelsius &lt;&lt; " C" &lt;&lt; std::endl;
-    }
-};
-
-class ActuatorNode : public Device {
-    int valvePositionDegrees;
-
-public:
-    ActuatorNode(const std::string&amp; id) : Device(id), valvePositionDegrees(0) {}
-
-    void executeTask() override {
-        valvePositionDegrees = (valvePositionDegrees + 45) % 360;
-        std::cout &lt;&lt; "[Actuator " &lt;&lt; getId() &lt;&lt; "] Rotating Valve to: " 
-                  &lt;&lt; valvePositionDegrees &lt;&lt; " deg" &lt;&lt; std::endl;
-    }
-};
-
-// Concept 8: Message Passing Controller
-int main() {
-    // Concept 1 & 2: Objects and Classes instantiated
-    std::vector&lt;std::unique_ptr&lt;Device&gt;&gt; network;
-    network.push_back(std::make_unique&lt;SensorNode&gt;("TH-01"));
-    network.push_back(std::make_unique&lt;ActuatorNode&gt;("VLV-99"));
-
-    for (const auto&amp; node : network) {
-        node-&gt;powerOn();
-        // Dynamic late binding resolves correct executeTask at runtime
-        node-&gt;executeTask();
-    }
-    return 0;
-}</code></pre>
+    void draw() override { /* Render circle */ } // Dynamic Polymorphism
+};</code></pre>
 </div>
         </div>
       </div>
@@ -687,74 +518,13 @@ int main() {
   <p>Without encapsulation, data structs allow client code to assign arbitrary, invalid values (e.g., assigning a negative account balance, or setting a date to February 31st). With encapsulation, mutations occur exclusively through public setter methods or domain operations that validate inputs, enforce business constraints, and preserve the object's <strong>class invariants</strong>.</p>
 
   <h4 class="answer-heading">3. Comprehensive C++ Industrial Demonstration: Secure Digital Wallet</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;stdexcept&gt;
-
-class DigitalWallet {
+  <pre class="code-block"><code>class BankAccount {
 private:
-    // Strictly encapsulated private state variables
-    std::string walletId;
-    double balance;
-    double dailySpendLimit;
-    double currentDailySpent;
-
-    // Private internal helper function (encapsulated logic)
-    bool isTransactionAllowed(double amount) const {
-        return (amount &gt; 0.0) &amp;&amp; 
-               (balance &gt;= amount) &amp;&amp; 
-               ((currentDailySpent + amount) &lt;= dailySpendLimit);
-    }
-
+    double balance; // Inaccessible directly from external scope
 public:
-    // Constructor enforcing state validity at initialization
-    DigitalWallet(const std::string&amp; id, double initialDeposit, double limit)
-        : walletId(id), dailySpendLimit(limit), currentDailySpent(0.0) {
-        if (initialDeposit &lt; 0.0 || limit &lt;= 0.0) {
-            throw std::invalid_argument("Initial funds and limits must be positive.");
-        }
-        balance = initialDeposit;
-    }
-
-    // Public business operations enforcing invariants
-    bool transferFunds(double amount, const std::string&amp; destinationAccount) {
-        if (!isTransactionAllowed(amount)) {
-            std::cout &lt;&lt; "[REJECTED] Transaction of $" &lt;&lt; amount 
-                      &lt;&lt; " violates balance or daily spending limit.\n";
-            return false;
-        }
-
-        balance -= amount;
-        currentDailySpent += amount;
-        std::cout &lt;&lt; "[SUCCESS] Transferred $" &lt;&lt; amount &lt;&lt; " to " &lt;&lt; destinationAccount 
-                  &lt;&lt; ". Remaining Balance: $" &lt;&lt; balance &lt;&lt; "\n";
-        return true;
-    }
-
-    void deposit(double amount) {
-        if (amount &lt;= 0.0) {
-            std::cout &lt;&lt; "[ERROR] Deposit amount must be strictly positive.\n";
-            return;
-        }
-        balance += amount;
-        std::cout &lt;&lt; "[DEPOSIT] Added $" &lt;&lt; amount &lt;&lt; ". Current Balance: $" &lt;&lt; balance &lt;&lt; "\n";
-    }
-
-    // Controlled read-only access (Getters)
+    void deposit(double amt) { if (amt > 0) balance += amt; } // Invariant enforced
     double getBalance() const { return balance; }
-    std::string getWalletId() const { return walletId; }
-};
-
-int main() {
-    DigitalWallet myWallet("WAL-9081", 1000.0, 500.0);
-
-    // External client cannot do: myWallet.balance = -999999; (Compile Error)
-    myWallet.deposit(200.0);
-    myWallet.transferFunds(350.0, "MERCHANT-AMAZON"); // Allowed ($350 <= $500 limit)
-    myWallet.transferFunds(200.0, "MERCHANT-APPLE");  // Rejected (Total $550 > $500 limit)
-
-    return 0;
-}</code></pre>
+};</code></pre>
 
   <h4 class="answer-heading">4. Encapsulation vs. Information Hiding</h4>
   <p>While often used interchangeably, subtle technical distinctions exist: <strong>Encapsulation</strong> is the structural packaging mechanism (enclosing data and methods in a class container), whereas <strong>Information Hiding</strong> is the architectural principle of intentionally concealing design decisions and physical data representations behind an immutable interface so clients cannot depend on implementation volatility.</p>
@@ -809,69 +579,16 @@ int main() {
   </table>
 
   <h4 class="answer-heading">3. Comprehensive C++ Example: Industrial Notification Gateway</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-// Abstract Base Class declaring polymorphic interface
-class NotificationChannel {
+  <pre class="code-block"><code>class Printer {
 public:
-    virtual ~NotificationChannel() = default;
-
-    // Pure virtual method establishing dynamic polymorphic contract
-    virtual void sendNotification(const std::string&amp; recipient, 
-                                 const std::string&amp; message) = 0;
+    virtual void print() { std::cout << "Generic print
+"; }
 };
-
-// Concrete Derived Class 1: SMS Gateway
-class SMSChannel : public NotificationChannel {
+class LaserPrinter : public Printer {
 public:
-    void sendNotification(const std::string&amp; recipient, 
-                          const std::string&amp; message) override {
-        std::cout &lt;&lt; "[SMS-GATEWAY] Sending SMS to " &lt;&lt; recipient 
-                  &lt;&lt; " via Cellular Network. Payload: "" &lt;&lt; message &lt;&lt; ""\n";
-    }
-};
-
-// Concrete Derived Class 2: Email Gateway
-class EmailChannel : public NotificationChannel {
-public:
-    void sendNotification(const std::string&amp; recipient, 
-                          const std::string&amp; message) override {
-        std::cout &lt;&lt; "[SMTP-GATEWAY] Dispatching Email to " &lt;&lt; recipient 
-                  &lt;&lt; " via TLS port 587. Subject: Alert, Body: "" &lt;&lt; message &lt;&lt; ""\n";
-    }
-};
-
-// Concrete Derived Class 3: Push Notification
-class PushNotificationChannel : public NotificationChannel {
-public:
-    void sendNotification(const std::string&amp; recipient, 
-                          const std::string&amp; message) override {
-        std::cout &lt;&lt; "[APNS/FCM] Pushing Cloud Alert to Token: " &lt;&lt; recipient 
-                  &lt;&lt; ". Sound: Default, Message: "" &lt;&lt; message &lt;&lt; ""\n";
-    }
-};
-
-// Client Subsystem (Adheres to Open-Closed Principle)
-void broadcastAlert(const std::vector&lt;std::shared_ptr&lt;NotificationChannel&gt;&gt;&amp; channels,
-                    const std::string&amp; userTarget, const std::string&amp; urgentMessage) {
-    for (const auto&amp; channel : channels) {
-        // Dynamic late binding resolves appropriate sendNotification at runtime
-        channel-&gt;sendNotification(userTarget, urgentMessage);
-    }
-}
-
-int main() {
-    std::vector&lt;std::shared_ptr&lt;NotificationChannel&gt;&gt; alertPipeline;
-    alertPipeline.push_back(std::make_shared&lt;SMSChannel&gt;());
-    alertPipeline.push_back(std::make_shared&lt;EmailChannel&gt;());
-    alertPipeline.push_back(std::make_shared&lt;PushNotificationChannel&gt;());
-
-    broadcastAlert(alertPipeline, "+1-555-019-2834 / user@corp.net", "Security Alert: Unauthorized Login Detected");
-    return 0;
-}</code></pre>
+    void print() override { std::cout << "High-res laser print
+"; } // Dynamic dispatch
+};</code></pre>
 
   <h4 class="answer-heading">4. Architectural Underpinning: The VTable Mechanism</h4>
   <p>When a class declares a <code>virtual</code> function, the compiler creates a static array of function pointers called the <strong>Virtual Method Table (VTable)</strong> for that class. Every object instantiated from that class has an invisible pointer (<code>vptr</code>) inserted at offset zero in its memory layout. When <code>channel-&gt;sendNotification()</code> is called, the CPU dereferences <code>channel-&gt;vptr</code>, indexes the slot for <code>sendNotification</code>, and executes an indirect jump to the exact derived function address.</p>
@@ -936,39 +653,12 @@ int main() {
   </div>
 
   <h4 class="answer-heading">4. Architectural Security Realization in C++</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-
-class PaymentAccount {
+  <pre class="code-block"><code>class PaymentAccount {
 private:
-    // Hidden private data: Never accessible directly by clients
-    std::string secretPinHash;
-    double balanceAmount;
-    int failedAttempts;
-
-    bool verifyPin(const std::string&amp; enteredPin) {
-        // Internal security check
-        return (enteredPin == "1234");
-    }
-
+    std::string privatePin; // Information Hiding: completely invisible externally
+    double balance;         // Encapsulated domain state
 public:
-    PaymentAccount(std::string pin, double initialBalance)
-        : secretPinHash(pin), balanceAmount(initialBalance), failedAttempts(0) {}
-
-    bool debitFunds(double amount, const std::string&amp; pin) {
-        if (!verifyPin(pin)) {
-            failedAttempts++;
-            std::cout &lt;&lt; "[ALERT] Authentication Failure. Attempt: " &lt;&lt; failedAttempts &lt;&lt; "\n";
-            return false;
-        }
-        if (amount &gt; balanceAmount) {
-            std::cout &lt;&lt; "[REJECT] Insufficient funds.\n";
-            return false;
-        }
-        balanceAmount -= amount;
-        std::cout &lt;&lt; "[SECURITY-CLEARED] Debited $" &lt;&lt; amount &lt;&lt; "\n";
-        return true;
-    }
+    bool authorize(const std::string& enteredPin); // Public interface boundary
 };</code></pre>
 
   <h4 class="answer-heading">5. Architectural Security Heuristics (Parnas' Principles)</h4>
@@ -1195,74 +885,15 @@ public:
   <p><strong>Generosity</strong> (also known as <em>Genericity</em> or Parametric Polymorphism) is the programming mechanism that allows classes, interfaces, and algorithms to be defined with <em>type parameters</em> rather than concrete types. This empowers engineers to author highly reusable, type-safe data structures (e.g., generic stacks, queues, hash maps) once, and instantiate them for integers, floating-point numbers, or custom user objects without resorting to dangerous <code>void*</code> casts or code duplication.</p>
 
   <h4 class="answer-heading">3. Comprehensive C++ Program Demonstrating All Four Concepts</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-// Concept 4: Generosity (Generic Container Template)
+  <pre class="code-block"><code>// Generosity (Templates) & Abstraction
 template &lt;typename T&gt;
-class SecureRepository {
+class Container {
 private:
-    std::vector&lt;T&gt; items;
+    T element; // Encapsulated parameterized data
 public:
-    void add(const T&amp; item) { items.push_back(item); }
-    size_t count() const { return items.size(); }
-    const T&amp; get(size_t index) const { return items.at(index); }
-};
-
-// Concept 2: Information Hiding & Abstract Base
-class BankCustomer {
-private:
-    std::string nationalId; // Hidden internal state
-    std::string fullName;
-
-public:
-    BankCustomer(std::string id, std::string name) 
-        : nationalId(std::move(id)), fullName(std::move(name)) {}
-    virtual ~BankCustomer() = default;
-
-    // Concept 3: Polymorphic method
-    virtual void printCustomerProfile() const {
-        std::cout &lt;&lt; "[Standard Customer] Name: " &lt;&lt; fullName &lt;&lt; "\n";
-    }
-
-    std::string getId() const { return nationalId; }
-};
-
-// Specialized Subtype
-class VIPCustomer : public BankCustomer {
-    double creditAllowance;
-public:
-    VIPCustomer(std::string id, std::string name, double credit)
-        : BankCustomer(std::move(id), std::move(name)), creditAllowance(credit) {}
-
-    void printCustomerProfile() const override {
-        std::cout &lt;&lt; "[VIP Customer] Name: " &lt;&lt; getId() 
-                  &lt;&lt; " | Credit Limit: $" &lt;&lt; creditAllowance &lt;&lt; "\n";
-    }
-};
-
-int main() {
-    // Concept 1: Object Identity Demonstration
-    BankCustomer custA("ID-101", "Alice Smith");
-    BankCustomer custB("ID-101", "Alice Smith"); // Identical state
-
-    std::cout &lt;&lt; "custA memory address: " &lt;&lt; &amp;custA &lt;&lt; "\n";
-    std::cout &lt;&lt; "custB memory address: " &lt;&lt; &amp;custB &lt;&lt; "\n";
-    std::cout &lt;&lt; "Are identities identical? " &lt;&lt; ((&amp;custA == &amp;custB) ? "YES" : "NO") &lt;&lt; "\n";
-
-    // Concept 4: Utilizing Generosity
-    SecureRepository&lt;std::shared_ptr&lt;BankCustomer&gt;&gt; repo;
-    repo.add(std::make_shared&lt;BankCustomer&gt;("ID-101", "Alice Smith"));
-    repo.add(std::make_shared&lt;VIPCustomer&gt;("ID-202", "Robert Bruce", 50000.0));
-
-    // Concept 3: Polymorphism in Action
-    for (size_t i = 0; i &lt; repo.count(); ++i) {
-        repo.get(i)-&gt;printCustomerProfile();
-    }
-    return 0;
-}</code></pre>
+    void set(const T&amp; val) { element = val; }
+    T get() const { return element; }
+};</code></pre>
 </div>
         </div>
       </div>
@@ -1542,28 +1173,9 @@ int main() {
   </div>
 
   <h4 class="answer-heading">5. C++ Implementation Mapping</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-class Employee; // Forward declaration
-
-class Company {
-    std::string name;
-    // Multiplicity 1..* represented as a collection container
-    std::vector&lt;std::shared_ptr&lt;Employee&gt;&gt; staff;
-public:
-    Company(std::string n) : name(std::move(n)) {}
-    void hire(std::shared_ptr&lt;Employee&gt; emp) { staff.push_back(emp); }
-};
-
+  <pre class="code-block"><code>class Company; // Forward declaration
 class Employee {
-    std::string id;
-    // Multiplicity 1 represented as a raw/weak back-reference pointer
-    Company* employer;
-public:
-    Employee(std::string empId, Company* comp) : id(std::move(empId)), employer(comp) {}
+    Company* employer; // Association link represented via pointer reference
 };</code></pre>
 </div>
         </div>
@@ -2039,7 +1651,7 @@ public:
   <pre class="code-block"><code>// Safety Hazard Condition
 bool isHazardous(Location farmer, Location lion, Location goat, Location grass) {
     if (farmer != goat) {
-        if (lion == goat) return true; // Lion devours Goat
+        if (lion == goat) return true;  // Lion devours Goat
         if (goat == grass) return true; // Goat devours Grass
     }
     return false; // Safe configuration
@@ -2109,7 +1721,7 @@ bool isHazardous(Location farmer, Location lion, Location goat, Location grass) 
 inv ValidAccountCount:
     self.accounts->size() >= 0
 
-context Bank::getAccount(accNo : String) : Account
+context Bank::getAccount(accNo: String): Account
 post:
     result = self.accountMap.get(accNo)
     -- Multiplicity reduced from 0..* to 0..1 via qualifier key</code></pre>
@@ -2170,45 +1782,9 @@ post:
   </table>
 
   <h4 class="answer-heading">3. Concrete C++ Memory &amp; Lifecycle Implementation</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-// 1. Generalization Base Class
-class HardwareDevice {
-public:
-    virtual ~HardwareDevice() = default;
-    virtual void diagnose() = 0;
-};
-
-// 1. Generalization Child Class (is-a HardwareDevice)
-class CPU : public HardwareDevice {
-public:
-    void diagnose() override { std::cout &lt;&lt; "CPU diagnostics OK\n"; }
-};
-
-// 2. Class representing shared Aggregation component
-class Monitor {
-public:
-    void display() { std::cout &lt;&lt; "Rendering display buffer\n"; }
-};
-
-// 3. Whole Class illustrating Composition vs Aggregation
-class ComputerSystem {
-private:
-    // COMPOSITION: CPU is owned exclusively; created and destroyed with ComputerSystem
-    std::unique_ptr&lt;CPU&gt; internalCpu;
-
-    // AGGREGATION: Monitor is shared; can exist independently of this computer
-    Monitor* externalMonitor;
-
-public:
-    ComputerSystem(Monitor* extMon) 
-        : internalCpu(std::make_unique&lt;CPU&gt;()), externalMonitor(extMon) {}
-
-    // When ComputerSystem is destroyed, internalCpu is automatically freed,
-    // but externalMonitor continues to exist in calling scope.
-};</code></pre>
+  <pre class="code-block"><code>class Car { Engine* engine; };   // Aggregation: independent lifecycle
+class House { Room rooms[4]; };  // Composition: strictly owned by value
+class Dog : public Animal {};    // Generalization: 'is-a' inheritance</code></pre>
 
   <h4 class="answer-heading">4. Detailed Behavioral and Lifecycle Comparison Matrix</h4>
   <table class="exam-table">
@@ -2740,20 +2316,8 @@ public:
   </ul>
 
   <h4 class="answer-heading">3. C++ Realization Demonstrating the Shift</h4>
-  <pre class="code-block"><code>// The Class Blueprint (Class Diagram)
-class Student {
-public:
-    std::string name;
-    double gpa;
-    Student(std::string n, double g) : name(std::move(n)), gpa(g) {}
-};
-
-int main() {
-    // The Object Instances at runtime (Object Diagram Snapshot)
-    Student alice("Alice Smith", 3.9); // 0x7ffd10
-    Student bob("Bob Jones", 3.6);     // 0x7ffd28
-    return 0;
-}</code></pre>
+  <pre class="code-block"><code>class Student { public: int id; std::string name; }; // Class Blueprint
+Student s1(101, "Alice"); // Object Instance (state at runtime)</code></pre>
 
   <h4 class="answer-heading">4. Why Both Diagrams Are Essential in System Verification</h4>
   <p>Neither diagram is sufficient on its own during complex system engineering:</p>
@@ -2827,44 +2391,12 @@ int main() {
   </ul>
 
   <h4 class="answer-heading">4. Comprehensive C++ Realization of Derived Logic</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;algorithm&gt;
-
-class LoanRecord {
-private:
-    std::string loanId;
-    int checkoutDay;     // Stored base state
-    int loanPeriodDays;  // Stored base state
-    double dailyFineRate;
-
-public:
-    LoanRecord(std::string id, int checkDay, int period, double rate)
-        : loanId(std::move(id)), checkoutDay(checkDay), 
-          loanPeriodDays(period), dailyFineRate(rate) {}
-
-    // Derived Attribute: /dueDate (computed on-the-fly)
-    int getDueDate() const {
-        return checkoutDay + loanPeriodDays;
+  <pre class="code-block"><code>class BookCheckout {
+    Date dueDate;
+    double getLateCharge(Date today) const { // Derived attribute calculation
+        return (today > dueDate) ? (today - dueDate) * 2.0 : 0.0;
     }
-
-    // Derived Attribute / Object: /lateFine (computed on-the-fly)
-    double calculateLateFine(int currentDay) const {
-        int overdueDays = std::max(0, currentDay - getDueDate());
-        return overdueDays * dailyFineRate;
-    }
-};
-
-int main() {
-    LoanRecord loan("LN-1001", 1, 14, 1.50); // Day 1 checkout, 14 day period, $1.50/day
-    int currentDay = 24; // Day 24 (9 days overdue)
-
-    std::cout << "Due Day: Day " << loan.getDueDate() << "
-";
-    std::cout << "Derived Late Fee: $" << loan.calculateLateFine(currentDay) << "
-";
-    return 0;
-}</code></pre>
+};</code></pre>
 
 
   <h4 class="answer-heading">5. Derived Objects vs. Derived Attributes: Conceptual Contrast</h4>
@@ -3006,81 +2538,10 @@ int main() {
   </ul>
 
   <h4 class="answer-heading">2. Industrial C++ Implementation: Asynchronous Sensor Monitor</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;functional&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-
-// Sensor Reading Data Payload
-struct SensorData {
-    std::string sensorId;
-    double temperatureCelsius;
-    bool thresholdExceeded;
-};
-
-// Publisher Class that invokes registered callbacks
-class TemperatureSensor {
-public:
-    // Type definition for Modern C++ Callback using std::function
-    using AlertCallback = std::function&lt;void(const SensorData&amp;)&gt;;
-
-private:
-    std::string id;
-    double alarmLimit;
-    std::vector&lt;AlertCallback&gt; listeners;
-
-public:
-    TemperatureSensor(std::string sensorId, double limit)
-        : id(std::move(sensorId)), alarmLimit(limit) {}
-
-    // Register callback subscribers
-    void registerListener(AlertCallback callback) {
-        listeners.push_back(std::move(callback));
-    }
-
-    // Simulate reading acquisition and trigger callbacks
-    void updateReading(double currentTemp) {
-        SensorData data{id, currentTemp, (currentTemp &gt;= alarmLimit)};
-
-        if (data.thresholdExceeded) {
-            std::cout &lt;&lt; "\n[ALARM TRIGGERED] Sensor: " &lt;&lt; id 
-                      &lt;&lt; " reported " &lt;&lt; currentTemp &lt;&lt; " C!\n";
-            // Dispatch to all registered callback handlers
-            for (const auto&amp; listener : listeners) {
-                listener(data);
-            }
-        }
-    }
-};
-
-// Free function callback (Function Pointer equivalent)
-void logToFile(const SensorData&amp; data) {
-    std::cout &lt;&lt; "  -&gt; [File Logger]: Appended alert for " 
-              &lt;&lt; data.sensorId &lt;&lt; " to audit_log.txt\n";
-}
-
-int main() {
-    TemperatureSensor boilerSensor("BOILER-04", 95.0);
-
-    // Technique 1: Registering Free Function
-    boilerSensor.registerListener(logToFile);
-
-    // Technique 2: Registering C++ Lambda with Lexical State Capture
-    int alertCounter = 0;
-    std::string operatorPager = "+1-555-908-1122";
-
-    boilerSensor.registerListener([&amp;alertCounter, operatorPager](const SensorData&amp; data) {
-        alertCounter++;
-        std::cout &lt;&lt; "  -&gt; [SMS Gateway]: Dispatched SMS to " &lt;&lt; operatorPager 
-                  &lt;&lt; " | Total incidents today: " &lt;&lt; alertCounter &lt;&lt; "\n";
-    });
-
-    // Simulate Operational Readings
-    boilerSensor.updateReading(72.0);  // Normal: No callbacks fired
-    boilerSensor.updateReading(98.5);  // Limit exceeded: Both callbacks execute!
-    boilerSensor.updateReading(102.1); // Limit exceeded: Both callbacks execute!
-
-    return 0;
+  <pre class="code-block"><code>// Callback signature via std::function
+void downloadFile(const std::string&amp; url, std::function&lt;void(int progress)&gt; onProgress) {
+    // Background download logic...
+    onProgress(50); // Invoke callback function
 }</code></pre>
 
   <h4 class="answer-heading">3. Detailed Execution Analysis</h4>
@@ -3163,34 +2624,8 @@ int main() {
   </ul>
 
   <h4 class="answer-heading">4. Comprehensive C++ Class Skeleton</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-class Patient; // Forward declaration
-
-class Doctor {
-    std::string doctorId;
-    std::string specialty;
-public:
-    Doctor(std::string id, std::string spec) : doctorId(std::move(id)), specialty(std::move(spec)) {}
-    void prescribe(Patient&amp; patient, const std::string&amp; medication);
-};
-
-class Appointment {
-private:
-    std::string slotTime;
-    double consultationFee;
-    std::shared_ptr&lt;Doctor&gt; doctor;
-    std::shared_ptr&lt;Patient&gt; patient;
-
-public:
-    Appointment(std::string slot, double fee, std::shared_ptr&lt;Doctor&gt; doc, std::shared_ptr&lt;Patient&gt; pat)
-        : slotTime(std::move(slot)), consultationFee(fee), doctor(std::move(doc)), patient(std::move(pat)) {}
-    
-    double getFee() const { return consultationFee; }
-};</code></pre>
+  <pre class="code-block"><code>class Patient { std::string patientId; };
+class Doctor { std::vector&lt;Patient*&gt; assignedPatients; }; // 1-to-N Association</code></pre>
 
 
   <h4 class="answer-heading">5. Database Schema &amp; Security Boundary Realization</h4>
@@ -3272,44 +2707,10 @@ public:
   <p>The client invokes <code>item.renderContent()</code>. The virtual dispatch runtime identifies whether the heap instance is a <code>VideoLecture</code>, <code>InteractiveQuiz</code>, or <code>PDFArticle</code>, and executes the specialized routine. The collaboration diagram captures this without requiring separate caller links for every file format.</p>
 
   <h4 class="answer-heading">5. Working C++ Polymorphic Implementation</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-// Abstract Base Class
-class CourseMaterial {
+  <pre class="code-block"><code>class CourseMaterial {
 public:
-    virtual ~CourseMaterial() = default;
-    virtual void renderContent() = 0; // Polymorphic contract
-};
-
-class VideoLecture : public CourseMaterial {
-public:
-    void renderContent() override {
-        std::cout << "[Video Stream] Buffering 1080p H.264 video chunks.
-";
-    }
-};
-
-class InteractiveQuiz : public CourseMaterial {
-public:
-    void renderContent() override {
-        std::cout << "[Quiz Engine] Initializing timed multi-choice assessment.
-";
-    }
-};
-
-int main() {
-    std::vector&lt;std::unique_ptr&lt;CourseMaterial&gt;&gt; curriculum;
-    curriculum.push_back(std::make_unique&lt;VideoLecture&gt;());
-    curriculum.push_back(std::make_unique&lt;InteractiveQuiz&gt;());
-
-    for (const auto&amp; item : curriculum) {
-        // Dynamic late binding resolves correct renderContent()
-        item->renderContent();
-    }
-    return 0;
-}</code></pre>
+    virtual void render() = 0; // Polymorphic message invocation
+};</code></pre>
 
 
   <h4 class="answer-heading">6. Structural Elegance of Polymorphic Collaboration</h4>
@@ -3817,71 +3218,13 @@ int main() {
   </table>
 
   <h4 class="answer-heading">3. Comprehensive C++ Industrial Demonstration: Cryptographic Key Storage</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;memory&gt;
-#include &lt;vector&gt;
-
-// ==========================================
-// DATA ABSTRACTION: Pure Virtual Interface
-// Client knows WHAT can be done, not HOW.
-// ==========================================
-class KeyVaultService {
-public:
-    virtual ~KeyVaultService() = default;
-    virtual void storeSecret(const std::string&amp; keyId, const std::string&amp; secret) = 0;
-    virtual std::string retrieveSecret(const std::string&amp; keyId) const = 0;
-};
-
-// ==========================================
-// ENCAPSULATION: Concrete Implementation
-// Bundles private encrypted storage and bounds state.
-// ==========================================
-class HardwareSecurityModule : public KeyVaultService {
+  <pre class="code-block"><code>class Stack {
 private:
-    // Strictly encapsulated private state variables
-    struct KeyEntry {
-        std::string id;
-        std::string cipherText;
-    };
-    std::vector&lt;KeyEntry&gt; vaultStorage;
-    std::string hsmSerial;
-
-    // Private encapsulated internal helper routine (Hidden from client)
-    std::string internalEncrypt(const std::string&amp; raw) const {
-        return "AES256_ENCRYPTED(" + raw + ")";
-    }
-
+    int elements[100]; // Encapsulation: hidden array representation
 public:
-    HardwareSecurityModule(std::string serial) : hsmSerial(std::move(serial)) {}
-
-    void storeSecret(const std::string&amp; keyId, const std::string&amp; secret) override {
-        // Enforcing internal invariant and encrypting before saving
-        vaultStorage.push_back({keyId, internalEncrypt(secret)});
-        std::cout &lt;&lt; "[HSM " &lt;&lt; hsmSerial &lt;&lt; "] Securely encrypted and stored key: " &lt;&lt; keyId &lt;&lt; "\n";
-    }
-
-    std::string retrieveSecret(const std::string&amp; keyId) const override {
-        for (const auto&amp; entry : vaultStorage) {
-            if (entry.id == keyId) {
-                return entry.cipherText; // Return encrypted blob
-            }
-        }
-        return "NOT_FOUND";
-    }
-};
-
-int main() {
-    // Client depends strictly on the ABSTRACTION (KeyVaultService)
-    std::unique_ptr&lt;KeyVaultService&gt; vault = std::make_unique&lt;HardwareSecurityModule&gt;("HSM-CORP-99");
-
-    vault-&gt;storeSecret("DB_PASSWORD", "SuperSecretRootPW123");
-    std::cout &lt;&lt; "Vault Output: " &lt;&lt; vault-&gt;retrieveSecret("DB_PASSWORD") &lt;&lt; "\n";
-
-    // Client CANNOT access vault-&gt;vaultStorage or vault-&gt;internalEncrypt()
-    // because they are ENCAPSULATED inside HardwareSecurityModule.
-    return 0;
-}</code></pre>
+    void push(int x);  // Abstraction: exposed contractual operations
+    int pop();
+};</code></pre>
 
   <h4 class="answer-heading">4. Architectural Interplay</h4>
   <p>Abstraction and encapsulation are complementary: <strong>Abstraction directs what to expose</strong> to consumers through clean public interfaces, while <strong>Encapsulation enforces the defensive perimeter</strong> that hides the internal implementation mechanics, ensuring data integrity and allowing non-disruptive internal refactoring.</p>
@@ -3999,34 +3342,9 @@ SurfaceArea = M_PI * radius * (radius + sqrt(radius * radius + height * height))
   </ul>
 
   <h4 class="answer-heading">4. Concrete C++ Mathematical Implementation</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-
-struct ConeMetrics {
-    double volume;
-    double surfaceArea;
-};
-
-ConeMetrics calculateCone(double r, double h) {
-    double slantHeight = std::sqrt(r * r + h * h);
-    double baseArea = M_PI * r * r;
-    double lateralArea = M_PI * r * slantHeight;
-
-    ConeMetrics result;
-    result.volume = (1.0 / 3.0) * baseArea * h;
-    result.surfaceArea = baseArea + lateralArea;
-    return result;
-}
-
-int main() {
-    double radius = 5.0, height = 12.0;
-    ConeMetrics cone = calculateCone(radius, height);
-    std::cout << "Cone Volume: " << cone.volume << " cubic units
-";
-    std::cout << "Cone Surface Area: " << cone.surfaceArea << " sq units
-";
-    return 0;
-}</code></pre>
+  <pre class="code-block"><code>// Mathematical Operation Mapping
+double computeVolume(double r, double h) { return (1.0/3.0) * M_PI * r * r * h; }
+double computeSurfaceArea(double r, double h) { return M_PI * r * (r + sqrt(r*r + h*h)); }</code></pre>
 
 </div>
         </div>
@@ -4142,66 +3460,14 @@ int main() {
   </ul>
 
   <h4 class="answer-heading">3. Complete C++ Program: Class Integer with Prime Extraction</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;cmath&gt;
-
-class IntegerArray {
+  <pre class="code-block"><code>class Integer {
 private:
-    std::vector&lt;int&gt; values;
-
-    // Private helper function enforcing encapsulation
-    bool isPrime(int n) const {
-        if (n &lt;= 1) return false;
-        if (n &lt;= 3) return true;
-        if (n % 2 == 0 || n % 3 == 0) return false;
-
-        for (int i = 5; i * i &lt;= n; i += 6) {
-            if (n % i == 0 || n % (i + 2) == 0)
-                return false;
-        }
-        return true;
-    }
-
+    int value; // Encapsulated integer
 public:
-    // Constructor
-    IntegerArray() = default;
-
-    // Member function to add integers
-    void append(int val) {
-        values.push_back(val);
-    }
-
-    // Required function: Prints all prime numbers contained in the class
-    void printPrimeNumbers() const {
-        std::cout &lt;&lt; "--- Prime Numbers in IntegerArray ---\n";
-        bool found = false;
-
-        for (int val : values) {
-            if (isPrime(val)) {
-                std::cout &lt;&lt; "  -&gt; Prime found: " &lt;&lt; val &lt;&lt; "\n";
-                found = true;
-            }
-        }
-
-        if (!found) {
-            std::cout &lt;&lt; "  No prime numbers present in collection.\n";
-        }
-    }
-};
-
-int main() {
-    IntegerArray numbers;
-    // Populate collection
-    int sampleData[] = { 4, 7, 12, 19, 23, 28, 31, 35, 41, 50, 53, 2 };
-    for (int num : sampleData) {
-        numbers.append(num);
-    }
-
-    // Invoke member function to print primes
-    numbers.printPrimeNumbers();
-    return 0;
-}</code></pre>
+    Integer(int v) : value(v) {}
+    bool isPrime() const;       // Primality test method
+    void printPrimesUpTo() const; // Iterates and prints prime numbers
+};</code></pre>
 
   <h4 class="answer-heading">4. Output Explanation</h4>
   <p>The program populates the encapsulated <code>std::vector&lt;int&gt;</code> with composite and prime numbers. <code>printPrimeNumbers()</code> iterates through the internal elements, delegating testing to the private $O(\sqrt{N})$ helper method <code>isPrime()</code>, outputting primes <code>7, 19, 23, 31, 41, 53, 2</code> cleanly to the console.</p>
@@ -4231,66 +3497,15 @@ int main() {
   </ul>
 
   <h4 class="answer-heading">3. Complete C++ Program Demonstrating Multiple Inheritance</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
+  <pre class="code-block"><code>class Printable    { public: virtual void print() = 0; };
+class Serializable { public: virtual void serialize() = 0; };
 
-// Base Class 1: Display Device
-class DisplayScreen {
-protected:
-    int resolutionX;
-    int resolutionY;
-
+// Multiple Inheritance: Inherits interfaces from both base classes
+class Report : public Printable, public Serializable {
 public:
-    DisplayScreen(int x, int y) : resolutionX(x), resolutionY(y) {
-        std::cout &lt;&lt; "[DisplayScreen] Initialized with resolution " 
-                  &lt;&lt; resolutionX &lt;&lt; "x" &lt;&lt; resolutionY &lt;&lt; "\n";
-    }
-
-    void renderGraphics() const {
-        std::cout &lt;&lt; "Rendering visual frame buffer.\n";
-    }
-};
-
-// Base Class 2: Cellular Network Modem
-class CellularRadio {
-protected:
-    std::string imeiNumber;
-    bool is5GConnected;
-
-public:
-    CellularRadio(std::string imei) : imeiNumber(std::move(imei)), is5GConnected(true) {
-        std::cout &lt;&lt; "[CellularRadio] Initialized with IMEI: " &lt;&lt; imeiNumber &lt;&lt; "\n";
-    }
-
-    void transmitPackets() const {
-        std::cout &lt;&lt; "Transmitting LTE/5G wireless packets.\n";
-    }
-};
-
-// Multiple Inheritance: SmartPhone inherits from both DisplayScreen and CellularRadio
-class SmartPhone : public DisplayScreen, public CellularRadio {
-private:
-    std::string modelName;
-
-public:
-    // Base classes are initialized in the constructor initializer list
-    SmartPhone(std::string name, int x, int y, std::string imei)
-        : DisplayScreen(x, y), CellularRadio(std::move(imei)), modelName(std::move(name)) {
-        std::cout &lt;&lt; "[SmartPhone] " &lt;&lt; modelName &lt;&lt; " assembled successfully.\n";
-    }
-
-    void powerOn() const {
-        std::cout &lt;&lt; "\nBooting " &lt;&lt; modelName &lt;&lt; "...\n";
-        renderGraphics();     // Inherited from DisplayScreen
-        transmitPackets();    // Inherited from CellularRadio
-    }
-};
-
-int main() {
-    SmartPhone phone("GalaxyPro-X", 2560, 1440, "867530901234567");
-    phone.powerOn();
-    return 0;
-}</code></pre>
+    void print() override { /* ... */ }
+    void serialize() override { /* ... */ }
+};</code></pre>
 
   <h4 class="answer-heading">4. Architectural Consideration: The Diamond Problem in C++</h4>
   <p>In multiple inheritance, if two parent classes both inherit from the same common ancestor, the derived child receives duplicate copies of the ancestor's member variables, causing compiler ambiguity errors. C++ solves this using <strong>Virtual Base Classes</strong> (<code>class B : virtual public A</code>), ensuring the compiler inserts an offset pointer and allocates only a single shared instance of the root base class in the object layout.</p>
@@ -4665,69 +3880,11 @@ int main() {
   </table>
 
   <h4 class="answer-heading">3. Complete Working ANSI C Implementation</h4>
-  <pre class="code-block"><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-// Forward declaration of base struct
-typedef struct Shape Shape;
-
-// 1. Emulating Virtual Method Table (VTable) in C
-typedef struct {
-    double (*computeArea)(Shape* self);
-    void (*render)(Shape* self);
-} ShapeVTable;
-
-// 2. Emulating Base Class with VPtr and Encapsulated Data
-struct Shape {
-    const ShapeVTable* vptr; // Pointer to virtual table
-    int originX;
-    int originY;
-};
-
-// 3. Emulating Derived Class: Circle (Inheritance via Struct Embedding)
-typedef struct {
-    Shape base;      // Base struct must be the FIRST member!
-    double radius;   // Specialized child attribute
-} Circle;
-
-// Circle Polymorphic Method Implementations
-double Circle_computeArea(Shape* self) {
-    Circle* c = (Circle*)self; // Safe downcast
-    return 3.14159 * c-&gt;radius * c-&gt;radius;
-}
-
-void Circle_render(Shape* self) {
-    Circle* c = (Circle*)self;
-    printf("[Render Circle] Center=(%d,%d), Radius=%.2f, Area=%.2f\n",
-           c-&gt;base.originX, c-&gt;base.originY, c-&gt;radius, Circle_computeArea(self));
-}
-
-// Static VTable for Circle
-static const ShapeVTable circle_vtable = {
-    Circle_computeArea,
-    Circle_render
-};
-
-// Circle Constructor Emulation
-Circle* Circle_create(int x, int y, double r) {
-    Circle* c = (Circle*)malloc(sizeof(Circle));
-    c-&gt;base.vptr = &amp;circle_vtable; // Initialize vptr
-    c-&gt;base.originX = x;
-    c-&gt;base.originY = y;
-    c-&gt;radius = r;
-    return c;
-}
-
-int main() {
-    // Dynamic Polymorphism: Base pointer pointing to derived instance
-    Shape* myShape = (Shape*)Circle_create(10, 20, 5.0);
-
-    // Polymorphic Virtual Dispatch invocation in pure C!
-    myShape-&gt;vptr-&gt;render(myShape);
-
-    free(myShape);
-    return 0;
-}</code></pre>
+  <pre class="code-block"><code>// C struct mapping: Class &amp; VTable
+typedef struct Shape {
+    const struct ShapeVTable* vptr; // Dynamic dispatch table pointer
+    double x, y;
+} Shape;</code></pre>
 </div>
         </div>
       </div>
@@ -4848,109 +4005,13 @@ int main() {
   </ul>
 
   <h4 class="answer-heading">2. Complete C++ Implementation Combining All Three Models</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-// ==========================================
-// 1. STATE MODEL: Lifecycle State Enumeration
-// ==========================================
-enum class DeviceState {
-    DISARMED,
-    ARMED_STANDBY,
-    MOTION_ALERT,
-    ALARM_TRIGGERED
-};
-
-// ==========================================
-// 1. CLASS MODEL: Structural Hierarchy
-// ==========================================
-class SmartDevice {
-protected:
-    std::string deviceId;
-    DeviceState currentState;
-
-public:
-    SmartDevice(std::string id) 
-        : deviceId(std::move(id)), currentState(DeviceState::DISARMED) {}
-    virtual ~SmartDevice() = default;
-
-    virtual void handleEvent(const std::string&amp; eventName) = 0;
-    DeviceState getState() const { return currentState; }
-    std::string getId() const { return deviceId; }
-};
-
-// Concrete Specialized Device: Motion Detector
-class MotionSensor : public SmartDevice {
-public:
-    MotionSensor(std::string id) : SmartDevice(std::move(id)) {}
-
-    // State Model Transitions implemented inside member method
-    void handleEvent(const std::string&amp; eventName) override {
-        if (eventName == "ARM_SYSTEM") {
-            currentState = DeviceState::ARMED_STANDBY;
-            std::cout &lt;&lt; "[Sensor " &lt;&lt; deviceId &lt;&lt; "] State Transition -&gt; ARMED_STANDBY\n";
-        } else if (eventName == "MOTION_DETECTED" &amp;&amp; currentState == DeviceState::ARMED_STANDBY) {
-            currentState = DeviceState::MOTION_ALERT;
-            std::cout &lt;&lt; "[Sensor " &lt;&lt; deviceId &lt;&lt; "] State Transition -&gt; MOTION_ALERT!\n";
-        }
-    }
-};
-
-// Concrete Specialized Device: Siren Alarm
-class SirenAlarm : public SmartDevice {
-public:
-    SirenAlarm(std::string id) : SmartDevice(std::move(id)) {}
-
-    void handleEvent(const std::string&amp; eventName) override {
-        if (eventName == "SOUND_SIREN") {
-            currentState = DeviceState::ALARM_TRIGGERED;
-            std::cout &lt;&lt; "[Siren " &lt;&lt; deviceId &lt;&lt; "] State Transition -&gt; BLARING AT 110dB!\n";
-        }
-    }
-};
-
-// ==========================================
-// 3. INTERACTION MODEL: Central Hub Mediator
-// Orchestrates message exchanges between objects
-// ==========================================
-class SmartHomeHub {
+  <pre class="code-block"><code>class SmartLight {
 private:
-    std::shared_ptr&lt;MotionSensor&gt; sensor;
-    std::shared_ptr&lt;SirenAlarm&gt; siren;
-
+    LightState currentState; // Dynamic Model: discrete state
 public:
-    SmartHomeHub(std::shared_ptr&lt;MotionSensor&gt; sen, std::shared_ptr&lt;SirenAlarm&gt; sir)
-        : sensor(std::move(sen)), siren(std::move(sir)) {}
-
-    // Interaction Scenario: Dispatches messages across lifelines
-    void triggerSecurityScenario() {
-        std::cout &lt;&lt; "\n=== INITIATING INTERACTION SCENARIO ===\n";
-
-        // Message 1: Hub arms sensor
-        sensor-&gt;handleEvent("ARM_SYSTEM");
-
-        // Message 2: External physical trigger occurs
-        sensor-&gt;handleEvent("MOTION_DETECTED");
-
-        // Message 3: Hub checks sensor state and triggers Siren
-        if (sensor-&gt;getState() == DeviceState::MOTION_ALERT) {
-            std::cout &lt;&lt; "[Hub Controller] Intercepted Alert! Dispatching Siren Message...\n";
-            siren-&gt;handleEvent("SOUND_SIREN");
-        }
-    }
-};
-
-int main() {
-    auto livingRoomSensor = std::make_shared&lt;MotionSensor&gt;("PIR-01");
-    auto exteriorSiren = std::make_shared&lt;SirenAlarm&gt;("SIREN-99");
-
-    SmartHomeHub controller(livingRoomSensor, exteriorSiren);
-    controller.triggerSecurityScenario();
-
-    return 0;
-}</code></pre>
+    void handleEvent(SensorEvent e); // Dynamic Model: event trigger
+    void adjustBrightness(int lux);  // Functional Model: computation logic
+};</code></pre>
 </div>
         </div>
       </div>
@@ -5091,48 +4152,12 @@ int main() {
   </table>
 
   <h4 class="answer-heading">3. Comprehensive C++ Industrial Demonstration</h4>
-  <pre class="code-block"><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;memory&gt;
-
-// Abstract Base Interface (Abstraction)
-class PaymentGateway {
-public:
-    virtual ~PaymentGateway() = default;
-    virtual bool processPayment(double amount) = 0; // Polymorphic contract
-};
-
-// Concrete Specialized Class (Encapsulation + Robustness)
-class SecureCreditGateway : public PaymentGateway {
+  <pre class="code-block"><code>class BankAccount {
 private:
-    std::string merchantToken;
-    double dailyLimit;
-    double dailyTotal;
-
+    double balance; // Encapsulation: hidden internal state
 public:
-    SecureCreditGateway(std::string token, double limit)
-        : merchantToken(std::move(token)), dailyLimit(limit), dailyTotal(0.0) {}
-
-    bool processPayment(double amount) override {
-        // Enforcing robustness invariants
-        if (amount <= 0.0 || (dailyTotal + amount) > dailyLimit) {
-            std::cout << "[REJECTED] Transaction exceeds limits or invalid.
-";
-            return false;
-        }
-        dailyTotal += amount;
-        std::cout << "[SUCCESS] Charged $" << amount << " via Secure Gateway.
-";
-        return true;
-    }
-};
-
-int main() {
-    std::unique_ptr&lt;PaymentGateway&gt; gateway = 
-        std::make_unique&lt;SecureCreditGateway&gt;("AUTH_KEY_99", 5000.0);
-    gateway->processPayment(450.0); // Allowed
-    return 0;
-}</code></pre>
+    virtual void calculateInterest() = 0; // Abstraction &amp; Extensibility
+};</code></pre>
 
 
   <h4 class="answer-heading">4. Exhaustive Comparison: Abstraction vs. Encapsulation</h4>
@@ -5276,33 +4301,11 @@ int main() {
   </ul>
 
   <h4 class="answer-heading">3. C Architectural Demonstration</h4>
-  <pre class="code-block"><code>// Base Class VTable
-typedef struct ShapeVTable {
-    double (*getArea)(void* self);
-} ShapeVTable;
-
-// Base Class Struct
-typedef struct Shape {
-    const ShapeVTable* vptr;
-} Shape;
-
-// Derived Class Struct (Inheritance via embedding base as first element)
-typedef struct Circle {
-    Shape base;    // Offset 0: matches Shape*
-    double radius;
-} Circle;
-
-double Circle_getArea(void* self) {
-    Circle* c = (Circle*)self;
-    return 3.14159 * c-&gt;radius * c-&gt;radius;
-}
-
-static const ShapeVTable circle_vtable = { Circle_getArea };
-
-void Circle_init(Circle* c, double r) {
-    c-&gt;base.vptr = &amp;circle_vtable;
-    c-&gt;radius = r;
-}</code></pre>
+  <pre class="code-block"><code>// Object Representation in Memory (C Struct)
+typedef struct Object {
+    const struct VTable* vptr; // Offset 0: Virtual method table pointer
+    int memberData;            // Offset 8: Encapsulated attributes
+} Object;</code></pre>
 </div>
         </div>
       </div>

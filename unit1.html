@@ -105,40 +105,13 @@
           </div>
 
           <h4>Code Demonstration: Procedural vs. OOP</h4>
-          <pre><code>// ================= PROCEDURAL APPROACH (C) =================
-struct BankAccount {
-    int accountNumber;
-    double balance; // EXPOSED: Anyone can alter this directly!
-};
-
-void withdraw_procedural(struct BankAccount* acc, double amount) {
-    // If client code forgets to call this function, balance can be set directly:
-    // acc->balance = -1000000; // ILLEGAL STATE PERMITTED!
-    if (acc->balance >= amount) {
-        acc->balance -= amount;
-    }
-}
-
-// ================= OBJECT-ORIENTED APPROACH (C++) =================
-class BankAccountOO {
+          <pre><code>// Encapsulation: Private state protected by public methods
+class BankAccount {
 private:
-    int accountNumber;
-    double balance; // PROTECTED: Inaccessible outside class methods
-
+    double balance; // Private data
 public:
-    BankAccountOO(int accNum, double initialDeposit) 
-        : accountNumber(accNum), balance(initialDeposit >= 0.0 ? initialDeposit : 0.0) {}
-
-    bool withdraw(double amount) {
-        // Class invariants are strictly defended
-        if (amount > 0.0 && balance >= amount) {
-            balance -= amount;
-            return true;
-        }
-        return false; // Operation denied safely
-    }
-
-    double getBalance() const { return balance; }
+    void deposit(double amount) { balance += amount; }
+    double getBalance() const { return balance; } // Public contract
 };</code></pre>
         </section>
 
@@ -156,34 +129,9 @@ public:
             <li><strong>Identity (Sameness):</strong> Objects are identical strictly if they are the exact same physical instance at the same memory address. Even if two objects share identical data, they remain non-identical entities.</li>
           </ul>
 
-          <pre><code>#include &lt;iostream&gt;
-#include &lt;string&gt;
-
-class Student {
-public:
-    int id;
-    std::string name;
-    Student(int i, std::string n) : id(i), name(n) {}
-
-    // Equality test: Compares internal attribute values
-    bool equals(const Student&amp; other) const {
-        return (this-&gt;id == other.id &amp;&amp; this-&gt;name == other.name);
-    }
-};
-
-int main() {
-    Student s1(101, "Alice");
-    Student s2(101, "Alice");
-    Student* s3 = &amp;s1; // s3 references the identical instance as s1
-
-    // 1. Equality Comparison (State match)
-    std::cout &lt;&lt; "s1 equals s2? " &lt;&lt; (s1.equals(s2) ? "YES" : "NO") &lt;&lt; "\n"; // Output: YES
-
-    // 2. Identity Comparison (Memory address match)
-    std::cout &lt;&lt; "s1 identical to s2? " &lt;&lt; (&amp;s1 == &amp;s2 ? "YES" : "NO") &lt;&lt; "\n"; // Output: NO
-    std::cout &lt;&lt; "s1 identical to s3? " &lt;&lt; (&amp;s1 == s3 ? "YES" : "NO") &lt;&lt; "\n";  // Output: YES
-    return 0;
-}</code></pre>
+          <pre><code>// Object Identity vs Equality
+Student s1(101, "Alice");
+Student s2(101, "Alice"); // s1.equals(s2) is TRUE, but &s1 != &s2 (distinct identity)</code></pre>
 
           <h4>Physical Realization of Identity</h4>
           <ul>
@@ -300,93 +248,27 @@ int main() {
             <div class="diagram-caption">Figure 1.2: Physical Memory Architecture of Dynamic Dispatch (VPTR and VTable)</div>
           </div>
 
-          <pre><code>// C++ Virtual Method Demonstration
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;memory&gt;
-
-class Vehicle {
+          <pre><code>class Vehicle {
 public:
-    virtual void ignite() const {
-        std::cout &lt;&lt; "Generic vehicle combustion cycle initiated.\n";
-    }
-    virtual ~Vehicle() { // Virtual destructor is mandatory in base classes!
-        std::cout &lt;&lt; "Vehicle base destroyed.\n";
-    }
+    virtual void ignite() = 0; // Pure abstraction (interface contract)
 };
-
 class ElectricCar : public Vehicle {
 public:
-    void ignite() const override {
-        std::cout &lt;&lt; "Electric Car: High-voltage battery pack engaged silently.\n";
-    }
-    ~ElectricCar() override {
-        std::cout &lt;&lt; "Electric Car battery safely decoupled.\n";
-    }
-};
-
-int main() {
-    // Polymorphic collection
-    std::vector&lt;std::unique_ptr&lt;Vehicle&gt;&gt; fleet;
-    fleet.push_back(std::make_unique&lt;Vehicle&gt;());
-    fleet.push_back(std::make_unique&lt;ElectricCar&gt;());
-
-    for (const auto&amp; v : fleet) {
-        v-&gt;ignite(); // Dynamic dispatch via VTable!
-    }
-    return 0;
-}</code></pre>
+    void ignite() override { /* Inverter activation */ } // Polymorphic dispatch
+};</code></pre>
 
           <h3>2.4 Generosity (Genericity / Generic Programming)</h3>
           <p><strong>Definition:</strong> Generosity (genericity) is the technique of constructing classes and algorithms parameterized by data types, enabling maximum code reuse without binding to a specific concrete type at authoring time.</p>
 
-          <pre><code>// Generic Type-Safe Stack in C++
-#include &lt;iostream&gt;
-#include &lt;stdexcept&gt;
-#include &lt;string&gt;
-
-template &lt;typename T, int Capacity = 100&gt;
-class BoundedStack {
-private:
-    T elements[Capacity];
-    int topIndex;
-
+          <pre><code>// Genericity (Generosity): Parameterized type abstraction
+template &lt;typename T&gt;
+class Stack {
+    T elements[100];
+    int top = -1;
 public:
-    BoundedStack() : topIndex(-1) {}
-
-    void push(const T&amp; item) {
-        if (topIndex &gt;= Capacity - 1) {
-            throw std::overflow_error("Stack overflow: Maximum capacity reached.");
-        }
-        elements[++topIndex] = item;
-    }
-
-    T pop() {
-        if (topIndex &lt; 0) {
-            throw std::underflow_error("Stack underflow: No elements present.");
-        }
-        return elements[topIndex--];
-    }
-
-    bool isEmpty() const { return topIndex == -1; }
-    int size() const { return topIndex + 1; }
-};
-
-int main() {
-    // Compile-time instantiation for integers
-    BoundedStack&lt;int, 5&gt; intStack;
-    intStack.push(10);
-    intStack.push(20);
-    std::cout &lt;&lt; "Popped from intStack: " &lt;&lt; intStack.pop() &lt;&lt; "\n";
-
-    // Compile-time instantiation for strings
-    BoundedStack&lt;std::string, 10&gt; stringStack;
-    stringStack.push("Hello");
-    stringStack.push("UML");
-    std::cout &lt;&lt; "Popped from stringStack: " &lt;&lt; stringStack.pop() &lt;&lt; "\n";
-
-    return 0;
-}</code></pre>
+    void push(const T&amp; item) { elements[++top] = item; }
+    T pop() { return elements[top--]; }
+};</code></pre>
         </section>
 
         <!-- ======================================================== -->

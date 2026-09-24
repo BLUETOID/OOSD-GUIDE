@@ -1126,73 +1126,16 @@
           </div>
 
           <h4>Complete Reference Implementation in ANSI C</h4>
-          <pre><code>/* =========================================================================
-   COMPLETE OBJECT-ORIENTED ENGINE IMPLEMENTED IN STANDARD PROCEDURAL C
-   Demonstrating Classes, Encapsulation, Single Inheritance & VTable Dispatch
-   ========================================================================= */
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-// Forward declaration of VTable
-struct ShapeVTable;
-
-// Base Class: Shape
+          <pre><code>// Emulating OOP in C: Struct with VTable pointer
 typedef struct Shape {
-    const struct ShapeVTable* vptr; // Virtual Method Table Pointer
-    double x, y;                    // Base Attributes
+    const struct ShapeVTable* vptr; // Dynamic dispatch table
+    double x, y;
 } Shape;
 
-// Shape VTable Contract
-typedef struct ShapeVTable {
-    double (*area)(const Shape* self);
-    void (*draw)(const Shape* self);
-} ShapeVTable;
-
-// Derived Class: Circle
 typedef struct Circle {
-    Shape base;      // Inheritance: Base class embedded at byte offset 0!
-    double radius;   // Derived attribute
-} Circle;
-
-// Circle Member Method Implementations
-double Circle_area(const Shape* self) {
-    const Circle* c = (const Circle*)self; // Safe downcast due to offset 0
-    return 3.14159265 * c-&gt;radius * c-&gt;radius;
-}
-
-void Circle_draw(const Shape* self) {
-    const Circle* c = (const Circle*)self;
-    printf("[Circle]: Drawing at (%.1f, %.1f) with radius %.2f | Area = %.2f\n", 
-           self-&gt;x, self-&gt;y, c-&gt;radius, Circle_area(self));
-}
-
-// Static VTable for Circle
-static const ShapeVTable circle_vtable = {
-    Circle_area,
-    Circle_draw
-};
-
-// Circle Constructor
-Circle* Circle_create(double x, double y, double r) {
-    Circle* c = (Circle*)malloc(sizeof(Circle));
-    c-&gt;base.vptr = &amp;circle_vtable; // Initialize VPTR to Circle VTable
-    c-&gt;base.x = x;
-    c-&gt;base.y = y;
-    c-&gt;radius = r;
-    return c;
-}
-
-// Generic Polymorphic Dispatch Function
-void renderShape(const Shape* s) {
-    s-&gt;vptr-&gt;draw(s); // Dynamic dispatch via VTable!
-}
-
-int main() {
-    Circle* c = Circle_create(10.0, 20.0, 5.0);
-    renderShape((Shape*)c); // Polymorphic call in C!
-    free(c);
-    return 0;
-}</code></pre>
+    Shape base;      // Inherited base embedded at offset 0
+    double radius;
+} Circle;</code></pre>
         </section>
 
         <!-- ======================================================== -->
