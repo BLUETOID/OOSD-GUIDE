@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unit 1: Object Orientation & UML Fundamentals | BCS054 Academic Guide</title>
-  <meta name="description" content="Exhaustive academic study guide for Unit 1 of Object-Oriented System Design (BCS054/KCS054) - Complete Theory, Modeling Principles, Conceptual Model of UML, 14 Diagrams Taxonomy, 4+1 View Architecture, and OMG Metamodeling.">
+  <meta name="description" content="Exhaustive academic study guide for Unit 1 of Object-Oriented System Design (BCS054/KCS054) - Object Orientation, Modeling Principles, Introduction to UML, Conceptual Model of UML, and UML Architecture.">
   <link rel="stylesheet" href="css/style.css">
   <script defer src="js/main.js"></script>
 </head>
@@ -32,53 +32,44 @@
       <aside class="sidebar">
         <h3>Unit 1 Sections</h3>
         <ul>
-          <li><a href="#sec-evolution">1. Evolution & Need for OO</a></li>
-          <li><a href="#sec-oo-foundations">2. The OO Paradigm</a></li>
-          <li><a href="#sec-object-identity">3. Object Identity & Memory</a></li>
-          <li><a href="#sec-encapsulation">4. Encapsulation & Info Hiding</a></li>
-          <li><a href="#sec-polymorphism">5. Polymorphism & VTable</a></li>
-          <li><a href="#sec-generosity">6. Generosity (Genericity)</a></li>
-          <li><a href="#sec-modeling-principles">7. Principles & Goals of Modeling</a></li>
-          <li><a href="#sec-intro-uml">8. Introduction to UML & History</a></li>
-          <li><a href="#sec-conceptual-model">9. Conceptual Model of UML (3 Pillars)</a></li>
-          <li><a href="#sec-rules-mechanisms">10. Rules & Common Mechanisms</a></li>
-          <li><a href="#sec-architecture">11. UML Architecture (4+1 & M0-M3)</a></li>
-          <li><a href="#sec-comparison">12. OO vs Structured Modeling</a></li>
+          <li><a href="#sec-oo-paradigm">1. Object-Oriented Paradigm</a></li>
+          <li><a href="#sec-oo-concepts">2. Core OO Concepts</a></li>
+          <li><a href="#sec-modeling-principles">3. Principles of Modeling</a></li>
+          <li><a href="#sec-intro-uml">4. Introduction to UML</a></li>
+          <li><a href="#sec-conceptual-model">5. Conceptual Model of UML</a></li>
+          <li><a href="#sec-building-blocks">6. Building Blocks (Deep Dive)</a></li>
+          <li><a href="#sec-rules-mechanisms">7. Rules & Common Mechanisms</a></li>
+          <li><a href="#sec-architecture">8. UML Architecture (4+1 & M0-M3)</a></li>
+          <li><a href="#sec-comparison">9. OO vs Structured Modeling</a></li>
         </ul>
       </aside>
 
       <article>
         <h1>Unit 1: Introduction to Object Orientation & UML</h1>
-        <p>This module provides an exhaustive, university-grade foundation in Object-Oriented Technology (OOT), object mechanics, the architectural principles of modeling, and the complete Unified Modeling Language (UML) metamodel.</p>
+        <p>This module covers the complete Unit 1 syllabus: Object-Oriented fundamentals, the principles and goals of modeling, a complete introduction to UML, the Conceptual Model of UML (Building Blocks, Rules, Common Mechanisms), and UML Architecture (4+1 View Model and OMG Metamodeling).</p>
 
         <!-- ======================================================== -->
-        <!-- 1. Evolution & Need for Object Orientation                 -->
+        <!-- 1. Object-Oriented Paradigm                               -->
         <!-- ======================================================== -->
-        <section id="sec-evolution">
-          <h2>1. Evolution & The Need for Object Orientation</h2>
-          <p>During the early decades of computing, software engineering relied predominantly on procedural and structured programming paradigms (embodied by languages like Fortran, Pascal, and C). While effective for isolated algorithmic subroutines and mathematical computations, the procedural approach suffered catastrophic breakdown during the industrial "Software Crisis" when commercial applications scaled into hundreds of thousands and millions of lines of code.</p>
+        <section id="sec-oo-paradigm">
+          <h2>1. The Object-Oriented Paradigm</h2>
+          <p>Object-Oriented Technology (OOT) structures software as autonomous entities called <strong>objects</strong>, encapsulating data attributes and member operations. Unlike procedural programming where global data structures are manipulated by detached procedures, OOT bounds data mutation strictly within class interfaces.</p>
 
-          <h4>The Core Failures of Procedural Systems</h4>
+          <h4>Why Object Orientation? (The Software Crisis)</h4>
+          <p>During the early decades of computing, procedural and structured programming (Fortran, Pascal, C) suffered fundamental failures when systems scaled to large commercial applications:</p>
           <ul>
-            <li><strong>Global Data Vulnerability and State Corruption:</strong> Procedural architecture enforces a fundamental dichotomy between active subroutines (functions) and passive data structures. As systems expanded in scope, data structures were placed in global or shared scopes to make them accessible across disparate routines. Consequently, any function could arbitrarily mutate shared memory without validation. A single indexing error or unvalidated pointer write in one procedure corrupted the data state, causing distant, unrelated subroutines to fail hours later.</li>
-            <li><strong>Catastrophic Ripple Effects:</strong> In procedural systems, functions are tightly coupled to the physical layout and fields of data records (such as C <code>struct</code>s). If a changing business requirement necessitated adding an attribute (e.g., adding an international postal code to a customer address struct), every procedure across hundreds of source files that directly referenced that struct had to be manually identified, edited, re-verified, and recompiled.</li>
-            <li><strong>Semantic Discontinuity (The Representation Gap):</strong> Real-world human systems consist of tangible, autonomous entities (aircraft, bank accounts, patients, medical equipment, financial ledgers) that maintain internal state and collaborate through explicit communications. Procedural systems decompose domains into artificial functional flowcharts (input &rarr; step 1 &rarr; step 2 &rarr; output). This created a severe cognitive semantic gap: software engineers spent enormous mental effort translating real-world domain concepts into procedural routines, and business analysts could not trace how requirements mapped to executable subroutines.</li>
+            <li><strong>Global Data Vulnerability:</strong> Procedural architecture enforces a dichotomy between active subroutines and passive data structures. As systems expanded, data was placed in global scopes, allowing any function to arbitrarily mutate shared memory without validation, leading to state corruption.</li>
+            <li><strong>Ripple Effects:</strong> Functions are tightly coupled to the physical layout of data records. Adding a single field to a struct required editing every procedure across hundreds of files that referenced it.</li>
+            <li><strong>Semantic Gap:</strong> Real-world systems consist of tangible entities (bank accounts, patients, aircraft) that maintain internal state and collaborate through communications. Procedural decomposition into artificial functional flowcharts created a severe cognitive gap between domain and software.</li>
           </ul>
-        </section>
 
-        <!-- ======================================================== -->
-        <!-- 2. The Object-Oriented Paradigm                           -->
-        <!-- ======================================================== -->
-        <section id="sec-oo-foundations">
-          <h2>2. The Object-Oriented Paradigm</h2>
-          <p>The Object-Oriented Paradigm resolves the procedural crisis by establishing the <strong>Object</strong> as the foundational computational building block. Rather than viewing software as a monolithic tree of subroutines processing passive records, an object-oriented system is organized as a dynamic, decentralized society of autonomous, collaborating entities.</p>
-          <p>Each object encapsulates both <em>state</em> (represented by private instance variables and data structures) and <em>behavior</em> (manifested through public operations or methods). Computation proceeds exclusively via <strong>message passing</strong>: client objects invoke member operations on server objects, requesting services without needing or possessing knowledge of the server's internal algorithmic implementation or physical memory layout.</p>
+          <p>The Object-Oriented Paradigm resolves this by establishing the <strong>Object</strong> as the foundational building block. An OO system is organized as a dynamic, decentralized society of autonomous, collaborating entities. Each object encapsulates both <em>state</em> (private instance variables) and <em>behavior</em> (public operations). Computation proceeds via <strong>message passing</strong>: client objects invoke operations on server objects without knowledge of internal implementation.</p>
 
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th style="width: 25%;">Architectural Facet</th>
+                  <th style="width: 25%;">Facet</th>
                   <th style="width: 37%;">Procedural Paradigm (C)</th>
                   <th style="width: 38%;">Object-Oriented Paradigm (C++)</th>
                 </tr>
@@ -90,30 +81,30 @@
                   <td>Object Decomposition (autonomous domain entities).</td>
                 </tr>
                 <tr>
-                  <td><strong>Data and Logic Relationship</strong></td>
-                  <td>Separated: Data structures are passive entities passed into external functions.</td>
-                  <td>Cohesive: Data and the functions that manipulate it are packaged inside the class boundary.</td>
+                  <td><strong>Data & Logic Relationship</strong></td>
+                  <td>Separated: Data structures are passive, passed into external functions.</td>
+                  <td>Cohesive: Data and functions are packaged inside the class boundary.</td>
                 </tr>
                 <tr>
-                  <td><strong>Access Control & Security</strong></td>
-                  <td>Weak or absent: All struct members are public; global variables can be modified anywhere.</td>
+                  <td><strong>Access Control</strong></td>
+                  <td>Weak or absent: All struct members are public; global variables modifiable anywhere.</td>
                   <td>Strict: Access specifiers (<code>private</code>, <code>protected</code>, <code>public</code>) enforce information hiding.</td>
                 </tr>
                 <tr>
-                  <td><strong>Code Reuse Mechanism</strong></td>
+                  <td><strong>Code Reuse</strong></td>
                   <td>Copy-pasting or static library functions.</td>
                   <td>Inheritance, object composition, polymorphism, and generic templates.</td>
                 </tr>
                 <tr>
                   <td><strong>Modification Impact</strong></td>
                   <td>High ripple effect across dependent procedural files.</td>
-                  <td>Localized within the class boundary; external callers interact via immutable contracts.</td>
+                  <td>Localized within the class boundary; external callers interact via stable contracts.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h4>Concrete Procedural vs. OOP Code Demonstration</h4>
+          <h4>Code Demonstration: Procedural vs. OOP</h4>
           <pre><code>// ================= PROCEDURAL APPROACH (C) =================
 struct BankAccount {
     int accountNumber;
@@ -152,17 +143,17 @@ public:
         </section>
 
         <!-- ======================================================== -->
-        <!-- 3. Object Identity & The Memory Model                    -->
+        <!-- 2. Core OO Concepts                                       -->
         <!-- ======================================================== -->
-        <section id="sec-object-identity">
-          <h2>3. Object Identity & The Memory Model</h2>
-          <p><strong>Definition:</strong> Object identity is that property of an object which distinguishes it from all other objects in the computational universe, regardless of its state values, data types, or variable references.</p>
+        <section id="sec-oo-concepts">
+          <h2>2. Core Object-Oriented Concepts</h2>
 
-          <h4>Identity vs. Equality (State Equivalence)</h4>
-          <p>A classic exam confusion arises between <em>identity</em> and <em>equality</em>:</p>
+          <h3>2.1 Object Identity</h3>
+          <p><strong>Definition:</strong> Object identity is the property of an object which distinguishes it from all other objects, regardless of its state values, data types, or variable references.</p>
+          <h4>Identity vs. Equality</h4>
           <ul>
-            <li><strong>Equality (State Match):</strong> Two distinct objects $A$ and $B$ are equal if their internal attribute values evaluate to identical values. For example, two separate customer records for "John Doe" born on "1990-01-01" have identical state.</li>
-            <li><strong>Identity (Sameness):</strong> Objects $A$ and $B$ are identical strictly if they are the exact same physical instance occupying the identical memory address ($A \equiv B$). Even if $A$ and $B$ share identical data, they remain non-identical entities.</li>
+            <li><strong>Equality (State Match):</strong> Two distinct objects are equal if their internal attribute values evaluate to identical values. Example: two separate customer records for "John Doe" born on "1990-01-01" have identical state.</li>
+            <li><strong>Identity (Sameness):</strong> Objects are identical strictly if they are the exact same physical instance at the same memory address. Even if two objects share identical data, they remain non-identical entities.</li>
           </ul>
 
           <pre><code>#include &lt;iostream&gt;
@@ -194,22 +185,17 @@ int main() {
     return 0;
 }</code></pre>
 
-          <h4>Physical Realization of Object Identity</h4>
+          <h4>Physical Realization of Identity</h4>
           <ul>
-            <li><strong>In-Memory (Runtime):</strong> Enforced via hardware pointer addresses (the hidden <code>this</code> pointer passed automatically as the first parameter to member operations).</li>
-            <li><strong>Relational & Distributed Persistence:</strong> In disk databases where objects are serialized across sessions, memory addresses are transient. Identity is preserved using surrogate primary keys (e.g., UUIDs or 64-bit auto-incrementing integers) which never mutate even if all customer attributes are updated.</li>
+            <li><strong>In-Memory (Runtime):</strong> Enforced via hardware pointer addresses (the hidden <code>this</code> pointer passed automatically to member operations).</li>
+            <li><strong>Persistent Storage:</strong> In databases where memory addresses are transient, identity is preserved using surrogate primary keys (UUIDs or auto-incrementing integers).</li>
           </ul>
-        </section>
 
-        <!-- ======================================================== -->
-        <!-- 4. Encapsulation & Information Hiding                    -->
-        <!-- ======================================================== -->
-        <section id="sec-encapsulation">
-          <h2>4. Encapsulation & Information Hiding</h2>
-          <p>While often used interchangeably in casual discourse, encapsulation and information hiding represent distinct architectural concepts:</p>
+          <h3>2.2 Encapsulation & Information Hiding</h3>
+          <p>While often used interchangeably, these represent distinct concepts:</p>
           <ul>
-            <li><strong>Encapsulation:</strong> The programming language packaging mechanism that collocates data variables and member operations into a single syntactic unit (the class).</li>
-            <li><strong>Information Hiding (David Parnas Principle):</strong> The architectural design strategy of intentionally concealing internal data representations, memory layouts, and algorithmic mechanisms behind an unchangeable, public abstract interface.</li>
+            <li><strong>Encapsulation:</strong> The programming language mechanism that packages data variables and member operations into a single syntactic unit (the class).</li>
+            <li><strong>Information Hiding (Parnas Principle):</strong> The design strategy of intentionally concealing internal data representations and algorithmic mechanisms behind a public abstract interface.</li>
           </ul>
 
           <div class="diagram-container">
@@ -223,7 +209,7 @@ int main() {
               <text x="55" y="85" fill="#cf222e" font-weight="bold" font-size="12">Hidden Internal State (Private)</text>
               <text x="55" y="110" fill="#1f2328" font-size="11">- dbConnectionPool: PoolHandle*</text>
               <text x="55" y="130" fill="#1f2328" font-size="11">- transactionKey: byte[32]</text>
-              <text x="55" y="150" fill="#1f2328" font-size="11">- internalLedger: std::vector&lt;Item&gt;</text>
+              <text x="55" y="150" fill="#1f2328" font-size="11">- internalLedger: vector&lt;Item&gt;</text>
               <text x="55" y="175" fill="#656d76" font-size="10">[Direct client mutation prohibited]</text>
 
               <!-- Public Interface Contract -->
@@ -232,7 +218,7 @@ int main() {
               <text x="375" y="110" fill="#1f2328" font-size="11">+ placeOrder(cart: Cart): OrderResult</text>
               <text x="375" y="130" fill="#1f2328" font-size="11">+ cancelOrder(orderId: string): bool</text>
               <text x="375" y="150" fill="#1f2328" font-size="11">+ queryStatus(orderId: string): Status</text>
-              <text x="375" y="175" fill="#0969da" font-size="10">[Guarantees ACID transactions &amp; locks]</text>
+              <text x="375" y="175" fill="#0969da" font-size="10">[Guarantees ACID transactions]</text>
 
               <!-- Flow arrow -->
               <line x1="360" y1="125" x2="325" y2="125" stroke="#0969da" stroke-width="2"/>
@@ -241,29 +227,23 @@ int main() {
             <div class="diagram-caption">Figure 1.1: Encapsulation Boundary and Information Hiding Contract</div>
           </div>
 
-          <h4>How Encapsulation Ensures System Security & Maintainability</h4>
+          <h4>Benefits of Encapsulation</h4>
           <ol>
-            <li><strong>Class Invariant Defense:</strong> An invariant is a condition that must unconditionally hold true for an object to remain in a valid domain state (e.g., <code>balance &gt;= 0</code>, <code>seatCount &lt;= planeCapacity</code>). By preventing direct variable access, constructors and setter methods validate all incoming parameters, ensuring invariants can never be violated.</li>
-            <li><strong>Implementation Independence (Zero Ripple Effects):</strong> A software team can refactor an internal data structure (e.g., replacing an $O(N)$ vector with a $O(1)$ hash map or introducing AES-256 encryption on disk) without altering or recompiling client software that calls public methods.</li>
+            <li><strong>Class Invariant Defense:</strong> An invariant is a condition that must hold true for an object to remain valid (e.g., <code>balance >= 0</code>). By preventing direct variable access, setter methods validate all incoming parameters.</li>
+            <li><strong>Implementation Independence:</strong> Internal data structures can be refactored (e.g., replacing a vector with a hash map) without altering or recompiling client code.</li>
           </ol>
-        </section>
 
-        <!-- ======================================================== -->
-        <!-- 5. Polymorphism & The VTable Dispatch Engine             -->
-        <!-- ======================================================== -->
-        <section id="sec-polymorphism">
-          <h2>5. Polymorphism & The VTable Dispatch Engine</h2>
-          <p><strong>Definition:</strong> Polymorphism (originating from Greek: "many forms") is the capability of a unified syntactic message invocation to exhibit diverse computational behaviors depending on the concrete dynamic type of the target receiver object.</p>
+          <h3>2.3 Polymorphism</h3>
+          <p><strong>Definition:</strong> Polymorphism ("many forms") is the capability of a single message invocation to exhibit diverse behaviors depending on the dynamic type of the receiver object.</p>
 
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th style="width: 25%;">Polymorphism Mode</th>
-                  <th style="width: 20%;">Mechanism</th>
-                  <th style="width: 15%;">Binding Time</th>
-                  <th style="width: 20%;">Runtime Overhead</th>
-                  <th style="width: 20%;">Typical Code Example</th>
+                  <th style="width: 20%;">Type</th>
+                  <th style="width: 25%;">Mechanism</th>
+                  <th style="width: 20%;">Binding Time</th>
+                  <th style="width: 35%;">Example</th>
                 </tr>
               </thead>
               <tbody>
@@ -271,26 +251,24 @@ int main() {
                   <td><strong>Static (Compile-Time)</strong></td>
                   <td>Function Overloading, Operator Overloading, Templates</td>
                   <td>Early Binding (Compilation)</td>
-                  <td>Zero runtime cost; compiler resolves addresses via name mangling.</td>
-                  <td><code>void print(int); void print(string);</code><br><code>Complex operator+(Complex);</code></td>
+                  <td><code>void print(int); void print(string);</code></td>
                 </tr>
                 <tr>
                   <td><strong>Dynamic (Runtime)</strong></td>
                   <td>Inheritance with <code>virtual</code> member functions</td>
                   <td>Late Binding (Execution)</td>
-                  <td>Pointer indirection: 1 memory lookup into VTable (~1-2 clock cycles).</td>
-                  <td><code>Shape* s = new Circle(); s-&gt;draw();</code></td>
+                  <td><code>Shape* s = new Circle(); s->draw();</code></td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h4>The Internal Mechanics of Dynamic Dispatch: VTable and VPTR</h4>
-          <p>When a C++ compiler encounters a class declaring or inheriting at least one <code>virtual</code> function, it executes the following steps:</p>
+          <h4>Dynamic Dispatch: VTable Mechanism</h4>
+          <p>When a C++ compiler encounters a class with at least one <code>virtual</code> function:</p>
           <ol>
-            <li><strong>VTable Generation:</strong> The compiler builds a static array of function pointers called the <strong>Virtual Method Table (VTable)</strong> for that class. Each slot stores the memory address of the corresponding virtual function.</li>
-            <li><strong>VPTR Insertion:</strong> The compiler injects a hidden pointer called the <strong>Virtual Table Pointer (<code>vptr</code>)</strong> into every object instance of that class (typically occupying the first 8 bytes of the object's memory layout).</li>
-            <li><strong>Dynamic Resolution:</strong> When <code>basePtr-&gt;virtualMethod()</code> is executed, machine code dereferences <code>basePtr</code> to retrieve <code>vptr</code>, indexes into the VTable slot, and performs an indirect jump to the resolved function address.</li>
+            <li><strong>VTable Generation:</strong> The compiler builds a static array of function pointers (the Virtual Method Table) for that class. Each slot stores the address of a virtual function.</li>
+            <li><strong>VPTR Insertion:</strong> A hidden pointer (<code>vptr</code>) is injected into every object instance, pointing to the class's VTable.</li>
+            <li><strong>Dynamic Resolution:</strong> When <code>basePtr->virtualMethod()</code> is called, machine code dereferences <code>vptr</code>, indexes into the VTable slot, and jumps to the resolved function address.</li>
           </ol>
 
           <div class="diagram-container">
@@ -309,11 +287,11 @@ int main() {
               <!-- VTable in Read-Only Data Segment -->
               <rect x="370" y="30" width="280" height="180" fill="#ffffff" stroke="#1f2328" stroke-width="2"/>
               <rect x="370" y="30" width="280" height="30" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-              <text x="390" y="52" fill="#0969da" font-weight="bold" font-size="12">Circle VTable (Static Data .rodata)</text>
+              <text x="390" y="52" fill="#0969da" font-weight="bold" font-size="12">Circle VTable (Static .rodata)</text>
               <text x="385" y="90" fill="#1f2328" font-family="monospace" font-size="11">Slot [0]: &amp;Circle::draw()</text>
               <text x="385" y="120" fill="#1f2328" font-family="monospace" font-size="11">Slot [1]: &amp;Circle::area()</text>
               <text x="385" y="150" fill="#1f2328" font-family="monospace" font-size="11">Slot [2]: &amp;Circle::~Circle()</text>
-              <text x="385" y="185" fill="#656d76" font-size="10">[Indexed at runtime via function offset]</text>
+              <text x="385" y="185" fill="#656d76" font-size="10">[Indexed at runtime via offset]</text>
 
               <!-- Arrow connecting vptr to VTable -->
               <path d="M 210 80 Q 290 80 370 80" fill="none" stroke="#cf222e" stroke-width="2"/>
@@ -322,7 +300,7 @@ int main() {
             <div class="diagram-caption">Figure 1.2: Physical Memory Architecture of Dynamic Dispatch (VPTR and VTable)</div>
           </div>
 
-          <pre><code>// Production C++ Virtual Method Demonstration
+          <pre><code>// C++ Virtual Method Demonstration
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;memory&gt;
@@ -358,19 +336,11 @@ int main() {
     }
     return 0;
 }</code></pre>
-        </section>
 
-        <!-- ======================================================== -->
-        <!-- 6. Generosity (Generic Programming)                       -->
-        <!-- ======================================================== -->
-        <section id="sec-generosity">
-          <h2>6. Generosity (Genericity / Generic Programming)</h2>
-          <p><strong>Definition:</strong> Generosity (often referred to as <em>genericity</em>) is the software technique of constructing classes, interfaces, and algorithms parameterized by data types, enabling maximum code reuse without binding the implementation to a specific concrete type at authoring time.</p>
+          <h3>2.4 Generosity (Genericity / Generic Programming)</h3>
+          <p><strong>Definition:</strong> Generosity (genericity) is the technique of constructing classes and algorithms parameterized by data types, enabling maximum code reuse without binding to a specific concrete type at authoring time.</p>
 
-          <h4>Templates vs. Void Pointers</h4>
-          <p>Prior to genericity, procedural languages relied on <code>void*</code> casting for generic collections (e.g., C standard library <code>qsort</code>). This introduced fatal drawbacks: type safety was destroyed, runtime casting bugs went undetected until production crashes, and primitive types required costly memory allocations.</p>
-
-          <pre><code>// Comprehensive Generic Type-Safe Stack in C++
+          <pre><code>// Generic Type-Safe Stack in C++
 #include &lt;iostream&gt;
 #include &lt;stdexcept&gt;
 #include &lt;string&gt;
@@ -420,59 +390,93 @@ int main() {
         </section>
 
         <!-- ======================================================== -->
-        <!-- 7. Principles & Goals of Modeling                         -->
+        <!-- 3. Principles & Goals of Modeling                         -->
         <!-- ======================================================== -->
         <section id="sec-modeling-principles">
-          <h2>7. Principles & Goals of Modeling</h2>
-          <p>A <strong>model</strong> is a semantically closed, purposeful simplification of reality. In software engineering, constructing a model is not an artistic exercise or mere documentation after the fact; it is the fundamental medium through which systems are conceived, explored, analyzed, and verified before committing expensive development and hardware resources.</p>
+          <h2>3. Principles & Goals of Modeling</h2>
+          <p>A <strong>model</strong> is a semantically closed, purposeful simplification of reality. In software engineering, constructing a model is the fundamental medium through which systems are conceived, explored, analyzed, and verified before committing expensive development resources.</p>
 
           <h4>The Five Strategic Goals of Software Modeling</h4>
-          <ul>
-            <li><strong>1. Visualizing the System as It Is or as It Must Become:</strong> Complex software systems span millions of lines of distributed code where structural patterns and operational dependencies are completely obscured in flat text files. Visual modeling allows software architects to view the entire ecosystem at varying granularities, identifying cyclic dependencies, architectural bottlenecks, and coupling anti-patterns instantly.</li>
-            <li><strong>2. Specifying Structure and Behavior Unambiguously:</strong> Natural human language specifications are inherently ambiguous, imprecise, and subject to contradictory interpretations by different engineering teams. Visual models provide standardized graphical syntax and formal semantic constraints that define exact interface contracts, attribute types, and operational preconditions.</li>
-            <li><strong>3. Providing a Construction Template (Blueprint for Code):</strong> High-integrity models serve as the direct executable template from which classes, database schemas, message broker topics, and network API endpoints are generated. Modern CASE (Computer-Aided Software Engineering) tools perform forward engineering to generate boilerplate code directly from detailed class models.</li>
-            <li><strong>4. Documenting Architectural Decisions and Design Rationale:</strong> Over decades of enterprise system evolution, original software architects leave organizations. Models document <em>why</em> specific trade-offs were selected (e.g., choosing asynchronous event queues over synchronous REST calls for payment processing), preserving architectural memory and mitigating maintenance risk.</li>
-            <li><strong>5. Early Risk Mitigation and Defect Prevention:</strong> Identifying an architectural flaw (e.g., a deadlock condition in a concurrent state machine or an unresolvable diamond inheritance hierarchy) during the visual modeling phase costs roughly 1% of the capital expenditure required to identify and refactor that same flaw after deployment to live production cloud clusters.</li>
-          </ul>
+          <ol>
+            <li><strong>Visualizing the System:</strong> Complex software spans millions of lines where structural patterns are obscured in flat text files. Visual modeling allows architects to view the ecosystem at varying granularities, identifying dependencies, bottlenecks, and coupling anti-patterns instantly.</li>
+            <li><strong>Specifying Structure and Behavior:</strong> Natural language specifications are inherently ambiguous. Visual models provide standardized graphical syntax and formal semantic constraints that define exact interface contracts, attribute types, and operational preconditions.</li>
+            <li><strong>Providing a Construction Template:</strong> High-integrity models serve as the direct blueprint from which classes, database schemas, and API endpoints are generated. Modern CASE tools perform forward engineering to generate code directly from class models.</li>
+            <li><strong>Documenting Decisions and Design Rationale:</strong> Over decades of system evolution, original architects leave organizations. Models document <em>why</em> specific trade-offs were selected, preserving architectural memory.</li>
+            <li><strong>Early Risk Mitigation:</strong> Identifying an architectural flaw during modeling costs roughly 1% of the expenditure required after deployment.</li>
+          </ol>
 
           <h4>The Four Fundamental Principles of Modeling (Booch, Rumbaugh, Jacobson)</h4>
           <ol>
-            <li><strong>Principle 1: The Choice of What Models to Create Has a Profound Influence on How a Problem Is Attacked and How a Solution Is Shaped:</strong>
-              <p>The choice of modeling paradigm fundamentally dictates the architecture of the solution. If one chooses an algorithmic procedural model (e.g., Data Flow Diagrams), the solution crystallizes around centralized sequential transformations of passive data. If one chooses an object-oriented model (UML), the system emerges as an ecosystem of autonomous, collaborating entities encapsulating state and behavior.</p>
+            <li><strong>Principle 1 — The Choice of Model Shapes the Solution:</strong>
+              <p>The choice of modeling paradigm dictates the architecture. If one chooses procedural models (DFDs), the solution crystallizes around sequential transformations. If one chooses object-oriented models (UML), the system emerges as an ecosystem of autonomous, collaborating entities.</p>
             </li>
-            <li><strong>Principle 2: Every Model May Be Expressed at Different Levels of Precision:</strong>
-              <p>A single system must be modelable at multiple granularities of detail. Early in requirements elicitation, an architect constructs high-level, elided models (e.g., conceptual class diagrams with class names only) to communicate system boundaries with executive stakeholders. Later during implementation design, the same model is refined with rigorous precision, specifying typed method signatures, parameter passing semantics, thread safety locks, and algorithmic pre/post-conditions.</p>
+            <li><strong>Principle 2 — Every Model May Be Expressed at Different Levels of Precision:</strong>
+              <p>A system must be modelable at multiple granularities. Early in requirements, architects construct high-level elided models (class names only) for stakeholder communication. Later, the same model is refined with typed method signatures, parameter semantics, and pre/post-conditions.</p>
             </li>
-            <li><strong>Principle 3: The Best Models Are Connected to Reality:</strong>
-              <p>A model cannot exist as an abstract mathematical fantasy disconnected from physical computing reality. Software models must directly account for hardware topologies, network bandwidth limits, database transaction isolation guarantees, and programming language constructs. A clean architecture ensures that when changes occur in the business domain, the corresponding modifications map directly and traceably to the software model and its code.</p>
+            <li><strong>Principle 3 — The Best Models Are Connected to Reality:</strong>
+              <p>Models must account for hardware topologies, network limits, database isolation guarantees, and programming language constructs. When business domain changes occur, modifications must map directly and traceably to the model and code.</p>
             </li>
-            <li><strong>Principle 4: No Single Model Is Ever Sufficient; Every Non-Trivial System Requires Multiple Nearly Independent Views:</strong>
-              <p>A complex software system cannot be captured completely in a single monolithic diagram. Attempting to display static data structures, asynchronous network messaging, thread pools, and physical servers simultaneously yields illegible visual chaos. High-integrity engineering necessitates decomposing the model into multiple complementary, orthogonal viewpoints (e.g., static structural view, behavioral interaction view, physical deployment view) as captured by Kruchten's 4+1 view architecture.</p>
+            <li><strong>Principle 4 — No Single Model Is Sufficient:</strong>
+              <p>A complex system cannot be captured in a single diagram. High-integrity engineering requires decomposing the model into multiple complementary, orthogonal viewpoints (static structural, behavioral interaction, physical deployment) — as captured by the 4+1 view architecture.</p>
             </li>
           </ol>
         </section>
 
         <!-- ======================================================== -->
-        <!-- 8. Introduction to UML: History, Foundations & Standards  -->
+        <!-- 4. Introduction to UML                                    -->
         <!-- ======================================================== -->
         <section id="sec-intro-uml">
-          <h2>8. Introduction to UML: History, Foundations & Standards</h2>
+          <h2>4. Introduction to UML: History, Foundations & Standards</h2>
           <p>The <strong>Unified Modeling Language (UML)</strong> is the international industry-standard visual modeling language ratified by the Object Management Group (OMG) for specifying, visualizing, constructing, and documenting the artifacts of software-intensive systems.</p>
 
-          <h4>The Historical Evolution: Resolving the "Method Wars"</h4>
-          <p>In the late 1980s and early 1990s, the software industry experienced the chaotic era known as the <strong>"Method Wars"</strong>. Over fifty competing, proprietary object-oriented analysis and design methodologies existed simultaneously. Each methodology possessed its own idiosyncratic visual notation, modeling semantics, and terminology:</p>
+          <h3>4.1 The Historical Evolution: Resolving the "Method Wars"</h3>
+          <p>In the late 1980s and early 1990s, the software industry experienced the chaotic era known as the <strong>"Method Wars"</strong>. Over fifty competing, proprietary object-oriented analysis and design methodologies existed simultaneously, each with its own idiosyncratic notation, semantics, and terminology:</p>
           <ul>
-            <li><strong>The Booch Method (Grady Booch):</strong> Focused primarily on detailed object-oriented design and static structural relationships (celebrated for its distinctive "cloud" notation for classes).</li>
-            <li><strong>Object Modeling Technique - OMT (James Rumbaugh):</strong> Emphasized rigorous structural data analysis, dynamic state modeling, and functional decomposition for data-intensive commercial systems.</li>
-            <li><strong>Objectory (Ivar Jacobson):</strong> Pioneered the <strong>Use Case</strong> approach, placing user scenarios and external business actors at the epicenter of requirements engineering.</li>
+            <li><strong>The Booch Method (Grady Booch):</strong> Focused on detailed OO design and static structural relationships. Used distinctive "cloud" notation for classes.</li>
+            <li><strong>Object Modeling Technique — OMT (James Rumbaugh):</strong> Emphasized rigorous structural data analysis, dynamic state modeling, and functional decomposition for data-intensive commercial systems.</li>
+            <li><strong>Objectory (Ivar Jacobson):</strong> Pioneered the <strong>Use Case</strong> approach, placing user scenarios and external business actors at the center of requirements engineering.</li>
           </ul>
-          <p>This fragmentation severely damaged the industry. Software organizations could not share visual models, CASE tool vendors were paralyzed trying to support dozens of notations, and developers faced immense retraining costs when switching companies.</p>
+          <p>This fragmentation severely damaged the industry — organizations could not share visual models, CASE tool vendors were paralyzed, and developers faced immense retraining costs.</p>
 
-          <h4>The Alliance of the "Three Amigos" and OMG Standardization</h4>
-          <p>In 1994, James Rumbaugh joined Grady Booch at Rational Software Corporation to unify their methods. In 1995, Ivar Jacobson joined them following Rational's acquisition of Objectory AB. Together, Booch, Rumbaugh, and Jacobson became universally celebrated as the <strong>"Three Amigos"</strong>. They set out to synthesize the best elements of their respective methodologies into a unified, open visual modeling grammar.</p>
-          <p>In 1997, the <strong>Object Management Group (OMG)</strong> formally adopted <strong>UML 1.1</strong> as the international industry standard. Subsequent evolutions culminated in <strong>UML 2.0 (2005)</strong> and <strong>UML 2.5 (current)</strong>, which radically modernized interaction frames, added structured component ports, formalized activity token flow, and expanded the diagram taxonomy from 9 to 14 distinct visual diagrams.</p>
+          <h3>4.2 The "Three Amigos" & OMG Standardization</h3>
+          <p>In <strong>1994</strong>, James Rumbaugh joined Grady Booch at Rational Software Corporation to unify their methods. In <strong>1995</strong>, Ivar Jacobson joined following Rational's acquisition of Objectory AB. Together, they became the <strong>"Three Amigos"</strong>, synthesizing the best elements of their respective methodologies into a unified visual grammar.</p>
 
-          <h4>What UML Is and What It Is NOT</h4>
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="680" height="200" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+
+              <!-- Booch -->
+              <rect x="30" y="25" width="170" height="55" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="115" y="48" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">Booch Method</text>
+              <text x="115" y="68" font-size="10" fill="#656d76" text-anchor="middle">(Grady Booch)</text>
+
+              <!-- OMT -->
+              <rect x="255" y="25" width="170" height="55" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="340" y="48" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">OMT Method</text>
+              <text x="340" y="68" font-size="10" fill="#656d76" text-anchor="middle">(James Rumbaugh)</text>
+
+              <!-- Objectory -->
+              <rect x="480" y="25" width="170" height="55" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="565" y="48" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">Objectory / OOSE</text>
+              <text x="565" y="68" font-size="10" fill="#656d76" text-anchor="middle">(Ivar Jacobson)</text>
+
+              <!-- Converging arrows -->
+              <line x1="115" y1="80" x2="340" y2="115" stroke="#1f2328" stroke-width="1.5"/>
+              <line x1="340" y1="80" x2="340" y2="115" stroke="#1f2328" stroke-width="1.5"/>
+              <line x1="565" y1="80" x2="340" y2="115" stroke="#1f2328" stroke-width="1.5"/>
+              <polygon points="340,115 335,108 345,108" fill="#1f2328"/>
+
+              <!-- UML Result -->
+              <rect x="215" y="120" width="250" height="55" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
+              <text x="340" y="143" font-size="13" font-weight="bold" fill="#0969da" text-anchor="middle">Unified Modeling Language</text>
+              <text x="340" y="163" font-size="10" fill="#656d76" text-anchor="middle">UML 1.1 (1997) → UML 2.0 (2005) → UML 2.5 (Current)</text>
+            </svg>
+            <div class="diagram-caption">Figure 1.3: Evolution of UML from the Three Methodologies</div>
+          </div>
+
+          <p>In <strong>1997</strong>, the OMG formally adopted <strong>UML 1.1</strong>. Subsequent evolutions culminated in <strong>UML 2.0 (2005)</strong> and <strong>UML 2.5 (current)</strong>, expanding the diagram taxonomy from 9 to 14 distinct diagrams and adding interaction frames, structured component ports, and formalized activity token flow.</p>
+
+          <h3>4.3 What UML Is and What It Is NOT</h3>
           <div class="table-wrapper">
             <table>
               <thead>
@@ -487,16 +491,16 @@ int main() {
                   <td>NOT a programming language (it produces visual blueprints, not compiled bytecode).</td>
                 </tr>
                 <tr>
-                  <td>Applicable across any programming language (C++, Java, C#, Python, Rust).</td>
-                  <td>NOT proprietary or tied to any single software vendor or operating system.</td>
+                  <td>Applicable across any programming language (C++, Java, C#, Python).</td>
+                  <td>NOT proprietary or tied to any single software vendor or OS.</td>
                 </tr>
                 <tr>
-                  <td>Methodology-agnostic: Can be applied in Agile, Scrum, Unified Process, or Waterfall.</td>
-                  <td>NOT a prescriptive software lifecycle process or development methodology.</td>
+                  <td>Methodology-agnostic: Usable in Agile, Scrum, Unified Process, or Waterfall.</td>
+                  <td>NOT a prescriptive software lifecycle process or methodology.</td>
                 </tr>
                 <tr>
                   <td>A visual communication medium bridging business analysts and system architects.</td>
-                  <td>NOT a functional flowcharting tool for trivial procedural scripts.</td>
+                  <td>NOT a flowcharting tool for trivial procedural scripts.</td>
                 </tr>
               </tbody>
             </table>
@@ -504,246 +508,465 @@ int main() {
         </section>
 
         <!-- ======================================================== -->
-        <!-- 9. Conceptual Model of UML: The Three Pillars             -->
+        <!-- 5. Conceptual Model of UML: The Three Pillars             -->
         <!-- ======================================================== -->
         <section id="sec-conceptual-model">
-          <h2>9. Conceptual Model of UML: The Three Pillars</h2>
-          <p>To master the Unified Modeling Language, one must understand its <strong>Conceptual Model</strong>. The conceptual model is structured upon three foundational pillars that define the grammar, vocabulary, and assembly rules of the language:</p>
+          <h2>5. Conceptual Model of UML: The Three Pillars</h2>
+          <p>To master UML, one must understand its <strong>Conceptual Model</strong>. This model is structured upon three foundational pillars that define the grammar, vocabulary, and assembly rules of the language:</p>
           <ol>
-            <li><strong>Building Blocks:</strong> The core modeling nouns, verbs, and organizational packages that form the atomic modeling elements.</li>
-            <li><strong>Rules of UML:</strong> The syntactic and semantic well-formedness constraints that dictate how building blocks can be legally assembled.</li>
+            <li><strong>Building Blocks:</strong> The core modeling elements — Things, Relationships, and Diagrams.</li>
+            <li><strong>Rules of UML:</strong> Syntactic and semantic well-formedness constraints governing how building blocks can be legally assembled.</li>
             <li><strong>Common Mechanisms:</strong> Universal structural patterns and extensibility features applied consistently across all UML diagrams.</li>
           </ol>
 
           <div class="diagram-container">
-            <svg class="uml-diagram" viewBox="0 0 680 240" width="100%" height="240" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="0" width="680" height="240" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
-              
+            <svg class="uml-diagram" viewBox="0 0 680 280" width="100%" height="280" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="680" height="280" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+
+              <!-- Title -->
+              <text x="340" y="25" font-size="13" font-weight="bold" fill="#0969da" text-anchor="middle">CONCEPTUAL MODEL OF UML</text>
+              <line x1="170" y1="32" x2="510" y2="32" stroke="#d0d7de" stroke-width="1"/>
+
               <!-- Column 1: Building Blocks -->
-              <rect x="20" y="20" width="200" height="200" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-              <rect x="20" y="20" width="200" height="35" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
-              <text x="120" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">1. BUILDING BLOCKS</text>
-              <text x="35" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1f2328">A. Things</text>
-              <text x="45" y="93" font-family="monospace" font-size="10" fill="#656d76">• Structural (Class, Node)</text>
-              <text x="45" y="108" font-family="monospace" font-size="10" fill="#656d76">• Behavioral (State, Message)</text>
-              <text x="45" y="123" font-family="monospace" font-size="10" fill="#656d76">• Grouping (Packages)</text>
-              <text x="45" y="138" font-family="monospace" font-size="10" fill="#656d76">• Annotational (Notes)</text>
-              <text x="35" y="160" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1f2328">B. Relationships</text>
-              <text x="45" y="178" font-family="monospace" font-size="10" fill="#656d76">• Depend, Assoc, General, Real</text>
-              <text x="35" y="200" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1f2328">C. Diagrams (14 Types)</text>
+              <rect x="20" y="45" width="200" height="220" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="20" y="45" width="200" height="32" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
+              <text x="120" y="66" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">1. BUILDING BLOCKS</text>
+
+              <text x="35" y="98" font-size="11" font-weight="bold" fill="#1f2328">A. Things</text>
+              <text x="45" y="115" font-family="monospace" font-size="10" fill="#656d76">Structural (Class, Node...)</text>
+              <text x="45" y="130" font-family="monospace" font-size="10" fill="#656d76">Behavioral (State, Message)</text>
+              <text x="45" y="145" font-family="monospace" font-size="10" fill="#656d76">Grouping (Packages)</text>
+              <text x="45" y="160" font-family="monospace" font-size="10" fill="#656d76">Annotational (Notes)</text>
+
+              <text x="35" y="182" font-size="11" font-weight="bold" fill="#1f2328">B. Relationships</text>
+              <text x="45" y="199" font-family="monospace" font-size="10" fill="#656d76">Dependency, Association</text>
+              <text x="45" y="214" font-family="monospace" font-size="10" fill="#656d76">Generalization, Realization</text>
+
+              <text x="35" y="240" font-size="11" font-weight="bold" fill="#1f2328">C. Diagrams (14 Types)</text>
+              <text x="45" y="255" font-family="monospace" font-size="10" fill="#656d76">7 Structural + 7 Behavioral</text>
 
               <!-- Column 2: Rules -->
-              <rect x="240" y="20" width="200" height="200" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-              <rect x="240" y="20" width="200" height="35" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
-              <text x="340" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">2. RULES OF UML</text>
-              <text x="255" y="75" font-family="monospace" font-size="11" fill="#1f2328">• Names (Identifiers)</text>
-              <text x="255" y="100" font-family="monospace" font-size="11" fill="#1f2328">• Scope (Namespaces)</text>
-              <text x="255" y="125" font-family="monospace" font-size="11" fill="#1f2328">• Visibility (+, -, #, ~)</text>
-              <text x="255" y="150" font-family="monospace" font-size="11" fill="#1f2328">• Integrity (Consistency)</text>
-              <text x="255" y="175" font-family="monospace" font-size="11" fill="#1f2328">• Execution (Dynamics)</text>
-              <text x="340" y="202" font-family="sans-serif" font-size="9" fill="#656d76" text-anchor="middle">Guarantees Well-Formedness</text>
+              <rect x="240" y="45" width="200" height="220" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="240" y="45" width="200" height="32" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
+              <text x="340" y="66" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">2. RULES OF UML</text>
+
+              <text x="255" y="98" font-family="monospace" font-size="11" fill="#1f2328">Names (Identifiers)</text>
+              <text x="255" y="120" font-family="monospace" font-size="11" fill="#1f2328">Scope (Namespaces)</text>
+              <text x="255" y="142" font-family="monospace" font-size="11" fill="#1f2328">Visibility (+, -, #, ~)</text>
+              <text x="255" y="164" font-family="monospace" font-size="11" fill="#1f2328">Integrity (Consistency)</text>
+              <text x="255" y="186" font-family="monospace" font-size="11" fill="#1f2328">Execution (Dynamics)</text>
+              <line x1="250" y1="205" x2="430" y2="205" stroke="#d0d7de" stroke-width="1"/>
+              <text x="340" y="225" font-size="10" fill="#656d76" text-anchor="middle">These rules guarantee</text>
+              <text x="340" y="240" font-size="10" fill="#656d76" text-anchor="middle">well-formed, consistent</text>
+              <text x="340" y="255" font-size="10" fill="#656d76" text-anchor="middle">and unambiguous models</text>
 
               <!-- Column 3: Common Mechanisms -->
-              <rect x="460" y="20" width="200" height="200" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
-              <rect x="460" y="20" width="200" height="35" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
-              <text x="560" y="42" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">3. MECHANISMS</text>
-              <text x="475" y="75" font-family="monospace" font-size="10" fill="#1f2328">• Specifications</text>
-              <text x="475" y="95" font-family="monospace" font-size="10" fill="#1f2328">• Adornments</text>
-              <text x="475" y="115" font-family="monospace" font-size="10" fill="#1f2328">• Common Divisions</text>
-              <text x="475" y="135" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0969da">• Extensibility Trio:</text>
-              <text x="485" y="155" font-family="monospace" font-size="10" fill="#8250df">- Stereotypes &laquo;...&raquo;</text>
-              <text x="485" y="175" font-family="monospace" font-size="10" fill="#8250df">- Tagged Values {tag=val}</text>
-              <text x="485" y="195" font-family="monospace" font-size="10" fill="#8250df">- Constraints {rule}</text>
+              <rect x="460" y="45" width="200" height="220" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="460" y="45" width="200" height="32" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
+              <text x="560" y="66" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">3. COMMON MECHANISMS</text>
+
+              <text x="475" y="98" font-family="monospace" font-size="10" fill="#1f2328">Specifications</text>
+              <text x="475" y="118" font-family="monospace" font-size="10" fill="#1f2328">Adornments</text>
+              <text x="475" y="138" font-family="monospace" font-size="10" fill="#1f2328">Common Divisions</text>
+              <line x1="470" y1="150" x2="650" y2="150" stroke="#d0d7de" stroke-width="1"/>
+              <text x="475" y="170" font-size="10" font-weight="bold" fill="#0969da">Extensibility Trio:</text>
+              <text x="485" y="192" font-family="monospace" font-size="10" fill="#8250df">Stereotypes &lt;&lt;...&gt;&gt;</text>
+              <text x="485" y="212" font-family="monospace" font-size="10" fill="#8250df">Tagged Values {tag=val}</text>
+              <text x="485" y="232" font-family="monospace" font-size="10" fill="#8250df">Constraints {rule}</text>
             </svg>
-            <div class="diagram-caption">Figure 1.3: Architectural Model of the Three Pillars of the UML Conceptual Model</div>
-          </div>
-
-          <h3>Deep Dive into Pillar 1: Building Blocks of UML</h3>
-
-          <h4>A. Things in UML (The Four Fundamental Categories)</h4>
-          <table class="exam-table">
-            <thead>
-              <tr>
-                <th style="width: 20%;">Category of Things</th>
-                <th style="width: 25%;">Specific Elements</th>
-                <th style="width: 55%;">Semantic Meaning, Graphical Notation &amp; Architectural Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>1. Structural Things</strong><br><em>(Static building blocks)</em></td>
-                <td>
-                  &bull; Class<br>
-                  &bull; Interface<br>
-                  &bull; Collaboration<br>
-                  &bull; Use Case<br>
-                  &bull; Active Class<br>
-                  &bull; Component<br>
-                  &bull; Node<br>
-                  &bull; Artifact
-                </td>
-                <td>
-                  The physical and conceptual nouns of a model.
-                  <br>&bull; <strong>Class:</strong> 3-compartment rectangle (Name, Attributes, Operations). Defines state and behavioral contract.
-                  <br>&bull; <strong>Interface:</strong> Named circle ("lollipop" notation) or rectangle stereotyped with <code>&laquo;interface&raquo;</code>. Specifies a collection of operations with zero implementation.
-                  <br>&bull; <strong>Collaboration:</strong> Dashed ellipse representing a society of collaborating roles working cooperatively to fulfill a use case or design pattern.
-                  <br>&bull; <strong>Use Case:</strong> Solid horizontal ellipse enclosing an action phrase. Represents an observable unit of functionality delivered to an external actor.
-                  <br>&bull; <strong>Active Class:</strong> Rectangle with double vertical border lines on left and right. Represents a class whose instances own a concurrent operating system execution thread.
-                  <br>&bull; <strong>Component:</strong> Modular packaging unit with tabs or component stereotype icon representing physical software code (JAR, DLL, executable).
-                  <br>&bull; <strong>Node:</strong> 3D cuboid representing a computational physical hardware resource (server, sensor, mobile device) possessing memory and processing capacity.
-                  <br>&bull; <strong>Artifact:</strong> Physical file residing on a physical node (e.g., SQL script, binary executable, config YAML).
-                </td>
-              </tr>
-              <tr>
-                <td><strong>2. Behavioral Things</strong><br><em>(Dynamic building blocks)</em></td>
-                <td>
-                  &bull; Interaction (Message)<br>
-                  &bull; State Machine (State)<br>
-                  &bull; Activity Token
-                </td>
-                <td>
-                  The verbs of a model representing dynamic behavior over space and time.
-                  <br>&bull; <strong>Interaction:</strong> A behavior comprising a set of messages exchanged among a set of objects within a context to achieve a specific purpose. Represented by directed arrows with sequence numbers and method signatures.
-                  <br>&bull; <strong>State Machine:</strong> A behavior specifying the sequence of states an object traverses during its lifecycle in response to events. Represented by rounded rectangles for states and directed arrows for transitions.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>3. Grouping Things</strong><br><em>(Organizational blocks)</em></td>
-                <td>
-                  &bull; Package
-                </td>
-                <td>
-                  The organizational, hierarchical mechanisms used to decompose complex models into modular subsystems.
-                  <br>&bull; <strong>Package:</strong> Tabbed folder icon. Packages can enclose structural things, use cases, or other nested packages to define namespace boundaries, access visibilities, and deployment units.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>4. Annotational Things</strong><br><em>(Explanatory blocks)</em></td>
-                <td>
-                  &bull; Note (Comment)
-                </td>
-                <td>
-                  The explanatory and documentation elements of a model.
-                  <br>&bull; <strong>Note:</strong> A dog-eared rectangle connected via a dashed line to the target element. Used to express architectural design rationale, mathematical constraints, performance requirements, or informal engineering comments.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h4>B. Relationships in UML (The Connective Tissue)</h4>
-          <p>Things do not exist in isolation; they are bound together through four fundamental semantic relationships:</p>
-          <ul>
-            <li><strong>Dependency:</strong> A semantic relationship in which a change to one element (the independent supplier) may affect the semantics of another element (the dependent client). Rendered as a <strong>dashed line with an open arrowhead</strong> pointing from client to supplier.</li>
-            <li><strong>Association:</strong> A structural relationship that describes a set of links connecting object instances. Rendered as a <strong>solid line</strong> adorned with role names, navigation arrows, and multiplicities (e.g., <code>1..*</code>). Includes two specialized forms:
-              <ul>
-                <li><em>Shared Aggregation:</em> "has-a" whole/part relationship where child parts can exist independently of the whole (hollow diamond at container end).</li>
-                <li><em>Composite Aggregation (Composition):</em> Strict "owns-a" whole/part relationship with strong exclusive ownership and coincident lifetimes (solid black diamond at container end).</li>
-              </ul>
-            </li>
-            <li><strong>Generalization:</strong> A taxonomic relationship connecting a specialized child classifier to a general parent classifier ("is-a" inheritance). The child inherits all attributes, operations, and relationships of the parent. Rendered as a <strong>solid line with a hollow triangular arrowhead</strong> pointing to the parent.</li>
-            <li><strong>Realization:</strong> A semantic relationship between classifiers wherein one classifier specifies a contract and another classifier guarantees to carry out that contract. Commonly connects a concrete class to an abstract interface or a collaboration to a use case. Rendered as a <strong>dashed line with a hollow triangular arrowhead</strong>.</li>
-          </ul>
-
-          <h4>C. Diagrams in UML: The Complete 14 Diagram Taxonomy (UML 2.x)</h4>
-          <p>UML 2.x standardizes exactly 14 diagrams, hierarchically bifurcated into two mutually exclusive structural categories: <strong>Structure Diagrams</strong> (7) and <strong>Behavior Diagrams</strong> (7).</p>
-
-          <div class="diagram-container">
-            <svg class="uml-diagram" viewBox="0 0 680 340" width="100%" height="340" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="0" width="680" height="340" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
-
-              <!-- Root: UML 2.x Diagrams -->
-              <rect x="250" y="15" width="180" height="40" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-              <text x="340" y="38" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">UML 2.x DIAGRAMS (14)</text>
-
-              <!-- Left Branch: Structure Diagrams -->
-              <line x1="340" y1="55" x2="160" y2="85" stroke="#1f2328" stroke-width="1.5"/>
-              <rect x="50" y="85" width="220" height="35" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-              <text x="160" y="107" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">STRUCTURE DIAGRAMS (7)</text>
-
-              <!-- Right Branch: Behavior Diagrams -->
-              <line x1="340" y1="55" x2="520" y2="85" stroke="#1f2328" stroke-width="1.5"/>
-              <rect x="410" y="85" width="220" height="35" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-              <text x="520" y="107" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">BEHAVIOR DIAGRAMS (7)</text>
-
-              <!-- Structure Diagrams List Box -->
-              <rect x="30" y="135" width="260" height="185" fill="#ffffff" stroke="#1f2328" stroke-width="1"/>
-              <text x="45" y="158" font-family="sans-serif" font-size="11" fill="#1f2328">1. <strong>Class Diagram</strong> (Static schema)</text>
-              <text x="45" y="180" font-family="sans-serif" font-size="11" fill="#1f2328">2. <strong>Object Diagram</strong> (Runtime snapshot)</text>
-              <text x="45" y="202" font-family="sans-serif" font-size="11" fill="#1f2328">3. <strong>Component Diagram</strong> (Code modules)</text>
-              <text x="45" y="224" font-family="sans-serif" font-size="11" fill="#1f2328">4. <strong>Deployment Diagram</strong> (Hardware/Nodes)</text>
-              <text x="45" y="246" font-family="sans-serif" font-size="11" fill="#1f2328">5. <strong>Package Diagram</strong> (Namespaces)</text>
-              <text x="45" y="268" font-family="sans-serif" font-size="11" fill="#1f2328">6. <strong>Composite Structure Diagram</strong> (Ports)</text>
-              <text x="45" y="290" font-family="sans-serif" font-size="11" fill="#1f2328">7. <strong>Profile Diagram</strong> (Metamodel extensions)</text>
-
-              <!-- Behavior Diagrams List Box -->
-              <rect x="390" y="135" width="260" height="185" fill="#ffffff" stroke="#1f2328" stroke-width="1"/>
-              <text x="405" y="158" font-family="sans-serif" font-size="11" fill="#1f2328">1. <strong>Use Case Diagram</strong> (Requirements)</text>
-              <text x="405" y="180" font-family="sans-serif" font-size="11" fill="#1f2328">2. <strong>Activity Diagram</strong> (Workflows)</text>
-              <text x="405" y="202" font-family="sans-serif" font-size="11" fill="#1f2328">3. <strong>State Machine Diagram</strong> (Lifecycles)</text>
-              <text x="405" y="224" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0969da">Interaction Diagrams Subset:</text>
-              <text x="420" y="246" font-family="sans-serif" font-size="11" fill="#1f2328">4. <strong>Sequence Diagram</strong> (Time order)</text>
-              <text x="420" y="268" font-family="sans-serif" font-size="11" fill="#1f2328">5. <strong>Communication Diagram</strong> (Links)</text>
-              <text x="420" y="290" font-family="sans-serif" font-size="11" fill="#1f2328">6. <strong>Timing Diagram</strong> (Clock waveforms)</text>
-              <text x="420" y="310" font-family="sans-serif" font-size="11" fill="#1f2328">7. <strong>Interaction Overview</strong> (Combined)</text>
-            </svg>
-            <div class="diagram-caption">Figure 1.4: Complete Hierarchical Classification of the 14 UML 2.x Diagrams</div>
+            <div class="diagram-caption">Figure 1.4: The Three Pillars of the UML Conceptual Model</div>
           </div>
         </section>
 
         <!-- ======================================================== -->
-        <!-- 10. Rules of the UML & Common Mechanisms                  -->
+        <!-- 6. Building Blocks: Deep Dive                             -->
+        <!-- ======================================================== -->
+        <section id="sec-building-blocks">
+          <h2>6. Building Blocks of UML (Deep Dive)</h2>
+
+          <h3>6.1 Things in UML — The Four Categories</h3>
+          <p>Things are the fundamental modeling elements, the nouns and verbs of the UML vocabulary. They are classified into four categories:</p>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 18%;">Category</th>
+                  <th style="width: 22%;">Elements</th>
+                  <th style="width: 60%;">Meaning, Notation & Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Structural Things</strong><br>(Static blocks)</td>
+                  <td>
+                    Class, Interface, Collaboration, Use Case, Active Class, Component, Node, Artifact
+                  </td>
+                  <td>
+                    The physical and conceptual nouns of a model.
+                    <br>&bull; <strong>Class:</strong> 3-compartment rectangle (Name | Attributes | Operations). Defines state and behavioral contract. Most important structural thing.
+                    <br>&bull; <strong>Interface:</strong> Named circle ("lollipop") or rectangle stereotyped with <code>&laquo;interface&raquo;</code>. Specifies operations with zero implementation.
+                    <br>&bull; <strong>Collaboration:</strong> Dashed ellipse representing a society of cooperating roles fulfilling a use case or design pattern.
+                    <br>&bull; <strong>Use Case:</strong> Solid horizontal ellipse enclosing an action phrase. An observable unit of functionality delivered to an external actor.
+                    <br>&bull; <strong>Active Class:</strong> Rectangle with double vertical border lines. Represents a class owning a concurrent execution thread.
+                    <br>&bull; <strong>Component:</strong> Modular packaging unit with tabs or component icon representing physical software code (JAR, DLL, executable).
+                    <br>&bull; <strong>Node:</strong> 3D cuboid representing a physical hardware resource (server, sensor, mobile device) with memory and processing capacity.
+                    <br>&bull; <strong>Artifact:</strong> Physical file on a node (SQL script, binary, config YAML).
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>2. Behavioral Things</strong><br>(Dynamic blocks)</td>
+                  <td>
+                    Interaction (Message), State Machine, Activity
+                  </td>
+                  <td>
+                    The verbs of a model, representing dynamic behavior over time.
+                    <br>&bull; <strong>Interaction:</strong> A set of messages exchanged among objects within a context to achieve a purpose. Represented by directed arrows with sequence numbers and method signatures.
+                    <br>&bull; <strong>State Machine:</strong> Specifies the sequence of states an object traverses during its lifecycle in response to events. Represented by rounded rectangles (states) and directed arrows (transitions).
+                    <br>&bull; <strong>Activity:</strong> Specifies the computational workflow of operations involving actions and token flows.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>3. Grouping Things</strong><br>(Organizational blocks)</td>
+                  <td>
+                    Package
+                  </td>
+                  <td>
+                    The organizational mechanism to decompose complex models into modular subsystems.
+                    <br>&bull; <strong>Package:</strong> Tabbed folder icon. Can enclose structural things, use cases, or nested packages to define namespace boundaries, access visibilities, and deployment units.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>4. Annotational Things</strong><br>(Explanatory blocks)</td>
+                  <td>
+                    Note (Comment)
+                  </td>
+                  <td>
+                    The explanatory elements of a model.
+                    <br>&bull; <strong>Note:</strong> A dog-eared rectangle connected via a dashed line. Used to express design rationale, constraints, requirements, or comments.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Visual Notation of UML Structural Things</h4>
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="680" height="320" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+
+              <!-- Class -->
+              <rect x="20" y="20" width="140" height="90" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="20" y="20" width="140" height="25" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
+              <text x="90" y="38" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">ClassName</text>
+              <text x="30" y="60" font-size="10" fill="#1f2328">- attribute: Type</text>
+              <line x1="20" y1="68" x2="160" y2="68" stroke="#d0d7de" stroke-width="1"/>
+              <text x="30" y="82" font-size="10" fill="#1f2328">+ operation(): RetType</text>
+              <text x="90" y="100" font-size="9" fill="#656d76" text-anchor="middle">--- Ignored here for space ---</text>
+              <text x="90" y="120" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">CLASS</text>
+
+              <!-- Interface (lollipop) -->
+              <circle cx="250" cy="50" r="12" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <line x1="250" y1="62" x2="250" y2="90" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="250" y="35" font-size="10" fill="#1f2328" text-anchor="middle">IDrawable</text>
+              <text x="250" y="120" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">INTERFACE</text>
+
+              <!-- Use Case (ellipse) -->
+              <ellipse cx="380" cy="55" rx="65" ry="25" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="380" y="60" font-size="10" fill="#1f2328" text-anchor="middle">Place Order</text>
+              <text x="380" y="120" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">USE CASE</text>
+
+              <!-- Component -->
+              <rect x="480" y="30" width="120" height="50" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="473" y="38" width="14" height="8" fill="#ffffff" stroke="#1f2328" stroke-width="1"/>
+              <rect x="473" y="52" width="14" height="8" fill="#ffffff" stroke="#1f2328" stroke-width="1"/>
+              <text x="540" y="60" font-size="10" fill="#1f2328" text-anchor="middle">PaymentSvc</text>
+              <text x="540" y="120" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">COMPONENT</text>
+
+              <!-- Node (3D cube) -->
+              <rect x="20" y="160" width="120" height="60" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <polygon points="20,160 40,140 160,140 140,160" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
+              <polygon points="160,140 160,200 140,220 140,160" fill="#f0f3f6" stroke="#1f2328" stroke-width="1"/>
+              <text x="80" y="195" font-size="10" fill="#1f2328" text-anchor="middle">WebServer</text>
+              <text x="80" y="250" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">NODE</text>
+
+              <!-- Package -->
+              <rect x="200" y="165" width="130" height="55" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="200" y="150" width="60" height="15" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
+              <text x="265" y="195" font-size="10" fill="#1f2328" text-anchor="middle">com.banking</text>
+              <text x="265" y="250" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">PACKAGE</text>
+
+              <!-- Active Class -->
+              <rect x="370" y="155" width="120" height="60" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <line x1="375" y1="155" x2="375" y2="215" stroke="#1f2328" stroke-width="2"/>
+              <line x1="485" y1="155" x2="485" y2="215" stroke="#1f2328" stroke-width="2"/>
+              <text x="430" y="190" font-size="10" fill="#1f2328" text-anchor="middle">EventLoop</text>
+              <text x="430" y="250" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">ACTIVE CLASS</text>
+
+              <!-- Note -->
+              <polygon points="530,155 640,155 640,205 625,220 530,220" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <polygon points="640,155 625,155 625,170 640,155" fill="#f6f8fa" stroke="#1f2328" stroke-width="1"/>
+              <text x="585" y="185" font-size="10" fill="#656d76" text-anchor="middle">Design note</text>
+              <text x="585" y="200" font-size="10" fill="#656d76" text-anchor="middle">or constraint</text>
+              <text x="585" y="250" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">NOTE</text>
+            </svg>
+            <div class="diagram-caption">Figure 1.5: Visual Notation of UML Structural Things</div>
+          </div>
+
+          <h3>6.2 Relationships in UML</h3>
+          <p>Things do not exist in isolation; they are bound together through four fundamental semantic relationships:</p>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 18%;">Relationship</th>
+                  <th style="width: 25%;">Notation</th>
+                  <th style="width: 57%;">Meaning & Usage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Dependency</strong></td>
+                  <td>Dashed line with open arrowhead (client → supplier)</td>
+                  <td>A semantic relationship where a change to the supplier may affect the client. Example: A <code>Report</code> class depends on a <code>DatabaseConnection</code> for data retrieval.</td>
+                </tr>
+                <tr>
+                  <td><strong>Association</strong></td>
+                  <td>Solid line adorned with role names, navigation arrows, and multiplicities</td>
+                  <td>A structural relationship describing a set of links connecting object instances. Includes two specialized forms:
+                    <br>&bull; <em>Aggregation:</em> Shared "has-a" (hollow diamond ◇ at whole end). Parts can exist independently.
+                    <br>&bull; <em>Composition:</em> Strict "owns-a" (filled diamond ◆ at whole end). Parts have coincident lifetimes with the whole.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Generalization</strong></td>
+                  <td>Solid line with hollow triangular arrowhead (child → parent)</td>
+                  <td>Taxonomic "is-a" relationship. The child inherits all attributes, operations, and relationships of the parent. Example: <code>SavingsAccount</code> generalizes <code>Account</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Realization</strong></td>
+                  <td>Dashed line with hollow triangular arrowhead</td>
+                  <td>One classifier specifies a contract (interface) and another guarantees to fulfill it. Example: <code>PayPalGateway</code> realizes <code>&laquo;interface&raquo; PaymentProcessor</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="680" height="200" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+
+              <!-- Dependency -->
+              <text x="25" y="40" font-size="10" fill="#1f2328">Client</text>
+              <line x1="60" y1="35" x2="140" y2="35" stroke="#1f2328" stroke-width="1.5" stroke-dasharray="6,3"/>
+              <polygon points="140,35 133,30 133,40" fill="none" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="150" y="40" font-size="10" fill="#1f2328">Supplier</text>
+              <text x="100" y="60" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">DEPENDENCY</text>
+
+              <!-- Association -->
+              <text x="230" y="40" font-size="10" fill="#1f2328">Emp</text>
+              <line x1="255" y1="35" x2="370" y2="35" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="300" y="28" font-size="9" fill="#656d76" text-anchor="middle">1..*</text>
+              <text x="355" y="28" font-size="9" fill="#656d76">1</text>
+              <text x="375" y="40" font-size="10" fill="#1f2328">Dept</text>
+              <text x="310" y="60" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">ASSOCIATION</text>
+
+              <!-- Generalization -->
+              <text x="25" y="120" font-size="10" fill="#1f2328">Child</text>
+              <line x1="60" y1="115" x2="130" y2="115" stroke="#1f2328" stroke-width="1.5"/>
+              <polygon points="140,115 130,108 130,122" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="150" y="120" font-size="10" fill="#1f2328">Parent</text>
+              <text x="100" y="145" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">GENERALIZATION</text>
+
+              <!-- Realization -->
+              <text x="230" y="120" font-size="10" fill="#1f2328">Concrete</text>
+              <line x1="290" y1="115" x2="360" y2="115" stroke="#1f2328" stroke-width="1.5" stroke-dasharray="6,3"/>
+              <polygon points="370,115 360,108 360,122" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="375" y="120" font-size="10" fill="#1f2328">Interface</text>
+              <text x="310" y="145" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">REALIZATION</text>
+
+              <!-- Aggregation & Composition -->
+              <text x="460" y="100" font-size="10" fill="#1f2328">Whole</text>
+              <polygon points="500,95 510,88 520,95 510,102" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <line x1="520" y1="95" x2="580" y2="95" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="585" y="100" font-size="10" fill="#1f2328">Part</text>
+              <text x="540" y="120" font-size="9" fill="#0969da" text-anchor="middle">AGGREGATION</text>
+
+              <text x="460" y="160" font-size="10" fill="#1f2328">Whole</text>
+              <polygon points="500,155 510,148 520,155 510,162" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
+              <line x1="520" y1="155" x2="580" y2="155" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="585" y="160" font-size="10" fill="#1f2328">Part</text>
+              <text x="540" y="180" font-size="9" fill="#0969da" text-anchor="middle">COMPOSITION</text>
+            </svg>
+            <div class="diagram-caption">Figure 1.6: Visual Notation of All UML Relationships</div>
+          </div>
+
+          <h3>6.3 Diagrams in UML: The 14 Diagram Taxonomy (UML 2.x)</h3>
+          <p>UML 2.x standardizes exactly 14 diagrams, hierarchically divided into <strong>Structure Diagrams</strong> (7) and <strong>Behavior Diagrams</strong> (7).</p>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 350" width="100%" height="350" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="680" height="350" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+
+              <!-- Root -->
+              <rect x="230" y="10" width="220" height="35" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="340" y="33" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">UML 2.x DIAGRAMS (14)</text>
+
+              <!-- Left Branch -->
+              <line x1="300" y1="45" x2="160" y2="70" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="50" y="70" width="220" height="30" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="160" y="91" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">STRUCTURE DIAGRAMS (7)</text>
+
+              <!-- Right Branch -->
+              <line x1="380" y1="45" x2="520" y2="70" stroke="#1f2328" stroke-width="1.5"/>
+              <rect x="410" y="70" width="220" height="30" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="520" y="91" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da" text-anchor="middle">BEHAVIOR DIAGRAMS (7)</text>
+
+              <!-- Connecting lines down -->
+              <line x1="160" y1="100" x2="160" y2="120" stroke="#1f2328" stroke-width="1"/>
+              <line x1="520" y1="100" x2="520" y2="120" stroke="#1f2328" stroke-width="1"/>
+
+              <!-- Structure Diagrams List -->
+              <rect x="30" y="120" width="260" height="210" fill="#ffffff" stroke="#1f2328" stroke-width="1"/>
+              <text x="45" y="145" font-size="11" fill="#1f2328">1. Class Diagram (Static schema)</text>
+              <text x="45" y="168" font-size="11" fill="#1f2328">2. Object Diagram (Runtime snapshot)</text>
+              <text x="45" y="191" font-size="11" fill="#1f2328">3. Component Diagram (Code modules)</text>
+              <text x="45" y="214" font-size="11" fill="#1f2328">4. Deployment Diagram (Hardware)</text>
+              <text x="45" y="237" font-size="11" fill="#1f2328">5. Package Diagram (Namespaces)</text>
+              <text x="45" y="260" font-size="11" fill="#1f2328">6. Composite Structure (Internal)</text>
+              <text x="45" y="283" font-size="11" fill="#1f2328">7. Profile Diagram (Metamodel ext.)</text>
+
+              <!-- Behavior Diagrams List -->
+              <rect x="390" y="120" width="260" height="210" fill="#ffffff" stroke="#1f2328" stroke-width="1"/>
+              <text x="405" y="145" font-size="11" fill="#1f2328">1. Use Case Diagram (Requirements)</text>
+              <text x="405" y="168" font-size="11" fill="#1f2328">2. Activity Diagram (Workflows)</text>
+              <text x="405" y="191" font-size="11" fill="#1f2328">3. State Machine Diagram (Lifecycle)</text>
+              <line x1="400" y1="202" x2="640" y2="202" stroke="#d0d7de" stroke-width="1"/>
+              <text x="405" y="220" font-size="10" font-weight="bold" fill="#0969da">Interaction Diagrams Subset:</text>
+              <text x="420" y="243" font-size="11" fill="#1f2328">4. Sequence Diagram (Time order)</text>
+              <text x="420" y="266" font-size="11" fill="#1f2328">5. Communication Diagram (Links)</text>
+              <text x="420" y="289" font-size="11" fill="#1f2328">6. Timing Diagram (Waveforms)</text>
+              <text x="420" y="312" font-size="11" fill="#1f2328">7. Interaction Overview (Combined)</text>
+            </svg>
+            <div class="diagram-caption">Figure 1.7: Complete Classification of the 14 UML 2.x Diagrams</div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Diagram</th>
+                  <th style="width: 15%;">Category</th>
+                  <th style="width: 60%;">Purpose & Key Elements</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Class Diagram</strong></td><td>Structure</td><td>Shows classes, attributes, operations, and relationships (association, generalization, dependency). The most commonly used UML diagram.</td></tr>
+                <tr><td><strong>Object Diagram</strong></td><td>Structure</td><td>Snapshot of object instances at a specific runtime moment. Shows concrete attribute values.</td></tr>
+                <tr><td><strong>Component Diagram</strong></td><td>Structure</td><td>Models physical software modules, provided &amp; required interfaces, and deployment artifacts.</td></tr>
+                <tr><td><strong>Deployment Diagram</strong></td><td>Structure</td><td>Models physical hardware nodes, execution environments, and network communication links.</td></tr>
+                <tr><td><strong>Package Diagram</strong></td><td>Structure</td><td>Organizes model elements into namespaces with dependency &amp; import relationships.</td></tr>
+                <tr><td><strong>Composite Structure</strong></td><td>Structure</td><td>Shows internal structure of a classifier including ports and connectors.</td></tr>
+                <tr><td><strong>Profile Diagram</strong></td><td>Structure</td><td>Defines stereotypes and tagged values extending the UML metamodel.</td></tr>
+                <tr><td><strong>Use Case Diagram</strong></td><td>Behavior</td><td>Captures functional requirements as actor-driven use cases with include/extend relationships.</td></tr>
+                <tr><td><strong>Activity Diagram</strong></td><td>Behavior</td><td>Models procedural workflows with actions, decisions, forks, joins, and swimlanes.</td></tr>
+                <tr><td><strong>State Machine Diagram</strong></td><td>Behavior</td><td>Models reactive object lifecycle: states, transitions, events, guards, and actions.</td></tr>
+                <tr><td><strong>Sequence Diagram</strong></td><td>Behavior</td><td>Shows time-ordered message exchanges between object lifelines.</td></tr>
+                <tr><td><strong>Communication Diagram</strong></td><td>Behavior</td><td>Emphasizes structural links between objects with numbered message sequencing.</td></tr>
+                <tr><td><strong>Timing Diagram</strong></td><td>Behavior</td><td>Shows state changes over continuous time (clock waveforms).</td></tr>
+                <tr><td><strong>Interaction Overview</strong></td><td>Behavior</td><td>High-level activity diagram where nodes are interaction fragments.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 7. Rules & Common Mechanisms                               -->
         <!-- ======================================================== -->
         <section id="sec-rules-mechanisms">
-          <h2>10. Rules of the UML & Common Mechanisms</h2>
+          <h2>7. Rules of the UML & Common Mechanisms</h2>
 
           <h3>Pillar 2: Rules of the UML (Semantic Well-Formedness)</h3>
-          <p>UML building blocks cannot be combined haphazardly. The OMG specification establishes five categories of semantic rules that guarantee models are legally well-formed, mathematically consistent, and unambiguous:</p>
+          <p>UML building blocks cannot be combined haphazardly. The OMG specification establishes five categories of semantic rules:</p>
           <ul>
-            <li><strong>Names:</strong> Every element (classifier, package, attribute, association end) must possess a legal textual identifier conforming to namespace uniqueness rules. A name must not contain illegal punctuation and cannot collide with peer elements within the same enclosing namespace.</li>
-            <li><strong>Scope:</strong> Defines the bounding context that owns and encloses a name. A class named <code>Account</code> inside package <code>CorporateBanking</code> does not conflict with a class named <code>Account</code> inside package <code>RetailBanking</code>. The fully qualified name syntax is <code>PackageName::ElementName</code>.</li>
-            <li><strong>Visibility:</strong> Dictates whether an element can be accessed from outside its declaring container. UML standardizes four explicit visibility levels:
+            <li><strong>Names:</strong> Every element must possess a legal textual identifier conforming to namespace uniqueness rules. A name cannot collide with peer elements within the same enclosing namespace.</li>
+            <li><strong>Scope:</strong> Defines the bounding context that owns and encloses a name. A class <code>Account</code> inside package <code>CorporateBanking</code> does not conflict with <code>Account</code> inside <code>RetailBanking</code>. Fully qualified syntax: <code>PackageName::ElementName</code>.</li>
+            <li><strong>Visibility:</strong> Dictates access from outside the declaring container. UML standardizes four visibility levels:
               <ul>
-                <li><code>+</code> <strong>Public:</strong> Globally accessible by any client classifier in the system.</li>
-                <li><code>-</code> <strong>Private:</strong> Strictly accessible only within the declaring classifier; hidden from derived subclasses and external clients.</li>
-                <li><code>#</code> <strong>Protected:</strong> Accessible within the declaring classifier and any derived child subclasses.</li>
-                <li><code>~</code> <strong>Package:</strong> Accessible only to peer classifiers residing within the identical enclosing UML package.</li>
+                <li><code>+</code> <strong>Public:</strong> Globally accessible by any classifier.</li>
+                <li><code>-</code> <strong>Private:</strong> Accessible only within the declaring classifier; hidden from subclasses and external clients.</li>
+                <li><code>#</code> <strong>Protected:</strong> Accessible within the declaring classifier and its derived subclasses.</li>
+                <li><code>~</code> <strong>Package:</strong> Accessible only to classifiers within the same enclosing package.</li>
               </ul>
             </li>
-            <li><strong>Integrity:</strong> Rules governing how modeling elements legally connect to one another. For example: an interface cannot inherit from a concrete class; an association line cannot terminate on a comment note; an abstract class cannot be instantiated directly without concrete specialization.</li>
-            <li><strong>Execution:</strong> Dynamic semantics that define the execution causality of models over time (e.g., run-to-completion semantics for state transitions, token flow propagation in activity diagrams, and message dispatch ordering in sequence lifelines).</li>
+            <li><strong>Integrity:</strong> Rules governing how elements legally connect. For example: an interface cannot inherit from a concrete class; an association cannot terminate on a note; an abstract class cannot be instantiated directly.</li>
+            <li><strong>Execution:</strong> Dynamic semantics defining execution causality (run-to-completion for state transitions, token flow in activity diagrams, message ordering in sequence lifelines).</li>
           </ul>
 
           <h3>Pillar 3: Common Mechanisms of the UML</h3>
-          <p>UML achieves widespread simplicity and consistency by applying four common mechanisms across all diagram types:</p>
+          <p>UML achieves simplicity and consistency by applying four common mechanisms across all diagram types:</p>
           <ol>
-            <li><strong>Specifications:</strong> Behind every visual graphical symbol lies a comprehensive textual specification containing full typing rules, constraints, invariants, and implementation semantics. The visual icon is merely the graphical projection of this deep underlying specification.</li>
-            <li><strong>Adornments:</strong> Every visual element has a basic canonical notation that can be embellished with textual adornments (e.g., multiplicity <code>0..*</code>, navigation arrows, abstract italicization).</li>
+            <li><strong>Specifications:</strong> Behind every visual symbol lies a comprehensive textual specification containing full typing rules, constraints, and semantics. The visual icon is merely the graphical projection of this deeper specification.</li>
+            <li><strong>Adornments:</strong> Every element has a basic notation that can be embellished with textual details (multiplicity <code>0..*</code>, navigation arrows, abstract italicization, stereotypes).</li>
             <li><strong>Common Divisions:</strong>
               <ul>
-                <li><em>Class vs. Object:</em> Separation between the abstract type classifier (e.g., <code>Account</code>) and its runtime instance (e.g., <code><u>acc1 : Account</u></code>).</li>
-                <li><em>Interface vs. Implementation:</em> Separation between public behavioral contracts (specifying <em>what</em> an operation does) and private algorithmic realization (specifying <em>how</em> it is executed).</li>
-                <li><em>Type vs. Role:</em> Separation between what an entity fundamentally is (its static type classifier) and the contextual hat it wears during a specific collaboration (its association role name).</li>
+                <li><em>Class vs. Object:</em> Abstract type classifier (e.g., <code>Account</code>) vs. runtime instance (e.g., <code><u>acc1 : Account</u></code>).</li>
+                <li><em>Interface vs. Implementation:</em> Public behavioral contracts (<em>what</em>) vs. private algorithmic realization (<em>how</em>).</li>
+                <li><em>Type vs. Role:</em> What an entity fundamentally is (static type) vs. the contextual hat it wears during a collaboration (role name).</li>
               </ul>
             </li>
-            <li><strong>Extensibility Mechanisms (The Extensibility Trio):</strong> Allows UML to be tailored to specialized technical domains (e.g., Real-Time Embedded Systems, Web Engineering, Aerospace Safety) without altering the foundational OMG metamodel:
+            <li><strong>Extensibility Mechanisms (The Extensibility Trio):</strong> Allows UML to be tailored to specialized domains without altering the foundational metamodel:
               <ul>
-                <li><strong>Stereotypes (<code>&laquo;stereotype&raquo;</code>):</strong> Extends the vocabulary of UML by introducing new domain-specific model elements based on existing metamodel classifiers (e.g., <code>&laquo;entity&raquo;</code>, <code>&laquo;service&raquo;</code>, <code>&laquo;thread&raquo;</code>, <code>&laquo;REST_API&raquo;</code>).</li>
-                <li><strong>Tagged Values (<code>{tag = value}</code>):</strong> Extends properties of an element with arbitrary metadata (e.g., <code>{version = 2.4, author = "SecurityLead", latency = "50ms"}</code>).</li>
-                <li><strong>Constraints (<code>{boolean expression}</code>):</strong> Enforces invariant business logic or structural conditions (e.g., <code>{balance &gt;= 0}</code>, <code>{ordered}</code>, <code>{frozen}</code>).</li>
+                <li><strong>Stereotypes (<code>&laquo;stereotype&raquo;</code>):</strong> Extends the vocabulary by introducing new domain-specific elements based on existing classifiers. Example: <code>&laquo;entity&raquo;</code>, <code>&laquo;service&raquo;</code>, <code>&laquo;thread&raquo;</code>.</li>
+                <li><strong>Tagged Values (<code>{tag = value}</code>):</strong> Extends properties with arbitrary metadata. Example: <code>{version = 2.4, author = "SecurityLead"}</code>.</li>
+                <li><strong>Constraints (<code>{boolean expression}</code>):</strong> Enforces invariant conditions. Example: <code>{balance >= 0}</code>, <code>{ordered}</code>, <code>{frozen}</code>.</li>
               </ul>
             </li>
           </ol>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 180" width="100%" height="180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="680" height="180" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+
+              <!-- Stereotype Example -->
+              <rect x="30" y="20" width="180" height="65" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="120" y="40" font-size="10" fill="#8250df" text-anchor="middle">&lt;&lt;entity&gt;&gt;</text>
+              <text x="120" y="58" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="middle">Customer</text>
+              <text x="120" y="75" font-size="10" fill="#656d76" text-anchor="middle">- name: String</text>
+              <text x="120" y="105" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">STEREOTYPE</text>
+
+              <!-- Tagged Value Example -->
+              <rect x="250" y="20" width="180" height="65" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="340" y="40" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="middle">Transaction</text>
+              <text x="340" y="58" font-size="10" fill="#8250df" text-anchor="middle">{version = 3.1}</text>
+              <text x="340" y="75" font-size="10" fill="#8250df" text-anchor="middle">{author = "TeamA"}</text>
+              <text x="340" y="105" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">TAGGED VALUES</text>
+
+              <!-- Constraint Example -->
+              <rect x="470" y="20" width="180" height="65" fill="#ffffff" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="560" y="40" font-size="12" font-weight="bold" fill="#1f2328" text-anchor="middle">Account</text>
+              <text x="560" y="58" font-size="10" fill="#1f2328" text-anchor="middle">- balance: double</text>
+              <text x="560" y="75" font-size="10" fill="#cf222e" text-anchor="middle">{balance >= 0}</text>
+              <text x="560" y="105" font-size="9" font-weight="bold" fill="#0969da" text-anchor="middle">CONSTRAINT</text>
+
+              <!-- Labels -->
+              <text x="340" y="150" font-size="11" fill="#656d76" text-anchor="middle">The Extensibility Trio allows tailoring UML to specialized domains</text>
+              <text x="340" y="170" font-size="11" fill="#656d76" text-anchor="middle">without modifying the core OMG metamodel specification.</text>
+            </svg>
+            <div class="diagram-caption">Figure 1.8: The Extensibility Trio — Stereotypes, Tagged Values, and Constraints</div>
+          </div>
         </section>
 
         <!-- ======================================================== -->
-        <!-- 11. Architecture of UML: 4+1 View & Metamodeling         -->
+        <!-- 8. Architecture of UML: 4+1 View & Metamodeling          -->
         <!-- ======================================================== -->
         <section id="sec-architecture">
-          <h2>11. Architecture of UML: The 4+1 View Model &amp; Metamodeling</h2>
-          <p>Software architecture represents the set of significant design decisions regarding the organization of a software system, the selection of structural elements and their interfaces, their behavior as specified in collaborations, and their composition into progressively larger subsystems. In UML, architecture is addressed through two foundational pillars: Philippe Kruchten's <strong>4+1 View Architectural Model</strong> and the OMG <strong>Four-Layer Metamodeling Architecture (M0 to M3)</strong>.</p>
+          <h2>8. Architecture of UML: The 4+1 View Model & Metamodeling</h2>
+          <p>Software architecture represents the set of significant design decisions regarding the organization of a software system. In UML, architecture is addressed through two foundations: Philippe Kruchten's <strong>4+1 View Architectural Model</strong> and the OMG <strong>Four-Layer Metamodeling Architecture (M0 to M3)</strong>.</p>
 
-          <h3>Philippe Kruchten's 4+1 View Model</h3>
-          <p>Formulated by Philippe Kruchten, this model recognizes that a software architecture cannot be captured through a single visual projection because different stakeholders (end users, programmers, systems engineers, project managers) possess orthogonal concerns.</p>
+          <h3>8.1 Philippe Kruchten's 4+1 View Model</h3>
+          <p>This model recognizes that software architecture cannot be captured through a single visual projection because different stakeholders (end users, programmers, systems engineers, project managers) possess orthogonal concerns. The architecture is therefore decomposed into five concurrent views:</p>
 
           <div class="diagram-container">
             <svg class="uml-diagram" viewBox="0 0 680 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
@@ -752,32 +975,32 @@ int main() {
               <!-- Design / Logical View -->
               <rect x="40" y="30" width="220" height="85" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
               <text x="150" y="55" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">LOGICAL / DESIGN VIEW</text>
-              <text x="150" y="75" font-family="sans-serif" font-size="11" fill="#1f2328" text-anchor="middle">Domain Vocabulary &amp; Classes</text>
-              <text x="150" y="95" font-family="monospace" font-size="9" fill="#656d76" text-anchor="middle">Class &amp; State Diagrams</text>
+              <text x="150" y="75" font-size="11" fill="#1f2328" text-anchor="middle">Domain Vocabulary &amp; Classes</text>
+              <text x="150" y="95" font-family="monospace" font-size="9" fill="#656d76" text-anchor="middle">Class, Object, State Diagrams</text>
 
               <!-- Process View -->
               <rect x="420" y="30" width="220" height="85" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
               <text x="530" y="55" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">PROCESS VIEW</text>
-              <text x="530" y="75" font-family="sans-serif" font-size="11" fill="#1f2328" text-anchor="middle">Concurrency, Threads &amp; IPC</text>
+              <text x="530" y="75" font-size="11" fill="#1f2328" text-anchor="middle">Concurrency, Threads &amp; IPC</text>
               <text x="530" y="95" font-family="monospace" font-size="9" fill="#656d76" text-anchor="middle">Sequence &amp; Timing Diagrams</text>
 
               <!-- Center: Use Case View -->
               <rect x="230" y="125" width="220" height="80" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
               <text x="340" y="150" font-family="monospace" font-size="13" font-weight="bold" fill="#0969da" text-anchor="middle">USE CASE VIEW (+1)</text>
-              <text x="340" y="170" font-family="sans-serif" font-size="11" fill="#1f2328" text-anchor="middle">Functional Scenarios &amp; Needs</text>
+              <text x="340" y="170" font-size="11" fill="#1f2328" text-anchor="middle">Functional Scenarios &amp; Needs</text>
               <text x="340" y="190" font-family="monospace" font-size="9" fill="#656d76" text-anchor="middle">Drives All 4 Surrounding Views</text>
 
               <!-- Implementation View -->
               <rect x="40" y="215" width="220" height="85" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
               <text x="150" y="240" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">IMPLEMENTATION VIEW</text>
-              <text x="150" y="260" font-family="sans-serif" font-size="11" fill="#1f2328" text-anchor="middle">Component Organization &amp; Build</text>
+              <text x="150" y="260" font-size="11" fill="#1f2328" text-anchor="middle">Component Organization &amp; Build</text>
               <text x="150" y="280" font-family="monospace" font-size="9" fill="#656d76" text-anchor="middle">Component &amp; Package Diagrams</text>
 
               <!-- Deployment View -->
               <rect x="420" y="215" width="220" height="85" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
               <text x="530" y="240" font-family="monospace" font-size="12" font-weight="bold" fill="#0969da" text-anchor="middle">DEPLOYMENT VIEW</text>
-              <text x="530" y="260" font-family="sans-serif" font-size="11" fill="#1f2328" text-anchor="middle">Hardware Topology &amp; Cloud Infra</text>
-              <text x="530" y="280" font-family="monospace" font-size="9" fill="#656d76" text-anchor="middle">Nodes, Networks &amp; Execution</text>
+              <text x="530" y="260" font-size="11" fill="#1f2328" text-anchor="middle">Hardware Topology &amp; Infra</text>
+              <text x="530" y="280" font-family="monospace" font-size="9" fill="#656d76" text-anchor="middle">Deployment Diagrams</text>
 
               <!-- Connecting dashed lines to Use Case View -->
               <line x1="200" y1="115" x2="250" y2="135" stroke="#0969da" stroke-width="1.5" stroke-dasharray="4,4"/>
@@ -785,104 +1008,150 @@ int main() {
               <line x1="200" y1="215" x2="250" y2="195" stroke="#0969da" stroke-width="1.5" stroke-dasharray="4,4"/>
               <line x1="480" y1="215" x2="430" y2="195" stroke="#0969da" stroke-width="1.5" stroke-dasharray="4,4"/>
             </svg>
-            <div class="diagram-caption">Figure 1.5: Kruchten's 4+1 View Architectural Model of UML</div>
+            <div class="diagram-caption">Figure 1.9: Kruchten's 4+1 View Architectural Model of UML</div>
           </div>
 
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th style="width: 20%;">Architectural View</th>
-                  <th style="width: 20%;">Primary Stakeholder</th>
-                  <th style="width: 35%;">Engineering Concerns Addressed</th>
-                  <th style="width: 25%;">Primary UML Diagrams</th>
+                  <th style="width: 18%;">View</th>
+                  <th style="width: 22%;">Stakeholder</th>
+                  <th style="width: 35%;">Concerns Addressed</th>
+                  <th style="width: 25%;">UML Diagrams</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>1. Use Case View (+1)</strong></td>
-                  <td>End-users, Clients, Business Analysts</td>
-                  <td>Validates functional requirements, system boundaries, and business goals. Serves as the central organizing pivot that drives and verifies the other four views.</td>
-                  <td>Use Case Diagrams, Activity Diagrams.</td>
+                  <td><strong>Use Case View (+1)</strong></td>
+                  <td>End-users, Business Analysts</td>
+                  <td>Validates functional requirements, system boundaries, and business goals. Central organizing pivot driving all four views.</td>
+                  <td>Use Case, Activity Diagrams</td>
                 </tr>
                 <tr>
-                  <td><strong>2. Logical / Design View</strong></td>
+                  <td><strong>Logical / Design View</strong></td>
                   <td>Software Architects, Programmers</td>
-                  <td>Decomposes system functionality into domain vocabulary: classes, interfaces, collaborations, and design patterns. Addresses <em>what</em> the system does functionally.</td>
-                  <td>Class Diagrams, Object Diagrams, State Machine Diagrams.</td>
+                  <td>Decomposes functionality into domain vocabulary: classes, interfaces, collaborations, design patterns. Addresses <em>what</em> the system does.</td>
+                  <td>Class, Object, State Machine Diagrams</td>
                 </tr>
                 <tr>
-                  <td><strong>3. Process View</strong></td>
+                  <td><strong>Process View</strong></td>
                   <td>System Integrators, Concurrency Engineers</td>
-                  <td>Addresses runtime non-functional qualities: multi-threading, asynchronous messaging, process synchronization, throughput, latency, and deadlock avoidance.</td>
-                  <td>Sequence Diagrams, Communication Diagrams, Timing Diagrams.</td>
+                  <td>Addresses runtime non-functional qualities: multi-threading, asynchronous messaging, synchronization, throughput, and deadlock avoidance.</td>
+                  <td>Sequence, Communication, Timing Diagrams</td>
                 </tr>
                 <tr>
-                  <td><strong>4. Implementation View</strong></td>
-                  <td>Software Developers, DevOps/Build Engineers</td>
-                  <td>Focuses on the physical code modularization: source files, package hierarchies, compilation dependencies, JAR/DLL binaries, and third-party libraries.</td>
-                  <td>Component Diagrams, Package Diagrams.</td>
+                  <td><strong>Implementation View</strong></td>
+                  <td>Developers, Build Engineers</td>
+                  <td>Physical code modularization: source files, package hierarchies, compilation dependencies, binaries, and third-party libraries.</td>
+                  <td>Component, Package Diagrams</td>
                 </tr>
                 <tr>
-                  <td><strong>5. Deployment View</strong></td>
-                  <td>Infrastructure Architects, Network Admins, SRE</td>
-                  <td>Models the physical hardware execution topology: compute nodes, cloud Kubernetes clusters, network protocols (TLS, gRPC), load balancers, and persistent disks.</td>
-                  <td>Deployment Diagrams.</td>
+                  <td><strong>Deployment View</strong></td>
+                  <td>Infrastructure Architects, Network Admins</td>
+                  <td>Physical hardware execution topology: compute nodes, cloud clusters, network protocols, load balancers, and persistent storage.</td>
+                  <td>Deployment Diagrams</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h3>The OMG 4-Layer Metamodeling Architecture (M0 to M3)</h3>
-          <p>Beyond visual viewpoints, UML itself is architected upon a rigorous four-layer metamodel hierarchy standardized by the Object Management Group. Each layer serves as an instance of the layer immediately above it:</p>
+          <h3>8.2 The OMG 4-Layer Metamodeling Architecture (M0 to M3)</h3>
+          <p>UML is architected upon a rigorous four-layer metamodel hierarchy standardized by the OMG. Each layer serves as an instance of the layer immediately above it:</p>
 
           <div class="diagram-container">
-            <svg class="uml-diagram" viewBox="0 0 680 270" width="100%" height="270" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="0" width="680" height="270" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+            <svg class="uml-diagram" viewBox="0 0 680 280" width="100%" height="280" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="680" height="280" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
 
-              <!-- M3 Layer: MOF -->
+              <!-- M3 Layer -->
               <rect x="60" y="20" width="560" height="45" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-              <text x="80" y="47" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da">M3: Meta-Metamodel (MOF - Meta-Object Facility)</text>
-              <text x="590" y="47" font-family="sans-serif" font-size="10" fill="#656d76" text-anchor="end">MOF_Class, MOF_Property</text>
+              <text x="80" y="47" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da">M3: Meta-Metamodel (MOF)</text>
+              <text x="590" y="47" font-size="10" fill="#656d76" text-anchor="end">MOF_Class, MOF_Property</text>
 
-              <!-- M2 Layer: UML Metamodel -->
+              <!-- Arrow M3 -> M2 -->
               <line x1="340" y1="65" x2="340" y2="80" stroke="#1f2328" stroke-width="1.5"/>
               <polygon points="340,80 336,73 344,73" fill="#1f2328"/>
-              <rect x="60" y="80" width="560" height="45" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-              <text x="80" y="107" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da">M2: Metamodel (UML Metamodel Specification)</text>
-              <text x="590" y="107" font-family="sans-serif" font-size="10" fill="#656d76" text-anchor="end">Class, Attribute, Operation, Association</text>
 
-              <!-- M1 Layer: User Models -->
+              <!-- M2 Layer -->
+              <rect x="60" y="80" width="560" height="45" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+              <text x="80" y="107" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da">M2: Metamodel (UML Specification)</text>
+              <text x="590" y="107" font-size="10" fill="#656d76" text-anchor="end">Class, Attribute, Operation, Association</text>
+
+              <!-- Arrow M2 -> M1 -->
               <line x1="340" y1="125" x2="340" y2="140" stroke="#1f2328" stroke-width="1.5"/>
               <polygon points="340,140 336,133 344,133" fill="#1f2328"/>
-              <rect x="60" y="140" width="560" height="45" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
-              <text x="80" y="167" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da">M1: User Model (Application Domain Models)</text>
-              <text x="590" y="167" font-family="sans-serif" font-size="10" fill="#1f2328" text-anchor="end">BankAccount, Customer, Doctor, Prescription</text>
 
-              <!-- M0 Layer: User Instances -->
+              <!-- M1 Layer -->
+              <rect x="60" y="140" width="560" height="45" fill="#ffffff" stroke="#0969da" stroke-width="2"/>
+              <text x="80" y="167" font-family="monospace" font-size="11" font-weight="bold" fill="#0969da">M1: User Model (Application Domain)</text>
+              <text x="590" y="167" font-size="10" fill="#1f2328" text-anchor="end">BankAccount, Customer, Doctor, Prescription</text>
+
+              <!-- Arrow M1 -> M0 -->
               <line x1="340" y1="185" x2="340" y2="200" stroke="#1f2328" stroke-width="1.5"/>
               <polygon points="340,200 336,193 344,193" fill="#1f2328"/>
+
+              <!-- M0 Layer -->
               <rect x="60" y="200" width="560" height="45" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-              <text x="80" y="227" font-family="monospace" font-size="11" font-weight="bold" fill="#1f2328">M0: User Instances (Runtime Physical Entities)</text>
+              <text x="80" y="227" font-family="monospace" font-size="11" font-weight="bold" fill="#1f2328">M0: User Instances (Runtime Entities)</text>
               <text x="590" y="227" font-family="monospace" font-size="10" fill="#656d76" text-anchor="end">johnsAccount at 0x7FFE120, drSmith at 0x7FFE450</text>
+
+              <!-- instanceOf labels -->
+              <text x="360" y="72" font-size="9" fill="#656d76">instanceOf</text>
+              <text x="360" y="135" font-size="9" fill="#656d76">instanceOf</text>
+              <text x="360" y="197" font-size="9" fill="#656d76">instanceOf</text>
             </svg>
-            <div class="diagram-caption">Figure 1.6: The OMG Four-Layer Metamodeling Architecture (M0 to M3 MOF)</div>
+            <div class="diagram-caption">Figure 1.10: The OMG Four-Layer Metamodeling Architecture (M0 to M3 MOF)</div>
           </div>
 
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 15%;">Layer</th>
+                  <th style="width: 25%;">Name</th>
+                  <th style="width: 60%;">Description & Examples</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>M3</strong></td>
+                  <td>Meta-Object Facility (MOF)</td>
+                  <td>The foundational root meta-metamodel that defines the grammar for creating metamodels. Defines concepts like <code>MOF_Class</code> and <code>MOF_Property</code>. Serves as the universal root for UML, CWM, and SysML.</td>
+                </tr>
+                <tr>
+                  <td><strong>M2</strong></td>
+                  <td>UML Metamodel</td>
+                  <td>The language definition of UML itself. Defines concepts such as <code>Class</code>, <code>Property</code>, <code>Operation</code>, <code>AssociationEnd</code>, <code>State</code>. Standardized in the OMG UML Superstructure document.</td>
+                </tr>
+                <tr>
+                  <td><strong>M1</strong></td>
+                  <td>User Model (Application Domain)</td>
+                  <td>The classes, interfaces, associations, and statecharts designed by application developers (e.g., <code>BankAccount</code>, <code>Customer</code>). Every M1 element is an instance of an M2 classifier.</td>
+                </tr>
+                <tr>
+                  <td><strong>M0</strong></td>
+                  <td>User Instances (Runtime)</td>
+                  <td>Concrete runtime objects executing in physical memory (e.g., <code>johnsAccount</code> allocated at heap address <code>0x7FFE120</code>). Every M0 element is an instance of an M1 classifier.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Relationship Between Architecture and OOAD</h4>
+          <p>UML diagrams map to each phase of the software lifecycle through the 4+1 views:</p>
           <ul>
-            <li><strong>M0 Layer (User Instances / Runtime Execution):</strong> The concrete runtime objects executing in hardware physical memory (e.g., an instance of <code>SavingsAccount</code> allocated at heap address <code>0x7ffee1b</code>).</li>
-            <li><strong>M1 Layer (UML User Models):</strong> The classes, interfaces, associations, and statecharts designed by application developers (e.g., class <code>BankAccount</code>, association <code>TransfersTo</code>). Every element at M1 is an instance of a classifier at M2.</li>
-            <li><strong>M2 Layer (UML Metamodel):</strong> The language definition of UML itself. It defines concepts such as <code>Class</code>, <code>Property</code>, <code>Operation</code>, <code>AssociationEnd</code>, and <code>State</code>. Standardized in the OMG UML Superstructure document.</li>
-            <li><strong>M3 Layer (Meta-Object Facility - MOF):</strong> The foundational root meta-metamodel that defines the grammar for creating metamodels. It defines concepts like <code>MOF_Class</code> and <code>MOF_Property</code>, serving as the common universal root for UML, CWM (Common Warehouse Metamodel), and SysML.</li>
+            <li><strong>Analysis Phase:</strong> Use Case Diagrams define functional requirements (Use Case View). Domain Class Diagrams identify key entities (Logical View).</li>
+            <li><strong>System Design Phase:</strong> Component and Package Diagrams organize code modules (Implementation View). Deployment Diagrams map software to hardware (Deployment View).</li>
+            <li><strong>Object Design Phase:</strong> Detailed Class Diagrams with typed signatures, Sequence Diagrams for interaction protocols, and State Machine Diagrams for object lifecycles refine the Logical and Process Views.</li>
           </ul>
         </section>
 
         <!-- ======================================================== -->
-        <!-- 12. Object-Oriented vs. Structured Modeling              -->
+        <!-- 9. OO vs. Structured Modeling                             -->
         <!-- ======================================================== -->
         <section id="sec-comparison">
-          <h2>12. Object-Oriented vs. Structured Modeling: Comprehensive Evaluation</h2>
-          <p>University examinations frequently require an extensive comparative analysis between traditional Structured Analysis & Design (SA/SD) and Object-Oriented Analysis & Design (OOAD).</p>
+          <h2>9. Object-Oriented vs. Structured Modeling</h2>
+          <p>University examinations frequently require a comparative analysis between traditional Structured Analysis & Design (SA/SD) and Object-Oriented Analysis & Design (OOAD).</p>
 
           <div class="table-wrapper">
             <table>
@@ -895,48 +1164,48 @@ int main() {
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Underlying Philosophy</strong></td>
+                  <td><strong>Philosophy</strong></td>
                   <td>Top-down functional decomposition; views software as a pipeline transforming inputs to outputs.</td>
                   <td>Entity decomposition; views software as an ecosystem of collaborative, autonomous agents.</td>
                 </tr>
                 <tr>
-                  <td><strong>Data &amp; Function Coupling</strong></td>
-                  <td>Strictly decoupled. Functions are active; data is passive and exposed in global data stores.</td>
+                  <td><strong>Data & Function Coupling</strong></td>
+                  <td>Strictly decoupled. Functions are active; data is passive and exposed in global stores.</td>
                   <td>Tightly integrated through Encapsulation inside the class boundary.</td>
                 </tr>
                 <tr>
                   <td><strong>Lifecycle Continuity</strong></td>
-                  <td>Discontinuous: A significant semantic gap exists between analysis (DFDs) and design (Structure Charts).</td>
-                  <td>Seamless: Classes discovered during analysis carry directly into design and final code.</td>
+                  <td>Discontinuous: Significant semantic gap between analysis (DFDs) and design (Structure Charts).</td>
+                  <td>Seamless: Classes discovered during analysis carry directly into design and code.</td>
                 </tr>
                 <tr>
-                  <td><strong>System Extensibility</strong></td>
-                  <td>Low: Introducing a new requirement often causes cascading modifications across procedural files.</td>
-                  <td>High: Adheres to the Open-Closed Principle; new features are added via polymorphic inheritance.</td>
+                  <td><strong>Extensibility</strong></td>
+                  <td>Low: New requirements cause cascading modifications across procedural files.</td>
+                  <td>High: Open-Closed Principle; new features added via polymorphic inheritance.</td>
                 </tr>
                 <tr>
                   <td><strong>Real-World Fidelity</strong></td>
-                  <td>Low: Deconstructs natural business entities into fragmented, artificial process trees.</td>
-                  <td>High: Classes map 1-to-1 with physical domain concepts (e.g., <code>Patient</code>, <code>Account</code>).</td>
+                  <td>Low: Deconstructs natural entities into fragmented process trees.</td>
+                  <td>High: Classes map 1-to-1 with domain concepts (<code>Patient</code>, <code>Account</code>).</td>
                 </tr>
                 <tr>
                   <td><strong>Primary Artifacts</strong></td>
                   <td>Context DFD, Level-1 DFD, Data Dictionary, Structure Charts.</td>
-                  <td>Use Case, Domain Class, Sequence, State Machine, and Deployment Diagrams.</td>
+                  <td>Use Case, Class, Sequence, State Machine, and Deployment Diagrams.</td>
                 </tr>
                 <tr>
                   <td><strong>Maintenance Cost</strong></td>
                   <td>High: Ripple effects across procedures make ongoing maintenance costly.</td>
-                  <td>Low: Class encapsulation confines changes to localized internal boundaries.</td>
+                  <td>Low: Class encapsulation confines changes to localized boundaries.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <h4>Comparative Case Example: Banking System Under Both Approaches</h4>
+          <h4>Comparative Example: Banking System</h4>
           <ul>
-            <li><strong>Under SA/SD:</strong> The system is decomposed into processes (<code>Validate Account</code>, <code>Process Deposit</code>, <code>Calculate Interest</code>) that read and write to flat data stores (<code>ACCOUNT_LEDGER_TABLE</code>). When a new account type (e.g., <code>MoneyMarketAccount</code> with dynamic daily yield) is added, the database schema updates trigger breaking modifications across all existing calculation and statement-generation subroutines.</li>
-            <li><strong>Under OOAD:</strong> The system is decomposed into classes (<code>Account</code> base class, specialized into <code>SavingsAccount</code>, <code>CheckingAccount</code>, <code>MoneyMarketAccount</code>). Each subclass encapsulates its own dynamic yield calculation rules behind the polymorphic method <code>applyMonthlyMaintenance()</code>. Adding new account categories requires zero changes to the transaction processing engine.</li>
+            <li><strong>Under SA/SD:</strong> The system is decomposed into processes (<code>Validate Account</code>, <code>Process Deposit</code>, <code>Calculate Interest</code>) that read/write to flat data stores (<code>ACCOUNT_LEDGER_TABLE</code>). When a new account type (e.g., <code>MoneyMarketAccount</code>) is added, the schema update triggers breaking modifications across all existing subroutines.</li>
+            <li><strong>Under OOAD:</strong> The system is decomposed into classes (<code>Account</code> base class, specialized into <code>SavingsAccount</code>, <code>CheckingAccount</code>, <code>MoneyMarketAccount</code>). Each subclass encapsulates its own rules behind the polymorphic method <code>applyMonthlyMaintenance()</code>. Adding new account types requires zero changes to the processing engine.</li>
           </ul>
         </section>
       </article>

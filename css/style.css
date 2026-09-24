@@ -588,17 +588,92 @@ svg.uml-diagram {
 footer.app-footer {
   border-top: 1px solid var(--border);
   background-color: var(--bg-surface);
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4);
   font-size: 0.82rem;
   color: var(--text-muted);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.footer-col h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.footer-desc {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.footer-links {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--space-1);
+}
+
+.footer-links a {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  max-width: 1350px;
+  margin: var(--space-3) auto 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 
 footer .footer-meta {
   font-family: var(--font-mono);
+}
+
+/* Exam-focused table variant */
+table.exam-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+table.exam-table th {
+  padding: var(--space-2) var(--space-3);
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: var(--bg-subtle);
+  border-bottom: 2px solid var(--border);
+}
+
+table.exam-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: top;
 }
 
 /* Responsive */
@@ -617,4 +692,8 @@ footer .footer-meta {
     gap: var(--space-2);
     align-items: flex-start;
   }
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
 }
+
