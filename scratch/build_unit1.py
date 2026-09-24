@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+# -*- coding: utf-8 -*-
+"""
+Generates the fully expanded, textbook-grade Unit 1 Theory page (unit1.html)
+Focuses on deep theoretical depth, architectural explanations, rigorous tables,
+and clean high-contrast SVG vector diagrams.
+Preserves existing code blocks without adding new ones.
+"""
+
+def generate_unit1_html():
+    return """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -186,11 +195,11 @@ int main() {
     Student* s3 = &amp;s1; // s3 references the identical instance as s1
 
     // 1. Equality Comparison (State match)
-    std::cout &lt;&lt; "s1 equals s2? " &lt;&lt; (s1.equals(s2) ? "YES" : "NO") &lt;&lt; "\n"; // Output: YES
+    std::cout &lt;&lt; "s1 equals s2? " &lt;&lt; (s1.equals(s2) ? "YES" : "NO") &lt;&lt; "\\n"; // Output: YES
 
     // 2. Identity Comparison (Memory address match)
-    std::cout &lt;&lt; "s1 identical to s2? " &lt;&lt; (&amp;s1 == &amp;s2 ? "YES" : "NO") &lt;&lt; "\n"; // Output: NO
-    std::cout &lt;&lt; "s1 identical to s3? " &lt;&lt; (&amp;s1 == s3 ? "YES" : "NO") &lt;&lt; "\n";  // Output: YES
+    std::cout &lt;&lt; "s1 identical to s2? " &lt;&lt; (&amp;s1 == &amp;s2 ? "YES" : "NO") &lt;&lt; "\\n"; // Output: NO
+    std::cout &lt;&lt; "s1 identical to s3? " &lt;&lt; (&amp;s1 == s3 ? "YES" : "NO") &lt;&lt; "\\n";  // Output: YES
     return 0;
 }</code></pre>
 
@@ -330,20 +339,20 @@ int main() {
 class Vehicle {
 public:
     virtual void ignite() const {
-        std::cout &lt;&lt; "Generic vehicle combustion cycle initiated.\n";
+        std::cout &lt;&lt; "Generic vehicle combustion cycle initiated.\\n";
     }
     virtual ~Vehicle() { // Virtual destructor is mandatory in base classes!
-        std::cout &lt;&lt; "Vehicle base destroyed.\n";
+        std::cout &lt;&lt; "Vehicle base destroyed.\\n";
     }
 };
 
 class ElectricCar : public Vehicle {
 public:
     void ignite() const override {
-        std::cout &lt;&lt; "Electric Car: High-voltage battery pack engaged silently.\n";
+        std::cout &lt;&lt; "Electric Car: High-voltage battery pack engaged silently.\\n";
     }
     ~ElectricCar() override {
-        std::cout &lt;&lt; "Electric Car battery safely decoupled.\n";
+        std::cout &lt;&lt; "Electric Car battery safely decoupled.\\n";
     }
 };
 
@@ -407,13 +416,13 @@ int main() {
     BoundedStack&lt;int, 5&gt; intStack;
     intStack.push(10);
     intStack.push(20);
-    std::cout &lt;&lt; "Popped from intStack: " &lt;&lt; intStack.pop() &lt;&lt; "\n";
+    std::cout &lt;&lt; "Popped from intStack: " &lt;&lt; intStack.pop() &lt;&lt; "\\n";
 
     // Compile-time instantiation for strings
     BoundedStack&lt;std::string, 10&gt; stringStack;
     stringStack.push("Hello");
     stringStack.push("UML");
-    std::cout &lt;&lt; "Popped from stringStack: " &lt;&lt; stringStack.pop() &lt;&lt; "\n";
+    std::cout &lt;&lt; "Popped from stringStack: " &lt;&lt; stringStack.pop() &lt;&lt; "\\n";
 
     return 0;
 }</code></pre>
@@ -976,3 +985,11 @@ int main() {
   </footer>
 </body>
 </html>
+"""
+
+if __name__ == "__main__":
+    content = generate_unit1_html()
+    with open("unit1.html", "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"Successfully generated unit1.html ({len(content)} bytes).")
+
