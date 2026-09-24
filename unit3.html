@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 3: OOD, Optimization & Programming Style | BCS054 Academic Guide</title>
-  <meta name="description" content="Exhaustive study guide for Unit 3 of Object-Oriented System Design (BCS054/KCS054) - Stages of OOD, Rumbaugh OMT 3 Models, Design Optimization, SA/SD vs JSD, and C OOP Emulation.">
+  <title>Unit 3: Object-Oriented Analysis, Design & Programming Style | BCS054 Academic Guide</title>
+  <meta name="description" content="Exhaustive study guide for Unit 3 of Object-Oriented System Design (BCS054/KCS054) - Procedural vs OOP, Data Abstraction vs Encapsulation, SA/SD, DFD for Cone Volume, JSD, OMT 3 Models, Stages of OOD, Ride-Hailing Case Study, Design Optimization, Inheritance Adjustment, Physical Packaging, Documentation, Mapping OOP to C, and Quality Attributes.">
   <link rel="stylesheet" href="css/style.css">
   <script defer src="js/main.js"></script>
 </head>
@@ -13,7 +13,7 @@
     <div class="header-container">
       <div class="brand">
         <span>OOSD.GUIDE</span>
-        <span class="brand-badge">Unit 3 Extended Theory</span>
+        <span class="brand-badge">Unit 3 Comprehensive Theory</span>
       </div>
       <nav class="nav-links">
         <a href="index.html">Index</a>
@@ -32,218 +32,1100 @@
       <aside class="sidebar">
         <h3>Unit 3 Sections</h3>
         <ul>
-          <li><a href="#sec-stages-ood">1. Stages of OOD</a></li>
-          <li><a href="#sec-omt-three-models">2. Combining OMT 3 Models</a></li>
-          <li><a href="#sec-design-opt">3. Design Optimization</a></li>
-          <li><a href="#sec-inheritance-adj">4. Inheritance Adjustment</a></li>
-          <li><a href="#sec-packaging-doc">5. Physical Packaging & Contracts</a></li>
-          <li><a href="#sec-methodologies">6. SA/SD vs. JSD vs. OOAD</a></li>
-          <li><a href="#sec-mapping-c">7. Complete C OOP Emulation</a></li>
-          <li><a href="#sec-software-qualities">8. Quality Attributes</a></li>
+          <li><a href="#sec-paradigms">1. Procedural vs. OOP</a></li>
+          <li><a href="#sec-abstraction-encap">2. Abstraction vs. Encapsulation</a></li>
+          <li><a href="#sec-sasd">3. Structured Analysis & Design (SA/SD)</a></li>
+          <li><a href="#sec-dfd-cone">4. DFD Case Study: Cone Volume</a></li>
+          <li><a href="#sec-jsd">5. Jackson Structured Development</a></li>
+          <li><a href="#sec-methodologies-comp">6. SA/SD vs. JSD vs. OMT</a></li>
+          <li><a href="#sec-omt-models">7. Rumbaugh's OMT 3 Models</a></li>
+          <li><a href="#sec-ooad-stages">8. Stages of OOA & OOD</a></li>
+          <li><a href="#sec-ride-hailing">9. Case Study: Ride-Hailing App</a></li>
+          <li><a href="#sec-design-opt">10. Design Optimization Strategies</a></li>
+          <li><a href="#sec-inheritance-adj">11. Inheritance Adjustment</a></li>
+          <li><a href="#sec-implementation">12. Object Representation & Packaging</a></li>
+          <li><a href="#sec-mapping-c">13. Mapping OOP to Procedural C</a></li>
+          <li><a href="#sec-quality">14. Core Quality Attributes</a></li>
         </ul>
       </aside>
 
       <article>
-        <h1>Unit 3: Object Oriented Analysis, Design & Programming Style</h1>
-        <p>This module provides an exhaustive architectural synthesis of software design methodologies, exploring Rumbaugh's three-model integration, design optimization algorithms, procedural C object emulation, and system quality attributes.</p>
+        <h1>Unit 3: Object-Oriented Analysis, Design & Programming Style</h1>
+        <p>This module provides an exhaustive, university-syllabus-aligned academic study of software engineering methodologies, transitioning from classical structured paradigms to modern object-oriented analysis and design. It covers structured analysis and structured design (SA/SD), Jackson Structured Development (JSD), Rumbaugh's Object Modeling Technique (OMT), end-to-end OOA/OOD lifecycles, real-world case studies, mathematical optimization algorithms, procedural C object emulation, and system quality metrics.</p>
 
-        <!-- 1. Stages of OOD -->
-        <section id="sec-stages-ood">
-          <h2>1. Stages of Object-Oriented Design (OOD)</h2>
-          <p>Object-Oriented Design (OOD) transforms the conceptual models formulated during Object-Oriented Analysis (OOA) into an executable computational blueprint. OOD proceeds in two rigorous, distinct stages:</p>
+        <!-- ======================================================== -->
+        <!-- 1. Procedural vs OOP                                     -->
+        <!-- ======================================================== -->
+        <section id="sec-paradigms">
+          <h2>1. Procedural Programming vs. Object-Oriented Programming</h2>
+          <p>The transition from <strong>Procedural Programming (POP)</strong> to <strong>Object-Oriented Programming (OOP)</strong> represents a fundamental paradigm shift in software architecture, problem decomposition, data access security, and lifecycle maintenance.</p>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 760 260" width="760" height="260" xmlns="http://www.w3.org/2000/svg">
+              <!-- Procedural Side -->
+              <rect x="20" y="20" width="340" height="220" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" rx="4"/>
+              <text x="35" y="45" fill="#cf222e" font-weight="bold" font-size="13">Procedural Paradigm (Action / Verb-Centric)</text>
+              <text x="35" y="65" fill="#64748b" font-size="10">Decomposition by Functions; Shared Passive Data</text>
+
+              <rect x="50" y="85" width="120" height="40" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="75" y="110" fill="#0f172a" font-size="11" font-weight="bold">Function_A()</text>
+
+              <rect x="210" y="85" width="120" height="40" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="235" y="110" fill="#0f172a" font-size="11" font-weight="bold">Function_B()</text>
+
+              <rect x="110" y="170" width="160" height="45" fill="#fff1f2" stroke="#cf222e" stroke-dasharray="3,3" stroke-width="1.5"/>
+              <text x="130" y="195" fill="#991b1b" font-size="11" font-weight="bold">Shared Global Data</text>
+              <text x="125" y="208" fill="#991b1b" font-size="9">(Vulnerable to Arbitrary Mutation)</text>
+
+              <line x1="110" y1="125" x2="160" y2="170" stroke="#cf222e" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+              <line x1="270" y1="125" x2="220" y2="170" stroke="#cf222e" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+
+              <!-- OO Side -->
+              <rect x="400" y="20" width="340" height="220" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" rx="4"/>
+              <text x="415" y="45" fill="#166534" font-weight="bold" font-size="13">Object-Oriented Paradigm (Noun-Centric)</text>
+              <text x="415" y="65" fill="#64748b" font-size="10">Autonomous Cells (Data + Operations Bundled)</text>
+
+              <!-- Object A -->
+              <rect x="420" y="90" width="140" height="120" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" rx="3"/>
+              <rect x="420" y="90" width="140" height="25" fill="#dcfce7"/>
+              <text x="445" y="107" fill="#166534" font-size="11" font-weight="bold">Object Alpha</text>
+              <rect x="430" y="122" width="120" height="35" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <text x="445" y="143" fill="#475569" font-size="10">Private Data</text>
+              <text x="435" y="175" fill="#0f172a" font-size="10">Public Methods()</text>
+              <text x="435" y="195" fill="#0f172a" font-size="10">+ getStatus()</text>
+
+              <!-- Object B -->
+              <rect x="585" y="90" width="140" height="120" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" rx="3"/>
+              <rect x="585" y="90" width="140" height="25" fill="#dcfce7"/>
+              <text x="615" y="107" fill="#166534" font-size="11" font-weight="bold">Object Beta</text>
+              <rect x="595" y="122" width="120" height="35" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <text x="610" y="143" fill="#475569" font-size="10">Private Data</text>
+              <text x="600" y="175" fill="#0f172a" font-size="10">Public Methods()</text>
+              <text x="600" y="195" fill="#0f172a" font-size="10">+ executeTask()</text>
+
+              <!-- Message Flow -->
+              <line x1="560" y1="150" x2="585" y2="150" stroke="#166534" stroke-width="2"/>
+              <polygon points="585,150 575,145 575,155" fill="#166534"/>
+              <text x="545" y="138" fill="#166534" font-size="9" font-weight="bold">Message</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.1: Architectural Distinction between Procedural Action-Centric and Object-Oriented Entity-Centric Paradigms</div>
+          </div>
 
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Design Stage</th>
-                  <th>Architectural Focus</th>
-                  <th>Critical Technical Decisions</th>
+                  <th>Architectural Dimension</th>
+                  <th>Procedural Programming (POP)</th>
+                  <th>Object-Oriented Programming (OOP)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>System Design (Macro Level)</strong></td>
-                  <td>High-level strategic architecture, system partitioning, and infrastructure mapping.</td>
-                  <td>
-                    <ul>
-                      <li><strong>Subsystem Decomposition:</strong> Partitioning software into autonomous, loosely coupled subsystems (e.g., UI, Core Domain, Payment, Notification).</li>
-                      <li><strong>Hardware-Software Allocation:</strong> Mapping software subsystems to physical server nodes and devices.</li>
-                      <li><strong>Concurrency Strategy:</strong> Identifying concurrent threads, processes, thread pools, and asynchronous event queues.</li>
-                      <li><strong>Data Store Management:</strong> Choosing relational SQL, distributed NoSQL document stores, or in-memory caches.</li>
-                      <li><strong>Global Resource Control:</strong> Enforcing access protocols (mutexes, distributed locks) for shared physical resources.</li>
-                      <li><strong>Boundary Conditions:</strong> Establishing initialization, system boot, failover recovery, and clean shutdown policies.</li>
-                    </ul>
-                  </td>
+                  <td><strong>Core Philosophy</strong></td>
+                  <td><strong>Action/Verb-centric:</strong> Programs are written as step-by-step sequences of instructions (algorithms) operating on passive data.</td>
+                  <td><strong>Noun/Entity-centric:</strong> Programs are modeled as societies of cooperating autonomous objects encapsulating state and behavior.</td>
                 </tr>
                 <tr>
-                  <td><strong>Object Design (Micro Level)</strong></td>
-                  <td>Detailed internal specification of individual classes, algorithms, and data structures.</td>
-                  <td>
-                    <ul>
-                      <li><strong>Algorithm Selection:</strong> Choosing concrete computational algorithms (sorting, searching, route optimization) for each operation.</li>
-                      <li><strong>Data Structure Selection:</strong> Mapping abstract associations into concrete arrays, balanced binary trees, or hash maps.</li>
-                      <li><strong>Design Optimization:</strong> Introducing redundant lookup links, caching derived attributes, and adjusting class hierarchies.</li>
-                      <li><strong>Visibility Enforcement:</strong> Assigning strict <code>private</code>, <code>protected</code>, and <code>public</code> access controls.</li>
-                      <li><strong>Implementation of Control:</strong> Selecting between procedure-driven control (call-return) or event-driven state engines.</li>
-                    </ul>
-                  </td>
+                  <td><strong>Decomposition Style</strong></td>
+                  <td><strong>Top-Down Functional Decomposition:</strong> High-level problem is systematically broken down into smaller sub-routines, procedures, and functions.</td>
+                  <td><strong>Bottom-Up Entity Synthesis:</strong> Autonomous domain entities (classes) are identified, designed, and assembled into hierarchical subsystems.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data vs. Function Binding</strong></td>
+                  <td>Data and functions are loosely coupled. Data is passed into functions via arguments or stored globally.</td>
+                  <td>Data and functions are tightly bound into a single cohesive unit (Class). State is modified solely through authorized methods.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data Security & Visibility</strong></td>
+                  <td><strong>Low/Vulnerable:</strong> Global data is open to accidental or unauthorized modification by any procedure in the program.</td>
+                  <td><strong>High:</strong> Information hiding enforced via access specifiers (<code>private</code>, <code>protected</code>, <code>public</code>).</td>
+                </tr>
+                <tr>
+                  <td><strong>Control Flow Mechanism</strong></td>
+                  <td>Direct subroutine invocation (jump-and-link call stack). Sequential and branching execution.</td>
+                  <td>Message passing between objects. Dynamic runtime polymorphic dispatch.</td>
+                </tr>
+                <tr>
+                  <td><strong>Code Reuse Mechanism</strong></td>
+                  <td>Limited to procedural subroutine libraries and macros. High coupling between logic and data types.</td>
+                  <td>Inheritance hierarchies, parametric polymorphism (generics/templates), and object composition/delegation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Maintenance & Scalability</strong></td>
+                  <td>Modifying a central data structure requires cascading changes across all dependent procedures throughout the codebase.</td>
+                  <td>Internal changes to a class do not impact external client code as long as the public interface contract remains invariant.</td>
+                </tr>
+                <tr>
+                  <td><strong>Real-World Problem Mapping</strong></td>
+                  <td>Significant cognitive semantic gap between real-world domain concepts and computer-centric procedural algorithms.</td>
+                  <td>Direct, natural 1-to-1 mapping between real-world problem domain entities and computational objects.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        <!-- 2. Combining the 3 Models -->
-        <section id="sec-omt-three-models">
-          <h2>2. Combining the Three Models (Rumbaugh's OMT)</h2>
-          <p>James Rumbaugh formulated the <strong>Object Modeling Technique (OMT)</strong> on the foundational axiom that a software system cannot be understood through a single paradigm. OMT synthesizes three orthogonal modeling views:</p>
+        <!-- ======================================================== -->
+        <!-- 2. Data Abstraction vs Encapsulation                     -->
+        <!-- ======================================================== -->
+        <section id="sec-abstraction-encap">
+          <h2>2. Data Abstraction vs. Data Encapsulation</h2>
+          <p>Although frequently conflated, <strong>Abstraction</strong> and <strong>Encapsulation</strong> are complementary yet distinct architectural principles underpinning object technology.</p>
 
-          <div class="diagram-container">
-            <svg class="uml-diagram" viewBox="0 0 680 220" width="680" height="220" xmlns="http://www.w3.org/2000/svg">
-              <!-- Object Model -->
-              <rect x="20" y="20" width="190" height="175" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
-              <text x="35" y="45" fill="#0969da" font-weight="bold" font-size="13">1. Object Model</text>
-              <text x="35" y="70" fill="#0f172a" font-weight="bold" font-size="11">Structure ("WHAT")</text>
-              <text x="40" y="95" fill="#484f58" font-size="10">• Static class entities</text>
-              <text x="40" y="115" fill="#484f58" font-size="10">• Attributes and types</text>
-              <text x="40" y="135" fill="#484f58" font-size="10">• Associations &amp; Multiplicity</text>
-              <text x="40" y="155" fill="#484f58" font-size="10">• UML Class Diagrams</text>
-
-              <!-- Dynamic Model -->
-              <rect x="245" y="20" width="190" height="175" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
-              <text x="260" y="45" fill="#9a6700" font-weight="bold" font-size="13">2. Dynamic Model</text>
-              <text x="260" y="70" fill="#0f172a" font-weight="bold" font-size="11">Control ("WHEN")</text>
-              <text x="265" y="95" fill="#484f58" font-size="10">• Temporal sequence of events</text>
-              <text x="265" y="115" fill="#484f58" font-size="10">• Discrete states &amp; transitions</text>
-              <text x="265" y="135" fill="#484f58" font-size="10">• Event triggers and guards</text>
-              <text x="265" y="155" fill="#484f58" font-size="10">• Statecharts &amp; Sequence</text>
-
-              <!-- Functional Model -->
-              <rect x="470" y="20" width="190" height="175" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
-              <text x="485" y="45" fill="#1a7f37" font-weight="bold" font-size="13">3. Functional Model</text>
-              <text x="485" y="70" fill="#0f172a" font-weight="bold" font-size="11">Transformation ("HOW")</text>
-              <text x="490" y="95" fill="#484f58" font-size="10">• Data transformations</text>
-              <text x="490" y="115" fill="#484f58" font-size="10">• Mathematical algorithms</text>
-              <text x="490" y="135" fill="#484f58" font-size="10">• Input &rarr; Output data flows</text>
-              <text x="490" y="155" fill="#484f58" font-size="10">• Data Flow Diagrams (DFDs)</text>
-
-              <!-- Connecting Arrows -->
-              <line x1="210" y1="105" x2="245" y2="105" stroke="#0f172a" stroke-width="2"/>
-              <line x1="435" y1="105" x2="470" y2="105" stroke="#0f172a" stroke-width="2"/>
-            </svg>
-            <div class="diagram-caption">Figure 3.1: The Tripartite Model Integration of Rumbaugh's OMT</div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Criterion</th>
+                  <th>Data Abstraction ("WHAT")</th>
+                  <th>Data Encapsulation ("HOW")</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Core Focus</strong></td>
+                  <td>Focuses on the <strong>external interface</strong> and essential observable behavior of an entity, hiding underlying complexity.</td>
+                  <td>Focuses on the <strong>internal packaging</strong> and containment, bundling data attributes and methods while restricting direct access.</td>
+                </tr>
+                <tr>
+                  <td><strong>Purpose</strong></td>
+                  <td>To simplify understanding by exposing only relevant semantic characteristics to the client (managing intellectual complexity).</td>
+                  <td>To protect data integrity, prevent unauthorized state mutations, and isolate internal implementation details (security & maintenance).</td>
+                </tr>
+                <tr>
+                  <td><strong>Implementation Mechanism</strong></td>
+                  <td>Abstract classes, pure virtual interfaces, function prototypes, and high-level architectural contracts.</td>
+                  <td>Class construct, access modifiers (<code>private</code>, <code>protected</code>), accessor/mutator methods, and compilation firewalls.</td>
+                </tr>
+                <tr>
+                  <td><strong>Engineering Analogy</strong></td>
+                  <td><strong>Car Dashboard:</strong> A driver interacts with steering wheel, brake, and accelerator pedals without knowing mechanical gear ratios.</td>
+                  <td><strong>Sealed Engine Hood:</strong> The mechanical pistons, fuel injectors, and wiring are sealed beneath the hood, inaccessible from the passenger cabin.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <h4>The Integration Mechanism</h4>
+          <h4>How These Principles Ensure System Security and Maintainability</h4>
+          <ul>
+            <li><strong>Invariant Enforcement:</strong> Encapsulation guarantees that internal class invariants (e.g., <code>accountBalance &gt;= 0</code>, <code>percentage &lt;= 100</code>) are verified within setter methods or constructors before state mutation occurs, preventing system-wide corruption.</li>
+            <li><strong>Decoupling & Non-Breaking Evolution:</strong> Because clients program against abstract interfaces (Abstraction) and cannot directly access internal variables (Encapsulation), engineers can completely refactor an internal data structure (e.g., switching from a linear linked list to an AVL tree or database table) without breaking a single line of client code.</li>
+          </ul>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 3. Structured Analysis & Design (SA/SD)                  -->
+        <!-- ======================================================== -->
+        <section id="sec-sasd">
+          <h2>3. Structured Analysis and Structured Design (SA/SD)</h2>
+          <p><strong>Structured Analysis and Structured Design (SA/SD)</strong>, pioneered by Ed Yourdon, Tom DeMarco, and Larry Constantine, is a classical software engineering methodology based on top-down functional decomposition. It models a system as a network of data processes transforming continuous data flows.</p>
+
+          <h3>3.1 The SA/SD Lifecycle Phases</h3>
           <ol>
-            <li><strong>Object Model provides the Foundation:</strong> Identifies the state variables and memory structures upon which operations act.</li>
-            <li><strong>Dynamic Model drives Execution Flow:</strong> Defines <em>when</em> operations execute in response to incoming events and state transitions. Events in the dynamic model become operation invocations in the object model.</li>
-            <li><strong>Functional Model defines Computational Logic:</strong> Specifies <em>how</em> data values are transformed mathematically. Processes in the DFD become method bodies in the object model.</li>
+            <li><strong>Survey & Feasibility Study:</strong> Establish project scope, technical and economic feasibility, and boundary constraints.</li>
+            <li><strong>Structured Analysis:</strong> Construct the logical model of the current physical system, extract essential requirements, and produce the target logical specification using DFDs, Data Dictionaries, and Mini-specs.</li>
+            <li><strong>Structured Design:</strong> Transform the logical data flow models into a concrete procedural software architecture represented by <strong>Structure Charts</strong> through Transform Analysis or Transaction Analysis.</li>
+            <li><strong>Structured Implementation & Testing:</strong> Code modules top-down or bottom-up, followed by integration testing based on call tree hierarchies.</li>
+          </ol>
+
+          <h3>3.2 Core Artifacts of Structured Analysis</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Artifact</th>
+                  <th>Visual Notation</th>
+                  <th>Architectural Function</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Data Flow Diagram (DFD)</strong></td>
+                  <td>Circle / Rounded Box (Process), Square (External Entity), Open Rectangle (Data Store), Directed Vector (Data Flow).</td>
+                  <td>Depicts the functional flow, transformations, sources, destinations, and storage of data across the system.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data Dictionary (DD)</strong></td>
+                  <td>Tabular schema using formal notation: <code>+</code> (sequence), <code>[|]</code> (selection), <code>{ }</code> (iteration), <code>( )</code> (optional).</td>
+                  <td>Centralized repository containing precise definitions of all data elements, data structures, and composite flows.</td>
+                </tr>
+                <tr>
+                  <td><strong>Process Specification (Mini-spec)</strong></td>
+                  <td>Structured English, Decision Tables, Decision Trees, Pre/Post-conditions.</td>
+                  <td>Defines the exact algorithmic transformation taking place inside each lowest-level primitive (leaf) DFD process bubble.</td>
+                </tr>
+                <tr>
+                  <td><strong>Structure Chart</strong></td>
+                  <td>Rectangular modules connected by directed hierarchy invocation lines with data/control couples.</td>
+                  <td>Represents the architectural calling structure, module partitioning, parameter passing, and procedural control organization.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>3.3 DFD Leveling & Balancing Rules</h3>
+          <p>To manage system complexity, DFDs are partitioned hierarchically into multiple levels:</p>
+          <ul>
+            <li><strong>Context Diagram (Level 0):</strong> The highest conceptual view. The entire system is represented as a single central process bubble surrounded by external entities and primary system inputs/outputs. It contains <strong>zero internal data stores</strong>.</li>
+            <li><strong>Level 1 DFD:</strong> Decomposes the Context bubble into 3 to 7 primary functional subsystems and exposes core system data stores.</li>
+            <li><strong>Level 2 DFD (and lower):</strong> Recursively decomposes complex Level 1 processes into primitive functional sub-processes.</li>
+            <li><strong>Data Flow Balancing Rule:</strong> Every input and output data flow entering or exiting a parent bubble must precisely match the aggregate external data flows entering and exiting its child decomposed DFD. No data flow may vanish or spontaneously appear.</li>
+          </ul>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 4. DFD Case Study: Cone Volume & Surface Area            -->
+        <!-- ======================================================== -->
+        <section id="sec-dfd-cone">
+          <h2>4. Detailed DFD Case Study: Cone Volume and Surface Area</h2>
+          <p><em>(University Exam Favorite: 2020-21 [cite: 2])</em></p>
+          <p><strong>Problem Specification:</strong> Construct a complete Level-1 Data Flow Diagram for a computational module that accepts the radius ($r$) of the base and height ($h$) of a circular cone, computing its total volume ($V$) and total surface area ($A$).</p>
+
+          <h4>Mathematical Formulations</h4>
+          <ul>
+            <li><strong>Slant Height ($l$):</strong> $l = \sqrt{r^2 + h^2}$</li>
+            <li><strong>Base Area ($B$):</strong> $B = \pi \cdot r^2$</li>
+            <li><strong>Lateral Surface Area ($L$):</strong> $L = \pi \cdot r \cdot l$</li>
+            <li><strong>Total Surface Area ($A$):</strong> $A = B + L = \pi \cdot r^2 + \pi \cdot r \cdot l = \pi \cdot r \cdot (r + l)$</li>
+            <li><strong>Total Volume ($V$):</strong> $V = \frac{1}{3} \cdot B \cdot h = \frac{1}{3} \cdot \pi \cdot r^2 \cdot h$</li>
+          </ul>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 760 380" width="760" height="380" xmlns="http://www.w3.org/2000/svg">
+              <!-- External Entity: User -->
+              <rect x="20" y="160" width="100" height="60" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="50" y="195" fill="#0f172a" font-weight="bold" font-size="12">USER</text>
+              <text x="35" y="208" fill="#64748b" font-size="9">(Input/Output)</text>
+
+              <!-- Process 1.0: Validate & Read Inputs -->
+              <circle cx="190" cy="190" r="42" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="175" y="185" fill="#0969da" font-weight="bold" font-size="11">1.0</text>
+              <text x="160" y="198" fill="#0f172a" font-size="9" text-anchor="middle">Read &amp; Validate</text>
+              <text x="190" y="208" fill="#0f172a" font-size="9" text-anchor="middle">r, h</text>
+
+              <!-- Input Flow -->
+              <line x1="120" y1="190" x2="148" y2="190" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="148,190 140,186 140,194" fill="#0f172a"/>
+              <text x="123" y="180" fill="#0f172a" font-size="9">r, h</text>
+
+              <!-- Process 2.0: Compute Slant Height -->
+              <circle cx="350" cy="80" r="42" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="340" y="75" fill="#0969da" font-weight="bold" font-size="11">2.0</text>
+              <text x="350" y="88" fill="#0f172a" font-size="9" text-anchor="middle">Compute Slant</text>
+              <text x="350" y="98" fill="#0f172a" font-size="8" text-anchor="middle">l = &radic;(r&sup2;+h&sup2;)</text>
+
+              <!-- Process 3.0: Compute Base Area -->
+              <circle cx="350" cy="220" r="42" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="340" y="215" fill="#0969da" font-weight="bold" font-size="11">3.0</text>
+              <text x="350" y="228" fill="#0f172a" font-size="9" text-anchor="middle">Compute Base Area</text>
+              <text x="350" y="238" fill="#0f172a" font-size="8" text-anchor="middle">B = &pi;&middot;r&sup2;</text>
+
+              <!-- Flow from 1.0 to 2.0 -->
+              <path d="M 225 165 Q 260 80 308 80" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="308,80 300,76 300,84" fill="#0f172a"/>
+              <text x="240" y="110" fill="#0f172a" font-size="9">r, h</text>
+
+              <!-- Flow from 1.0 to 3.0 -->
+              <line x1="230" y1="200" x2="308" y2="215" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="308,215 299,211 301,219" fill="#0f172a"/>
+              <text x="260" y="222" fill="#0f172a" font-size="9">r</text>
+
+              <!-- Process 4.0: Compute Total Surface Area -->
+              <circle cx="530" cy="110" r="45" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="520" y="105" fill="#0969da" font-weight="bold" font-size="11">4.0</text>
+              <text x="530" y="118" fill="#0f172a" font-size="9" text-anchor="middle">Compute Surface Area</text>
+              <text x="530" y="128" fill="#0f172a" font-size="8" text-anchor="middle">A = B + &pi;&middot;r&middot;l</text>
+
+              <!-- Flow from 2.0 to 4.0 -->
+              <line x1="392" y1="85" x2="485" y2="105" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="485,105 476,101 478,109" fill="#0f172a"/>
+              <text x="430" y="90" fill="#0f172a" font-size="9">slant height (l)</text>
+
+              <!-- Flow from 3.0 to 4.0 -->
+              <line x1="390" y1="205" x2="495" y2="135" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="495,135 486,137 491,144" fill="#0f172a"/>
+              <text x="435" y="165" fill="#0f172a" font-size="9">Base Area (B), r</text>
+
+              <!-- Process 5.0: Compute Volume -->
+              <circle cx="530" cy="270" r="45" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="520" y="265" fill="#0969da" font-weight="bold" font-size="11">5.0</text>
+              <text x="530" y="278" fill="#0f172a" font-size="9" text-anchor="middle">Compute Volume</text>
+              <text x="530" y="288" fill="#0f172a" font-size="8" text-anchor="middle">V = (1/3)&middot;B&middot;h</text>
+
+              <!-- Flow from 3.0 to 5.0 -->
+              <line x1="392" y1="230" x2="485" y2="260" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="485,260 476,256 478,264" fill="#0f172a"/>
+              <text x="420" y="255" fill="#0f172a" font-size="9">Base Area (B)</text>
+
+              <!-- Flow h from 1.0 to 5.0 -->
+              <path d="M 200 232 Q 220 340 490 290" fill="none" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4,2"/>
+              <polygon points="490,290 480,292 485,299" fill="#0f172a"/>
+              <text x="320" y="335" fill="#0f172a" font-size="9">height (h)</text>
+
+              <!-- Output Flow back to User -->
+              <path d="M 575 110 Q 720 110 720 200 Q 720 360 80 360 L 60 220" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+              <polygon points="60,220 56,229 64,229" fill="#16a34a"/>
+              <text x="610" y="105" fill="#16a34a" font-size="9" font-weight="bold">Surface Area (A)</text>
+              <text x="440" y="375" fill="#16a34a" font-size="9" font-weight="bold">Results (A, V) Returned to User</text>
+
+              <path d="M 575 270 Q 680 270 680 340" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+              <text x="590" y="265" fill="#16a34a" font-size="9" font-weight="bold">Volume (V)</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.2: Complete Level-1 Data Flow Diagram (DFD) for Cone Volume and Surface Area Computation</div>
+          </div>
+
+          <h4>Ways of Specifying Operations (Process Specifications / Mini-Specs)</h4>
+          <p>In structured analysis, operation logic inside lowest-level DFD bubbles is specified via five recognized techniques:</p>
+          <ol>
+            <li><strong>Structured English:</strong> A restricted subset of natural language utilizing programming keywords (<code>IF-THEN-ELSE</code>, <code>WHILE-DO</code>, <code>REPEAT-UNTIL</code>) without syntax specifics.</li>
+            <li><strong>Decision Tables:</strong> A 4-quadrant tabular matrix mapping exhaustive combinations of conditions (inputs) against corresponding execution actions (outputs). Ideal for complex nested conditional logic.</li>
+            <li><strong>Decision Trees:</strong> Graphical branching trees displaying the hierarchical flow of decision predicates, enabling quick visual verification of mutually exclusive paths.</li>
+            <li><strong>Pre-conditions and Post-conditions:</strong> Formal contracts stating input prerequisites ($r &gt; 0, h &gt; 0$) and guaranteed mathematical outcomes ($V &gt; 0$).</li>
+            <li><strong>Mathematical Equations:</strong> Pure mathematical formulations (as defined above) providing deterministic, unambiguous transformations.</li>
+          </ol>
+
+          <h3>3.4 Structure Charts: Transform & Transaction Analysis</h3>
+          <p>During Structured Design, the DFD is mapped to a module invocation tree called a <strong>Structure Chart</strong> using two mapping techniques:</p>
+          <ul>
+            <li><strong>Transform Analysis:</strong> Used when data flows through a linear sequence: <em>Afferent Branch</em> (reads and conditions raw inputs) $\rightarrow$ <em>Central Transform</em> (performs core computational transformation) $\rightarrow$ <em>Efferent Branch</em> (formats and writes outputs).</li>
+            <li><strong>Transaction Analysis:</strong> Used when a single input event triggers one of many mutually exclusive processing paths based on a transaction tag (e.g., ATM transaction selection).</li>
+          </ul>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 740 220" width="740" height="220" xmlns="http://www.w3.org/2000/svg">
+              <!-- Root Module -->
+              <rect x="290" y="20" width="160" height="40" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="315" y="45" fill="#0969da" font-weight="bold" font-size="11">Compute_Cone_Metrics</text>
+
+              <!-- Afferent Branch -->
+              <rect x="70" y="110" width="140" height="40" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="95" y="135" fill="#0f172a" font-size="11">Get_Validated_Input</text>
+
+              <!-- Central Transform Branch -->
+              <rect x="290" y="110" width="160" height="40" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="315" y="135" fill="#0f172a" font-size="11">Calculate_Geometry</text>
+
+              <!-- Efferent Branch -->
+              <rect x="520" y="110" width="140" height="40" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="545" y="135" fill="#0f172a" font-size="11">Display_Results</text>
+
+              <!-- Calling Lines -->
+              <line x1="330" y1="60" x2="140" y2="110" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="370" y1="60" x2="370" y2="110" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="410" y1="60" x2="590" y2="110" stroke="#0f172a" stroke-width="1.5"/>
+
+              <!-- Couples -->
+              <!-- Data couple: open circle with arrow -->
+              <circle cx="215" cy="80" r="4" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="219" y1="80" x2="235" y2="72" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="235,72 227,70 230,77" fill="#0f172a"/>
+              <text x="210" y="65" fill="#475569" font-size="9">r, h (Data)</text>
+
+              <!-- Control flag: filled circle with arrow -->
+              <circle cx="260" cy="95" r="4" fill="#0f172a" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="264" y1="95" x2="278" y2="88" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="278,88 270,86 273,93" fill="#0f172a"/>
+              <text x="260" y="115" fill="#cf222e" font-size="9">valid_flag</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.3: Structure Chart derived via Transform Analysis showing Module Hierarchy, Data Couples, and Control Flags</div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 5. Jackson Structured Development (JSD)                  -->
+        <!-- ======================================================== -->
+        <section id="sec-jsd">
+          <h2>5. Jackson Structured Development (JSD)</h2>
+          <p>Developed by <strong>Michael A. Jackson</strong> (1983), <strong>Jackson Structured Development (JSD)</strong> is an entity-centric methodology that rejects the top-down functional view of SA/SD. Instead of asking <em>"What functions must the system perform?"</em>, JSD begins by asking: <em>"What real-world entities exist, and what sequence of real-world events do they undergo throughout their lifecycle?"</em></p>
+
+          <h3>5.1 Fundamental Philosophy & Principles of JSD</h3>
+          <ul>
+            <li><strong>Time-Ordered Event Histories:</strong> The system is modeled as a direct simulation of the real world. Real-world domain entities (e.g., Customer, Bank Account, Flight) have time-ordered life histories composed of discrete actions.</li>
+            <li><strong>Separation of Model from Function:</strong> The real-world domain model is developed first. System outputs, reports, and functional queries are added only in later stages as passive observers of the model.</li>
+            <li><strong>Concurrent Process Simulation:</strong> Every active domain entity is modeled as an independent, long-running sequential process communicating with other processes via message buffering or state inspection.</li>
+          </ul>
+
+          <h3>5.2 The Three Phases of JSD</h3>
+          <ol>
+            <li><strong>Modeling Phase:</strong>
+              <ul>
+                <li>Identify real-world <em>Entities</em> (actors that perform or suffer actions).</li>
+                <li>Identify discrete <em>Actions</em> (events that take place in the real world at a single point in time, atomic, non-decomposable).</li>
+                <li>Construct <strong>Entity Structure Diagrams (ESDs)</strong>: Tree diagrams capturing the life cycle of each entity using three fundamental Jackson notations:
+                  <ul>
+                    <li><strong>Sequence:</strong> Actions executed strictly left-to-right (no special marking).</li>
+                    <li><strong>Selection:</strong> Mutually exclusive alternate actions (marked with a small circle <code>o</code> in the top-right corner).</li>
+                    <li><strong>Iteration:</strong> Actions repeating zero or more times (marked with an asterisk <code>*</code> in the top-right corner).</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><strong>Specification Phase:</strong>
+              <ul>
+                <li>Construct <strong>System Specification Diagrams (SSDs)</strong> (also called Network Diagrams) connecting entity processes to external inputs and outputs.</li>
+                <li>Define process communication: <em>Data Streams</em> (buffered FIFO message queues) or <em>State Vector Inspection</em> (direct read-only access to another process's internal state).</li>
+              </ul>
+            </li>
+            <li><strong>Implementation Phase:</strong>
+              <ul>
+                <li>Map the potentially millions of conceptual concurrent processes onto a limited number of physical hardware processors and threads.</li>
+                <li><strong>State Vector Inversion:</strong> A compiler/design transformation that converts long-running entity processes into callable subroutines. When an event arrives, the entity's state vector is loaded from disk, the subroutine executes one step, updates the state vector, and saves it back, yielding processor control.</li>
+              </ul>
+            </li>
+          </ol>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 240" width="680" height="240" xmlns="http://www.w3.org/2000/svg">
+              <!-- Root: Account Lifecycle -->
+              <rect x="260" y="15" width="160" height="35" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="280" y="38" fill="#0969da" font-weight="bold" font-size="11">ACCOUNT_LIFE</text>
+
+              <!-- Level 1: Open, Activity*, Close (Sequence) -->
+              <rect x="80" y="90" width="120" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="120" y="112" fill="#0f172a" font-size="11">OPEN</text>
+
+              <rect x="280" y="90" width="120" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="310" y="112" fill="#0f172a" font-size="11">ACTIVITY</text>
+              <circle cx="390" cy="98" r="6" fill="#f0f3f6" stroke="#0f172a" stroke-width="1"/>
+              <text x="388" y="102" fill="#0f172a" font-size="10" font-weight="bold">*</text>
+
+              <rect x="480" y="90" width="120" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="520" y="112" fill="#0f172a" font-size="11">CLOSE</text>
+
+              <!-- Lines from Root -->
+              <line x1="340" y1="50" x2="140" y2="90" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="340" y1="50" x2="340" y2="90" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="340" y1="50" x2="540" y2="90" stroke="#0f172a" stroke-width="1.5"/>
+
+              <!-- Level 2: Activity Selection (Deposit (o) or Withdraw (o)) -->
+              <rect x="200" y="175" width="120" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="235" y="197" fill="#0f172a" font-size="11">DEPOSIT</text>
+              <circle cx="310" cy="183" r="6" fill="#f0f3f6" stroke="#0f172a" stroke-width="1"/>
+              <text x="307" y="187" fill="#0f172a" font-size="9">o</text>
+
+              <rect x="360" y="175" width="120" height="35" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="385" y="197" fill="#0f172a" font-size="11">WITHDRAW</text>
+              <circle cx="470" cy="183" r="6" fill="#f0f3f6" stroke="#0f172a" stroke-width="1"/>
+              <text x="467" y="187" fill="#0f172a" font-size="9">o</text>
+
+              <!-- Lines from Activity -->
+              <line x1="340" y1="125" x2="260" y2="175" stroke="#0f172a" stroke-width="1.5"/>
+              <line x1="340" y1="125" x2="420" y2="175" stroke="#0f172a" stroke-width="1.5"/>
+            </svg>
+            <div class="diagram-caption">Figure 3.4: JSD Entity Structure Diagram (ESD) for a Bank Account showing Sequence, Iteration (*), and Selection (o)</div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 6. SA/SD vs JSD vs OMT Comparison                        -->
+        <!-- ======================================================== -->
+        <section id="sec-methodologies-comp">
+          <h2>6. Methodological Comparison: SA/SD vs. JSD vs. OMT</h2>
+          <p>University exam papers frequently demand a comparative analysis of these three landmark software engineering methodologies. The table below provides an exhaustive 10-point architectural comparison:</p>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Comparison Dimension</th>
+                  <th>SA/SD (Structured Analysis / Design)</th>
+                  <th>JSD (Jackson Structured Development)</th>
+                  <th>OMT (Object Modeling Technique)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Primary Pioneers</strong></td>
+                  <td>Yourdon, DeMarco, Constantine (1970s)</td>
+                  <td>Michael A. Jackson (1983)</td>
+                  <td>James Rumbaugh et al. (1991)</td>
+                </tr>
+                <tr>
+                  <td><strong>Fundamental Viewpoint</strong></td>
+                  <td><strong>Functional view:</strong> The system is a collection of processes transforming data inputs into outputs.</td>
+                  <td><strong>Behavioral/Event view:</strong> The system is a simulation of real-world entity lifecycles ordered in time.</td>
+                  <td><strong>Entity/Object view:</strong> The system is a network of communicating objects integrating data and operations.</td>
+                </tr>
+                <tr>
+                  <td><strong>Decomposition Style</strong></td>
+                  <td>Top-down functional decomposition (pipelining data flows).</td>
+                  <td>Entity-centric modeling followed by concurrent process network specification.</td>
+                  <td>Orthogonal tripartite decomposition (Object, Dynamic, and Functional models).</td>
+                </tr>
+                <tr>
+                  <td><strong>Core Modeling Tools</strong></td>
+                  <td>DFD, Data Dictionary, Mini-specs, Structure Charts.</td>
+                  <td>Entity Structure Diagrams (ESD), System Specification Diagrams (SSD).</td>
+                  <td>UML Class Diagrams (OMT Object), Statecharts (OMT Dynamic), DFDs (OMT Functional).</td>
+                </tr>
+                <tr>
+                  <td><strong>Temporal Sequencing</strong></td>
+                  <td>Weak; DFDs capture data flow paths but have <strong>zero temporal sequence</strong> or synchronization semantics.</td>
+                  <td><strong>Very Strong:</strong> Time ordering of events is the central design driver throughout the lifecycle.</td>
+                  <td>Strong; Statecharts and sequence interactions model discrete time and transitions explicitly.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data & Function Coupling</strong></td>
+                  <td>Completely decoupled. Passive data flows through active process bubbles.</td>
+                  <td>Partially coupled; actions belong to entities, but state vector inspection separates storage.</td>
+                  <td><strong>Completely Unified:</strong> Attributes and methods are encapsulated within the class construct.</td>
+                </tr>
+                <tr>
+                  <td><strong>Concurrency Handling</strong></td>
+                  <td>Poor; assumes single-threaded sequential call-return architectures.</td>
+                  <td><strong>Exceptional:</strong> Systems are designed from day one as networks of concurrent communicating processes.</td>
+                  <td>Strong; modeled natively via concurrent state machines and active object threads.</td>
+                </tr>
+                <tr>
+                  <td><strong>Semantic Gap</strong></td>
+                  <td><strong>Large:</strong> Analysis model (DFD) looks completely different from the Design model (Structure Chart).</td>
+                  <td>Moderate: Requires complex state vector inversion to map onto standard languages.</td>
+                  <td><strong>Minimal:</strong> Seamless semantic continuity from analysis classes directly to code classes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Code Reusability</strong></td>
+                  <td>Low; subroutines are tightly coupled to specific global data formats.</td>
+                  <td>Moderate; entity structures can be reused across similar domain applications.</td>
+                  <td><strong>High:</strong> Polymorphism, inheritance, and interface contracts foster massive component reuse.</td>
+                </tr>
+                <tr>
+                  <td><strong>Suitability</strong></td>
+                  <td>Algorithmic data pipelines, compiler design, financial batch processing.</td>
+                  <td>Embedded real-time systems, process control, telecom switching systems.</td>
+                  <td>Large-scale enterprise software, GUI applications, complex distributed systems.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 7. Rumbaugh OMT 3 Models                                 -->
+        <!-- ======================================================== -->
+        <section id="sec-omt-models">
+          <h2>7. Rumbaugh's Object Modeling Technique (OMT): The Three Models</h2>
+          <p>James Rumbaugh formulated <strong>OMT</strong> on the architectural premise that a software system is too multidimensional to be represented by a single diagram. OMT analyzes systems across three orthogonal, complementary dimensions:</p>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Model Dimension</th>
+                  <th>Core Question</th>
+                  <th>Primary Focus</th>
+                  <th>Key Modeling Notations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Object Model</strong></td>
+                  <td><strong>"WHAT"</strong> is being modeled?</td>
+                  <td>Static structural framework: classes, attributes, operations, associations, inheritance, multiplicities.</td>
+                  <td>UML Class Diagrams, Object Diagrams, Association Notations.</td>
+                </tr>
+                <tr>
+                  <td><strong>2. Dynamic Model</strong></td>
+                  <td><strong>"WHEN"</strong> does it happen?</td>
+                  <td>Temporal control behavior: state transitions, sequences of operations, events, actions, guards, concurrency.</td>
+                  <td>Statechart Diagrams, Event Trace Diagrams, Sequence Diagrams.</td>
+                </tr>
+                <tr>
+                  <td><strong>3. Functional Model</strong></td>
+                  <td><strong>"HOW"</strong> is data transformed?</td>
+                  <td>Computational transformations: algorithms, data dependencies, functional constraints, input-output mappings.</td>
+                  <td>Data Flow Diagrams (DFDs), Mathematical equations, Decision tables.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 740 280" width="740" height="280" xmlns="http://www.w3.org/2000/svg">
+              <!-- Object Model Box -->
+              <rect x="30" y="30" width="200" height="220" fill="#ffffff" stroke="#0969da" stroke-width="2" rx="4"/>
+              <rect x="30" y="30" width="200" height="35" fill="#eff6ff"/>
+              <text x="65" y="53" fill="#0969da" font-weight="bold" font-size="12">1. OBJECT MODEL</text>
+              <text x="45" y="85" fill="#0f172a" font-weight="bold" font-size="11">Structure ("WHAT")</text>
+              <text x="45" y="110" fill="#475569" font-size="10">• Static Class Entities</text>
+              <text x="45" y="130" fill="#475569" font-size="10">• Attributes &amp; Types</text>
+              <text x="45" y="150" fill="#475569" font-size="10">• Associations &amp; Links</text>
+              <text x="45" y="170" fill="#475569" font-size="10">• Inheritance &amp; Multiplicity</text>
+              <text x="45" y="200" fill="#0969da" font-size="10" font-weight="bold">Base Memory Architecture</text>
+              <text x="45" y="215" fill="#64748b" font-size="9">Defines actors &amp; data stores</text>
+
+              <!-- Dynamic Model Box -->
+              <rect x="270" y="30" width="200" height="220" fill="#ffffff" stroke="#9a6700" stroke-width="2" rx="4"/>
+              <rect x="270" y="30" width="200" height="35" fill="#fef9c3"/>
+              <text x="300" y="53" fill="#9a6700" font-weight="bold" font-size="12">2. DYNAMIC MODEL</text>
+              <text x="285" y="85" fill="#0f172a" font-weight="bold" font-size="11">Control ("WHEN")</text>
+              <text x="285" y="110" fill="#475569" font-size="10">• States &amp; Transitions</text>
+              <text x="285" y="130" fill="#475569" font-size="10">• Discrete Events &amp; Guards</text>
+              <text x="285" y="150" fill="#475569" font-size="10">• Actions &amp; Activities</text>
+              <text x="285" y="170" fill="#475569" font-size="10">• Statecharts &amp; Traces</text>
+              <text x="285" y="200" fill="#9a6700" font-size="10" font-weight="bold">Execution Driver</text>
+              <text x="285" y="215" fill="#64748b" font-size="9">Triggers object operations</text>
+
+              <!-- Functional Model Box -->
+              <rect x="510" y="30" width="200" height="220" fill="#ffffff" stroke="#16a34a" stroke-width="2" rx="4"/>
+              <rect x="510" y="30" width="200" height="35" fill="#dcfce7"/>
+              <text x="535" y="53" fill="#166534" font-weight="bold" font-size="12">3. FUNCTIONAL MODEL</text>
+              <text x="525" y="85" fill="#0f172a" font-weight="bold" font-size="11">Computation ("HOW")</text>
+              <text x="525" y="110" fill="#475569" font-size="10">• Data Flow Diagrams (DFDs)</text>
+              <text x="525" y="130" fill="#475569" font-size="10">• Algorithmic Transforms</text>
+              <text x="525" y="150" fill="#475569" font-size="10">• Input &rarr; Output Values</text>
+              <text x="525" y="170" fill="#475569" font-size="10">• Functional Constraints</text>
+              <text x="525" y="200" fill="#166534" font-size="10" font-weight="bold">Internal Algorithm Spec</text>
+              <text x="525" y="215" fill="#64748b" font-size="9">Defines method implementations</text>
+
+              <!-- Inter-model Connecting Arrows -->
+              <!-- Object <-> Dynamic -->
+              <line x1="230" y1="100" x2="270" y2="100" stroke="#0f172a" stroke-width="2"/>
+              <polygon points="270,100 262,96 262,104" fill="#0f172a"/>
+              <polygon points="230,100 238,96 238,104" fill="#0f172a"/>
+
+              <!-- Dynamic <-> Functional -->
+              <line x1="470" y1="100" x2="510" y2="100" stroke="#0f172a" stroke-width="2"/>
+              <polygon points="510,100 502,96 502,104" fill="#0f172a"/>
+              <polygon points="470,100 478,96 478,104" fill="#0f172a"/>
+
+              <!-- Bottom Flow Explanations -->
+              <text x="140" y="268" fill="#475569" font-size="9" text-anchor="middle">Object Model defines classes</text>
+              <text x="370" y="268" fill="#475569" font-size="9" text-anchor="middle">Events trigger operations</text>
+              <text x="610" y="268" fill="#475569" font-size="9" text-anchor="middle">Processes become method bodies</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.5: Tripartite Model Integration of Rumbaugh's OMT</div>
+          </div>
+
+          <h4>The Concrete Integration Mechanism</h4>
+          <ol>
+            <li><strong>Object Model provides the Foundation:</strong> Identifies the state variables, attributes, and class structures upon which all operations act. Without the Object Model, the other models have no data containers.</li>
+            <li><strong>Dynamic Model drives Execution Flow:</strong> Defines <em>when</em> operations execute in response to incoming events, state transitions, and guards. Events in the Dynamic Model correspond directly to operation invocations on classes in the Object Model.</li>
+            <li><strong>Functional Model defines Internal Logic:</strong> Specifies <em>how</em> data values are transformed mathematically. Processes in the DFD become concrete method bodies inside classes of the Object Model. Data stores in the DFD correspond to object collections in the Object Model.</li>
           </ol>
         </section>
 
-        <!-- 3. Design Optimization -->
+        <!-- ======================================================== -->
+        <!-- 8. Stages of OOA & OOD                                   -->
+        <!-- ======================================================== -->
+        <section id="sec-ooad-stages">
+          <h2>8. Stages of Object-Oriented Analysis & Design (OOAD)</h2>
+          <p>The engineering path from raw user requirements to an executable system proceeds through systematic stages of <strong>Object-Oriented Analysis (OOA)</strong> and <strong>Object-Oriented Design (OOD)</strong>.</p>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 740 180" width="740" height="180" xmlns="http://www.w3.org/2000/svg">
+              <!-- Stage 1 -->
+              <rect x="15" y="50" width="125" height="70" fill="#eff6ff" stroke="#0969da" stroke-width="1.5" rx="3"/>
+              <text x="25" y="75" fill="#0969da" font-weight="bold" font-size="11">1. Requirements</text>
+              <text x="25" y="95" fill="#475569" font-size="9">• Problem Statement</text>
+              <text x="25" y="110" fill="#475569" font-size="9">• Use Case Models</text>
+
+              <line x1="140" y1="85" x2="160" y2="85" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="160,85 152,81 152,89" fill="#0f172a"/>
+
+              <!-- Stage 2 -->
+              <rect x="160" y="50" width="125" height="70" fill="#eff6ff" stroke="#0969da" stroke-width="1.5" rx="3"/>
+              <text x="175" y="75" fill="#0969da" font-weight="bold" font-size="11">2. OOA Analysis</text>
+              <text x="170" y="95" fill="#475569" font-size="9">• Domain Classes</text>
+              <text x="170" y="110" fill="#475569" font-size="9">• Real-World Model</text>
+
+              <line x1="285" y1="85" x2="305" y2="85" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="305,85 297,81 297,89" fill="#0f172a"/>
+
+              <!-- Stage 3 -->
+              <rect x="305" y="50" width="130" height="70" fill="#fef9c3" stroke="#9a6700" stroke-width="1.5" rx="3"/>
+              <text x="315" y="75" fill="#9a6700" font-weight="bold" font-size="11">3. System Design</text>
+              <text x="315" y="95" fill="#475569" font-size="9">• Subsystems &amp; Tiers</text>
+              <text x="315" y="110" fill="#475569" font-size="9">• Concurrency &amp; DB</text>
+
+              <line x1="435" y1="85" x2="455" y2="85" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="455,85 447,81 447,89" fill="#0f172a"/>
+
+              <!-- Stage 4 -->
+              <rect x="455" y="50" width="130" height="70" fill="#fef9c3" stroke="#9a6700" stroke-width="1.5" rx="3"/>
+              <text x="465" y="75" fill="#9a6700" font-weight="bold" font-size="11">4. Object Design</text>
+              <text x="465" y="95" fill="#475569" font-size="9">• Algorithms &amp; DS</text>
+              <text x="465" y="110" fill="#475569" font-size="9">• Visibility &amp; Types</text>
+
+              <line x1="585" y1="85" x2="605" y2="85" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="605,85 597,81 597,89" fill="#0f172a"/>
+
+              <!-- Stage 5 -->
+              <rect x="605" y="50" width="120" height="70" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5" rx="3"/>
+              <text x="615" y="75" fill="#166534" font-weight="bold" font-size="11">5. Optimization</text>
+              <text x="615" y="95" fill="#475569" font-size="9">• Redundant Links</text>
+              <text x="615" y="110" fill="#475569" font-size="9">• Caching &amp; Inh. Adj.</text>
+
+              <!-- Top Bracket Annotations -->
+              <path d="M 15 40 L 285 40" stroke="#0969da" stroke-width="1.5" fill="none"/>
+              <text x="110" y="32" fill="#0969da" font-size="10" font-weight="bold">WHAT (Analysis Space)</text>
+
+              <path d="M 305 40 L 725 40" stroke="#166534" stroke-width="1.5" fill="none"/>
+              <text x="475" y="32" fill="#166534" font-size="10" font-weight="bold">HOW (Design &amp; Solution Space)</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.6: The Complete Engineering Progression from Requirements to Design Optimization</div>
+          </div>
+
+          <h3>8.1 System Design (Macro-Architecture)</h3>
+          <p>System Design addresses the global, strategic architectural partitioning without delving into individual class internals:</p>
+          <ul>
+            <li><strong>Subsystem Decomposition:</strong> Partitioning the system into cohesive, loosely coupled horizontal layers (Presentation, Application Service, Domain Core, Data Persistence) or vertical domain slices (Authentication, Catalog, Billing).</li>
+            <li><strong>Hardware-Software Mapping:</strong> Allocating subsystems to physical server nodes, edge gateways, mobile clients, and cloud microservices.</li>
+            <li><strong>Concurrency Allocation:</strong> Identifying autonomous active threads, thread pools, and asynchronous event queues for non-blocking I/O.</li>
+            <li><strong>Management of Data Stores:</strong> Choosing appropriate storage engines (relational SQL for transactional integrity, NoSQL key-value/document stores for unstructured high-speed scaling).</li>
+            <li><strong>Global Resource Control:</strong> Enforcing authentication, authorization access tokens, and distributed mutual exclusion (locks) for shared physical resources.</li>
+            <li><strong>Boundary Conditions:</strong> Establishing protocols for system initialization, configuration bootstrapping, fault tolerance, graceful degradation, and clean shutdown.</li>
+          </ul>
+
+          <h3>8.2 Object Design (Micro-Architecture)</h3>
+          <p>Object Design shifts focus to the internal implementation of individual classes, converting conceptual domain entities into concrete software components:</p>
+          <ul>
+            <li><strong>Algorithm Selection:</strong> Choosing specific computational algorithms (e.g., Dijkstra's shortest path for navigation, QuickSort for ranking) balancing execution time complexity and memory overhead.</li>
+            <li><strong>Data Structure Selection:</strong> Selecting concrete collections (HashMaps for $O(1)$ key lookups, Balanced Binary Search Trees for range queries, circular ring buffers for telemetry).</li>
+            <li><strong>Visibility & Encapsulation Enforcement:</strong> Assigning strict access specifiers (<code>private</code> for all mutable state, <code>protected</code> for inheritance hooks, <code>public</code> for client contracts).</li>
+            <li><strong>Control Implementation:</strong> Selecting between procedure-driven control (nested function call stacks) and event-driven control (state machines dispatching events from a central event loop).</li>
+          </ul>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 9. Case Study: Ride-Hailing Application                  -->
+        <!-- ======================================================== -->
+        <section id="sec-ride-hailing">
+          <h2>9. Comprehensive Case Study: Ride-Hailing Application (Uber/Ola)</h2>
+          <p><em>(University Exam Favorite: 2024-25 [cite: 6])</em></p>
+          <p><strong>Problem Statement:</strong> Design an enterprise-grade, distributed ride-hailing system from requirements gathering through OOA, System Design, Object Design, and Design Optimization.</p>
+
+          <h3>9.1 Requirements Inception & Use Case Identification</h3>
+          <ul>
+            <li><strong>Primary Actors:</strong> Passenger (Rider), Driver, System Dispatcher, External Payment Gateway, GPS Telemetry Satellite.</li>
+            <li><strong>Core Use Cases:</strong> <code>RequestRide</code>, <code>MatchDriver</code>, <code>TrackTrip</code>, <code>CalculateFare</code>, <code>ProcessPayment</code>, <code>RateDriver</code>.</li>
+          </ul>
+
+          <h3>9.2 Domain Class Diagram (Object Model)</h3>
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 740 360" width="740" height="360" xmlns="http://www.w3.org/2000/svg">
+              <!-- Passenger Class -->
+              <g transform="translate(30, 20)">
+                <rect x="0" y="0" width="180" height="110" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+                <rect x="0" y="0" width="180" height="25" fill="#eff6ff"/>
+                <text x="50" y="17" fill="#0969da" font-weight="bold" font-size="11">Passenger</text>
+                <text x="10" y="42" fill="#0f172a" font-size="9">- passengerID: UUID</text>
+                <text x="10" y="57" fill="#0f172a" font-size="9">- rating: float</text>
+                <line x1="0" y1="65" x2="180" y2="65" stroke="#d0d7de" stroke-width="1"/>
+                <text x="10" y="80" fill="#0f172a" font-size="9">+ requestRide(src, dest)</text>
+                <text x="10" y="95" fill="#0f172a" font-size="9">+ makePayment(rideID)</text>
+              </g>
+
+              <!-- Driver Class -->
+              <g transform="translate(530, 20)">
+                <rect x="0" y="0" width="180" height="110" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+                <rect x="0" y="0" width="180" height="25" fill="#eff6ff"/>
+                <text x="65" y="17" fill="#0969da" font-weight="bold" font-size="11">Driver</text>
+                <text x="10" y="42" fill="#0f172a" font-size="9">- driverID: UUID</text>
+                <text x="10" y="57" fill="#0f172a" font-size="9">- isAvailable: boolean</text>
+                <line x1="0" y1="65" x2="180" y2="65" stroke="#d0d7de" stroke-width="1"/>
+                <text x="10" y="80" fill="#0f172a" font-size="9">+ acceptBooking(requestID)</text>
+                <text x="10" y="95" fill="#0f172a" font-size="9">+ updateLocation(gps)</text>
+              </g>
+
+              <!-- Central RideBooking Class -->
+              <g transform="translate(280, 110)">
+                <rect x="0" y="0" width="180" height="135" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+                <rect x="0" y="0" width="180" height="25" fill="#dcfce7"/>
+                <text x="45" y="17" fill="#166534" font-weight="bold" font-size="11">RideBooking</text>
+                <text x="10" y="42" fill="#0f172a" font-size="9">- bookingID: UUID</text>
+                <text x="10" y="57" fill="#0f172a" font-size="9">- status: BookingStatus</text>
+                <text x="10" y="72" fill="#0f172a" font-size="9">- startTime: DateTime</text>
+                <text x="10" y="87" fill="#0f172a" font-size="9">- estimatedFare: double</text>
+                <line x1="0" y1="95" x2="180" y2="95" stroke="#d0d7de" stroke-width="1"/>
+                <text x="10" y="110" fill="#0f172a" font-size="9">+ startTrip()</text>
+                <text x="10" y="125" fill="#0f172a" font-size="9">+ completeTrip()</text>
+              </g>
+
+              <!-- DispatchEngine Class -->
+              <g transform="translate(30, 220)">
+                <rect x="0" y="0" width="180" height="95" fill="#ffffff" stroke="#9a6700" stroke-width="1.5"/>
+                <rect x="0" y="0" width="180" height="25" fill="#fef9c3"/>
+                <text x="40" y="17" fill="#9a6700" font-weight="bold" font-size="11">DispatchEngine</text>
+                <text x="10" y="42" fill="#0f172a" font-size="9">- geoIndex: QuadTree</text>
+                <line x1="0" y1="50" x2="180" y2="50" stroke="#d0d7de" stroke-width="1"/>
+                <text x="10" y="65" fill="#0f172a" font-size="9">+ findNearbyDrivers(src)</text>
+                <text x="10" y="80" fill="#0f172a" font-size="9">+ dispatchDriver(bookingID)</text>
+              </g>
+
+              <!-- Vehicle Class -->
+              <g transform="translate(530, 220)">
+                <rect x="0" y="0" width="180" height="95" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+                <rect x="0" y="0" width="180" height="25" fill="#eff6ff"/>
+                <text x="65" y="17" fill="#0969da" font-weight="bold" font-size="11">Vehicle</text>
+                <text x="10" y="42" fill="#0f172a" font-size="9">- licensePlate: String</text>
+                <text x="10" y="57" fill="#0f172a" font-size="9">- vehicleType: CarType</text>
+                <line x1="0" y1="65" x2="180" y2="65" stroke="#d0d7de" stroke-width="1"/>
+                <text x="10" y="80" fill="#0f172a" font-size="9">+ getCapacity(): int</text>
+              </g>
+
+              <!-- Association Lines -->
+              <!-- Passenger to RideBooking -->
+              <line x1="210" y1="75" x2="280" y2="140" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="215" y="90" fill="#0f172a" font-size="9">1</text>
+              <text x="255" y="130" fill="#0f172a" font-size="9">0..*</text>
+
+              <!-- Driver to RideBooking -->
+              <line x1="530" y1="75" x2="460" y2="140" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="515" y="90" fill="#0f172a" font-size="9">1</text>
+              <text x="475" y="130" fill="#0f172a" font-size="9">0..*</text>
+
+              <!-- Driver to Vehicle (1 to 1 aggregation) -->
+              <line x1="620" y1="130" x2="620" y2="220" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="620,130 615,138 620,146 625,138" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+              <text x="630" y="160" fill="#0f172a" font-size="9">1</text>
+              <text x="630" y="210" fill="#0f172a" font-size="9">1</text>
+
+              <!-- DispatchEngine to RideBooking -->
+              <line x1="210" y1="240" x2="280" y2="200" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <polygon points="280,200 270,198 274,206" fill="#0f172a"/>
+              <text x="220" y="215" fill="#475569" font-size="8">&laquo;manages&raquo;</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.7: Class Architecture Diagram for the Ride-Hailing Application Case Study</div>
+          </div>
+
+          <h3>9.3 Dynamic State Lifecycle of a RideBooking</h3>
+          <p>The core business entity, <code>RideBooking</code>, progresses through discrete lifecycle states driven by external events:</p>
+          <ol>
+            <li><code>REQUESTED</code>: Created when a passenger submits pickup and drop-off coordinates.</li>
+            <li><code>SEARCHING_DRIVER</code>: DispatchEngine executes spatial proximity queries on a QuadTree/Geohash spatial index.</li>
+            <li><code>DRIVER_ASSIGNED</code>: An available driver accepts the request; ETA calculation initialized.</li>
+            <li><code>TRIP_IN_PROGRESS</code>: Driver arrives, enters OTP, and begins GPS transit.</li>
+            <li><code>COMPLETED</code>: Destination reached; telemetry distance and duration finalized.</li>
+            <li><code>PAYMENT_SETTLED</code>: Payment gateway debits passenger wallet/card; receipt generated.</li>
+          </ol>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 10. Design Optimization Strategies                      -->
+        <!-- ======================================================== -->
         <section id="sec-design-opt">
-          <h2>3. Design Optimization Strategies</h2>
-          <p>Analysis models emphasize real-world domain fidelity without regard for physical execution constraints. During Object Design, the engineer refactors the design to optimize throughput, latency, and memory footprint:</p>
+          <h2>10. Design Optimization Strategies</h2>
+          <p>While Object-Oriented Analysis models emphasize real-world conceptual fidelity, practical systems operate under stringent physical execution limits (CPU throughput, network bandwidth, memory footprint, and query latency). During Object Design, the engineer optimizes the architecture through mathematical refactoring:</p>
 
-          <h4>1. Adding Redundant Associative Paths</h4>
-          <p>Navigating deep association chains (e.g., <code>Company &rarr; Division &rarr; Department &rarr; Team &rarr; Employee</code>) has high time complexity ($O(N)$). When queries frequently traverse from <code>Company</code> directly to <code>Employee</code>, the designer adds a cached direct associative pointer from <code>Company</code> directly to <code>Employee</code>, converting deep lookups to $O(1)$.</p>
+          <h3>10.1 Adding Redundant Associative Paths</h3>
+          <p>When an application frequently traverses a long chain of associations to satisfy critical queries (e.g., retrieving an employee's company via <code>Employee &rarr; Department &rarr; Division &rarr; Company</code>), the traversal cost is $O(K)$ where $K$ is the chain depth. If this query executes millions of times per second, the designer introduces a <strong>direct redundant pointer (association)</strong> from <code>Company</code> directly to <code>Employee</code>, reducing retrieval complexity to $O(1)$.</p>
 
-          <h4>2. Rearranging Execution Paths & Predicate Ordering</h4>
-          <p>When filtering collections with compound boolean conditions (<code>conditionA &amp;&amp; conditionB</code>), reorder predicates so the most selective, computationally inexpensive filter evaluates first. This triggers early short-circuit evaluation, skipping heavy downstream checks.</p>
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 740 180" width="740" height="180" xmlns="http://www.w3.org/2000/svg">
+              <!-- Unoptimized Deep Path -->
+              <rect x="20" y="20" width="110" height="35" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="45" y="42" fill="#cf222e" font-size="10" font-weight="bold">Company</text>
 
-          <h4>3. Caching Derived Attributes</h4>
-          <p>In high-throughput systems, recalculating complex derived values on-the-fly (e.g., an e-commerce cart total or customer credit rating) causes massive CPU overhead. If read queries significantly exceed write updates, the computed value is cached in a private attribute and recomputed only on state mutations.</p>
-        </section>
+              <rect x="190" y="20" width="110" height="35" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="215" y="42" fill="#cf222e" font-size="10" font-weight="bold">Division</text>
 
-        <!-- 4. Inheritance Adjustment -->
-        <section id="sec-inheritance-adj">
-          <h2>4. Inheritance Adjustment</h2>
-          <p>During detailed design, class hierarchies are adjusted to balance maintainability and performance:</p>
-          <ul>
-            <li><strong>Factoring Common Behavior:</strong> When disparate subclasses share identical attributes or methods, factor them upward into a newly introduced abstract superclass.</li>
-            <li><strong>Flattening Redundant Superclasses:</strong> When intermediate abstract classes introduce trivial layers of indirection without behavioral variation, collapse them into the derived classes to eliminate VTable dispatch overhead.</li>
-            <li><strong>Delegation over Inheritance:</strong> When inheritance is misused purely for partial code reuse (violating Liskov Substitution Principle), replace inheritance with object composition (delegation).</li>
-          </ul>
-        </section>
+              <rect x="360" y="20" width="110" height="35" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="375" y="42" fill="#cf222e" font-size="10" font-weight="bold">Department</text>
 
-        <!-- 5. Physical Packaging & Contracts -->
-        <section id="sec-packaging-doc">
-          <h2>5. Physical Packaging & Documentation Design</h2>
-          
-          <h4>Physical Packaging & Compilation Firewalls</h4>
-          <ul>
-            <li><strong>Header Separation:</strong> Strict separation of public declarations in <code>.hpp</code> files from private implementations in <code>.cpp</code> compilation units.</li>
-            <li><strong>Forward Declarations:</strong> Replace heavy <code>#include</code> directives with forward declarations (e.g., <code>class Order;</code>) in header files to eliminate circular dependencies and minimize recompilation cascades.</li>
-            <li><strong>The PIMPL Idiom (Pointer to Implementation):</strong> Hiding a class's private members inside an opaque pointer to an internal struct, completely decoupling client binaries from private layout changes.</li>
-          </ul>
+              <rect x="530" y="20" width="110" height="35" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="555" y="42" fill="#cf222e" font-size="10" font-weight="bold">Employee</text>
 
-          <h4>Documentation: Design by Contract (Bertrand Meyer)</h4>
-          <p>Robust object-oriented systems enforce formal contracts specifying:</p>
-          <ul>
-            <li><strong>Preconditions:</strong> Invariants the caller must satisfy before invoking a method (e.g., <code>amount &gt; 0.0</code>).</li>
-            <li><strong>Postconditions:</strong> Invariants the method guarantees upon successful completion (e.g., <code>balance_new == balance_old - amount</code>).</li>
-            <li><strong>Class Invariants:</strong> Invariants that must hold true throughout the entire lifetime of the object.</li>
-          </ul>
-        </section>
+              <line x1="130" y1="37" x2="190" y2="37" stroke="#cf222e" stroke-width="1.5"/>
+              <line x1="300" y1="37" x2="360" y2="37" stroke="#cf222e" stroke-width="1.5"/>
+              <line x1="470" y1="37" x2="530" y2="37" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="655" y="42" fill="#cf222e" font-size="10" font-weight="bold">O(N) Traversal</text>
 
-        <!-- 6. Methodology Comparisons -->
-        <section id="sec-methodologies">
-          <h2>6. Methodological Comparisons: SA/SD vs. JSD vs. OOAD</h2>
+              <!-- Optimized Redundant Direct Path -->
+              <path d="M 75 55 Q 330 150 585 55" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="4,3"/>
+              <polygon points="585,55 575,60 577,50" fill="#16a34a"/>
+              <text x="260" y="135" fill="#16a34a" font-size="11" font-weight="bold">Redundant Cached Association [O(1) Direct Lookup]</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.8: Eliminating Multi-Hop Association Latency via Cached Redundant Associative Pointers</div>
+          </div>
 
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Criteria</th>
-                  <th>SA/SD (Structured)</th>
-                  <th>JSD (Jackson Structured Development)</th>
-                  <th>OOAD (Object-Oriented)</th>
+                  <th>Optimization Technique</th>
+                  <th>Execution Benefit</th>
+                  <th>Trade-off / Architectural Cost</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Originators</strong></td>
-                  <td>Yourdon, DeMarco, Constantine</td>
-                  <td>Michael A. Jackson</td>
-                  <td>Booch, Rumbaugh, Jacobson</td>
+                  <td><strong>Redundant Associative Paths</strong></td>
+                  <td>Converts deep multi-hop network/pointer traversals from $O(N)$ to $O(1)$ constant time lookup.</td>
+                  <td><strong>Memory & Sync Overhead:</strong> Additional pointer memory overhead; requires strict synchronization logic on object deletion or reassignment.</td>
                 </tr>
                 <tr>
-                  <td><strong>Core Philosophy</strong></td>
-                  <td>Top-down functional decomposition; systems are pipelines transforming data flows.</td>
-                  <td>Real-world modeling based on time-ordered event histories experienced by domain entities.</td>
-                  <td>Domain decomposition; autonomous objects communicating via message-passing contracts.</td>
+                  <td><strong>Predicate Reordering</strong></td>
+                  <td>Minimizes CPU cycles by evaluating cheap, highly selective boolean conditions first (short-circuit evaluation).</td>
+                  <td>Requires ongoing statistical profiling of production data distributions to ensure optimal ordering.</td>
                 </tr>
                 <tr>
-                  <td><strong>Primary Artifacts</strong></td>
-                  <td>Data Flow Diagrams (DFDs), Structure Charts, Data Dictionaries.</td>
-                  <td>Entity Structure Diagrams (ESDs), System Specification Diagrams (SSDs).</td>
-                  <td>Class Diagrams, Statecharts, Sequence Diagrams, Component Diagrams.</td>
-                </tr>
-                <tr>
-                  <td><strong>Strengths</strong></td>
-                  <td>Intuitive for algorithmic batch transformations and compilers.</td>
-                  <td>Superior modeling of concurrent, time-ordered entity lifecycles.</td>
-                  <td>Unmatched modularity, code reuse, resilience, and real-world domain fidelity.</td>
-                </tr>
-                <tr>
-                  <td><strong>Weaknesses</strong></td>
-                  <td>Fragile against data modifications; large analysis-to-design semantic gap.</td>
-                  <td>Difficult to map onto standard procedural programming languages.</td>
-                  <td>Steeper learning curve; requires significant upfront architectural modeling.</td>
+                  <td><strong>Caching Derived Attributes</strong></td>
+                  <td>Eliminates redundant on-the-fly mathematical recomputations for frequently requested values (e.g., cart subtotal, rating average).</td>
+                  <td>Requires dirty-bit flags and cache invalidation policies whenever underlying source data mutates.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
 
-        <!-- 7. Complete C OOP Emulation -->
-        <section id="sec-mapping-c">
-          <h2>7. Complete C Procedural OOP Emulation</h2>
-          <p>Object orientation is an architectural discipline, not a syntax feature. Even in procedural C, OOP concepts (Classes, Encapsulation, Single Inheritance, and Dynamic Polymorphism) can be implemented directly using structs, function pointers, and VTables:</p>
+        <!-- ======================================================== -->
+        <!-- 11. Inheritance Adjustment                               -->
+        <!-- ======================================================== -->
+        <section id="sec-inheritance-adj">
+          <h2>11. Inheritance Adjustment</h2>
+          <p>During detailed design, class hierarchies formulated during OOA must be refactored to optimize code reuse, eliminate dispatch overhead, and preserve the <strong>Liskov Substitution Principle (LSP)</strong>.</p>
 
+          <h4>1. Factoring Common Behavior Upward</h4>
+          <p>When multiple concrete subclasses exhibit identical attribute schemas or algorithmic methods that were overlooked during analysis, the engineer introduces a new <strong>abstract superclass</strong> above them, moving shared implementations upward to eliminate duplicate maintenance overhead.</p>
+
+          <h4>2. Flattening Redundant Intermediate Classes</h4>
+          <p>Intermediate abstract classes that introduce zero substantive behavioral specialization (e.g., pass-through wrapper classes) create unnecessary layers of indirection and increase virtual method table (VTable) dispatch overhead. These classes are collapsed and flattened directly into derived types.</p>
+
+          <h4>3. Converting Inheritance to Delegation (Composition over Inheritance)</h4>
+          <p>When a subclass inherits from a superclass purely for code reuse but violates semantic substitution (e.g., a <code>Stack</code> class inheriting from <code>ArrayList</code>, exposing invalid operations like <code>insertAt(0)</code>), inheritance is eliminated and replaced with <strong>delegation</strong> (the Stack encapsulates a private ArrayList member and exposes only <code>push()</code> and <code>pop()</code>).</p>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 12. Object Representation & Physical Packaging           -->
+        <!-- ======================================================== -->
+        <section id="sec-implementation">
+          <h2>12. Object Representation & Physical Packaging</h2>
+
+          <h3>12.1 How Classes Translate into In-Memory Data Structures</h3>
+          <p>At the physical compiler level, an object is not an abstract concept; it is a contiguous block of allocated memory bytes structured systematically:</p>
+          <ul>
+            <li><strong>Virtual Pointer (vptr):</strong> If a class contains any virtual functions, the compiler silently inserts a hidden pointer (<code>vptr</code>) at byte offset 0. This pointer references the class's static <strong>Virtual Method Table (VTable)</strong> containing function pointers to polymorphic implementations.</li>
+            <li><strong>Member Variable Layout:</strong> Non-static attributes are laid out sequentially in memory following their declaration order, subject to hardware alignment padding (e.g., 4-byte or 8-byte boundaries).</li>
+            <li><strong>Inheritance Offset:</strong> In single inheritance, the base class memory layout is embedded directly at byte offset 0 of the derived class memory block. This structural alignment allows any derived class pointer to be safely cast to a base class pointer without altering the physical address.</li>
+          </ul>
+
+          <h3>12.2 Physical Packaging & Compilation Firewalls</h3>
+          <p>As enterprise codebases scale, physical source code packaging determines compilation time and module decoupling:</p>
+          <ul>
+            <li><strong>Header File Separation:</strong> Public API declarations reside strictly in header files (<code>.h</code> / <code>.hpp</code>), while private implementation algorithms reside in compiled translation units (<code>.c</code> / <code>.cpp</code>).</li>
+            <li><strong>Forward Declarations:</strong> Avoid heavy <code>#include</code> statements inside headers when referencing pointers or references (e.g., <code>class Order;</code>). This eliminates circular compilation dependencies and stops recompilation cascades.</li>
+            <li><strong>The PIMPL Idiom (Pointer to Implementation):</strong> A class hides all private data members behind an opaque pointer to a forward-declared internal struct. Modifying private class members does not trigger recompilation of external client code.</li>
+          </ul>
+
+          <h3>12.3 Documentation Design: Design by Contract (Bertrand Meyer)</h3>
+          <p>Formal documentation in robust object-oriented architectures is enforced through the mathematical discipline of <strong>Design by Contract (DbC)</strong>:</p>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 680 180" width="680" height="180" xmlns="http://www.w3.org/2000/svg">
+              <rect x="30" y="20" width="620" height="140" fill="#f8fafc" stroke="#0969da" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <text x="45" y="42" fill="#0969da" font-weight="bold" font-size="12">CLASS INVARIANT (Must hold TRUE before and after all client operations)</text>
+
+              <!-- Precondition -->
+              <rect x="60" y="65" width="160" height="70" fill="#ffffff" stroke="#cf222e" stroke-width="1.5"/>
+              <text x="80" y="90" fill="#cf222e" font-weight="bold" font-size="11">Precondition</text>
+              <text x="75" y="110" fill="#475569" font-size="9">Client Obligation</text>
+              <text x="75" y="125" fill="#64748b" font-size="8">e.g., amount &gt; 0 &amp;&amp; bal &ge; amt</text>
+
+              <line x1="220" y1="100" x2="260" y2="100" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="260,100 252,96 252,104" fill="#0f172a"/>
+
+              <!-- Method Execution -->
+              <rect x="260" y="65" width="160" height="70" fill="#eff6ff" stroke="#0969da" stroke-width="1.5"/>
+              <text x="280" y="90" fill="#0969da" font-weight="bold" font-size="11">Method Execution</text>
+              <text x="280" y="110" fill="#475569" font-size="9">withdraw(double amt)</text>
+              <text x="280" y="125" fill="#64748b" font-size="8">Internal transformation</text>
+
+              <line x1="420" y1="100" x2="460" y2="100" stroke="#0f172a" stroke-width="1.5"/>
+              <polygon points="460,100 452,96 452,104" fill="#0f172a"/>
+
+              <!-- Postcondition -->
+              <rect x="460" y="65" width="160" height="70" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+              <text x="480" y="90" fill="#16a34a" font-weight="bold" font-size="11">Postcondition</text>
+              <text x="480" y="110" fill="#475569" font-size="9">Supplier Guarantee</text>
+              <text x="480" y="125" fill="#64748b" font-size="8">bal_new == bal_old - amt</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.9: Design by Contract Architecture (Preconditions, Method Execution, Postconditions, and Class Invariants)</div>
+          </div>
+        </section>
+
+        <!-- ======================================================== -->
+        <!-- 13. Mapping OOP to Procedural C                          -->
+        <!-- ======================================================== -->
+        <section id="sec-mapping-c">
+          <h2>13. Mapping Object-Oriented Concepts to Non-Object-Oriented Languages</h2>
+          <p>Object-orientation is an architectural mindset, not a programming language feature. Any procedural language (such as ANSI C) can emulate object-oriented mechanics through disciplined structural mappings:</p>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Object-Oriented Concept</th>
+                  <th>Procedural C Language Equivalent Mapping Mechanism</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Class Construct</strong></td>
+                  <td>User-defined <code>struct</code> containing only attribute fields and a pointer to a VTable.</td>
+                </tr>
+                <tr>
+                  <td><strong>Encapsulation / Private Scope</strong></td>
+                  <td>Opaque pointers (incomplete struct definitions in header files) combined with <code>static</code> file-scoped helper functions.</td>
+                </tr>
+                <tr>
+                  <td><strong>Object Instantiation</strong></td>
+                  <td>Dynamic memory allocation via <code>malloc(sizeof(StructName))</code> initialized by an explicit constructor function.</td>
+                </tr>
+                <tr>
+                  <td><strong>Member Methods ("this" pointer)</strong></td>
+                  <td>Standard functions explicitly accepting a pointer to the calling struct as their first parameter: <code>void Circle_draw(const Circle* self)</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Single Inheritance</strong></td>
+                  <td><strong>Struct Embedding:</strong> Placing the base class <code>struct</code> as the very first member of the derived <code>struct</code> (byte offset 0), guaranteeing type-safe pointer casting.</td>
+                </tr>
+                <tr>
+                  <td><strong>Dynamic Polymorphism</strong></td>
+                  <td>A <code>struct</code> of function pointers (<strong>VTable</strong>) embedded into the base struct. Runtime dispatch occurs via indirect pointer call: <code>shape-&gt;vptr-&gt;draw(shape)</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="diagram-container">
+            <svg class="uml-diagram" viewBox="0 0 720 200" width="720" height="200" xmlns="http://www.w3.org/2000/svg">
+              <!-- Memory Block of Derived Circle Instance -->
+              <rect x="40" y="30" width="280" height="140" fill="#ffffff" stroke="#0969da" stroke-width="1.5"/>
+              <rect x="40" y="30" width="280" height="25" fill="#eff6ff"/>
+              <text x="60" y="47" fill="#0969da" font-weight="bold" font-size="11">Memory Layout of Circle Instance</text>
+
+              <!-- Offset 0: vptr -->
+              <rect x="50" y="65" width="260" height="25" fill="#fef9c3" stroke="#9a6700" stroke-width="1"/>
+              <text x="60" y="82" fill="#9a6700" font-size="10" font-weight="bold">Offset 0: const ShapeVTable* vptr</text>
+
+              <!-- Offset 8: Base Attributes -->
+              <rect x="50" y="95" width="260" height="25" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <text x="60" y="112" fill="#475569" font-size="10">Offset 8: double x, double y (Base Shape)</text>
+
+              <!-- Offset 24: Derived Attributes -->
+              <rect x="50" y="125" width="260" height="25" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+              <text x="60" y="142" fill="#166534" font-size="10">Offset 24: double radius (Derived Circle)</text>
+
+              <!-- Arrow from vptr to VTable -->
+              <line x1="310" y1="77" x2="430" y2="77" stroke="#9a6700" stroke-width="2"/>
+              <polygon points="430,77 420,72 420,82" fill="#9a6700"/>
+
+              <!-- Static VTable Block -->
+              <rect x="430" y="30" width="250" height="140" fill="#ffffff" stroke="#9a6700" stroke-width="1.5"/>
+              <rect x="430" y="30" width="250" height="25" fill="#fef9c3"/>
+              <text x="450" y="47" fill="#9a6700" font-weight="bold" font-size="11">Static ShapeVTable (Circle)</text>
+
+              <rect x="440" y="65" width="230" height="30" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <text x="450" y="85" fill="#0f172a" font-size="10">double (*area)(const Shape*)</text>
+
+              <rect x="440" y="105" width="230" height="30" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <text x="450" y="125" fill="#0f172a" font-size="10">void (*draw)(const Shape*)</text>
+            </svg>
+            <div class="diagram-caption">Figure 3.10: In-Memory Structural Mapping of Object Inheritance and VTable Dynamic Dispatch in Procedural C</div>
+          </div>
+
+          <h4>Complete Reference Implementation in ANSI C</h4>
           <pre><code>/* =========================================================================
    COMPLETE OBJECT-ORIENTED ENGINE IMPLEMENTED IN STANDARD PROCEDURAL C
    Demonstrating Classes, Encapsulation, Single Inheritance & VTable Dispatch
@@ -313,9 +1195,12 @@ int main() {
 }</code></pre>
         </section>
 
-        <!-- 8. Quality Attributes -->
-        <section id="sec-software-qualities">
-          <h2>8. Core Software Engineering Quality Attributes</h2>
+        <!-- ======================================================== -->
+        <!-- 14. Software Quality Attributes                          -->
+        <!-- ======================================================== -->
+        <section id="sec-quality">
+          <h2>14. Core Software Engineering Quality Attributes</h2>
+          <p>In object-oriented system design, system excellence is measured against three paramount architectural quality attributes:</p>
 
           <div class="table-wrapper">
             <table>
@@ -323,40 +1208,40 @@ int main() {
                 <tr>
                   <th>Quality Dimension</th>
                   <th>Formal Definition</th>
-                  <th>Object-Oriented Architectural Enforcement</th>
+                  <th>Object-Oriented Architectural Enforcement Mechanisms</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Robustness</strong></td>
-                  <td>The capability of a software system to withstand exceptional errors, invalid user inputs, and unexpected hardware failures without crashing.</td>
+                  <td>The ability of a system to maintain operational integrity, resist unexpected exceptions, and fail gracefully without data corruption when encountering invalid inputs or environmental failures.</td>
                   <td>
                     <ul>
-                      <li>Class invariant validation in constructors and setters.</li>
-                      <li>Type-safe C++ exception hierarchies (<code>std::exception</code>).</li>
-                      <li>RAII (Resource Acquisition Is Initialization) ensuring deterministic memory cleanup.</li>
+                      <li>Class invariant checking in constructors and setter methods.</li>
+                      <li>Formal exception hierarchies (<code>std::exception</code>) segregating recoverable domain errors from fatal system panics.</li>
+                      <li>RAII (Resource Acquisition Is Initialization) guaranteeing automatic deterministic resource deallocation (closing files, releasing locks).</li>
                     </ul>
                   </td>
                 </tr>
                 <tr>
                   <td><strong>Extensibility</strong></td>
-                  <td>The ease with which a system accommodates new functional capabilities without altering or destabilizing existing source code.</td>
+                  <td>The ease with which a software system accommodates new business capabilities, requirements, and hardware platforms without destabilizing or rewriting existing source code.</td>
                   <td>
                     <ul>
-                      <li>Adherence to the Open-Closed Principle (OCP).</li>
-                      <li>Polymorphic dynamic dispatch through abstract base interfaces.</li>
-                      <li>Pluggable architecture patterns (Strategy, Factory, Observer).</li>
+                      <li>Adherence to the <strong>Open-Closed Principle (OCP)</strong>: Open for extension, closed for modification.</li>
+                      <li>Polymorphic dynamic dispatch through abstract interfaces.</li>
+                      <li>Pluggable behavioral design patterns (Strategy, Factory Method, Observer, Decorator).</li>
                     </ul>
                   </td>
                 </tr>
                 <tr>
                   <td><strong>Reusability</strong></td>
-                  <td>The extent to which existing software modules can be utilized across new applications with zero or minimal modification.</td>
+                  <td>The degree to which pre-existing software components, classes, and packages can be incorporated into new systems with zero or minimal source code changes.</td>
                   <td>
                     <ul>
-                      <li>Composition over inheritance ("has-a" over "is-a").</li>
-                      <li>Generic template libraries (C++ STL containers and algorithms).</li>
-                      <li>Autonomous package encapsulation with minimal dependencies.</li>
+                      <li>Preferring <strong>object composition over inheritance</strong> ("has-a" over "is-a").</li>
+                      <li>Parametric polymorphism via generic template libraries (e.g., C++ STL).</li>
+                      <li>High cohesion and low coupling across autonomous package boundaries.</li>
                     </ul>
                   </td>
                 </tr>
